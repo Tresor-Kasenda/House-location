@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4842c22e789d247c4b660e69490545f",
+    "content-hash": "c4a138e292dcd55f11913d203984b841",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -959,6 +959,156 @@
             "time": "2021-10-06T17:43:30+00:00"
         },
         {
+            "name": "juststeveking/laravel-key-factory",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JustSteveKing/laravel-key-factory.git",
+                "reference": "5a2210e79f7b0c53f0d79fa3bd05c1a2be730d8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JustSteveKing/laravel-key-factory/zipball/5a2210e79f7b0c53f0d79fa3bd05c1a2be730d8c",
+                "reference": "5a2210e79f7b0c53f0d79fa3bd05c1a2be730d8c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^8.37",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.4.3"
+            },
+            "require-dev": {
+                "brianium/paratest": "^6.2",
+                "nunomaduro/collision": "^5.3",
+                "orchestra/testbench": "^6.15",
+                "phpunit/phpunit": "^9.3",
+                "spatie/laravel-ray": "^1.9",
+                "vimeo/psalm": "^4.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "JustSteveKing\\KeyFactory\\KeyFactoryServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JustSteveKing\\KeyFactory\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steve McDougall",
+                    "email": "juststevemcd@gmail.com",
+                    "homepage": "https://www.juststeveking.uk/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple package to generate Eloquent Model Keys",
+            "homepage": "https://github.com/juststeveking/laravel-key-factory",
+            "keywords": [
+                "JustSteveKing",
+                "laravel",
+                "laravel-key-factory"
+            ],
+            "support": {
+                "issues": "https://github.com/JustSteveKing/laravel-key-factory/issues",
+                "source": "https://github.com/JustSteveKing/laravel-key-factory/tree/1.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/JustSteveKing",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-07-05T10:15:05+00:00"
+        },
+        {
+            "name": "kris/laravel-form-builder",
+            "version": "1.40.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kristijanhusak/laravel-form-builder.git",
+                "reference": "06b6773318c52208c72f65756884964fe3171934"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kristijanhusak/laravel-form-builder/zipball/06b6773318c52208c72f65756884964fe3171934",
+                "reference": "06b6773318c52208c72f65756884964fe3171934",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^5.6@dev|^6|^7|^8",
+                "illuminate/validation": "^5.6@dev|^6|^7|^8",
+                "laravelcollective/html": "^5.6|^6|^7|^8",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.16.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Kris\\LaravelFormBuilder\\FormBuilderServiceProvider"
+                    ],
+                    "aliases": {
+                        "FormBuilder": "Kris\\LaravelFormBuilder\\Facades\\FormBuilder"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Kris\\LaravelFormBuilder": "src/"
+                },
+                "classmap": [
+                    "tests/FormBuilderTestCase.php"
+                ],
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kristijan Husak",
+                    "email": "husakkristijan@gmail.com"
+                },
+                {
+                    "name": "Mike Erickson",
+                    "email": "codedungeon@gmail.com"
+                },
+                {
+                    "name": "Mike Erickson",
+                    "email": "mike.erickson@codedungeon.io"
+                }
+            ],
+            "description": "Laravel form builder - symfony like",
+            "keywords": [
+                "builder",
+                "form",
+                "laravel",
+                "symfony"
+            ],
+            "support": {
+                "issues": "https://github.com/kristijanhusak/laravel-form-builder/issues",
+                "source": "https://github.com/kristijanhusak/laravel-form-builder/tree/1.40.0"
+            },
+            "time": "2020-09-28T20:54:27+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v8.70.2",
             "source": {
@@ -1320,6 +1470,136 @@
                 "source": "https://github.com/laravel/tinker/tree/v2.6.2"
             },
             "time": "2021-09-28T15:47:34+00:00"
+        },
+        {
+            "name": "laravel/ui",
+            "version": "v3.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/ui.git",
+                "reference": "28f3d190fe270b6dcd6fdab4a77a392e693ceca5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/28f3d190fe270b6dcd6fdab4a77a392e693ceca5",
+                "reference": "28f3d190fe270b6dcd6fdab4a77a392e693ceca5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^8.42",
+                "illuminate/filesystem": "^8.42",
+                "illuminate/support": "^8.42",
+                "illuminate/validation": "^8.42",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Ui\\UiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Ui\\": "src/",
+                    "Illuminate\\Foundation\\Auth\\": "auth-backend/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel UI utilities and presets.",
+            "keywords": [
+                "laravel",
+                "ui"
+            ],
+            "support": {
+                "source": "https://github.com/laravel/ui/tree/v3.3.2"
+            },
+            "time": "2021-11-05T08:25:44+00:00"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v6.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "ae15b9c4bf918ec3a78f092b8555551dd693fde3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/ae15b9c4bf918ec3a78f092b8555551dd693fde3",
+                "reference": "ae15b9c4bf918ec3a78f092b8555551dd693fde3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "^6.0|^7.0|^8.0",
+                "illuminate/routing": "^6.0|^7.0|^8.0",
+                "illuminate/session": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "illuminate/view": "^6.0|^7.0|^8.0",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~8.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Collective\\Html\\HtmlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Form": "Collective\\Html\\FormFacade",
+                        "Html": "Collective\\Html\\HtmlFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                },
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "https://laravelcollective.com",
+            "support": {
+                "issues": "https://github.com/LaravelCollective/html/issues",
+                "source": "https://github.com/LaravelCollective/html"
+            },
+            "time": "2020-12-15T20:20:05+00:00"
         },
         {
             "name": "league/commonmark",
@@ -2849,6 +3129,156 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "realrashid/sweet-alert",
+            "version": "v4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/realrashid/sweet-alert.git",
+                "reference": "7615c5799fbc8743a6b5a7bd7f645f55a1d62723"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/7615c5799fbc8743a6b5a7bd7f645f55a1d62723",
+                "reference": "7615c5799fbc8743a6b5a7bd7f645f55a1d62723",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.6|^6.0|^7.0|^8.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "symfony/thanks": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RealRashid\\SweetAlert\\SweetAlertServiceProvider"
+                    ],
+                    "aliases": {
+                        "Alert": "RealRashid\\SweetAlert\\Facades\\Alert"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RealRashid\\SweetAlert\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rashid Ali",
+                    "email": "realrashid05@gmail.com",
+                    "homepage": "https://realrashid.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A BEAUTIFUL, RESPONSIVE, CUSTOMIZABLE, ACCESSIBLE (WAI-ARIA) REPLACEMENT FOR JAVASCRIPT'S POPUP BOXES FOR LARAVEL BY RASHID ALI",
+            "homepage": "https://github.com/realrashid/sweet-alert",
+            "keywords": [
+                "alert",
+                "laravel",
+                "laravel-package",
+                "notifier",
+                "noty",
+                "sweet-alert",
+                "sweet-alert2",
+                "toast"
+            ],
+            "support": {
+                "docs": "https://realrashid.github.io/sweet-alert/",
+                "email": "realrashid05@gmail.com",
+                "issues": "https://github.com/realrashid/sweet-alert/issues",
+                "source": "https://github.com/realrashid/sweet-alert"
+            },
+            "funding": [
+                {
+                    "url": "https://ko-fi.com/realrashid",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.buymeacoffee.com/realrashid",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://issuehunt.io/r/realrashid",
+                    "type": "issuehunt"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/realrashid/sweet-alert",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-11-06T09:34:33+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "f710fe196c126fb9e0aee67eb5af49ad8f13f528"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/f710fe196c126fb9e0aee67eb5af49ad8f13f528",
+                "reference": "f710fe196c126fb9e0aee67eb5af49ad8f13f528",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^7.0|^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^9.3",
+                "spatie/test-time": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src",
+                    "Spatie\\LaravelPackageTools\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.9.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-09-21T13:06:51+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7953,7 +8383,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"
