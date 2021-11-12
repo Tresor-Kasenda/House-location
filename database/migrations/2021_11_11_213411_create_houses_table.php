@@ -1,31 +1,35 @@
 <?php
+declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHousesTable extends Migration
+return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
+            $table->integer('price_per_month');
+            $table->string('address');
+            $table->integer('guarantees');
+            $table->integer('phone_number');
+            $table->string('email')->unique();
+            $table->decimal('latitude')->nullable();
+            $table->decimal('longitude')->nullable();
+            $table->string('picture');
+            $table->string('commune');
+            $table->string('district');
+            $table->integer('piece_number');
+            $table->string('characteristic');
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('houses');
     }
-}
+};
