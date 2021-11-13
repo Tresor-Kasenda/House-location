@@ -1,26 +1,5 @@
 {!! form_start($form) !!}
 <div class="row gy-4">
-    <div class="col-md-4 col-lg-4">
-        <div class="form-group">
-            <div class="form-control-wrap">
-                {!! form_row($form->title) !!}
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-lg-4">
-        <div class="form-group">
-            <div class="form-control-wrap">
-                {!! form_row($form->picture) !!}
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-lg-4">
-        <div class="form-group">
-            <div class="form-control-wrap">
-                {!! form_row($form->town) !!}
-            </div>
-        </div>
-    </div>
     <div class="col-md-md-6 col-lg-6">
         <div class="form-group">
             <div class="form-control-wrap">
@@ -43,21 +22,10 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-6">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <div class="form-control-wrap">
-                        {!! form_row($form->prices) !!}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="form-group">
-                    <div class="form-control-wrap">
-                        {!! form_row($form->user_id) !!}
-                    </div>
-                </div>
+    <div class="col-md-md-6 col-lg-6">
+        <div class="form-group">
+            <div class="form-control-wrap">
+                {!! form_row($form->picture) !!}
             </div>
         </div>
         <div class="form-group">
@@ -67,52 +35,43 @@
         </div>
         <div class="form-group">
             <div class="form-control-wrap">
-                {!! form_row($form->places_number) !!}
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-control-wrap">
                 {!! form_row($form->phone_number) !!}
             </div>
         </div>
-    </div>
-    <div class="col-md-4 col-lg-4">
         <div class="form-group">
             <div class="form-control-wrap">
-                {!! form_row($form->service_id) !!}
+                {!! form_row($form->district) !!}
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-lg-4">
+</div>
+<div class="row gy-4">
+    <div class="col-md-4">
         <div class="form-group">
             <div class="form-control-wrap">
-                {!! form_row($form->category_id) !!}
+                {!! form_row($form->price_per_month) !!}
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-lg-4">
-        <div class="row">
-            <div class="col-md-6 col-lg-6">
-                <div class="form-group">
-                    <div class="form-control-wrap">
-                        {!! form_row($form->note) !!}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6">
-                <div class="form-group">
-                    <div class="form-control-wrap">
-                        {!! form_row($form->booster) !!}
-                    </div>
-                </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <div class="form-control-wrap">
+                {!! form_row($form->guarantees) !!}
             </div>
         </div>
     </div>
-    <div class="col-md-12 col-lg-12">
+    <div class="col-md-4">
         <div class="form-group">
             <div class="form-control-wrap">
-                {!! form_row($form->description) !!}
+                {!! form_row($form->piece_number) !!}
             </div>
+        </div>
+    </div>
+</div>
+<div class="row gy-4">
+    <div class="col-lg-12 col-md-12 mt-3">
+        <div class="form-control-wrap" id="collection-container" data-prototype="{{ form_row($form->characteristic->prototype()) }}">
+            {!! form_row($form->characteristic) !!}
         </div>
     </div>
 </div>
