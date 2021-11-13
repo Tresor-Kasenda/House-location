@@ -1,4 +1,4 @@
-<div class="col-xxl-3 col-sm-3">
+<div class="col-xxl-4 col-sm-4">
     <div class="card">
         <div class="nk-ecwg nk-ecwg6">
             <div class="card-inner">

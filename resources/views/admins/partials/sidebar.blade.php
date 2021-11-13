@@ -1,7 +1,7 @@
 <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
     <div class="nk-sidebar-element nk-sidebar-head">
         <div class="nk-sidebar-brand">
-            <a href="{{ route('admin.dashboard.index') }}" class="logo-link nk-sidebar-logo">
+            <a href="{{ route('home.index') }}" class="logo-link nk-sidebar-logo">
                 <img class="logo-light logo-img" src="{{ asset('app/images/logo.png')  }}" srcset="{{ asset('app/images/logo.png') }} 2x" alt="logo">
                 <img class="logo-dark logo-img" src="{{ asset('app/images/logo.png')  }}" srcset="{{ asset('app/images/logo.png') }} 2x" alt="logo-dark">
                 <img class="logo-small logo-img logo-img-small" src="{{ asset('app/images/logo.png')  }}" srcset="{{ asset('app/images/logo.png') }} 2x" alt="logo-small">
@@ -17,7 +17,7 @@
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                     @include('admins.components.link', [
-                        'route' => route('admin.dashboard.index'),
+                        'route' => route('home.index'),
                         'name' => 'Dashboard',
                         'icon' => 'ni-menu-alt'
                     ])
@@ -26,14 +26,10 @@
                         <h6 class="overline-title text-primary-alt">Administration</h6>
                     </li>
                     @include('admins.components.link', [
-                        'route' => route('admin.roomsParty.index'),
-                        'name' => 'Salles',
+                        'route' => route('apartment.index'),
+                        'name' => 'Appartement',
                         'icon' => 'ni-folder'
                     ])
-                    <li class="nk-menu-heading">
-                        <h6 class="overline-title text-primary-alt">Paiements</h6>
-                    </li>
-
                 </ul>
             </div>
         </div>

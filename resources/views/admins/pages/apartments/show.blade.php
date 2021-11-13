@@ -19,7 +19,7 @@
                                     <li class="preview-item">
                                         @if ($room->confirmed == false && $room->user_id == auth()->id())
                                             @include('admins.components.update', [
-                                                'route' => 'admin.rooms.active',
+                                                'route' => '',
                                                 'callback' => $room->key,
                                                 'button' => 'btn-outline-success btn-sm',
                                                 'icon' => 'ni-check-circle',
@@ -27,7 +27,7 @@
                                             ])
                                         @else
                                             @include('admins.components.update', [
-                                                'route' => 'admin.rooms.inactive',
+                                                'route' => '',
                                                 'callback' => $room->key,
                                                 'button' => 'btn-outline-danger btn-sm',
                                                 'icon' => 'ni-check-circle',
@@ -36,7 +36,7 @@
                                         @endif
                                     </li>
                                     <li class="preview-item">
-                                        <a href="{{ route('admin.roomsParty.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
+                                        <a href="{{ route('apartment.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
                                             <em class="icon ni ni-arrow-left"></em>
                                             <span>Back</span>
                                         </a>
