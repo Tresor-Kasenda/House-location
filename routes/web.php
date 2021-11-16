@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\Apartment\ApartmentAdminController;
+use App\Http\Controllers\Admin\ApartmentAdminController;
 use App\Http\Controllers\Admin\ImageAdminController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\CategoryController;
