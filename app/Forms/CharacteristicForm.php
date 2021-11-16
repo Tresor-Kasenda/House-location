@@ -11,11 +11,8 @@ class CharacteristicForm extends Form
     public function buildForm()
     {
         $this
-            ->add('piece', 'number', [
-                'label' => "Nombre des pieces"
-            ])
             ->add('electricity', 'select', [
-                'choices' => ['en' => 'English', 'fr' => 'French'],
+                'choices' => ['oui' => 'Oui', 'non' => 'Non'],
                 'choice_options' => [
                     'wrapper' => ['class' => 'choice-wrapper'],
                     'label_attr' => ['class' => 'label-class'],
@@ -25,7 +22,7 @@ class CharacteristicForm extends Form
                 'multiple' => true
             ])
             ->add('Cloture', 'select', [
-                'choices' => ['en' => 'English', 'fr' => 'French'],
+                'choices' => ['oui' => 'Oui', 'non' => 'Non'],
                 'choice_options' => [
                     'wrapper' => ['class' => 'choice-wrapper'],
                     'label_attr' => ['class' => 'label-class'],
