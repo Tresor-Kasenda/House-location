@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Forms\ApartmentForm;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\HouseRequest;
+use App\Http\Requests\ApartmementRequest;
 use App\Repository\Admin\ApartmentRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -39,7 +39,7 @@ class ApartmentAdminController extends Controller
         return view('admins.pages.apartments.create', compact('form'));
     }
 
-    public function store(HouseRequest $request)
+    public function store(ApartmementRequest $request)
     {
 
     }
@@ -55,7 +55,7 @@ class ApartmentAdminController extends Controller
         return view('admins.pages.apartments.create', compact('form', 'house'));
     }
 
-    public function update(HouseRequest $request, string $key)
+    public function update(ApartmementRequest $request, string $key)
     {
 
     }
