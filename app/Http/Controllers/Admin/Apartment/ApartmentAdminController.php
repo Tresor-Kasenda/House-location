@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Admin\House;
+namespace App\Http\Controllers\Admin\Apartment;
 
-use App\Forms\HouseForm;
+use App\Forms\ApartmentForm;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HouseRequest;
 use App\Repository\Admin\ApartmentRepository;
@@ -18,7 +18,10 @@ class ApartmentAdminController extends Controller
 
     public function index(): Factory|View|Application
     {
-        return view('admins.pages.apartments.index');
+        $rooms = $this->repository->getApartments();
+        return view('admins.pages.apartments.index',
+            compact('rooms')
+        );
     }
 
     public function show(string $key): Factory|View|Application
@@ -29,9 +32,9 @@ class ApartmentAdminController extends Controller
 
     public function create(): Factory|View|Application
     {
-        $form = $this->builder->create(HouseForm::class, [
+        $form = $this->builder->create(ApartmentForm::class, [
            'method' => 'POST',
-            'url' => route('')
+            'url' => route('apartment.store')
         ]);
         return view('admins.pages.apartments.create', compact('form'));
     }
@@ -44,7 +47,7 @@ class ApartmentAdminController extends Controller
     public function edit(string $key): Factory|View|Application
     {
         $house = $this->repository->view($key);
-        $form = $this->builder->create(HouseForm::class, [
+        $form = $this->builder->create(ApartmentForm::class, [
             'method' => 'PUT',
             'url' => route('', $house->key),
             'model' => $house

@@ -15,12 +15,24 @@ class CharacteristicForm extends Form
                 'label' => "Nombre des pieces"
             ])
             ->add('electricity', 'select', [
-                'choices' => ['oui' => "Oui", 'non' => 'Non'],
-                'selected' => 'Oui'
+                'choices' => ['en' => 'English', 'fr' => 'French'],
+                'choice_options' => [
+                    'wrapper' => ['class' => 'choice-wrapper'],
+                    'label_attr' => ['class' => 'label-class'],
+                ],
+                'selected' => ['en', 'fr'],
+                'expanded' => true,
+                'multiple' => true
             ])
-            ->add('Cloture', [
-                'choices' => ['oui' => "Oui", 'non' => 'Non'],
-                'selected' => 'Oui'
+            ->add('Cloture', 'select', [
+                'choices' => ['en' => 'English', 'fr' => 'French'],
+                'choice_options' => [
+                    'wrapper' => ['class' => 'choice-wrapper'],
+                    'label_attr' => ['class' => 'label-class'],
+                ],
+                'selected' => ['en', 'fr'],
+                'expanded' => true,
+                'multiple' => true
             ])
             ->add('toilette', Field::CHOICE, [
                 'label' => 'Categories',

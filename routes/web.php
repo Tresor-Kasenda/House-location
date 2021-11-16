@@ -17,7 +17,7 @@ Route::resource('localisation', LocationController::class);
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function (){
-    Route::get('/admin/apartment', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+    Route::get('/admin/apartment', [App\Http\Controllers\HomeController::class, 'index'])->name('backend.index');
     Route::resource('apartment', ApartmentAdminController::class);
     Route::resource('images', ImageAdminController::class);
 });

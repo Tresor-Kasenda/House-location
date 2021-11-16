@@ -13,6 +13,8 @@ class House extends Model
 {
     use HasFactory, HasKey;
 
+    const APARTMENT_CONFIRMED = true;
+
     protected $fillable = [
         'price_per_month',
         'address',

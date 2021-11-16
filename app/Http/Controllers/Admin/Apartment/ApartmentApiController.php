@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Admin\House;
+namespace App\Http\Controllers\Admin\Apartment;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\HouseResource;

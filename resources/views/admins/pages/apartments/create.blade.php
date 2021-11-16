@@ -9,10 +9,10 @@
         <div class="nk-block-head nk-block-head-sm">
             <div class="nk-block-between g-3">
                 <div class="nk-block-head-content">
-                    <h3 class="nk-block-title page-title">Creation des salles</h3>
+                    <h3 class="nk-block-title page-title">Creation des appartements</h3>
                 </div>
                 <div class="nk-block-head-content">
-                    <a href="{{ route('admin.roomsParty.index') }}" class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
+                    <a href="{{ route('apartment.index') }}" class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
                         <em class="icon ni ni-arrow-left"></em>
                         <span>Back</span>
                     </a>
@@ -28,7 +28,7 @@
                                 <div id="maid" style="height: 250px; width: 920px;border-radius: 5px"></div>
                             </div>
                         </div>
-                        @include('admins.manager.rooms._form')
+                        @include('admins.pages.apartments._form')
                     </div>
                 </div>
             </div>

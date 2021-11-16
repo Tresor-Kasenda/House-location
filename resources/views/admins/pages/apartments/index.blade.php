@@ -10,19 +10,19 @@
             <div class="nk-block-head nk-block-head-sm">
                 <div class="nk-block-between">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Salles des fetes</h3>
+                        <h3 class="nk-block-title page-title">Appartement</h3>
                     </div>
                     <div class="nk-block-head-content">
                         <div class="toggle-wrap nk-block-tools-toggle">
                             <div class="toggle-expand-content" data-content="pageMenu">
                                 <ul class="nk-block-tools g-3">
                                     <li class="preview-item">
-                                        <a href="{{ route('admin.roomsParty.create') }}" class="btn btn-dim btn-primary btn-sm">
+                                        <a href="{{ route('apartment.create') }}" class="btn btn-dim btn-primary btn-sm">
                                             <em class="icon ni ni-plus mr-1"></em> Ajouter
                                         </a>
                                     </li>
                                     <li class="preview-item">
-                                        <a href="{{ route('admin.rooms.trashed') }}" class="btn btn-dim btn-secondary btn-sm">
+                                        <a href="{{ route('apartment.index') }}" class="btn btn-dim btn-secondary btn-sm">
                                             <em class="icon ni ni-histroy mr-1"></em> Historique
                                         </a>
                                     </li>

@@ -17,20 +17,16 @@
             <div class="nk-block">
                 <div class="row g-gs">
                     @include('admins.components.statistic', [
-                        'username' => "Salles",
-                        'amount' => \App\Models\Admin\RoomParty::count()
+                        'username' => "Appartement",
+                        'amount' => \App\Models\House::count()
                     ])
                     @include('admins.components.statistic', [
-                       'username' => "Reservation",
-                       'amount' => \App\Models\Reservation::count()
+                       'username' => "Images",
+                       'amount' => \App\Models\Image::count()
                    ])
                     @include('admins.components.statistic', [
                         'username' => "Utilisateur",
                         'amount' => \App\Models\User::count()
-                    ])
-                    @include('admins.components.statistic', [
-                        'username' => "Categories",
-                        'amount' => \App\Models\Admin\Category::count()
                     ])
                 </div>
             </div>
