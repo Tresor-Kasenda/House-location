@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('characteristic');
             $table->string('status')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

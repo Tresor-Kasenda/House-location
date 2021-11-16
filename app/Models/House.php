@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 
 class House extends Model
 {
-    use HasFactory, HasKey;
+    use HasFactory, HasKey, SoftDeletes;
 
     const APARTMENT_CONFIRMED = true;
 
