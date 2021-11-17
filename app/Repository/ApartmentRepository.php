@@ -1,12 +1,15 @@
 <?php
 declare(strict_types=1);
 
+namespace App\Repository;
+
 use App\Models\House;
+use App\Repository\Interface\ApartmentRepositoryInterface;
 use App\Services\ImageUploader;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
-class ApartmentRepository implements \App\Repository\Interface\ApartmentRepositoryInterface
+class ApartmentRepository implements ApartmentRepositoryInterface
 {
 
     use ImageUploader;
