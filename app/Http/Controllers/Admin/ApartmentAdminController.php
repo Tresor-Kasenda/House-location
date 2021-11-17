@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Forms\ApartmentForm;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ApartmementRequest;
-use App\Repository\Admin\ApartmentRepository;
+use App\Repository\Interface\ApartmentRepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -14,11 +14,11 @@ use Kris\LaravelFormBuilder\FormBuilder;
 
 class ApartmentAdminController extends Controller
 {
-    public function __construct(public FormBuilder $builder, public ApartmentRepository $repository){}
+    public function __construct(public FormBuilder $builder, public ApartmentRepositoryInterface $repository){}
 
     public function index(): Factory|View|Application
     {
-        $rooms = $this->repository->getApartments();
+        $rooms = $this->repository->getAllVerified();
         return view('admins.pages.apartments.index',
             compact('rooms')
         );
@@ -26,7 +26,7 @@ class ApartmentAdminController extends Controller
 
     public function show(string $key): Factory|View|Application
     {
-        $house = $this->repository->view($key);
+        $house = $this->repository->getOneById($key);
         return view('admins.pages.apartments.show', compact('house'));
     }
 
@@ -41,12 +41,13 @@ class ApartmentAdminController extends Controller
 
     public function store(ApartmementRequest $request)
     {
-
+        $this->repository->create($request);
+        return redirect()->route('apartment.index');
     }
 
     public function edit(string $key): Factory|View|Application
     {
-        $house = $this->repository->view($key);
+        $house = $this->repository->getOneByKey($key);
         $form = $this->builder->create(ApartmentForm::class, [
             'method' => 'PUT',
             'url' => route('', $house->key),
@@ -57,7 +58,7 @@ class ApartmentAdminController extends Controller
 
     public function update(ApartmementRequest $request, string $key)
     {
-
+        $this->repository->update($key,$request->all());
     }
 
     public function destroy(string $key)

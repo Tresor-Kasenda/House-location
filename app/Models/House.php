@@ -27,17 +27,18 @@ class House extends Model
         'picture',
         'commune',
         'district',
+        'characteristic',
         'piece_number',
         'status'
     ];
 
     protected $casts = [
-        'price_per_month' => 'number',
-        'guarantees' => 'number',
-        'phone_number' => 'number',
+        'price_per_month' => 'integer',
+        'guarantees' => 'integer',
+        'phone_number' => 'integer',
         'latitude' => 'decimal',
         'longitude' => 'decimal',
-        'piece_number' => 'number',
+        'piece_number' => 'integer',
         'status' => 'boolean'
     ];
 
