@@ -7,6 +7,7 @@ use App\Models\House;
 use App\Repository\Interface\ApartmentRepositoryInterface;
 use App\Services\ImageUploader;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
 class ApartmentRepository implements ApartmentRepositoryInterface
@@ -23,12 +24,28 @@ class ApartmentRepository implements ApartmentRepositoryInterface
     }
 
     /**
-     * @param array $attributes
+     * @param Request $request
      * @return House
      */
-    public function create(array $attributes): House
+    public function create(Request $request): House
     {
-        return House::create($attributes);
+        $imageUrl = $this::uploadFiles($request);
+        $request->picture = $imageUrl;
+
+        return House::create([
+            'price_per_month' => $request->price_per_month,
+            'address'=> $request->address,
+            'guarantees'=> $request->guarantees,
+            'phone_number'=> $request->phone_number,
+            'email'=> $request->email,
+            'latitude'=> $request->latitude,
+            'longitude'=> $request->longitude,
+            'picture'=> $request->picture,
+            'commune'=> $request->commune,
+            'district'=> $request->district,
+            'piece_number'=> $request->piece_number,
+            'characteristic' => str_replace("'", "\'", json_encode($request->characteristic))
+        ]);
     }
 
 
@@ -77,5 +94,32 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         return House::query()
             ->where('key', '=', $key)
             ->update($attributes);
+    }
+
+    /**
+     * @param string $key
+     * @return bool
+     */
+    public function moveToTrash(string $key): bool
+    {
+        return House::query()->where('key','=',$key)->delete();
+    }
+
+    /**
+     * @param string $key
+     * @return bool
+     */
+    public function restore(string $key): bool
+    {
+        return House::withTrashed()->where('key', $key)->restore();
+    }
+
+    /**
+     * @param string $key
+     * @return bool
+     */
+    public function forceDelete(string $key): bool
+    {
+        return House::withTrashed()->where('key', $key)->forceDelete();
     }
 }

@@ -7,18 +7,23 @@ use App\Http\Requests\ApartmementRequest;
 use App\Models\House;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use phpDocumentor\Reflection\Types\Boolean;
 
 interface ApartmentRepositoryInterface
 {
 
+    /**
+     * @return Collection
+     */
     public function getAll(): Collection;
 
     /**
-     * @param array $attributes
+     * @param Request $request
      * @return House
      */
-    public function create(array $attributes): House;
+    public function create(Request $request): House;
 
 
     /**
@@ -44,4 +49,22 @@ interface ApartmentRepositoryInterface
      * @return Collection
      */
     public function getAllByCategoryId(string $categoryId): Collection;
+
+    /**
+     * @param $key
+     * @return bool
+     */
+    public function moveToTrash(string $key) : bool;
+
+    /**
+     * @param $key
+     * @return bool
+     */
+    public function restore(string $key) : bool;
+
+    /**
+     * @param $key
+     * @return bool
+     */
+    public function forceDelete(string $key) : bool;
 }
