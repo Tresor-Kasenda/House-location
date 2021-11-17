@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use ApartmentRepository;
+use App\Repository\ApartmentRepository;
 use App\Repository\Interface\ApartmentRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 

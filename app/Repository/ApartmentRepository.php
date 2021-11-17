@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace App\Repository;
+
 use App\Models\House;
 use App\Repository\Interface\ApartmentRepositoryInterface;
 use App\Services\ImageUploader;
@@ -48,7 +50,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
      * @param string $id
      * @return House|Builder
      */
-    public function getOneById(string $id): House|Builder
+    public function getOneByKey(string $id): House|Builder
     {
         return House::query()
             ->where('key', '=', $id)
@@ -63,5 +65,17 @@ class ApartmentRepository implements ApartmentRepositoryInterface
     public function getAllByCategoryId(string $categoryId): Collection
     {
         // TODO: Implement getAllByCategory() method.
+    }
+
+    /**
+     * @param string $key
+     * @param array $attributes
+     * @return int
+     */
+    public function update(string $key,array $attributes): int
+    {
+        return House::query()
+            ->where('key', '=', $key)
+            ->update($attributes);
     }
 }
