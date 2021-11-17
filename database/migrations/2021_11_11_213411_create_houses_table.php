@@ -11,6 +11,7 @@ return new class extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
+            $table->string('key')->unique();
             $table->integer('price_per_month');
             $table->string('address');
             $table->integer('guarantees');
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->string('commune');
             $table->string('district');
             $table->integer('piece_number');
-            $table->string('characteristic');
+            $table->text('characteristic');
             $table->string('status')->default(0);
             $table->timestamps();
             $table->softDeletes();

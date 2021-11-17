@@ -19,7 +19,7 @@
                                     <li class="preview-item">
                                         @if ($room->confirmed == false && $room->user_id == auth()->id())
                                             @include('admins.components.update', [
-                                                'route' => '',
+                                                'route' => 'apartment.update',
                                                 'callback' => $room->key,
                                                 'button' => 'btn-outline-success btn-sm',
                                                 'icon' => 'ni-check-circle',
@@ -27,7 +27,7 @@
                                             ])
                                         @else
                                             @include('admins.components.update', [
-                                                'route' => '',
+                                                'route' => 'apartment.update',
                                                 'callback' => $room->key,
                                                 'button' => 'btn-outline-danger btn-sm',
                                                 'icon' => 'ni-check-circle',
@@ -114,7 +114,7 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Prix</span>
-                                                    <span class="profile-ud-value">{{ $room->getPrices() ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->price ?? "" }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
@@ -132,9 +132,9 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Services</span>
-                                                    @foreach($room->services as $service)
-                                                        <span class="profile-ud-value badge badge-circle mr-1">{{ $service->username ?? "" }}<br></span>
-                                                    @endforeach
+{{--                                                    @foreach($room->services as $service)--}}
+{{--                                                        <span class="profile-ud-value badge badge-circle mr-1">{{ $service->username ?? "" }}<br></span>--}}
+{{--                                                    @endforeach--}}
                                                 </div>
                                             </div>
                                         </div>
@@ -177,30 +177,30 @@
                                                 <span class="lead-text d-none d-sm-inline">Action</span>
                                             </div>
                                         </div>
-                                        @foreach($room->reservations as $reservation)
-                                            <div class="nk-tb-item text-center">
-                                                <div class="nk-tb-col">{{ $reservation->price ?? "" }}</div>
-                                                <div class="nk-tb-col">{{ $reservation->start_date->format('Y-m') ?? "" }}</div>
-                                                <div class="nk-tb-col">{{ $reservation->phone_number ?? "" }}</div>
-                                                <div class="nk-tb-col">{{ $reservation->room->title ?? "" }}</div>
-                                                <div class="nk-tb-col">
-                                                    @if($reservation->status)
-                                                        <span class="badge badge-dot badge-dot-xs badge-success">Confirmer</span>
-                                                    @else
-                                                        <span class="badge badge-dot badge-dot-xs badge-warning">En attente</span>
-                                                    @endif
-                                                </div>
-                                                <div class="nk-tb-col nk-tb-col-tools">
-                                                    <ul class="nk-tb-actions gx-1 text-center">
-                                                        <li>
-                                                            <a href="{{ route('admin.reservation.show', $reservation->key) }}" class="btn btn-dim btn-sm btn-primary">
-                                                                Voir
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        @endforeach
+{{--                                        @foreach($room->reservations as $reservation)--}}
+{{--                                            <div class="nk-tb-item text-center">--}}
+{{--                                                <div class="nk-tb-col">{{ $reservation->price ?? "" }}</div>--}}
+{{--                                                <div class="nk-tb-col">{{ $reservation->start_date->format('Y-m') ?? "" }}</div>--}}
+{{--                                                <div class="nk-tb-col">{{ $reservation->phone_number ?? "" }}</div>--}}
+{{--                                                <div class="nk-tb-col">{{ $reservation->room->title ?? "" }}</div>--}}
+{{--                                                <div class="nk-tb-col">--}}
+{{--                                                    @if($reservation->status)--}}
+{{--                                                        <span class="badge badge-dot badge-dot-xs badge-success">Confirmer</span>--}}
+{{--                                                    @else--}}
+{{--                                                        <span class="badge badge-dot badge-dot-xs badge-warning">En attente</span>--}}
+{{--                                                    @endif--}}
+{{--                                                </div>--}}
+{{--                                                <div class="nk-tb-col nk-tb-col-tools">--}}
+{{--                                                    <ul class="nk-tb-actions gx-1 text-center">--}}
+{{--                                                        <li>--}}
+{{--                                                            <a href="{{ route('admin.reservation.show', $reservation->key) }}" class="btn btn-dim btn-sm btn-primary">--}}
+{{--                                                                Voir--}}
+{{--                                                            </a>--}}
+{{--                                                        </li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        @endforeach--}}
                                     </div>
                                 </div>
                             </div>

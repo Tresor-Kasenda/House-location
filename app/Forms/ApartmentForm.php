@@ -2,6 +2,7 @@
 
 namespace App\Forms;
 
+use App\Models\Category;
 use Kris\LaravelFormBuilder\Form;
 
 class ApartmentForm extends Form
@@ -41,6 +42,10 @@ class ApartmentForm extends Form
             ])
             ->add('piece_number', 'number', [
                 'label' => "Nombre des pieces"
+            ])
+            ->add('categories','choice',[
+                'label' => 'Categorie',
+                'choices' => Category::all()->pluck('name', 'id')->toArray()
             ])
             ->add('characteristic', 'collection', [
                 'type' => 'form',

@@ -10,6 +10,7 @@ use App\Repository\ApartmentRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Kris\LaravelFormBuilder\FormBuilder;
 
 class ApartmentAdminController extends Controller
@@ -25,10 +26,11 @@ class ApartmentAdminController extends Controller
         return view('admins.pages.apartments.index', compact('rooms'));
     }
 
+
     public function show(string $key): Factory|View|Application
     {
-        $house = $this->repository->getOneById($key);
-        return view('admins.pages.apartments.show', compact('house'));
+        $room = $this->repository->getOneByKey($key);
+        return view('admins.pages.apartments.show', compact('room'));
     }
 
     public function create(): Factory|View|Application
@@ -40,14 +42,15 @@ class ApartmentAdminController extends Controller
         return view('admins.pages.apartments.create', compact('form'));
     }
 
-    public function store(ApartmementRequest $request)
+    public function store(ApartmementRequest $request): RedirectResponse
     {
-
+        $this->repository->create($request);
+        return redirect()->route('apartment.index');
     }
 
     public function edit(string $key): Factory|View|Application
     {
-        $house = $this->repository->getOneById($key);
+        $house = $this->repository->getOneByKey($key);
         $form = $this->builder->create(ApartmentForm::class, [
             'method' => 'PUT',
             'url' => route('', $house->key),
@@ -56,13 +59,21 @@ class ApartmentAdminController extends Controller
         return view('admins.pages.apartments.create', compact('form', 'house'));
     }
 
-    public function update(ApartmementRequest $request, string $key)
+    public function update(ApartmementRequest $request, string $key): RedirectResponse
     {
-
+        $this->repository->update($key,$request->all());
+        return redirect()->route('apartment.index');
     }
 
-    public function destroy(string $key)
+    public function destroy(string $key): RedirectResponse
     {
+        $this->repository->moveToTrash($key);
+        return redirect()->back();
+    }
 
+    public function forceDelete(string $key): RedirectResponse
+    {
+        $this->repository->forceDelete($key);
+        return redirect()->back();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -27,23 +28,29 @@ class House extends Model
         'picture',
         'commune',
         'district',
+        'characteristic',
         'piece_number',
         'status'
     ];
 
     protected $casts = [
-        'price_per_month' => 'number',
-        'guarantees' => 'number',
-        'phone_number' => 'number',
+        'price_per_month' => 'integer',
+        'guarantees' => 'integer',
+        'phone_number' => 'integer',
         'latitude' => 'decimal',
         'longitude' => 'decimal',
-        'piece_number' => 'number',
+        'piece_number' => 'integer',
         'status' => 'boolean'
     ];
 
     public function images(): HasMany
     {
         return $this->hasMany(Image::class);
+    }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class,'house_category','house_key','category_key');
     }
 
     public function getNameLinkAttribute(): string
