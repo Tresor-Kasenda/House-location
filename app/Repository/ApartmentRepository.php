@@ -100,25 +100,25 @@ class ApartmentRepository implements ApartmentRepositoryInterface
      * @param string $key
      * @return bool
      */
-    public function moveToTrash(string $key): bool
+    public function moveToTrash(string $key): int
     {
         return House::query()->where('key','=',$key)->delete();
     }
 
     /**
      * @param string $key
-     * @return bool
+     * @return bool|null
      */
-    public function restore(string $key): bool
+    public function restore(string $key): ?bool
     {
         return House::withTrashed()->where('key', $key)->restore();
     }
 
     /**
      * @param string $key
-     * @return bool
+     * @return int
      */
-    public function forceDelete(string $key): bool
+    public function forceDelete(string $key): int
     {
         return House::withTrashed()->where('key', $key)->forceDelete();
     }

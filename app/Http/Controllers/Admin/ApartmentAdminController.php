@@ -18,7 +18,7 @@ class ApartmentAdminController extends Controller
 
     public function index(): Factory|View|Application
     {
-        $rooms = $this->repository->getAllVerified();
+        $rooms = $this->repository->getAll();
         return view('admins.pages.apartments.index',
             compact('rooms')
         );
@@ -63,6 +63,12 @@ class ApartmentAdminController extends Controller
 
     public function destroy(string $key)
     {
+        $this->repository->moveToTrash($key);
+        return redirect()->back();
+    }
 
+    public function forceDelete(string $key) {
+        $this->repository->forceDelete($key);
+        return redirect()->back();
     }
 }

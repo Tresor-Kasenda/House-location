@@ -54,17 +54,17 @@ interface ApartmentRepositoryInterface
      * @param $key
      * @return bool
      */
-    public function moveToTrash(string $key) : bool;
+    public function moveToTrash(string $key) : int;
+
+    /**
+     * @param string $key
+     * @return bool|null
+     */
+    public function restore(string $key) : ?bool;
 
     /**
      * @param $key
      * @return bool
      */
-    public function restore(string $key) : bool;
-
-    /**
-     * @param $key
-     * @return bool
-     */
-    public function forceDelete(string $key) : bool;
+    public function forceDelete(string $key) : int;
 }
