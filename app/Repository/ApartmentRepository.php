@@ -2,11 +2,12 @@
 declare(strict_types=1);
 
 use App\Models\House;
+use App\Repository\Interface\ApartmentRepositoryInterface;
 use App\Services\ImageUploader;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
-class ApartmentRepository implements \App\Repository\Interface\ApartmentRepositoryInterface
+class ApartmentRepository implements ApartmentRepositoryInterface
 {
 
     use ImageUploader;
@@ -16,7 +17,7 @@ class ApartmentRepository implements \App\Repository\Interface\ApartmentReposito
      */
     public function getAll(): Collection
     {
-        // TODO: Implement getAll() method.
+        return House::all();
     }
 
     /**
@@ -25,7 +26,7 @@ class ApartmentRepository implements \App\Repository\Interface\ApartmentReposito
      */
     public function create(array $attributes): House
     {
-        // TODO: Implement create() method.
+        return House::create($attributes);
     }
 
 
@@ -45,18 +46,9 @@ class ApartmentRepository implements \App\Repository\Interface\ApartmentReposito
 
     /**
      * @param $id
-     * @return Collection
-     */
-    public function getAllByUserId($id): Collection
-    {
-        // TODO: Implement getAllByUserId() method.
-    }
-
-    /**
-     * @param $id
      * @return House|Builder
      */
-    public function getOneById($id): House|Builder
+    public function getOneById(Int $id): House|Builder
     {
         return House::query()
             ->where('key', '=', $id)
@@ -65,25 +57,10 @@ class ApartmentRepository implements \App\Repository\Interface\ApartmentReposito
     }
 
     /**
+     * @param Int $categoryId
      * @return Collection
      */
-    public function getAllForLocation(): Collection
-    {
-        // TODO: Implement getAllForLocation() method.
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getAllForSale(): Collection
-    {
-        // TODO: Implement getAllForSale() method.
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getAllByCategory(): Collection
+    public function getAllByCategoryId(Int $categoryId): Collection
     {
         // TODO: Implement getAllByCategory() method.
     }

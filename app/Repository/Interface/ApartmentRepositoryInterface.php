@@ -28,28 +28,13 @@ interface ApartmentRepositoryInterface
 
     /**
      * @param $id
-     * @return Collection
-     */
-    public function getAllByUserId($id) : Collection;
-
-    /**
-     * @param $id
      * @return House|Builder
      */
-    public function getOneById($id) : House|Builder;
+    public function getOneById(Int $id) : House|Builder;
 
     /**
+     * @param Int $categoryId
      * @return Collection
      */
-    public function getAllForLocation() : Collection;
-
-    /**
-     * @return Collection
-     */
-    public function getAllForSale() : Collection;
-
-    /**
-     * @return Collection
-     */
-    public function getAllByCategory() : Collection;
+    public function getAllByCategoryId(Int $categoryId) : Collection;
 }
