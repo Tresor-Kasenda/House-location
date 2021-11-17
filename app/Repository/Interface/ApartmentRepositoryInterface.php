@@ -63,8 +63,10 @@ interface ApartmentRepositoryInterface
     public function restore(string $key) : ?bool;
 
     /**
-     * @param $key
-     * @return bool
+     * @param string $key
+     * @return int
      */
     public function forceDelete(string $key) : int;
+
+    public function getOnlyValidatedByKey(string $id): House|Builder;
 }

@@ -71,6 +71,12 @@ class ApartmentRepository implements ApartmentRepositoryInterface
     {
         return House::query()
             ->where('key', '=', $id)
+            ->firstOrFail();
+    }
+
+    public function getOnlyValidatedByKey(string $id): House|Builder {
+        return House::query()
+            ->where('key', '=', $id)
             ->where('status', '=', House::APARTMENT_CONFIRMED)
             ->firstOrFail();
     }

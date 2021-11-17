@@ -30,6 +30,12 @@
                         'name' => 'Appartement',
                         'icon' => 'ni-folder'
                     ])
+
+                    @include('admins.components.link', [
+                        'route' => route('category.index'),
+                        'name' => 'Category',
+                        'icon' => 'ni-folder'
+                    ])
                 </ul>
             </div>
         </div>

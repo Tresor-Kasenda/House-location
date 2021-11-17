@@ -32,7 +32,7 @@ class CharacteristicForm extends Form
                 'multiple' => true
             ])
             ->add('toilette', Field::CHOICE, [
-                'label' => 'Categories',
+                'label' => 'Toilettes',
                 'choices' => $this->getToilette(),
                 'multiple' => true,
                 'attr' => ['class' => 'form-select']

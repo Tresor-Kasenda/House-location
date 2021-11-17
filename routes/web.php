@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ApartmentAdminController;
+use App\Http\Controllers\Admin\CategoryAdminController;
 use App\Http\Controllers\Admin\ImageAdminController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\CategoryController;
@@ -20,4 +21,5 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/admin/apartment', [App\Http\Controllers\HomeController::class, 'index'])->name('backend.index');
     Route::resource('apartment', ApartmentAdminController::class);
     Route::resource('images', ImageAdminController::class);
+    Route::resource('/admin/category', CategoryAdminController::class);
 });

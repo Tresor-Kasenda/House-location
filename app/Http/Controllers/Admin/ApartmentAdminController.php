@@ -26,8 +26,8 @@ class ApartmentAdminController extends Controller
 
     public function show(string $key): Factory|View|Application
     {
-        $house = $this->repository->getOneById($key);
-        return view('admins.pages.apartments.show', compact('house'));
+        $room = $this->repository->getOneByKey($key);
+        return view('admins.pages.apartments.show', compact('room'));
     }
 
     public function create(): Factory|View|Application
