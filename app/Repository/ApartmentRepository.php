@@ -15,12 +15,12 @@ class ApartmentRepository implements ApartmentRepositoryInterface
 
     public function getAll(): Collection
     {
-        // TODO: Implement getAll() method.
+        return House::all();
     }
 
     public function create(array $attributes): House
     {
-        // TODO: Implement create() method.
+        return House::create($attributes);
     }
 
     public function getAllVerified(): Collection
@@ -39,7 +39,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         // TODO: Implement getAllByUserId() method.
     }
 
-    public function getOneById($id): House|Builder
+    public function getOneById(Int $id): House|Builder
     {
         return House::query()
             ->where('key', '=', $id)
@@ -57,7 +57,8 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         // TODO: Implement getAllForSale() method.
     }
 
-    public function getAllByCategory(): Collection
+
+    public function getAllByCategoryId(Int $categoryId): Collection
     {
         // TODO: Implement getAllByCategory() method.
     }
