@@ -120,6 +120,8 @@ class ApartmentRepository implements ApartmentRepositoryInterface
      */
     public function forceDelete(string $key): int
     {
-        return House::withTrashed()->where('key', $key)->forceDelete();
+        $house = House::withTrashed()->where('key', $key);
+        $this::removePathOfImages($house);
+        return $house->forceDelete();
     }
 }
