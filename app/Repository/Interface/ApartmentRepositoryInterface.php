@@ -27,14 +27,14 @@ interface ApartmentRepositoryInterface
     public function getAllVerified() : Collection;
 
     /**
-     * @param $id
+     * @param string $id
      * @return House|Builder
      */
-    public function getOneById(Int $id) : House|Builder;
+    public function getOneById(string $id) : House|Builder;
 
     /**
-     * @param Int $categoryId
+     * @param string $categoryId
      * @return Collection
      */
-    public function getAllByCategoryId(Int $categoryId) : Collection;
+    public function getAllByCategoryId(string $categoryId) : Collection;
 }

@@ -45,10 +45,10 @@ class ApartmentRepository implements ApartmentRepositoryInterface
     }
 
     /**
-     * @param $id
+     * @param string $id
      * @return House|Builder
      */
-    public function getOneById(Int $id): House|Builder
+    public function getOneById(string $id): House|Builder
     {
         return House::query()
             ->where('key', '=', $id)
@@ -57,10 +57,10 @@ class ApartmentRepository implements ApartmentRepositoryInterface
     }
 
     /**
-     * @param Int $categoryId
+     * @param string $categoryId
      * @return Collection
      */
-    public function getAllByCategoryId(Int $categoryId): Collection
+    public function getAllByCategoryId(string $categoryId): Collection
     {
         // TODO: Implement getAllByCategory() method.
     }
