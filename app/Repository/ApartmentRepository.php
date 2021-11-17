@@ -11,30 +11,18 @@ use Illuminate\Support\Collection;
 
 class ApartmentRepository implements ApartmentRepositoryInterface
 {
-
     use ImageUploader;
 
-    /**
-     * @return Collection
-     */
     public function getAll(): Collection
     {
         // TODO: Implement getAll() method.
     }
 
-    /**
-     * @param array $attributes
-     * @return House
-     */
     public function create(array $attributes): House
     {
         // TODO: Implement create() method.
     }
 
-
-    /**
-     * @return Collection
-     */
     public function getAllVerified(): Collection
     {
         return House::query()
@@ -46,19 +34,11 @@ class ApartmentRepository implements ApartmentRepositoryInterface
             ->get();
     }
 
-    /**
-     * @param $id
-     * @return Collection
-     */
     public function getAllByUserId($id): Collection
     {
         // TODO: Implement getAllByUserId() method.
     }
 
-    /**
-     * @param $id
-     * @return House|Builder
-     */
     public function getOneById($id): House|Builder
     {
         return House::query()
@@ -67,25 +47,16 @@ class ApartmentRepository implements ApartmentRepositoryInterface
             ->firstOrFail();
     }
 
-    /**
-     * @return Collection
-     */
     public function getAllForLocation(): Collection
     {
         // TODO: Implement getAllForLocation() method.
     }
 
-    /**
-     * @return Collection
-     */
     public function getAllForSale(): Collection
     {
         // TODO: Implement getAllForSale() method.
     }
 
-    /**
-     * @return Collection
-     */
     public function getAllByCategory(): Collection
     {
         // TODO: Implement getAllByCategory() method.

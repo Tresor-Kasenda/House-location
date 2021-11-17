@@ -272,58 +272,7 @@
             <div>
                 <h4 class="mb-8 sm:text-2xl text-xl text-gray-800">Nouvelles maisons</h4>
                 <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    <a href="house.html" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
-                        <img src="../public/images/houses/1.jpg" alt="photo maison" class="w-full h-44 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
-                        <div class="flex justify-between p-4 pt-2.5">
-                            <div>
-                                <h6 class="text-lg leading-none text-gray-700">4 pièces</h6>
-                                <span class="text-sm">Golf Plateau</span>
-                            </div>
-                            <div class="w-max">
-                                <h5 class="text-xl leading-none md:text-right font-bold text-purple-500">78 $</h5>
-                                <span class="block w-max text-xs text-gray-600">500$ Garantie</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="house.html" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
-                        <img src="../public/images/houses/2.jpg" alt="photo maison" class="w-full h-44 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
-                        <div class="flex justify-between p-4 pt-2.5">
-                            <div>
-                                <h6 class="text-lg leading-none text-gray-700">4 pièces</h6>
-                                <span class="text-sm">Golf Plateau</span>
-                            </div>
-                            <div class="w-max">
-                                <h5 class="text-xl leading-none md:text-right font-bold text-purple-500">78 $</h5>
-                                <span class="block w-max text-xs text-gray-600">500$ Garantie</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="house.html" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
-                        <img src="../public/images/houses/3.jpg" alt="photo maison" class="w-full h-44 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
-                        <div class="flex justify-between p-4 pt-2.5">
-                            <div>
-                                <h6 class="text-lg leading-none text-gray-700">4 pièces</h6>
-                                <span class="text-sm">Golf Plateau</span>
-                            </div>
-                            <div class="w-max">
-                                <h5 class="text-xl leading-none md:text-right font-bold text-purple-500">78 $</h5>
-                                <span class="block w-max text-xs text-gray-600">500$ Garantie</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="house.html" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
-                        <img src="../public/images/houses/4.jpg" alt="photo maison" class="w-full h-44 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
-                        <div class="flex justify-between p-4 pt-2.5">
-                            <div>
-                                <h6 class="text-lg leading-none text-gray-700">4 pièces</h6>
-                                <span class="text-sm">Golf Plateau</span>
-                            </div>
-                            <div class="w-max">
-                                <h5 class="text-xl leading-none md:text-right font-bold text-purple-500">78 $</h5>
-                                <span class="block w-max text-xs text-gray-600">500$ Garantie</span>
-                            </div>
-                        </div>
-                    </a>
+                    <apartment-component :appartments="{{ $apartments }}"></apartment-component>
                 </div>
             </div>
 
@@ -343,45 +292,6 @@
                             </div>
                         </div>
                     </a>
-                    <a href="house.html" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
-                        <img src="../public/images/houses/2.jpg" alt="photo maison" class="w-full h-44 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
-                        <div class="flex justify-between p-4 pt-2.5">
-                            <div>
-                                <h6 class="text-lg leading-none text-gray-700">4 pièces</h6>
-                                <span class="text-sm">Golf Plateau</span>
-                            </div>
-                            <div class="w-max">
-                                <h5 class="text-xl leading-none md:text-right font-bold text-purple-500">78 $</h5>
-                                <span class="block w-max text-xs text-gray-600">500$ Garantie</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="house.html" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
-                        <img src="../public/images/houses/3.jpg" alt="photo maison" class="w-full h-44 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
-                        <div class="flex justify-between p-4 pt-2.5">
-                            <div>
-                                <h6 class="text-lg leading-none text-gray-700">4 pièces</h6>
-                                <span class="text-sm">Golf Plateau</span>
-                            </div>
-                            <div class="w-max">
-                                <h5 class="text-xl leading-none md:text-right font-bold text-purple-500">78 $</h5>
-                                <span class="block w-max text-xs text-gray-600">500$ Garantie</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="house.html" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
-                        <img src="../public/images/houses/4.jpg" alt="photo maison" class="w-full h-44 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
-                        <div class="flex justify-between p-4 pt-2.5">
-                            <div>
-                                <h6 class="text-lg leading-none text-gray-700">4 pièces</h6>
-                                <span class="text-sm">Golf Plateau</span>
-                            </div>
-                            <div class="w-max">
-                                <h5 class="text-xl leading-none md:text-right font-bold text-purple-500">78 $</h5>
-                                <span class="block w-max text-xs text-gray-600">500$ Garantie</span>
-                            </div>
-                        </div>
-                    </a>
                 </div>
             </div>
 
@@ -390,45 +300,6 @@
                 <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                     <a href="house.html" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
                         <img src="../public/images/houses/1.jpg" alt="photo maison" class="w-full h-44 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
-                        <div class="flex justify-between p-4 pt-2.5">
-                            <div>
-                                <h6 class="text-lg leading-none text-gray-700">4 pièces</h6>
-                                <span class="text-sm">Golf Plateau</span>
-                            </div>
-                            <div class="w-max">
-                                <h5 class="text-xl leading-none md:text-right font-bold text-purple-500">78 $</h5>
-                                <span class="block w-max text-xs text-gray-600">500$ Garantie</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="house.html" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
-                        <img src="../public/images/houses/2.jpg" alt="photo maison" class="w-full h-44 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
-                        <div class="flex justify-between p-4 pt-2.5">
-                            <div>
-                                <h6 class="text-lg leading-none text-gray-700">4 pièces</h6>
-                                <span class="text-sm">Golf Plateau</span>
-                            </div>
-                            <div class="w-max">
-                                <h5 class="text-xl leading-none md:text-right font-bold text-purple-500">78 $</h5>
-                                <span class="block w-max text-xs text-gray-600">500$ Garantie</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="house.html" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
-                        <img src="../public/images/houses/3.jpg" alt="photo maison" class="w-full h-44 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
-                        <div class="flex justify-between p-4 pt-2.5">
-                            <div>
-                                <h6 class="text-lg leading-none text-gray-700">4 pièces</h6>
-                                <span class="text-sm">Golf Plateau</span>
-                            </div>
-                            <div class="w-max">
-                                <h5 class="text-xl leading-none md:text-right font-bold text-purple-500">78 $</h5>
-                                <span class="block w-max text-xs text-gray-600">500$ Garantie</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="house.html" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
-                        <img src="../public/images/houses/4.jpg" alt="photo maison" class="w-full h-44 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
                         <div class="flex justify-between p-4 pt-2.5">
                             <div>
                                 <h6 class="text-lg leading-none text-gray-700">4 pièces</h6>

@@ -16,6 +16,7 @@
     </div>
     @include('frontends.partials.footer')
     <script src="{{ asset('app/js/app.js') }}"></script>
+    <script src="{{ asset('app/js/burger.js') }}"></script>
     @include('sweetalert::alert')
 </body>
 </html>

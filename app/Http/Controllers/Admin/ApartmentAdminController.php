@@ -22,9 +22,7 @@ class ApartmentAdminController extends Controller
     public function index(): Factory|View|Application
     {
         $rooms = $this->repository->getAllVerified();
-        return view('admins.pages.apartments.index',
-            compact('rooms')
-        );
+        return view('admins.pages.apartments.index', compact('rooms'));
     }
 
     public function show(string $key): Factory|View|Application
