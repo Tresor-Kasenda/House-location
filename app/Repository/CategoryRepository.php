@@ -3,59 +3,52 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-
 use App\Models\Category;
 use App\Repository\Interface\CategoryRepositoryInterface;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
 class CategoryRepository implements CategoryRepositoryInterface
 {
-
-    /**
-     * @return Collection
-     */
     public function getAll(): Collection
     {
         return Category::all();
     }
 
-    /**
-     * @param Request $request
-     * @return Category
-     */
-    public function create(Request $request): Category
+    public function create(Request $request): Model|Builder|Category
     {
-        return Category::create([
-           'name' => $request->name
+        $category = Category::query()
+            ->create([
+                'name' => $request->name
+            ]);
+        toast('Une nouvelle catégorie à été  créer', 'success');
+        return $category;
+    }
+
+    public function getOneByKey(string $id): Model|Builder
+    {
+        return Category::query()
+            ->where('key', '=', $id)
+            ->firstOrFail();
+    }
+
+    public function update(string $key, $request): Model|Builder
+    {
+        $category = $this->getOneByKey($key);
+        $category->update([
+            'name' => $request->name
         ]);
+        toast('Une mise a jour a ete effectuer', 'success');
+        return $category;
     }
 
-    /**
-     * @param string $id
-     * @return Category
-     */
-    public function getOneByKey(string $id): Category
+    public function delete(string $key): Builder|Model
     {
-        // TODO: Implement getOneByKey() method.
-    }
-
-    /**
-     * @param string $key
-     * @param array $attributes
-     * @return int
-     */
-    public function update(string $key, array $attributes): int
-    {
-        // TODO: Implement update() method.
-    }
-
-    /**
-     * @param string $key
-     * @return int
-     */
-    public function delete(string $key): int
-    {
-        // TODO: Implement delete() method.
+        $category = $this->getOneByKey($key);
+        $category->delete();
+        toast('Categorie supprimer avec success', 'success');
+        return $category;
     }
 }

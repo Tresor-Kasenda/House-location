@@ -1,6 +1,6 @@
 {!! form_start($form) !!}
 <div class="row gy-4">
-    <div class="col-md-md-6 col-lg-6">
+    <div class="col-md-md-12 col-lg-12">
         <div class="form-group">
             <div class="form-control-wrap">
                 {!! form_row($form->name) !!}

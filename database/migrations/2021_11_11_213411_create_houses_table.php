@@ -21,6 +21,7 @@ return new class extends Migration
             $table->decimal('longitude')->nullable();
             $table->string('picture');
             $table->string('commune');
+            $table->string('town');
             $table->string('district');
             $table->integer('piece_number');
             $table->text('characteristic');

@@ -6,8 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Forms\CategoryForm;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
-use App\Models\Category;
-use App\Repository\Interface\CategoryRepositoryInterface;
+use App\Repository\CategoryRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -19,7 +18,7 @@ class CategoryAdminController extends Controller
 {
     public function __construct(
         public FormBuilder $builder,
-        public CategoryRepositoryInterface $repository
+        public CategoryRepository $repository
     ){}
 
     public function index(): Factory|View|Application
@@ -43,27 +42,28 @@ class CategoryAdminController extends Controller
         return redirect()->route('category.index');
     }
 
-
-    public function show($id)
+    public function edit(string $id): Factory|View|Application
     {
-        //
+        $category = $this->repository->getOneByKey($id);
+        $form = $this->builder->create(CategoryForm::class, [
+            'method' => 'PUT',
+            'url' => route('category.update', $category->key),
+            'model' => $category
+        ]);
+        return view('admins.pages.category.create', compact('form', 'category'));
     }
 
 
-    public function edit($id)
+    public function update(CategoryRequest $request, string $key): RedirectResponse
     {
-        //
+        $this->repository->update($key, $request);
+        return redirect()->route('category.index');
     }
 
 
-    public function update(Request $request, $id)
+    public function destroy(string $key): RedirectResponse
     {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        //
+        $this->repository->delete($key);
+        return redirect()->route('category.index');
     }
 }
