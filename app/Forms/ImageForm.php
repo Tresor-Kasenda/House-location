@@ -16,7 +16,7 @@ class ImageForm extends Form
                 'label' => "Photo"
             ])
             ->add('house_id', 'choice', [
-                'label' => 'Categories',
+                'label' => 'Apartement',
                 'choices' => $this->getHouses(),
                 'multiple' => false,
                 'attr' => ['class' => 'form-select']

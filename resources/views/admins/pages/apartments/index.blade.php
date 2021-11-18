@@ -43,9 +43,6 @@
                                         <span class="sub-text">Photo</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Nom</span>
-                                    </th>
-                                    <th class="nk-tb-col tb-col-md">
                                         <span class="sub-text">Telephone</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
@@ -71,16 +68,13 @@
                                             </span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $room->title ?? "" }}</span>
-                                        </td>
-                                        <td class="nk-tb-col tb-col-md">
                                             <span>{{ $room->phone_number ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ $room->address ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            @if($room->confirmed == true)
+                                            @if($room->status == true)
                                                 <span class="dot bg-success d-mb-none"></span>
                                                 <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">Confirmer</span>
                                             @else

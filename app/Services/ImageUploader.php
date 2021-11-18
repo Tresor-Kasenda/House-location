@@ -19,9 +19,4 @@ trait ImageUploader
         Storage::disk('public')
             ->delete($model->picture);
     }
-
-    public function unsetFilesUploads($model)
-    {
-        Storage::disk('public')->delete($model->picture);
-    }
 }

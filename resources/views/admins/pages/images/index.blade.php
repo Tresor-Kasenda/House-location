@@ -10,14 +10,14 @@
             <div class="nk-block-head nk-block-head-sm">
                 <div class="nk-block-between">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Categorie</h3>
+                        <h3 class="nk-block-title page-title">Images</h3>
                     </div>
                     <div class="nk-block-head-content">
                         <div class="toggle-wrap nk-block-tools-toggle">
                             <div class="toggle-expand-content" data-content="pageMenu">
                                 <ul class="nk-block-tools g-3">
                                     <li class="preview-item">
-                                        <a href="{{ route('category.create') }}" class="btn btn-dim btn-primary btn-sm">
+                                        <a href="{{ route('images.create') }}" class="btn btn-dim btn-primary btn-sm">
                                             <em class="icon ni ni-plus mr-1"></em> Ajouter
                                         </a>
                                     </li>
@@ -35,20 +35,26 @@
                                 <thead>
                                     <tr class="nk-tb-item nk-tb-head">
                                         <th class="nk-tb-col tb-col-md">
-                                            <span class="sub-text">Nom</span>
+                                            <span class="sub-text">Image</span>
                                         </th>
-
+                                        <th class="nk-tb-col tb-col-md">
+                                            <span class="sub-text">Apartement</span>
+                                        </th>
                                         <th class="nk-tb-col nk-tb-col-tools text-right">
                                             <span class="sub-text">Actions</span>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($categories as $category)
+                                    @foreach($images as $image)
                                         <tr class="nk-tb-item">
-
+                                            <td class="nk-tb-col tb-col-sm">
+                                                <span class="tb-product text-center">
+                                                    <img src="{{ asset('storage/'.$image->picture) }}" alt="{{ $image->key }}" class="thumb">
+                                                </span>
+                                            </td>
                                             <td class="nk-tb-col tb-col-md">
-                                                <span>{{ $category->name ?? "" }}</span>
+                                                <span>{{ $image->houses->email ?? "" }}</span>
                                             </td>
                                             <td class="nk-tb-col nk-tb-col-tools">
                                                 <ul class="nk-tb-actions gx-1">
@@ -60,13 +66,13 @@
                                                             <div class="dropdown-menu dropdown-menu-right">
                                                                 <ul class="link-list-opt no-bdr">
                                                                     <li>
-                                                                        <a href="{{ route('category.edit', $category->key) }}">
+                                                                        <a href="{{ route('images.edit', $image->key) }}">
                                                                             <em class="icon ni ni-edit"></em>
                                                                             <span>Editer</span>
                                                                         </a>
                                                                     </li>
                                                                     <li>
-                                                                        <form action="{{ route('category.destroy', $category->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                                        <form action="{{ route('images.destroy', $image->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
                                                                             @method('DELETE')
                                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                                             <button type="submit" class="btn btn-dim">
