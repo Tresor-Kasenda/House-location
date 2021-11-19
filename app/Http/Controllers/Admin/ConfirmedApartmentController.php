@@ -22,4 +22,16 @@ class ConfirmedApartmentController extends Controller
         $this->repository->invalidateRoom($key);
         return back();
     }
+
+    public function reactivate(string $key): RedirectResponse
+    {
+        $this->repository->restore($key);
+        return redirect()->back();
+    }
+
+    public function forceDelete(string $key): RedirectResponse
+    {
+        $this->repository->forceDelete($key);
+        return redirect()->back();
+    }
 }

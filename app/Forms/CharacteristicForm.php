@@ -42,6 +42,6 @@ class CharacteristicForm extends Form
 
     private function getToilette(): array
     {
-        return ["Interne", "Externe"];
+        return ["Interne" => 'Interne', "Externe" => 'Externe'];
     }
 }
