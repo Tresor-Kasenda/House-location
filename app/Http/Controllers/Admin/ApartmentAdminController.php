@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Forms\ApartmentForm;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ApartmementRequest;
+use App\Http\Requests\ApartmentRequest;
 use App\Repository\ApartmentRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -22,10 +22,9 @@ class ApartmentAdminController extends Controller
 
     public function index(): Factory|View|Application
     {
-        $rooms = $this->repository->getAllVerified();
+        $rooms = $this->repository->getAll();
         return view('admins.pages.apartments.index', compact('rooms'));
     }
-
 
     public function show(string $key): Factory|View|Application
     {
@@ -42,7 +41,7 @@ class ApartmentAdminController extends Controller
         return view('admins.pages.apartments.create', compact('form'));
     }
 
-    public function store(ApartmementRequest $request): RedirectResponse
+    public function store(ApartmentRequest $request): RedirectResponse
     {
         $this->repository->create($request);
         return redirect()->route('apartment.index');
@@ -50,16 +49,17 @@ class ApartmentAdminController extends Controller
 
     public function edit(string $key): Factory|View|Application
     {
-        $house = $this->repository->getOneByKey($key);
+        $room = $this->repository->getOneByKey($key);
         $form = $this->builder->create(ApartmentForm::class, [
             'method' => 'PUT',
-            'url' => route('', $house->key),
-            'model' => $house
+            'url' => route('apartment.store', $room->key),
+            'model' => $room
         ]);
-        return view('admins.pages.apartments.create', compact('form', 'house'));
+        return view('admins.pages.apartments.create', compact('form', 'room'));
+
     }
 
-    public function update(ApartmementRequest $request, string $key): RedirectResponse
+    public function update(ApartmentRequest $request, string $key): RedirectResponse
     {
         $this->repository->update($key,$request->all());
         return redirect()->route('apartment.index');
@@ -75,5 +75,12 @@ class ApartmentAdminController extends Controller
     {
         $this->repository->forceDelete($key);
         return redirect()->back();
+    }
+
+    public function trashed(): Factory|View|Application
+    {
+        return view('admins.pages.apartments.trashed', [
+            'rooms' => $this->repository->trashed()
+        ]);
     }
 }

@@ -3,13 +3,11 @@ declare(strict_types=1);
 
 namespace App\Repository\Interface;
 
-use App\Http\Requests\ApartmementRequest;
 use App\Models\House;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use phpDocumentor\Reflection\Types\Boolean;
 
 interface ApartmentRepositoryInterface
 {
@@ -21,9 +19,9 @@ interface ApartmentRepositoryInterface
 
     /**
      * @param Request $request
-     * @return House
+     * @return Builder|Model
      */
-    public function create(Request $request): House;
+    public function create(Request $request): Builder|Model;
 
 
     /**
@@ -32,17 +30,17 @@ interface ApartmentRepositoryInterface
     public function getAllVerified(): Collection;
 
     /**
-     * @param string $id
+     * @param string $key
      * @return House|Builder
      */
-    public function getOneByKey(string $id): House|Builder;
+    public function getOneByKey(string $key): Model|Builder;
 
     /**
      * @param string $key
      * @param array $attributes
-     * @return int
+     * @return Builder|Model
      */
-    public function update(string $key,array $attributes): int;
+    public function update(string $key,array $attributes): Builder|Model;
 
     /**
      * @param string $categoryId
@@ -51,10 +49,10 @@ interface ApartmentRepositoryInterface
     public function getAllByCategoryId(string $categoryId): Collection;
 
     /**
-     * @param $key
-     * @return bool
+     * @param string $key
+     * @return Model|Builder|int|null
      */
-    public function moveToTrash(string $key) : int;
+    public function moveToTrash(string $key): Model|Builder|int|null;
 
     /**
      * @param string $key

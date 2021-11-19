@@ -19,4 +19,16 @@ interface ActiveApartmentRepositoryInterface
      * @return Model|Builder
      */
     public function invalidateRoom(string $key): Model|Builder;
+
+    /**
+     * @param string $key
+     * @return Model|Builder
+     */
+    public function forceDelete(string $key): Model|Builder;
+
+    /**
+     * @param string $key
+     * @return bool|null
+     */
+    public function restore(string $key);
 }

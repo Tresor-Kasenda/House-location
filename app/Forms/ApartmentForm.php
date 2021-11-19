@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Forms;
 
@@ -37,6 +38,9 @@ class ApartmentForm extends Form
             ->add('commune', 'text', [
                 'label' => "Commune"
             ])
+            ->add('town', 'text', [
+                'label' => "ville"
+            ])
             ->add('district', 'text', [
                 'label' => "Quartier"
             ])
@@ -45,7 +49,9 @@ class ApartmentForm extends Form
             ])
             ->add('categories','choice',[
                 'label' => 'Categorie',
-                'choices' => Category::all()->pluck('name', 'id')->toArray()
+                'choices' => Category::all()->pluck('name', 'id')->toArray(),
+                'multiple' => true,
+                'attr' => ['class' => 'form-select']
             ])
             ->add('characteristic', 'collection', [
                 'type' => 'form',

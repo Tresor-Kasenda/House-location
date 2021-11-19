@@ -6,7 +6,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ApartmementRequest extends FormRequest
+class ApartmentRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -28,6 +28,7 @@ class ApartmementRequest extends FormRequest
             'district' => ['required', 'min:4'],
             'piece_number' => ['required', 'min:1'],
             'characteristic' => ['required', 'array'],
+            'town' => ['required', 'min:3']
         ];
     }
 }
