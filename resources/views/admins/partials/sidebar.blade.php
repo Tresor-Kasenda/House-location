@@ -36,6 +36,12 @@
                         'name' => 'Category',
                         'icon' => 'ni-folder'
                     ])
+
+                    @include('admins.components.link', [
+                        'route' => route('images.index'),
+                        'name' => 'Images',
+                        'icon' => 'ni-folder'
+                    ])
                 </ul>
             </div>
         </div>

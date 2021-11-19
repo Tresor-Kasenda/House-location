@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a v-for="apartment in appartments" href="" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
+        <a v-for="apartment in appartments"  href="" title="Voir les détails" class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
             <img src="" alt="photo maison" class="w-full h-44 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
             <div class="flex justify-between p-4 pt-2.5">
                 <div>

@@ -22,7 +22,7 @@
                                         </a>
                                     </li>
                                     <li class="preview-item">
-                                        <a href="{{ route('apartment.index') }}" class="btn btn-dim btn-secondary btn-sm">
+                                        <a href="{{ route('apartment.trashed') }}" class="btn btn-dim btn-secondary btn-sm">
                                             <em class="icon ni ni-histroy mr-1"></em> Historique
                                         </a>
                                     </li>
