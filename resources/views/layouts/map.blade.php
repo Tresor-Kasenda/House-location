@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png')  }}">
+    @yield('styles')
 </head>
 <body class="text-gray-500">
     @include('frontends.partials.header')
@@ -15,6 +16,7 @@
         @yield('content')
     </div>
     <script src="{{ asset('app/js/app.js') }}"></script>
+    @yield('scripts')
     @include('sweetalert::alert')
 </body>
 </html>

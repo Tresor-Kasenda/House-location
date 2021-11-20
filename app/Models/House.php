@@ -16,6 +16,7 @@ class House extends Model
     use HasFactory, HasKey, SoftDeletes;
 
     const APARTMENT_CONFIRMED = true;
+    const APARTMENT_UNCONFIRMED = false;
 
     protected $fillable = [
         'price_per_month',
@@ -30,7 +31,8 @@ class House extends Model
         'district',
         'characteristic',
         'piece_number',
-        'status'
+        'status',
+        'town'
     ];
 
     protected $casts = [
@@ -43,6 +45,22 @@ class House extends Model
         'status' => 'boolean'
     ];
 
+    public function getGuaranties(): string
+    {
+        return number_format($this->guarantees,
+                2,
+                '.',
+                ' '). '$';
+    }
+
+    public function getPricePerMonth(): string
+    {
+        return number_format($this->price_per_month,
+        2,
+        '.',
+        ' '
+        ). '$';
+    }
     public function images(): HasMany
     {
         return $this->hasMany(Image::class);
@@ -50,7 +68,12 @@ class House extends Model
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class,'house_category','house_key','category_key');
+        return $this->belongsToMany(
+            Category::class,
+            'house_category',
+            'house_id',
+            'category_id'
+        )->withTimestamps();
     }
 
     public function getNameLinkAttribute(): string
