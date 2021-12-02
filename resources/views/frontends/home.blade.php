@@ -134,19 +134,19 @@
                             <div class="h-full sm:p-6 p-4 pt-2 flex items-end lg:rounded-tr-2xl md:rounded-none rounded-2xl bg-gradient-to-t from-gray-900 overflow-hidden">
                                 <div class="w-full translate-y-24 group-hover:translate-y-0 transition duration-500">
                                     <div class="pb-8">
-                                        <h4 class="mb-4 text-lg text-white font-semibold">{{ $apartments[2]->district ?? "" }}, {{ $apartments[2]->address ?? "" }}</h4>
+                                        <h4 class="mb-4 text-lg text-white font-semibold">{{ $apartments[1]->district ?? "" }}, {{ $apartments[1]->address ?? "" }}</h4>
 
                                         <div class="flex items-end gap-2">
-                                            <h3 class="text-2xl font-bold text-purple-400">{{ $apartments[2]->getPricePerMonth() ?? "" }}</h3>
+                                            <h3 class="text-2xl font-bold text-purple-400">{{ $apartments[1]->getPricePerMonth() ?? "" }}</h3>
                                             <div class="text-xs tracking-wide text-gray-300">
-                                                <span class="block"> {{ $apartments[2]->getPricePerMonth() ?? "" }} / Mois</span>
-                                                <span class="block">{{ $apartments[2]->getGuaranties() ?? "" }} Garantie</span>
+                                                <span class="block"> {{ $apartments[1]->getPricePerMonth() ?? "" }} / Mois</span>
+                                                <span class="block">{{ $apartments[1]->getGuaranties() ?? "" }} Garantie</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="relative pt-4 flex gap-2 group-hover:-mt-4 transition">
                                         <div class="translate-y-8 group-hover:translate-y-0 transition delay-150 duration-300 ease-in-out">
-                                            <a href="{{ route('categories.show', $apartments[2]->key ) }}" title="En savoir plus" class="block w-max py-2 px-6 border border-gray-600 text-white rounded-full hover:border-transparent hover:bg-white hover:text-purple-700 focus:bg-white focus:text-purple-700 active:scale-95 transition">
+                                            <a href="{{ route('categories.show', $apartments[1]->key ) }}" title="En savoir plus" class="block w-max py-2 px-6 border border-gray-600 text-white rounded-full hover:border-transparent hover:bg-white hover:text-purple-700 focus:bg-white focus:text-purple-700 active:scale-95 transition">
                                                 <span class="text-sm font-medium tracking-wide">Savoir plus</span>
                                             </a>
                                         </div>
@@ -168,7 +168,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="{{ asset('storage/'.$apartments[2]->picture ) }}" class="w-full h-full lg:rounded-tr-2xl md:rounded-none rounded-2xl object-cover" alt="">
+                        <img src="{{ asset('storage/'.$apartments[1]->picture ) }}" class="w-full h-full lg:rounded-tr-2xl md:rounded-none rounded-2xl object-cover" alt="">
                     </div>
 
                     <div class="relative lg:col-span-4 md:col-span-7 col-span-5 row-span-2 lg:h-60 group transition">
@@ -298,4 +298,38 @@
             </div>
         @endif
     </section>
+@endsection
+
+
+@section('scripts')
+    <script>
+        jQuery(document).ready(function($){
+            $("#submit").click(function (e) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                e.preventDefault();
+                let formData = {
+                    quartier: $('#Quartier').val(),
+                    commune: $('#Commune').val(),
+                    piece: $('#Pièces').val()
+                };
+                console.log(formData)
+                $.ajax({
+                    type: 'get',
+                    url: "{{ route('search.location') }}",
+                    data: formData,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data)
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

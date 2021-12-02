@@ -28,7 +28,7 @@ clear: vendor/autoload.php ## vide le cache de l'application
 
 .PHONY: serve
 serve: vendor/autoload.php ## lance, le serve de development
-	php -S localhost:9000 -t public server.php
+	php -S localhost:7000 -t public server.php
 
 .PHONY: watch
 watch: vendor/autoload.php ## lance, le serve de development
