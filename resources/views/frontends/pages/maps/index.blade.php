@@ -7,9 +7,9 @@
 @section('content')
     <section class="lg:px-24 md:px-12 px-4 lg:pt-8 pt-4">
         <div class="container h-[80vh] m-auto">
-            <div class="relative h-[85vh] lg:h-[75vh] rounded-3xl bg-gray-200">
+            <div id="mapId" class="relative h-[85vh] lg:h-[75vh] rounded-3xl bg-gray-200" style="z-index: 0; position: relative">
                 <div class="absolute right-0 bottom-0 lg:h-[75vh] w-full lg:w-[30%] p-4 lg:p-6">
-                    <div class="lg:p-6 lg:bg-white lg:shadow-xl lg:rounded-2xl">
+                    <div class="lg:p-6 lg:bg-white lg:shadow-xl lg:rounded-2xl " style="z-index: 1; position: absolute">
                         <h6 hidden class="lg:block text-lg">Maisons trouvées</h6>
                         <div class="lg:h-[57vh] lg:overflow-y-auto lg:overflow-x-hidden overflow-x-auto lg:-mx-2 -mx-4 lg:px-4 p-1">
                             <div class="lg:mt-2 lg:grid flex gap-4 px-4 lg:px-0 lg:-mx-4 lg:gap-0 w-max">
@@ -24,8 +24,6 @@
         </div>
     </section>
 @endsection
-
-
 
 @section('styles')
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
@@ -53,6 +51,7 @@
         let markers = L.markerClusterGroup();
         axios.get('{{ route('api.apartment.index') }}')
             .then(function (response) {
+                console.log(response.data)
                 let marker = L.geoJSON(response.data, {
                     pointToLayer: function (geoJsonPoint, latlng) {
                         return L.marker(latlng).bindPopup(function (layer) {

@@ -39,8 +39,6 @@ class House extends Model
         'price_per_month' => 'integer',
         'guarantees' => 'integer',
         'phone_number' => 'integer',
-        'latitude' => 'decimal',
-        'longitude' => 'decimal',
         'piece_number' => 'integer',
         'status' => 'boolean'
     ];
@@ -90,7 +88,7 @@ class House extends Model
 
     public function getCoordinateAttribute(): ?string
     {
-        if ($this->latitude && $this->longitude) {
+        if ($this->address && $this->address) {
             return $this->latitude.', '.$this->longitude;
         }
         return null;
