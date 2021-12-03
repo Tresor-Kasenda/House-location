@@ -299,37 +299,3 @@
         @endif
     </section>
 @endsection
-
-
-@section('scripts')
-    <script>
-        jQuery(document).ready(function($){
-            $("#submit").click(function (e) {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                e.preventDefault();
-                let formData = {
-                    quartier: $('#Quartier').val(),
-                    commune: $('#Commune').val(),
-                    piece: $('#Pièces').val()
-                };
-                console.log(formData)
-                $.ajax({
-                    type: 'get',
-                    url: "{{ route('search.location') }}",
-                    data: formData,
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log(data)
-                    },
-                    error: function (data) {
-                        console.log(data);
-                    }
-                });
-            });
-        });
-    </script>
-@endsection

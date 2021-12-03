@@ -1,14 +1,14 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png')  }}">
-    @yield('styles')
+    <link rel="stylesheet" href="{{ asset('app/css/tailwind.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body class="text-gray-500">
     @include('frontends.partials.header')
@@ -16,7 +16,6 @@
         @yield('content')
     </div>
     <script src="{{ asset('app/js/app.js') }}"></script>
-    @yield('scripts')
-    @include('sweetalert::alert')
+    <script src="{{ asset('app/js/burger.js') }}"></script>
 </body>
 </html>
