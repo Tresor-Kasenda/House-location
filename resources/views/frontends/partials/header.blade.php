@@ -11,24 +11,22 @@
                 </div>
 
                 <div class="lg:w-9/12 sm:w-11/12 md:block" hidden>
-                    <form action="" class="bg-gray-100 border focus-within:shadow-search focus-within:bg-white rounded-full">
+                    <form id="searchData" class="bg-gray-100 border focus-within:shadow-search focus-within:bg-white rounded-full">
                         <div class="relative flex justify-between p-1 text-gray-700">
-                            <form action="{{ route('home.index', ['searching']) }}" id="searchData">
-                                <div class="w-3/12">
-                                    <input type="text" id="Quartier" name="Quartier" value="{{ old('Quartier') }}" placeholder="Quartier" class="w-full border-transparent ring-transparent py-3 px-6 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
-                                </div>
-                                <div class="w-3/12">
-                                    <input type="text" id="Commune" name="Commune" value="{{ old('Commune') }}" placeholder="Commune" class="w-full border-transparent ring-transparent p-3 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
-                                </div>
-                                <div class="w-2/12">
-                                    <input type="text" id="Pièces" name="pièces" value="{{ old('pièces') }}" placeholder="Pièces" class="w-full border-transparent ring-transparent p-3 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
-                                </div>
-                                <div class="w-max ml-auto">
-                                    <button id="submit" class="h-11 px-6 bg-gradient-to-br from-green-400 to-purple-600 rounded-full hover:bg-purple-600 focus:bg-purple-700 active:scale-95 transition">
-                                        <span class="text-sm text-white">Rechercher</span>
-                                    </button>
-                                </div>
-                            </form>
+                            <div class="w-3/12">
+                                <input type="text" id="quartier" name="Quartier" value="{{ old('Quartier') }}" placeholder="Quartier" class="w-full border-transparent ring-transparent py-3 px-6 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
+                            </div>
+                            <div class="w-3/12">
+                                <input type="text" id="commune" name="Commune" value="{{ old('Commune') }}" placeholder="Commune" class="w-full border-transparent ring-transparent p-3 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
+                            </div>
+                            <div class="w-2/12">
+                                <input type="text" id="pieces" name="pièces" value="{{ old('pièces') }}" placeholder="Pièces" class="w-full border-transparent ring-transparent p-3 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
+                            </div>
+                            <div class="w-max ml-auto">
+                                <button id="submit" class="h-11 px-6 bg-gradient-to-br from-green-400 to-purple-600 rounded-full hover:bg-purple-600 focus:bg-purple-700 active:scale-95 transition">
+                                    <span class="text-sm text-white">Rechercher</span>
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>

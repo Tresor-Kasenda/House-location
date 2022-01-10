@@ -18,6 +18,7 @@
     <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="{{ asset('app/js/app.js') }}"></script>
     @include('sweetalert::alert')
+    @yield('scripts')
     <script>
         let hamburger = document.querySelector('#hamburger')
         let navitems = document.querySelector('#navitems')
@@ -36,7 +37,6 @@
                 layer.classList.replace('visible', 'invisible')
             }
         })
-
     </script>
 </body>
 </html>

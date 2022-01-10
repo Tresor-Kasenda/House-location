@@ -299,3 +299,23 @@
         @endif
     </section>
 @endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            const quartier = $('#quartier').val()
+            const commune = $('#commune').val()
+            const pieces = $('#pieces').val()
+
+            console.log(quartier, commune, pieces)
+
+            $('#searchData').click((e) => {
+                e.preventDefault();
+                console.log(e)
+                $.ajax({
+
+                })
+            })
+        });
+    </script>
+@endsection
