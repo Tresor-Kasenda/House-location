@@ -5,17 +5,13 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Repository\ApartmentRepository;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\Support\Renderable;
 
 class LocationController extends Controller
 {
-    public function __construct(
-        public ApartmentRepository $repository
-    ){}
+    public function __construct(public ApartmentRepository $repository){}
 
-    public function index(): Factory|View|Application
+    public function __invoke(): Renderable
     {
         return view('frontends.pages.maps.index',[
             'apartments' => $this->repository->getAllVerified()

@@ -12,7 +12,7 @@ class ImageForm extends Form
     public function buildForm()
     {
         $this
-            ->add('picture', 'file', [
+            ->add('images', 'file', [
                 'label' => "Photo"
             ])
             ->add('house_id', 'choice', [

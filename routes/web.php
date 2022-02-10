@@ -12,10 +12,11 @@ use App\Http\Controllers\Frontend\SearchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::resource('/', HomeController::class)->names(['index' => 'home.index']);
+Route::get('/', HomeController::class)->name('home.index');
+
 Route::resource('categories', CategoryController::class);
-Route::resource('abouts', AboutController::class);
-Route::resource('localisation', LocationController::class);
+Route::get('abouts', AboutController::class)->name('abouts.index');
+Route::get('localisation', LocationController::class)->name('localisation.index');
 Route::get('appartement', [SearchController::class, 'searchHouse'])->name('search.location');
 
 Auth::routes();
@@ -23,17 +24,16 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function (){
     Route::get('admin/apartment', [App\Http\Controllers\HomeController::class, 'index'])->name('backend.index');
     Route::resource('apartment', ApartmentAdminController::class);
-    Route::resource('images', ImageAdminController::class);
+    Route::resource('/admin/images', ImageAdminController::class);
     Route::resource('/admin/category', CategoryAdminController::class);
 
-    Route::put('activeApartment/{key}', [ConfirmedApartmentController::class, 'active'])
-        ->name('apartment.active');
-    Route::put('invalidApartment/{key}', [ConfirmedApartmentController::class, 'inactive'])
-        ->name('apartment.inactive');
+    Route::controller(ConfirmedApartmentController::class)->group(function (){
+        Route::put('trashedApartment/{apartment}', 'reactivate')->name('apartment.restoreApartment');
+        Route::delete('trashedApartment/{apartment}', 'forceDelete')->name('apartment.forceDelete');
+        Route::put('activeApartment/{key}','active')->name('apartment.active');
+        Route::put('invalidApartment/{key}', 'inactive')->name('apartment.inactive');
+    });
+
     Route::get('trashedApartment', [ApartmentAdminController::class, 'trashed'])
         ->name('apartment.trashed');
-    Route::put('trashedApartment/{apartment}', [ConfirmedApartmentController::class, 'reactivate'])
-        ->name('apartment.restoreApartment');
-    Route::delete('trashedApartment/{apartment}', [ConfirmedApartmentController::class, 'forceDelete'])
-        ->name('apartment.forceDelete');
 });

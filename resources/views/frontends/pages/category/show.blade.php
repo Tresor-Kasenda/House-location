@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-    Detail de la maison
-@endsection
+@section('title', "Les appartements par categorie")
 
 @section('content')
     <section class="lg:px-24 md:px-12 px-6 pt-8 pb-16">
@@ -10,9 +8,9 @@
             <div class="lg:flex gap-12 space-y-12 lg:space-y-0">
                 <div class="lg:w-7/12 -mx-6 md:-mx-12 lg:mx-0">
                     <div class="flex lg:block px-4 md:px-8 lg:px-0 lg:space-y-8 space-x-4 md:space-x-8 lg:space-x-0 overflow-x-auto lg:overflow-x-hidden">
-                        <img src="{{ asset('storage/'.$apartment->picture) }}" class="w-10/12 md:w-8/12 lg:w-full rounded-2xl" alt="{{ $apartment->email }}">
+                        <img src="{{ asset('storage/'.$apartment->images) }}" class="w-10/12 md:w-8/12 lg:w-full rounded-2xl" alt="{{ $apartment->email }}">
                         @foreach($apartment->images as $image)
-                            <img src="{{ asset('storage/'. $image->picture) }}" class="w-10/12 md:w-8/12 lg:w-full rounded-2xl" alt="{{ $image->key }}">
+                            <img src="{{ asset('storage/'. $image->images) }}" class="w-10/12 md:w-8/12 lg:w-full rounded-2xl" alt="{{ $image->key }}">
                         @endforeach
                     </div>
                 </div>

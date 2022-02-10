@@ -4,13 +4,12 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Models\Category;
-use App\Repository\Interface\CategoryRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
-class CategoryRepository implements CategoryRepositoryInterface
+class CategoryRepository
 {
     public function getAll(): Collection
     {

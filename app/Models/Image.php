@@ -12,13 +12,10 @@ class Image extends Model
 {
     use HasFactory, HasKey;
 
-    protected $fillable = [
-        'picture',
-        'house_id'
-    ];
+    protected $guarded = [];
 
     public function houses(): BelongsTo
     {
-        return $this->belongsTo(House::class);
+        return $this->belongsTo(House::class, 'house_id');
     }
 }

@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 
-@section('title')
-    ADMINISTRATION
-@endsection
+@section('title', "Administration des images")
 
 @section('content')
     <div class="nk-content-inner">
@@ -50,7 +48,7 @@
                                         <tr class="nk-tb-item">
                                             <td class="nk-tb-col tb-col-sm">
                                                 <span class="tb-product text-center">
-                                                    <img src="{{ asset('storage/'.$image->picture) }}" alt="{{ $image->key }}" class="thumb">
+                                                    <img src="{{ asset('storage/'.$image->images) }}" alt="{{ $image->key }}" class="thumb">
                                                 </span>
                                             </td>
                                             <td class="nk-tb-col tb-col-md">

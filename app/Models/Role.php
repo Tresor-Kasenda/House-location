@@ -12,7 +12,7 @@ class Role extends Model
 {
     use HasFactory, HasKey;
 
-    protected $fillable = ['name'];
+    protected $guarded = [];
 
     public function users(): HasMany
     {

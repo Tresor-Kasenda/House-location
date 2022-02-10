@@ -3,15 +3,15 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\Enums\HouseEnum;
 use App\Models\House;
-use App\Repository\Interface\ApartmentRepositoryInterface;
 use App\Services\ImageUploader;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
-class ApartmentRepository implements ApartmentRepositoryInterface
+class ApartmentRepository
 {
     use ImageUploader;
 
@@ -27,9 +27,9 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         return House::query()
             ->with('images')
             ->when('status',
-                fn($builder) => $builder->where('status', House::APARTMENT_CONFIRMED)
+                fn($builder) => $builder->where('status', HouseEnum::CONFIRM)
             )
-            ->orderBy('created_at', 'DESC')
+            ->orderByDesc('created_at')
             ->get();
     }
 
@@ -44,7 +44,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
     {
         return House::query()
             ->where('key', '=', $id)
-            ->where('status', '=', House::APARTMENT_CONFIRMED)
+            ->where('status', '=', HouseEnum::CONFIRM)
             ->firstOrFail();
     }
 
@@ -86,28 +86,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
     public function trashed(): array|Collection
     {
         return House::onlyTrashed()
-            ->orderBy('created_at', 'DESC')
+            ->orderByDesc('created_at')
             ->get();
     }
-
-    public function restore(string $key): ?bool
-    {
-        // TODO: Implement restore() method.
-    }
-
-    public function forceDelete(string $key): int
-    {
-        // TODO: Implement forceDelete() method.
-    }
-
-    public function getAllByCategoryId(string $categoryId): Collection
-    {
-        // TODO: Implement getAllByCategory() method.
-    }
-
-    public function update(string $key, $request): Builder|Model
-    {
-
-    }
-
 }

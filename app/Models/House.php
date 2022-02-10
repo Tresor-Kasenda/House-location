@@ -15,25 +15,7 @@ class House extends Model
 {
     use HasFactory, HasKey, SoftDeletes;
 
-    const APARTMENT_CONFIRMED = true;
-    const APARTMENT_UNCONFIRMED = false;
-
-    protected $fillable = [
-        'price_per_month',
-        'address',
-        'guarantees',
-        'phone_number',
-        'email',
-        'latitude',
-        'longitude',
-        'picture',
-        'commune',
-        'district',
-        'characteristic',
-        'piece_number',
-        'status',
-        'town'
-    ];
+    protected $guarded = [];
 
     protected $casts = [
         'price_per_month' => 'integer',
@@ -59,6 +41,7 @@ class House extends Model
         ' '
         ). '$';
     }
+
     public function images(): HasMany
     {
         return $this->hasMany(Image::class);

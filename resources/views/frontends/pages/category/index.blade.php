@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-
-@endsection
+@section('title', "Les apartements par categorie")
 
 @section('content')
     <section class="lg:px-28 md:px-12 px-4 lg:pt-8 pt-4">

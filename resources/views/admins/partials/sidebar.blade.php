@@ -19,7 +19,7 @@
                     @include('admins.components.link', [
                         'route' => route('backend.index'),
                         'name' => 'Dashboard',
-                        'icon' => 'ni-menu-alt'
+                        'icon' => 'ni-home'
                     ])
 
                     <li class="nk-menu-heading">
@@ -28,7 +28,7 @@
                     @include('admins.components.link', [
                         'route' => route('apartment.index'),
                         'name' => 'Appartement',
-                        'icon' => 'ni-folder'
+                        'icon' => 'ni-building'
                     ])
 
                     @include('admins.components.link', [
@@ -40,7 +40,13 @@
                     @include('admins.components.link', [
                         'route' => route('images.index'),
                         'name' => 'Images',
-                        'icon' => 'ni-folder'
+                        'icon' => 'ni-files'
+                    ])
+
+                    @include('admins.components.link', [
+                        'route' => route('images.index'),
+                        'name' => 'Clients',
+                        'icon' => 'ni-user'
                     ])
                 </ul>
             </div>

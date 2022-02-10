@@ -32,8 +32,8 @@ class ApartmentForm extends Form
             ->add('longitude', 'text', [
                 'label' => "Longitude"
             ])
-            ->add('picture', 'file',[
-                'label' => "Photo"
+            ->add('images', 'file',[
+                'label' => "Image"
             ])
             ->add('commune', 'text', [
                 'label' => "Commune"
@@ -52,13 +52,6 @@ class ApartmentForm extends Form
                 'choices' => Category::all()->pluck('name', 'id')->toArray(),
                 'multiple' => true,
                 'attr' => ['class' => 'form-select']
-            ])
-            ->add('characteristic', 'collection', [
-                'type' => 'form',
-                'options' => [
-                    'class' => CharacteristicForm::class,
-                    'label' => false,
-                ]
             ]);
     }
 }

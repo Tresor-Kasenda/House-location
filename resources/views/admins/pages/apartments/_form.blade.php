@@ -25,7 +25,7 @@
     <div class="col-md-md-6 col-lg-6">
         <div class="form-group">
             <div class="form-control-wrap">
-                {!! form_row($form->picture) !!}
+                {!! form_row($form->images) !!}
             </div>
         </div>
         <div class="form-group">
@@ -81,13 +81,6 @@
             <div class="form-control-wrap">
                 {!! form_row($form->town) !!}
             </div>
-        </div>
-    </div>
-</div>
-<div class="row gy-4">
-    <div class="col-lg-12 col-md-12 mt-3">
-        <div class="form-control-wrap" id="collection-container" data-prototype="{{ form_row($form->characteristic->prototype()) }}">
-            {!! form_row($form->characteristic) !!}
         </div>
     </div>
 </div>

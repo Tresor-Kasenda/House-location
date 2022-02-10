@@ -14,15 +14,15 @@ mix
             tailwindcss('./tailwind.config.js')
         ],
     })
-    .purgeCss({
-        enabled: true,
-        content: [
-            './storage/framework/views/*.php',
-            './resources/**/*.blade.php',
-            './resources/**/*.js',
-            './resources/**/*.vue',
-        ],
-        folders: ['js', 'scss', 'resources'],
-        extensions: ['html', 'js', 'blade', 'scss', 'vue'],
-        whitelistPatterns: [],
-    });
+mix.purgeCss({
+    enabled: true,
+    content: [
+        './storage/framework/views/*.php',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.vue',
+    ],
+    folders: ['js', 'scss', 'resources'],
+    extensions: ['html', 'js', 'blade', 'scss', 'vue'],
+    whitelistPatterns: [],
+});

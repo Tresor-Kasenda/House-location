@@ -3,7 +3,7 @@
     <div class="col-md-md-6 col-lg-6">
         <div class="form-group">
             <div class="form-control-wrap">
-                {!! form_row($form->picture) !!}
+                {!! form_row($form->images) !!}
             </div>
         </div>
     </div>

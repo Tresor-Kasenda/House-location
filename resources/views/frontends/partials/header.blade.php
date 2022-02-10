@@ -5,7 +5,7 @@
                 <div class="w-max flex justif-between">
                     <div class="flex items-center gap-4">
                         <a href="{{ route('home.index') }}" class="md:hidden lg:block text-xl font-semibold text-gray-700">
-                            <img src="{{ asset('app/images/logo.png') }}" class="w-8" alt="">
+                            <img src="{{ asset('app/images/Karibu.png') }}" class="w-8" alt="">
                         </a>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                                 <input type="text" id="pieces" name="pièces" value="{{ old('pièces') }}" placeholder="Pièces" class="w-full border-transparent ring-transparent p-3 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
                             </div>
                             <div class="w-max ml-auto">
-                                <button id="submit" class="h-11 px-6 bg-gradient-to-br from-green-400 to-purple-600 rounded-full hover:bg-purple-600 focus:bg-purple-700 active:scale-95 transition">
+                                <button type="submit" class="h-11 px-6 bg-gradient-to-br from-green-400 to-purple-600 rounded-full hover:bg-purple-600 focus:bg-purple-700 active:scale-95 transition">
                                     <span class="text-sm text-white">Rechercher</span>
                                 </button>
                             </div>

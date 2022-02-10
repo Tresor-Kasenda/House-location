@@ -35,34 +35,6 @@
                     <span class="text-base font-semibold">1</span>
                 </label>
             </li>
-
-            <li>
-                <input type="radio" name="rooms" id="2"class="hidden peer">
-                <label title="Deux pièces" for="2" class="h-8 w-8 rounded-full flex justify-center items-center bg-p-100 text-purple-700 peer-checked:bg-purple-500 ring-2 ring-offset-2 ring-gray-200 peer-checked:text-white peer-checked:ring-purple-400 ring-offset-white cursor-pointer transition">
-                    <span class="text-base font-semibold">2</span>
-                </label>
-            </li>
-
-            <li>
-                <input type="radio" name="rooms" id="3" class="hidden peer">
-                <label title="Trois pièces" for="3" class="h-8 w-8 rounded-full flex justify-center items-center bg-p-100 text-purple-700 peer-checked:bg-purple-500 ring-2 ring-offset-2 ring-gray-200 peer-checked:text-white peer-checked:ring-purple-400 ring-offset-white cursor-pointer transition">
-                    <span class="text-base font-semibold">3</span>
-                </label>
-            </li>
-
-            <li>
-                <input type="radio" name="rooms" id="4" class="hidden peer">
-                <label title="Quatre pièces" for="4" class="h-8 w-8 rounded-full flex justify-center items-center bg-p-100 text-purple-700 peer-checked:bg-purple-500 ring-2 ring-offset-2 ring-gray-200 peer-checked:text-white peer-checked:ring-purple-400 ring-offset-white cursor-pointer transition">
-                    <span class="text-base font-semibold">4</span>
-                </label>
-            </li>
-
-            <li>
-                <input type="radio" name="rooms" id="+4" class="hidden peer">
-                <label title="Plus de quatre" for="+4" class="h-8 w-8 rounded-full flex justify-center items-center bg-p-100 text-purple-700 peer-checked:bg-purple-500 ring-2 ring-offset-2 ring-gray-200 peer-checked:text-white peer-checked:ring-purple-400 ring-offset-white cursor-pointer transition">
-                    <span class="text-base font-semibold">+4</span>
-                </label>
-            </li>
         </ul>
     </div>
 </div>

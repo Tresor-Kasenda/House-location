@@ -7,6 +7,7 @@ use App\Forms\ImageForm;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImageRequest;
 use App\Repository\ImageRepository;
+use App\Repository\Interface\ImageRepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -22,8 +23,9 @@ class ImageAdminController extends Controller
 
     public function index(): Factory|View|Application
     {
-        $images = $this->repository->getAll();
-        return view('admins.pages.images.index', compact('images'));
+        return view('admins.pages.images.index', [
+            'images' => $this->repository->getContents()
+        ]);
     }
 
     public function create(): Factory|View|Application

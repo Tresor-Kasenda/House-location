@@ -4,38 +4,53 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title')</title>
+    <title>Karibu kwako - @yield('title')</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png')  }}">
 </head>
 <body class="text-gray-500">
     @include('frontends.partials.header')
-    <div id="app">
+    <div>
         @yield('content')
     </div>
     @include('frontends.partials.footer')
-    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-    <script src="{{ asset('app/js/app.js') }}"></script>
+    @if(env('APP_ENV') === 'local')
+        <script src="{{ asset('app/js/jquery.js') }}"></script>
+    @else
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"
+        ></script>
+    @endif
+    <script src="{{ asset('app/js/hamburger.js') }}"></script>
     @include('sweetalert::alert')
-    @yield('scripts')
+    @yield("scripts")
     <script>
-        let hamburger = document.querySelector('#hamburger')
-        let navitems = document.querySelector('#navitems')
-        let layer = document.querySelector('#layer')
+        $(document).ready(function () {
+            $(document).on('submit', '#searchData', function (e) {
+                e.preventDefault();
+                const data = {
+                    quartier: $('#quartier').val(),
+                    commune: $('#commune').val(),
+                    pieces: parseInt($('#pieces').val())
+                }
 
-        hamburger.addEventListener('click', function(){
-            if (navitems.classList.contains('h-0')){
-                navitems.classList.replace('h-0', 'h-64')
-                navitems.classList.replace('-translate-y-10', 'translate-y-0')
-                navitems.classList.add('py-6')
-                layer.classList.replace('invisible', 'visible')
-            } else{
-                navitems.classList.replace('h-64', 'h-0')
-                navitems.classList.remove('py-6')
-                navitems.classList.replace('translate-y-0', '-translate-y-10')
-                layer.classList.replace('visible', 'invisible')
-            }
+                if (data.quartier === '' && data.commune === '' && isNaN(data.pieces)){
+                    Swal.fire('A Simple sweet alert Content');
+                } else {
+                    $.ajax({
+                        type: "GET",
+                        url: ``,
+                        data: data,
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function (response) {}
+                    })
+                }
+            })
         })
     </script>
 </body>

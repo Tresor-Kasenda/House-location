@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 
-@section('title')
-    ADMINISTRATION
-@endsection
+@section('title', "Administration des categories")
 
 @section('content')
     <div class="nk-content-inner">

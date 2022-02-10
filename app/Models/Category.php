@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -9,19 +10,14 @@ use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 
 class Category extends Model
 {
-    use HasFactory,HasKey;
+    use HasFactory, HasKey;
 
-    protected $fillable = [
-        'name'
-    ];
+    protected $guarded = [];
 
     public function houses(): BelongsToMany
     {
-        return $this->belongsToMany(
-            House::class,
-            'house_category',
-            'house_id',
-            'category_id'
-        )->withTimestamps();
+        return $this
+            ->belongsToMany(House::class, 'house_category', 'house_id', 'category_id')
+            ->withTimestamps();
     }
 }

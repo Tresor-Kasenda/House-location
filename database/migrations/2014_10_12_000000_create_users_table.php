@@ -14,11 +14,11 @@ return new class extends Migration
             $table->string('key')->unique();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('picture')->default('logo.png');
             $table->string('phone_number')->nullable();
             $table->string('surname')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('images')->default('logo.png');
             $table->rememberToken();
             $table->timestamps();
         });

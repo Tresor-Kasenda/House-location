@@ -14,11 +14,10 @@ class ImageRequest extends FormRequest
         return true;
     }
 
-    #[ArrayShape(['picture' => "string[]", 'house_id' => "string", 'house_id.*' => "array"])]
     public function rules(): array
     {
         return [
-            'picture' => ['required', 'mimes:jpeg,jpg,png'],
+            'images' => ['required', 'mimes:jpeg,jpg,png'],
             'house_id' => ['required'],
             'house_id.*' => ['integer', Rule::exists('houses', 'id')],
         ];

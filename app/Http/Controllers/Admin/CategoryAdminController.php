@@ -53,13 +53,11 @@ class CategoryAdminController extends Controller
         return view('admins.pages.category.create', compact('form', 'category'));
     }
 
-
     public function update(CategoryRequest $request, string $key): RedirectResponse
     {
         $this->repository->update($key, $request);
         return redirect()->route('category.index');
     }
-
 
     public function destroy(string $key): RedirectResponse
     {

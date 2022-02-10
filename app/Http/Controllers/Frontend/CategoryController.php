@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Repository\ApartmentRepository;
 use App\Repository\Frontend\HomeFrontendRepository;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
@@ -17,7 +18,7 @@ class CategoryController extends Controller
         public HomeFrontendRepository $frontendRepository
     ){}
 
-    public function index(): Factory|View|Application
+    public function index(): Renderable
     {
         return view('frontends.pages.category.index', [
             'apartments' => $this->repository->getAllVerified()

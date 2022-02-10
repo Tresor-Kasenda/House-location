@@ -8,27 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 interface ActiveApartmentRepositoryInterface
 {
-    /**
-     * @param string $key
-     * @return Model|Builder
-     */
-    public function confirmedRoom(string $key): Model|Builder;
+    public function confirmedRoom(string $key);
 
-    /**
-     * @param string $key
-     * @return Model|Builder
-     */
-    public function invalidateRoom(string $key): Model|Builder;
+    public function invalidateRoom(string $key);
 
-    /**
-     * @param string $key
-     * @return Model|Builder
-     */
-    public function forceDelete(string $key): Model|Builder;
-
-    /**
-     * @param string $key
-     * @return bool|null
-     */
-    public function restore(string $key);
 }

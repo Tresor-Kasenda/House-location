@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 
-@section('title')
-    ADMINISTRATION
-@endsection
+@section('title', "Administration des appartements")
 
 @section('content')
     <div class="nk-content-inner">
@@ -64,7 +62,7 @@
                                     <tr class="nk-tb-item">
                                         <td class="nk-tb-col tb-col-sm">
                                             <span class="tb-product text-center">
-                                                <img src="{{ asset('storage/'.$room->picture) }}" alt="{{ $room->username }}" class="thumb">
+                                                <img src="{{ asset('storage/'.$room->images) }}" alt="{{ $room->username }}" class="thumb">
                                             </span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">

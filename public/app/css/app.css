@@ -850,10 +850,6 @@ input::placeholder {
   height: 11rem;
 }
 
-.h-64 {
-  height: 16rem;
-}
-
 .h-full {
   height: 100%;
 }
@@ -938,10 +934,6 @@ input::placeholder {
 
 .table-fixed {
   table-layout: fixed;
-}
-
-.translate-y-0 {
-  --tw-translate-y: 0px;
 }
 
 .translate-y-8 {
@@ -1428,11 +1420,6 @@ input::placeholder {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
 }
 
 .py-8 {

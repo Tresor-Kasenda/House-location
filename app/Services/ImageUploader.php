@@ -10,13 +10,13 @@ trait ImageUploader
 {
     public static function uploadFiles(Request $request): string
     {
-        return $request->file('picture')
+        return $request->file('images')
             ->storePublicly('/', ['disk' => 'public']);
     }
 
     public function removePathOfImages($model)
     {
         Storage::disk('public')
-            ->delete($model->picture);
+            ->delete($model->images);
     }
 }

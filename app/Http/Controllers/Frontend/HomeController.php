@@ -6,9 +6,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Repository\ApartmentRepository;
 use App\Repository\Frontend\HomeFrontendRepository;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller
 {
@@ -17,7 +15,7 @@ class HomeController extends Controller
         public HomeFrontendRepository $frontendRepository
     ){}
 
-    public function index(): Factory|View|Application
+    public function __invoke(): Renderable
     {
         return view('frontends.home', [
             'apartments' => $this->repository->getAllVerified(),

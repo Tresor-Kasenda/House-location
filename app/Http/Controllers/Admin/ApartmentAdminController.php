@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ApartmentRequest;
 use App\Repository\ApartmentRepository;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -20,7 +21,7 @@ class ApartmentAdminController extends Controller
         public ApartmentRepository $repository
     ){}
 
-    public function index(): Factory|View|Application
+    public function index(): Renderable
     {
         $rooms = $this->repository->getAll();
         return view('admins.pages.apartments.index', compact('rooms'));
@@ -56,7 +57,6 @@ class ApartmentAdminController extends Controller
             'model' => $room
         ]);
         return view('admins.pages.apartments.create', compact('form', 'room'));
-
     }
 
     public function update(ApartmentRequest $request, string $key): RedirectResponse

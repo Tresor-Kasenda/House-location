@@ -4,22 +4,21 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Models\Image;
-use App\Repository\Interface\ImageRepositoryInterface;
 use App\Services\ImageUploader;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
-class ImageRepository implements ImageRepositoryInterface
+class ImageRepository
 {
     use ImageUploader;
 
-    public function getAll(): Collection
+    public function getContents(): Collection
     {
         return Image::query()
             ->with('houses')
-            ->latest()
+            ->orderByDesc('created_at')
             ->get();
     }
 
@@ -34,7 +33,7 @@ class ImageRepository implements ImageRepositoryInterface
     {
         $images = Image::query()
             ->create([
-                'picture' => self::uploadFiles($request),
+                'images' => self::uploadFiles($request),
                 'house_id' => $request->house_id
             ]);
         toast('Une image a ete ajouter', 'success');
@@ -46,7 +45,7 @@ class ImageRepository implements ImageRepositoryInterface
         $image = $this->getOneByKey($key);
         $this->removePathOfImages($image);
         $image->update([
-            'picture' => self::uploadFiles($request),
+            'images' => self::uploadFiles($request),
             'house_id' => $request->house_id
         ]);
         toast('Une mise a jour a ete effectuer', 'success');
