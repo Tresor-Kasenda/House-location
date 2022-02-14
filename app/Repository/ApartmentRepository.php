@@ -59,11 +59,10 @@ class ApartmentRepository
                 'email'=> $request->email,
                 'latitude'=> $request->latitude,
                 'longitude'=> $request->longitude,
-                'picture'=> $this::uploadFiles($request),
+                'images'=> $this::uploadFiles($request),
                 'commune'=> $request->commune,
                 'district'=> $request->district,
                 'piece_number'=> $request->piece_number,
-                'characteristic' => json_encode($request->characteristic),
                 'town' => $request->town
             ]);
         $apartment->categories()->attach($request->categories);
