@@ -17,24 +17,7 @@ class House extends Model
 
     protected $guarded = [];
 
-    public function getGuaranties(): string
-    {
-        return number_format($this->guarantees,
-                2,
-                '.',
-                ' '). '$';
-    }
-
     protected $escapeWhenCastingToString = false;
-
-    public function getPricePerMonth(): string
-    {
-        return number_format($this->price_per_month,
-        2,
-        '.',
-        ' '
-        ). '$';
-    }
 
     public function image(): HasMany
     {

@@ -20,8 +20,8 @@
                     <div class="lg:sticky top-16 space-y-6 lg:mt-8">
                         <h3 class="text-3xl text-gray-700 font-bold">{{ $apartment->address ?? "" }}</h3>
                         <div class="">
-                            <h3 class="text-3xl font-bold text-purple-600">{{ $apartment->getPricePerMonth() ?? "" }}</h3>
-                            <span class="text-sm text-gray-500">{{$apartment->getGuaranties() ?? ""}} Garantie</span>
+                            <h3 class="text-3xl font-bold text-purple-600">{{ $apartment->price_per_month ?? "" }}</h3>
+                            <span class="text-sm text-gray-500">{{$apartment->guarantees ?? ""}} Garantie</span>
                         </div>
                         <table class="w-full rounded-lg table-fixed">
                             <tr>

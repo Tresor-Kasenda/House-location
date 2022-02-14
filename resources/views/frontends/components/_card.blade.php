@@ -6,8 +6,8 @@
             <span class="text-sm">{{ $apartment->district ?? "" }}</span>
         </div>
         <div class="w-max">
-            <h5 class="text-xl leading-none md:text-right font-bold text-purple-500">{{ $apartment->getPricePerMonth() ?? "" }}</h5>
-            <span class="block w-max text-xs text-gray-600">{{ $apartment->getGuaranties() ?? "" }} Garantie</span>
+            <h5 class="text-xl leading-none md:text-right font-bold text-purple-500">{{ $apartment->price_per_month ?? "" }}</h5>
+            <span class="block w-max text-xs text-gray-600">{{ $apartment->guarantees ?? "" }} Garantie</span>
         </div>
     </div>
 </a>

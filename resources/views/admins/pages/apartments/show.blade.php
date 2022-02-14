@@ -98,7 +98,7 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Prix</span>
-                                                    <span class="profile-ud-value">{{ $room->getPricePerMonth() ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->price_per_month ?? "" }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
@@ -110,7 +110,7 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Garantie</span>
-                                                    <span class="profile-ud-value">{{ $room->getGuaranties() ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->guarantees ?? "" }}</span>
                                                 </div>
                                             </div>
                                         </div>

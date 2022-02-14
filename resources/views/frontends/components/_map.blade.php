@@ -3,8 +3,8 @@
     <div class="space-y-2 lg:p-0 p-4">
         <h6 class="text-lg leading-none text-gray-700">{{ $apartment->piece_number ?? "" }} pièces</h6>
         <div class="w-max flex items-end gap-2">
-            <h5 class="sm:text-xl text-lg leading-none md:text-right font-bold text-purple-500">{{ $apartment->getPricePerMonth() ?? "" }}</h5>
-            <span class="block w-max text-xs text-gray-600">{{ $apartment->getGuaranties() ?? "" }} Garantie</span>
+            <h5 class="sm:text-xl text-lg leading-none md:text-right font-bold text-purple-500">{{ $apartment->guarantees ?? "" }}</h5>
+            <span class="block w-max text-xs text-gray-600">{{ $apartment->guarantees ?? "" }} Garantie</span>
         </div>
     </div>
 </a>
