@@ -31,7 +31,7 @@
 
                                             <div class="md:mt-0 mt-4">
                                                 <h3 class="text-3xl md:text-right font-bold text-purple-400">78 $</h3>
-                                                <span class="text-xs text-gray-200">{{ $apartments[0]->getGuaranties() ?? "" }} Garantie</span>
+                                                <span class="text-xs text-gray-200">{{ $apartments[0]->price_per_month ?? "" }} Garantie</span>
                                             </div>
                                         </div>
                                         <div class="relative pt-4 flex gap-2
@@ -82,10 +82,10 @@
                                             <h4 class="mb-4 text-lg text-white font-semibold">{{ $apartments[1]->district ?? "" }}, {{ $apartments[1]->address ?? "" }}</h4>
 
                                             <div class="flex items-end gap-2">
-                                                <h3 class="text-2xl font-bold text-purple-400">{{ $apartments[1]->getPricePerMonth() ?? "" }}</h3>
+                                                <h3 class="text-2xl font-bold text-purple-400">{{ $apartments[1]->price_per_month ?? "" }}</h3>
                                                 <div class="text-xs tracking-wide text-gray-300">
-                                                    <span class="block">{{ $apartments[1]->getPricePerMonth() ?? "" }} / Mois</span>
-                                                    <span class="block">{{ $apartments[1]->getGuaranties() ?? "" }} Garantie</span>
+                                                    <span class="block">{{ $apartments[1]->price_per_month ?? "" }} / Mois</span>
+                                                    <span class="block">{{ $apartments[1]->guarantees ?? "" }} Garantie</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -135,10 +135,10 @@
                                             <h4 class="mb-4 text-lg text-white font-semibold">{{ $apartments[1]->district ?? "" }}, {{ $apartments[1]->address ?? "" }}</h4>
 
                                             <div class="flex items-end gap-2">
-                                                <h3 class="text-2xl font-bold text-purple-400">{{ $apartments[1]->getPricePerMonth() ?? "" }}</h3>
+                                                <h3 class="text-2xl font-bold text-purple-400">{{ $apartments[1]->price_per_month ?? "" }}</h3>
                                                 <div class="text-xs tracking-wide text-gray-300">
-                                                    <span class="block"> {{ $apartments[1]->getPricePerMonth() ?? "" }} / Mois</span>
-                                                    <span class="block">{{ $apartments[1]->getGuaranties() ?? "" }} Garantie</span>
+                                                    <span class="block"> {{ $apartments[1]->price_per_month ?? "" }} / Mois</span>
+                                                    <span class="block">{{ $apartments[1]->guarantees ?? "" }} Garantie</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -188,10 +188,10 @@
                                             <h4 class="mb-4 text-lg text-white font-semibold">{{ $apartments[0]->address ?? "" }}</h4>
 
                                             <div class="flex items-end gap-2">
-                                                <h3 class="text-2xl font-bold text-purple-400">{{ $apartments[0]->getPricePerMonth() ?? "" }}</h3>
+                                                <h3 class="text-2xl font-bold text-purple-400">{{ $apartments[0]->price_per_month ?? "" }}</h3>
                                                 <div class="text-xs tracking-wide text-gray-300">
-                                                    <span class="block">{{ $apartments[0]->getPricePerMonth() ?? "" }}/ Mois</span>
-                                                    <span class="block">{{ $apartments[0]->getGuaranties() ?? "" }} Garantie</span>
+                                                    <span class="block">{{ $apartments[0]->price_per_month ?? "" }}/ Mois</span>
+                                                    <span class="block">{{ $apartments[0]->guarantees ?? "" }} Garantie</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -241,10 +241,10 @@
                                             <h6 class="mb-4 text-base text-white font-semibold">{{ $apartments[1]->address ?? "" }}</h6>
 
                                             <div class="flex items-end gap-2">
-                                                <h3 class="text-2xl font-bold text-purple-400">{{ $apartments[1]->getPricePerMonth() ?? "" }}</h3>
+                                                <h3 class="text-2xl font-bold text-purple-400">{{ $apartments[1]->price_per_month ?? "" }}</h3>
                                                 <div class="text-xs tracking-wide text-gray-300">
-                                                    <span class="block">{{ $apartments[1]->getPricePerMonth() ?? "" }}/ Mois</span>
-                                                    <span class="block">{{ $apartments[1]->getGuaranties() ?? "" }} Garantie</span>
+                                                    <span class="block">{{ $apartments[1]->price_per_month ?? "" }}/ Mois</span>
+                                                    <span class="block">{{ $apartments[1]->guarantees ?? "" }} Garantie</span>
                                                 </div>
                                             </div>
                                         </div>
