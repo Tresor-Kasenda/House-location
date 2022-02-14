@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="{{ asset('storage/'.$apartments[0]->picture) }}" class="w-full h-full  lg:rounded-l-2xl md:rounded-tl-2xl md:rounded-r-none md:rounded-bl-none rounded-2xl object-cover" alt="">
+                            <img src="{{ asset('storage/'.$apartments[0]->images) }}" class="w-full h-full  lg:rounded-l-2xl md:rounded-tl-2xl md:rounded-r-none md:rounded-bl-none rounded-2xl object-cover" alt="">
                         </div>
 
                         <div class="relative lg:col-span-3 md:col-span-4 col-span-4 row-span-2 lg:h-60 group transition">
@@ -113,7 +113,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="{{ asset('storage/'.$apartments[1]->picture ) }}" class="w-full h-full lg:rounded-none md:rounded-tr-2xl md:rounded-tl-none rounded-2xl object-cover" alt="">
+                            <img src="{{ asset('storage/'.$apartments[1]->images ) }}" class="w-full h-full lg:rounded-none md:rounded-tr-2xl md:rounded-tl-none rounded-2xl object-cover" alt="">
                         </div>
 
                         <div class="relative lg:col-span-3 md:col-span-4 col-span-4 row-span-2 lg:h-60 group transition">
@@ -166,7 +166,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="{{ asset('storage/'.$apartments[1]->picture ) }}" class="w-full h-full lg:rounded-tr-2xl md:rounded-none rounded-2xl object-cover" alt="">
+                            <img src="{{ asset('storage/'.$apartments[1]->images ) }}" class="w-full h-full lg:rounded-tr-2xl md:rounded-none rounded-2xl object-cover" alt="">
                         </div>
 
                         <div class="relative lg:col-span-4 md:col-span-7 col-span-5 row-span-2 lg:h-60 group transition">
@@ -219,7 +219,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="{{ asset('storage/'. $apartments[0]->picture ) }}" class="w-full h-full lg:rounded-none md:rounded-bl-2xl md:rounded-t-none md:rounded-br-none rounded-2xl object-cover" alt="">
+                            <img src="{{ asset('storage/'. $apartments[0]->images ) }}" class="w-full h-full lg:rounded-none md:rounded-bl-2xl md:rounded-t-none md:rounded-br-none rounded-2xl object-cover" alt="">
                         </div>
 
                         <div class="relative lg:col-span-2 md:col-span-5 col-span-3 row-span-2 lg:h-60 group transition">
@@ -258,7 +258,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="{{ asset('storage/'. $apartments[1]->picture ) }}" class="w-full h-full md:rounded-br-2xl md:rounded-t-none md:rounded-bl-none rounded-2xl object-cover" alt="">
+                            <img src="{{ asset('storage/'. $apartments[1]->images ) }}" class="w-full h-full md:rounded-br-2xl md:rounded-t-none md:rounded-bl-none rounded-2xl object-cover" alt="">
                         </div>
                     </div>
                 </div>

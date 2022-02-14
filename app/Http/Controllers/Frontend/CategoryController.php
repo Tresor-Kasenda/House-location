@@ -29,7 +29,7 @@ class CategoryController extends Controller
     {
         $apartment = $this->repository->getOnlyValidatedByKey($key);
         return view('frontends.pages.category.show', [
-            'apartment' => $apartment->load('images'),
+            'apartment' => $apartment,
             'apartments' => $this->frontendRepository->getByDetail($apartment)
         ]);
     }

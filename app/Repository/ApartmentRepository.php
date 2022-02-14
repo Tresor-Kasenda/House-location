@@ -18,14 +18,14 @@ class ApartmentRepository
     public function getAll(): Collection
     {
         return House::query()
-            ->latest()
+            ->inRandomOrder()
             ->get();
     }
 
     public function getAllVerified(): Collection
     {
         return House::query()
-            ->with('images')
+            ->with('image')
             ->when('status',
                 fn($builder) => $builder->where('status', HouseEnum::CONFIRM)
             )
@@ -42,10 +42,11 @@ class ApartmentRepository
 
     public function getOnlyValidatedByKey(string $id): House|Builder
     {
-        return House::query()
+        $house = House::query()
             ->where('key', '=', $id)
             ->where('status', '=', HouseEnum::CONFIRM)
             ->firstOrFail();
+        return $house->load('image');
     }
 
     public function create(Request $request): Builder|Model

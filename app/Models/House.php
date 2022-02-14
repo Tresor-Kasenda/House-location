@@ -17,14 +17,6 @@ class House extends Model
 
     protected $guarded = [];
 
-    protected $casts = [
-        'price_per_month' => 'integer',
-        'guarantees' => 'integer',
-        'phone_number' => 'integer',
-        'piece_number' => 'integer',
-        'status' => 'boolean'
-    ];
-
     public function getGuaranties(): string
     {
         return number_format($this->guarantees,
@@ -32,6 +24,8 @@ class House extends Model
                 '.',
                 ' '). '$';
     }
+
+    protected $escapeWhenCastingToString = false;
 
     public function getPricePerMonth(): string
     {
@@ -42,7 +36,7 @@ class House extends Model
         ). '$';
     }
 
-    public function images(): HasMany
+    public function image(): HasMany
     {
         return $this->hasMany(Image::class);
     }

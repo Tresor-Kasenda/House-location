@@ -9,9 +9,11 @@
                 <div class="lg:w-7/12 -mx-6 md:-mx-12 lg:mx-0">
                     <div class="flex lg:block px-4 md:px-8 lg:px-0 lg:space-y-8 space-x-4 md:space-x-8 lg:space-x-0 overflow-x-auto lg:overflow-x-hidden">
                         <img src="{{ asset('storage/'.$apartment->images) }}" class="w-10/12 md:w-8/12 lg:w-full rounded-2xl" alt="{{ $apartment->email }}">
-                        @foreach($apartment->images as $image)
-                            <img src="{{ asset('storage/'. $image->images) }}" class="w-10/12 md:w-8/12 lg:w-full rounded-2xl" alt="{{ $image->key }}">
-                        @endforeach
+                        @if($apartment->image != null)
+                            @foreach($apartment->image as $image)
+                                <img src="{{ asset('storage/'. $image->images) }}" class="w-10/12 md:w-8/12 lg:w-full rounded-2xl" alt="{{ $image->key }}">
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 <div class="lg:w-5/12">

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\Enums\HouseEnum;
 use App\Models\House;
 use App\Repository\Interface\ActiveApartmentRepositoryInterface;
 use App\Services\ImageUploader;
@@ -19,7 +20,7 @@ class ActiveApartmentRepository implements ActiveApartmentRepositoryInterface
             ->where('key', '=', $key)
             ->firstOrFail();
         $room->update([
-            'status' => House::APARTMENT_CONFIRMED
+            'status' => HouseEnum::CONFIRM
         ]);
         return $room;
     }
@@ -30,16 +31,17 @@ class ActiveApartmentRepository implements ActiveApartmentRepositoryInterface
             ->where('key', '=', $key)
             ->firstOrFail();
         $room->update([
-            'status' => House::APARTMENT_UNCONFIRMED
+            'status' => HouseEnum::DRAFT
         ]);
         return $room;
     }
 
-    public function restore(string $key)
+    public function restore(string $key): Model|Builder|House
     {
         $room = House::withTrashed()
             ->where('key', '=', $key)
-            ->restore();
+            ->firstOrFail();
+        $room->restore();
         toast('Appartement restaurer avec success', 'success');
         return $room;
     }

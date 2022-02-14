@@ -38,13 +38,19 @@ class HomeFrontendRepository
     }
 
 
-    public function  getByDetail($model): \Illuminate\Database\Eloquent\Collection|array
+    public function  getByDetail($model): Collection|array
     {
         return House::query()
-            ->limit(4)
+            ->limit(8)
             ->inRandomOrder()
-            ->when('status', fn ($builder) => $builder->where('status', HouseEnum::CONFIRM))
-            ->when('commune', fn ($builder) => $builder->where('commune', $model->commune))
+            ->when('status',
+                fn ($builder) =>
+                    $builder->where('status', HouseEnum::CONFIRM)
+            )
+            ->when('commune',
+                fn ($builder) =>
+                    $builder->where('commune', $model->commune)
+            )
             ->get();
     }
 }
