@@ -13,11 +13,8 @@
 </head>
 <body class="text-gray-500">
     @include('frontends.partials.header')
-    <div id="app">
-        @yield('content')
-    </div>
+    @yield('content')
     <script src="{{ asset('app/js/app.js') }}"></script>
-    <script src="{{ asset('app/js/burger.js') }}"></script>
     @yield('scripts')
 </body>
 </html>

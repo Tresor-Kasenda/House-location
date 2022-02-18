@@ -2,7 +2,7 @@
     <nav class="container m-auto h-16 md:h-20 py-4 flex lg:items-center">
         <div class="relative z-50 w-full lg:flex justify-between items-center">
             <div class="flex lg:justify-start justify-between items-center gap-12">
-                <div class="w-max flex justif-between">
+                <div class="w-max flex justify-between">
                     <div class="flex items-center gap-4">
                         <a href="{{ route('home.index') }}" class="md:hidden lg:block text-xl font-semibold text-gray-700">
                             <img src="{{ asset('app/images/Karibu.png') }}" class="w-8" alt="">
@@ -11,16 +11,16 @@
                 </div>
 
                 <div class="lg:w-9/12 sm:w-11/12 md:block" hidden>
-                    <form id="searchData" class="bg-gray-100 border focus-within:shadow-search focus-within:bg-white rounded-full">
+                    <form method="get" action="{{ route('location.search') }}" class="bg-gray-100 border focus-within:shadow-search focus-within:bg-white rounded-full">
                         <div class="relative flex justify-between p-1 text-gray-700">
                             <div class="w-3/12">
-                                <input type="text" id="quartier" name="Quartier" value="{{ old('Quartier') }}" placeholder="Quartier" class="w-full border-transparent ring-transparent py-3 px-6 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
+                                <input type="text" name="Quartier" value="{{ old('Quartier') }}" placeholder="Quartier" class="w-full border-transparent ring-transparent py-3 px-6 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
                             </div>
                             <div class="w-3/12">
-                                <input type="text" id="commune" name="Commune" value="{{ old('Commune') }}" placeholder="Commune" class="w-full border-transparent ring-transparent p-3 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
+                                <input type="text" name="Commune" value="{{ old('Commune') }}" placeholder="Commune" class="w-full border-transparent ring-transparent p-3 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
                             </div>
                             <div class="w-2/12">
-                                <input type="text" id="pieces" name="pièces" value="{{ old('pièces') }}" placeholder="Pièces" class="w-full border-transparent ring-transparent p-3 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
+                                <input type="text" name="pièces" value="{{ old('pièces') }}" placeholder="Pièces" class="w-full border-transparent ring-transparent p-3 rounded-full outline-none text-sm bg-transparent focus:bg-gray-100 focus:ring-transparent focus:border-transparent">
                             </div>
                             <div class="w-max ml-auto">
                                 <button type="submit" class="h-11 px-6 bg-gradient-to-br from-green-400 to-purple-600 rounded-full hover:bg-purple-600 focus:bg-purple-700 active:scale-95 transition">

@@ -18,13 +18,14 @@ Route::resource('categories', CategoryController::class);
 Route::get('abouts', AboutController::class)->name('abouts.index');
 Route::get('localisation', LocationController::class)->name('localisation.index');
 Route::get('appartement', [SearchController::class, 'searchHouse'])->name('search.location');
+Route::get('search-location', [SearchController::class, 'searchLocation'])->name('location.search');
 
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function (){
     Route::get('admin/apartment', [App\Http\Controllers\HomeController::class, 'index'])->name('backend.index');
     Route::resource('apartment', ApartmentAdminController::class);
-    Route::resource('/admin/images', ImageAdminController::class);
+    Route::resource('apartment', ImageAdminController::class);
     Route::resource('/admin/category', CategoryAdminController::class);
 
     Route::controller(ConfirmedApartmentController::class)->group(function (){

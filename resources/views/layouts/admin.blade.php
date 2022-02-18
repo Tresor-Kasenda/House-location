@@ -13,19 +13,17 @@
 </head>
 
 <body class="nk-body bg-lighter npc-general has-sidebar ">
-    <div id="app">
-        <div class="nk-app-root">
-            <div class="nk-main ">
-                @include('admins.partials.sidebar')
-                <div class="nk-wrap">
-                    @include('admins.partials.header')
-                    <div class="nk-content">
-                        <div class="container-fluid">
-                            @yield('content')
-                        </div>
+    <div class="nk-app-root">
+        <div class="nk-main ">
+            @include('admins.partials.sidebar')
+            <div class="nk-wrap">
+                @include('admins.partials.header')
+                <div class="nk-content">
+                    <div class="container-fluid">
+                        @yield('content')
                     </div>
-                    @include('admins.partials.footer')
                 </div>
+                @include('admins.partials.footer')
             </div>
         </div>
     </div>
