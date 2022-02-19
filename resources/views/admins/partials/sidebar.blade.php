@@ -42,12 +42,6 @@
                         'name' => 'Images',
                         'icon' => 'ni-files'
                     ])
-
-                    @include('admins.components.link', [
-                        'route' => route('images.index'),
-                        'name' => 'Clients',
-                        'icon' => 'ni-user'
-                    ])
                 </ul>
             </div>
         </div>

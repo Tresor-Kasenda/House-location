@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="refresh" content="60">
     <title>Karibu kwako - @yield('title')</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
@@ -27,31 +28,5 @@
     <script src="{{ asset('app/js/hamburger.js') }}"></script>
     @include('sweetalert::alert')
     @yield("scripts")
-    <script>
-        $(document).ready(function () {
-            $(document).on('submit', '#searchData', function (e) {
-                e.preventDefault();
-                const data = {
-                    quartier: $('#quartier').val(),
-                    commune: $('#commune').val(),
-                    pieces: parseInt($('#pieces').val())
-                }
-
-                if (data.quartier === '' && data.commune === '' && isNaN(data.pieces)){
-                    Swal.fire('A Simple sweet alert Content');
-                } else {
-                    $.ajax({
-                        type: "GET",
-                        url: ``,
-                        data: data,
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success: function (response) {}
-                    })
-                }
-            })
-        })
-    </script>
 </body>
 </html>

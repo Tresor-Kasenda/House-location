@@ -23,7 +23,6 @@ class ImageForm extends Form
             ]);
     }
 
-
     public function  getHouses(): array
     {
         return House::query()

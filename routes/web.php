@@ -25,14 +25,18 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function (){
     Route::get('admin/apartment', [App\Http\Controllers\HomeController::class, 'index'])->name('backend.index');
     Route::resource('apartment', ApartmentAdminController::class);
-    Route::resource('apartment', ImageAdminController::class);
+    Route::resource('images', ImageAdminController::class);
     Route::resource('/admin/category', CategoryAdminController::class);
 
     Route::controller(ConfirmedApartmentController::class)->group(function (){
-        Route::put('trashedApartment/{apartment}', 'reactivate')->name('apartment.restoreApartment');
-        Route::delete('trashedApartment/{apartment}', 'forceDelete')->name('apartment.forceDelete');
-        Route::put('activeApartment/{key}','active')->name('apartment.active');
-        Route::put('invalidApartment/{key}', 'inactive')->name('apartment.inactive');
+        Route::put('trashedApartment/{apartment}', 'reactivate')
+            ->name('apartment.restoreApartment');
+        Route::delete('trashedApartment/{apartment}', 'forceDelete')
+            ->name('apartment.forceDelete');
+        Route::put('activeApartment/{key}','active')
+            ->name('apartment.active');
+        Route::put('invalidApartment/{key}', 'inactive')
+            ->name('apartment.inactive');
     });
 
     Route::get('trashedApartment', [ApartmentAdminController::class, 'trashed'])

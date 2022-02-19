@@ -17,8 +17,6 @@ class House extends Model
 
     protected $guarded = [];
 
-    protected $escapeWhenCastingToString = false;
-
     public function image(): HasMany
     {
         return $this->hasMany(Image::class);
@@ -57,8 +55,12 @@ class House extends Model
     public function getMapPopupContentAttribute(): string
     {
         $mapPopupContent = '';
-        $mapPopupContent .= '<div class="my-2 font-weight-bold text-red-900"><strong>' . 'Nom: ' . '</strong><br>' . $this->username . '</div>';
-        $mapPopupContent .= '<div class="my-2 font-weight-bold text-red-900"><strong>' . 'Commune: ' . '</strong><br>' . $this->commune . '</div>';
+        $mapPopupContent .= '<div class="my-2 font-weight-bold text-red-900">
+            <strong>' . 'Nom: ' . '</strong>
+            <br>' . $this->username . '</div>';
+        $mapPopupContent .= '<div class="my-2 font-weight-bold text-red-900">
+            <strong>' . 'Commune: ' . '</strong>
+            <br>' . $this->commune . '</div>';
         $mapPopupContent .= '<div class="my-2"><stroong>
             <a href="' . route('roomsParty.show', $this->key) . '" title="' . $this->title . '">
                 ' . 'Voir plus' . '
