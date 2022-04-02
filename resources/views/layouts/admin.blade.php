@@ -11,6 +11,7 @@
     <title>{{ config('app.name') }} | @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('admins/css/dashlite.css') }}">
     @yield('styles')
+    @livewireStyles
 </head>
 
 <body class="nk-body bg-lighter npc-general has-sidebar ">
@@ -28,10 +29,10 @@
             </div>
         </div>
     </div>
+    @livewireStyles
     <script src="{{ asset('admins/js/bundle.js') }}"></script>
     <script src="{{ asset('admins/js/scripts.js') }}"></script>
     @include('sweetalert::alert')
     @yield('scripts')
 </body>
-
 </html>

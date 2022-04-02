@@ -4,13 +4,14 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Models\Image;
-use App\Services\ImageUploader;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\Traits\ImageUploader;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use App\Contracts\ImageRepositoryInterface;
 
-class ImageRepository
+class ImageRepository implements ImageRepositoryInterface
 {
     use ImageUploader;
 
@@ -22,7 +23,7 @@ class ImageRepository
             ->get();
     }
 
-    public function getOneByKey(string $key): Model|Builder
+    public function show(string $key): Model|Builder
     {
         return Image::query()
             ->where('key', '=', $key)

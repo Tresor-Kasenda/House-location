@@ -22,7 +22,8 @@ Route::get('search-location', [SearchController::class, 'searchLocation'])->name
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function (){
+
+Route::group(['prefix' => 'admins', 'as' => 'admins.', 'middleware' => ['admins', 'auth']], function(){
     Route::get('admin/apartment', [App\Http\Controllers\HomeController::class, 'index'])->name('backend.index');
     Route::resource('apartment', ApartmentAdminController::class);
     Route::resource('images', ImageAdminController::class);

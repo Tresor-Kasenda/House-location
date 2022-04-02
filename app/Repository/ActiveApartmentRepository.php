@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Enums\HouseEnum;
 use App\Models\House;
-use App\Repository\Interface\ActiveApartmentRepositoryInterface;
-use App\Services\ImageUploader;
-use Illuminate\Database\Eloquent\Builder;
+use App\Enums\HouseEnum;
+use App\Traits\ImageUploader;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use App\Contracts\ActiveApartmentRepositoryInterface;
 
 class ActiveApartmentRepository implements ActiveApartmentRepositoryInterface
 {

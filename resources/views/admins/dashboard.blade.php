@@ -16,15 +16,15 @@
             </div>
             <div class="nk-block">
                 <div class="row g-gs">
-                    @include('admins.components.statistic', [
+                    @include('admins.components._statistic', [
                         'username' => "Appartement",
                         'amount' => \App\Models\House::count()
                     ])
-                    @include('admins.components.statistic', [
+                    @include('admins.components._statistic', [
                        'username' => "Images",
                        'amount' => \App\Models\Image::count()
                    ])
-                    @include('admins.components.statistic', [
+                    @include('admins.components._statistic', [
                         'username' => "Utilisateur",
                         'amount' => \App\Models\User::count()
                     ])

@@ -11,7 +11,7 @@ class ApartmentForm extends Form
     public function buildForm()
     {
         $this
-            ->add('price_per_month', 'number', [
+            ->add('prices', 'number', [
                 'label' => "Prix mensuel"
             ])
             ->add('address', 'text', [
@@ -20,7 +20,7 @@ class ApartmentForm extends Form
             ->add('guarantees', 'number', [
                 'label' => "Garantie"
             ])
-            ->add('phone_number', 'text',[
+            ->add('phoneNumber', 'text',[
                 'label' => "Numero Telephone"
             ])
             ->add('email', 'text', [
@@ -44,7 +44,7 @@ class ApartmentForm extends Form
             ->add('district', 'text', [
                 'label' => "Quartier"
             ])
-            ->add('piece_number', 'number', [
+            ->add('roomNumber', 'number', [
                 'label' => "Nombre des pieces"
             ])
             ->add('categories','choice',[

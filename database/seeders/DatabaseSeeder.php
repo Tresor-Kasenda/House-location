@@ -7,8 +7,5 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    public function run()
-    {
-        $this->call(AdminApartmentSeeder::class);
-    }
+    public function run(){}
 }

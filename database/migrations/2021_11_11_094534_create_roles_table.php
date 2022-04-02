@@ -18,8 +18,8 @@ return new class extends Migration
         });
 
         Role::create(['name' => 'USERS']);
+        Role::create(['name' => 'COMMISSIONNERS']);
         Role::create(['name' => 'ADMINS']);
-        Role::create(['name' => 'MANAGERS']);
     }
 
     public function down()

@@ -11,11 +11,13 @@
     <link rel="stylesheet" href="{{ asset('app/css/tailwind.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     @yield('styles')
+    @livewireStyles
 </head>
 <body class="text-gray-500">
     @include('frontends.partials.header')
     @yield('content')
     <script src="{{ asset('app/js/app.js') }}"></script>
     @yield('scripts')
+    @livewireStyles
 </body>
 </html>

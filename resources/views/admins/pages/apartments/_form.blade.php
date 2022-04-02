@@ -35,7 +35,7 @@
         </div>
         <div class="form-group">
             <div class="form-control-wrap">
-                {!! form_row($form->phone_number) !!}
+                {!! form_row($form->phoneNumber) !!}
             </div>
         </div>
         <div class="form-group">
@@ -49,7 +49,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <div class="form-control-wrap">
-                {!! form_row($form->price_per_month) !!}
+                {!! form_row($form->prices) !!}
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <div class="form-control-wrap">
-                {!! form_row($form->piece_number) !!}
+                {!! form_row($form->roomNumber) !!}
             </div>
         </div>
     </div>

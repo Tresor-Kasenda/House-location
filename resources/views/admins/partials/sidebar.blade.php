@@ -16,7 +16,7 @@
         <div class="nk-sidebar-content">
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
-                    @include('admins.components.link', [
+                    @include('admins.components._link', [
                         'route' => route('backend.index'),
                         'name' => 'Dashboard',
                         'icon' => 'ni-home'
@@ -25,19 +25,19 @@
                     <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">Administration</h6>
                     </li>
-                    @include('admins.components.link', [
+                    @include('admins.components._link', [
                         'route' => route('apartment.index'),
                         'name' => 'Appartement',
                         'icon' => 'ni-building'
                     ])
 
-                    @include('admins.components.link', [
+                    @include('admins.components._link', [
                         'route' => route('category.index'),
                         'name' => 'Category',
                         'icon' => 'ni-folder'
                     ])
 
-                    @include('admins.components.link', [
+                    @include('admins.components._link', [
                         'route' => route('images.index'),
                         'name' => 'Images',
                         'icon' => 'ni-files'

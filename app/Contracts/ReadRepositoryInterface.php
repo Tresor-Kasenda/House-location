@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Repository\Interface;
+namespace App\Contracts;
 
 interface ReadRepositoryInterface
 {

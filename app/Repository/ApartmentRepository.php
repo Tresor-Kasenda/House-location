@@ -5,7 +5,7 @@ namespace App\Repository;
 
 use App\Enums\HouseEnum;
 use App\Models\House;
-use App\Services\ImageUploader;
+use App\Traits\ImageUploader;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
