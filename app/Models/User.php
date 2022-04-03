@@ -5,6 +5,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
@@ -26,9 +28,13 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-
-    public function house()
+    public function house(): HasMany
     {
         return $this->hasMany(House::class);
+    }
+
+    public function commissioner(): HasOne
+    {
+        return $this->hasOne(Commissioner::class);
     }
 }

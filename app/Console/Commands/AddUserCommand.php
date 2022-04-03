@@ -3,8 +3,11 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use App\Models\Role;
+use App\Models\User;
 use App\Enums\UserRoleEnum;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Hash;
 
 class AddUserCommand extends Command
 {

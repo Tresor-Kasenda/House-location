@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Apps;
 
 use App\Http\Controllers\Controller;
 use App\Repository\ApartmentRepository;
-use App\Repository\Frontend\HomeFrontendRepository;
+use App\Repository\Apps\HomeFrontendRepository;
 use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller

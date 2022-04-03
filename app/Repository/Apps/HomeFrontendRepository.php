@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Repository\Frontend;
+namespace App\Repository\Apps;
 
 use App\Enums\HouseEnum;
 use App\Models\House;
@@ -21,7 +21,7 @@ class HomeFrontendRepository
     public function getAllByPrices(): Collection
     {
         return House::query()
-            ->where('price_per_month', '<=', 40)
+            ->where('prices', '<=', 40)
             ->when('status', fn ($builder) => $builder->where('status', HouseEnum::CONFIRM))
             ->limit(4)
             ->inRandomOrder()
@@ -44,12 +44,10 @@ class HomeFrontendRepository
             ->limit(8)
             ->inRandomOrder()
             ->when('status',
-                fn ($builder) =>
-                    $builder->where('status', HouseEnum::CONFIRM)
+                fn ($builder) => $builder->where('status', HouseEnum::CONFIRM)
             )
             ->when('commune',
-                fn ($builder) =>
-                    $builder->where('commune', $model->commune)
+                fn ($builder) => $builder->where('commune', $model->commune)
             )
             ->get();
     }

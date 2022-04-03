@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Contracts\CategoryRepositoryInterface;
+use App\Repository\CategoryRepository;
 use App\Repository\ImageRepository;
 use App\Repository\ApartmentRepository;
 use Illuminate\Support\ServiceProvider;
@@ -14,6 +16,7 @@ class RepositoryServiceProvider extends ServiceProvider
     protected array $repositories = [
         ImageRepositoryInterface::class => ImageRepository::class,
         ApartmentRepositoryInterface::class => ApartmentRepository::class,
+        CategoryRepositoryInterface::class => CategoryRepository::class
     ];
 
     /**

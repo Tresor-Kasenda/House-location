@@ -3,28 +3,24 @@
 use App\Http\Controllers\Admin\ApartmentAdminController;
 use App\Http\Controllers\Admin\CategoryAdminController;
 use App\Http\Controllers\Admin\ConfirmedApartmentController;
+use App\Http\Controllers\Admin\HomeAdminController;
 use App\Http\Controllers\Admin\ImageAdminController;
-use App\Http\Controllers\Frontend\AboutController;
-use App\Http\Controllers\Frontend\CategoryController;
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\LocationController;
-use App\Http\Controllers\Frontend\SearchController;
+use App\Http\Controllers\Apps\AboutController;
+use App\Http\Controllers\Apps\CategoryController;
+use App\Http\Controllers\Apps\HomeController;
+use App\Http\Controllers\Apps\LocationController;
+use App\Http\Controllers\Apps\SearchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeController::class)->name('home.index');
-
-Route::resource('categories', CategoryController::class);
-Route::get('abouts', AboutController::class)->name('abouts.index');
-Route::get('localisation', LocationController::class)->name('localisation.index');
-Route::get('appartement', [SearchController::class, 'searchHouse'])->name('search.location');
-Route::get('search-location', [SearchController::class, 'searchLocation'])->name('location.search');
-
 Auth::routes();
 
-
-Route::group(['prefix' => 'admins', 'as' => 'admins.', 'middleware' => ['admins', 'auth']], function(){
-    Route::get('admin/apartment', [App\Http\Controllers\HomeController::class, 'index'])->name('backend.index');
+Route::group([
+    'prefix' => 'admins',
+    'as' => 'admins.',
+    'middleware' => ['admins', 'auth']
+], function(){
+    Route::resource('backend', HomeAdminController::class);
     Route::resource('apartment', ApartmentAdminController::class);
     Route::resource('images', ImageAdminController::class);
     Route::resource('/admin/category', CategoryAdminController::class);
@@ -43,3 +39,29 @@ Route::group(['prefix' => 'admins', 'as' => 'admins.', 'middleware' => ['admins'
     Route::get('trashedApartment', [ApartmentAdminController::class, 'trashed'])
         ->name('apartment.trashed');
 });
+
+Route::group([
+    'prefix' => 'commissioner',
+    'as' => 'commissioner.',
+    'middleware' => ['commissioner', 'auth']
+], function(){
+    Route::resource('backend', HomeAdminController::class);
+
+});
+
+Route::group([
+    'prefix' => 'users',
+    'as' => 'users.',
+    'middleware' => ['users', 'auth']
+], function(){
+    Route::resource('backend', HomeAdminController::class);
+});
+
+
+Route::get('/', HomeController::class)->name('home.index');
+
+Route::resource('categories', CategoryController::class);
+Route::get('abouts', AboutController::class)->name('abouts.index');
+Route::get('localisation', LocationController::class)->name('localisation.index');
+Route::get('apartment', [SearchController::class, 'searchHouse'])->name('search.location');
+Route::get('search-location', [SearchController::class, 'searchLocation'])->name('location.search');

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Apps;
 
 use App\Http\Controllers\Controller;
 use App\Models\House;
-use App\Repository\Frontend\SearchFrontendRepository;
+use App\Repository\Apps\SearchFrontendRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
