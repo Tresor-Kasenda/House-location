@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\ApartmentAdminController;
-use App\Http\Controllers\Admin\CategoryAdminController;
-use App\Http\Controllers\Admin\ConfirmedApartmentController;
-use App\Http\Controllers\Admin\HomeAdminController;
-use App\Http\Controllers\Admin\ImageAdminController;
+use App\Http\Controllers\Admins\ApartmentAdminController;
+use App\Http\Controllers\Admins\CategoryAdminController;
+use App\Http\Controllers\Admins\ConfirmedApartmentController;
+use App\Http\Controllers\Admins\HomeAdminController;
+use App\Http\Controllers\Admins\ImageAdminController;
+use App\Http\Controllers\Admins\ReservationAdminController;
+use App\Http\Controllers\Admins\UsersAdminController;
 use App\Http\Controllers\Apps\AboutController;
 use App\Http\Controllers\Apps\CategoryController;
 use App\Http\Controllers\Apps\HomeController;
@@ -20,10 +22,12 @@ Route::group([
     'as' => 'admins.',
     'middleware' => ['admins', 'auth']
 ], function(){
-    Route::resource('backend', HomeAdminController::class);
-    Route::resource('apartment', ApartmentAdminController::class);
+    Route::resource('backend', HomeAdminController::class)->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
+    Route::resource('apartments', ApartmentAdminController::class);
     Route::resource('images', ImageAdminController::class);
-    Route::resource('/admin/category', CategoryAdminController::class);
+    Route::resource('categories', CategoryAdminController::class);
+    Route::resource('users', UsersAdminController::class)->except(['create', 'store', 'update', 'edit']);
+    Route::resource('reservations', ReservationAdminController::class)->except(['create', 'store', 'update', 'edit']);
 
     Route::controller(ConfirmedApartmentController::class)->group(function (){
         Route::put('trashedApartment/{apartment}', 'reactivate')
@@ -46,7 +50,6 @@ Route::group([
     'middleware' => ['commissioner', 'auth']
 ], function(){
     Route::resource('backend', HomeAdminController::class);
-
 });
 
 Route::group([
