@@ -8,15 +8,15 @@
             <div class="nk-block-head nk-block-head-sm">
                 <div class="nk-block-between">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Appartement</h3>
+                        <h3 class="nk-block-title page-title">Apartments</h3>
                     </div>
                     <div class="nk-block-head-content">
                         <div class="toggle-wrap nk-block-tools-toggle">
                             <div class="toggle-expand-content" data-content="pageMenu">
                                 <ul class="nk-block-tools g-3">
                                     <li class="preview-item">
-                                        <a href="{{ route('apartment.index') }}" class="btn btn-dim btn-secondary btn-sm">
-                                            <em class="icon ni ni-histroy mr-1"></em> Historique
+                                        <a href="{{ route('admins.apartments.index') }}" class="btn btn-dim btn-light btn-sm">
+                                            <em class="icon ni ni-arrow-left"></em> Historique
                                         </a>
                                     </li>
                                 </ul>
@@ -89,7 +89,7 @@
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li>
                                                                     @include('admins.Components.update', [
-                                                                        'route' => 'apartment.restoreApartment',
+                                                                        'route' => 'admins.apartment.restoreApartment',
                                                                         'callback' => $room->key,
                                                                         'button' => 'btn-dim',
                                                                         'icon' => 'ni-undo',
@@ -97,7 +97,7 @@
                                                                     ])
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('apartment.forceDelete', $room->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                                    <form action="{{ route('admins.apartment.forceDelete', $room->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')
                                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                                         <button type="submit" class="btn btn-dim">

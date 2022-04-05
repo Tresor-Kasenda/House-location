@@ -3,37 +3,29 @@
 namespace App\Providers;
 
 use App\Contracts\CategoryRepositoryInterface;
-use App\Repository\CategoryRepository;
-use App\Repository\ImageRepository;
-use App\Repository\ApartmentRepository;
+use App\Contracts\ReservationRepositoryInterface;
+use App\Contracts\UserRepositoryInterface;
+use App\Repository\Admins\ApartmentRepository;
+use App\Repository\Admins\CategoryRepository;
+use App\Repository\Admins\ImageRepository;
+use App\Repository\Admins\ReservationRepository;
+use App\Repository\Admins\UserRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\ImageRepositoryInterface;
 use App\Contracts\ApartmentRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
-
     protected array $repositories = [
         ImageRepositoryInterface::class => ImageRepository::class,
-        ApartmentRepositoryInterface::class => ApartmentRepository::class,
-        CategoryRepositoryInterface::class => CategoryRepository::class
+        CategoryRepositoryInterface::class => CategoryRepository::class,
+        UserRepositoryInterface::class => UserRepository::class,
+        ReservationRepositoryInterface::class => ReservationRepository::class,
+        ApartmentRepositoryInterface::class => ApartmentRepository::class
     ];
 
-    /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
-    {
+    public function register(){}
 
-    }
-
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
     public function boot()
     {
         foreach ($this->repositories as $interface => $implementation) {

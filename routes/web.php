@@ -22,12 +22,15 @@ Route::group([
     'as' => 'admins.',
     'middleware' => ['admins', 'auth']
 ], function(){
-    Route::resource('backend', HomeAdminController::class)->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
+    Route::resource('backend', HomeAdminController::class)
+        ->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
     Route::resource('apartments', ApartmentAdminController::class);
-    Route::resource('images', ImageAdminController::class);
     Route::resource('categories', CategoryAdminController::class);
-    Route::resource('users', UsersAdminController::class)->except(['create', 'store', 'update', 'edit']);
-    Route::resource('reservations', ReservationAdminController::class)->except(['create', 'store', 'update', 'edit']);
+    Route::resource('images', ImageAdminController::class);
+    Route::resource('users', UsersAdminController::class)
+        ->except(['create', 'store', 'update', 'edit']);
+    Route::resource('reservations', ReservationAdminController::class)
+        ->except(['create', 'store', 'update', 'edit']);
 
     Route::controller(ConfirmedApartmentController::class)->group(function (){
         Route::put('trashedApartment/{apartment}', 'reactivate')
@@ -59,7 +62,6 @@ Route::group([
 ], function(){
     Route::resource('backend', HomeAdminController::class);
 });
-
 
 Route::get('/', HomeController::class)->name('home.index');
 

@@ -10,7 +10,7 @@
                     <h3 class="nk-block-title page-title">Creation des appartements</h3>
                 </div>
                 <div class="nk-block-head-content">
-                    <a href="{{ route('apartment.index') }}" class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
+                    <a href="{{ route('admins.apartments.index') }}" class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
                         <em class="icon ni ni-arrow-left"></em>
                         <span>Back</span>
                     </a>

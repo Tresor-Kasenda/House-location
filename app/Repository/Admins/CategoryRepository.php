@@ -1,51 +1,51 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Repository\Admins;
 
+use App\Contracts\CategoryRepositoryInterface;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
-class CategoryRepository
+class CategoryRepository implements CategoryRepositoryInterface
 {
-    public function getAll(): Collection
+    public function getContents(): Collection
     {
         return Category::all();
     }
 
-    public function create(Request $request): Model|Builder|Category
+    public function created($attributes): Model|Builder|Category
     {
         $category = Category::query()
             ->create([
-                'name' => $request->name
+                'name' => $attributes->name
             ]);
         toast('Une nouvelle catégorie à été  créer', 'success');
         return $category;
     }
 
-    public function getOneByKey(string $id): Model|Builder
+    public function getElementByKey(string $key): Model|Builder
     {
         return Category::query()
-            ->where('key', '=', $id)
+            ->where('key', '=', $key)
             ->firstOrFail();
     }
 
-    public function update(string $key, $request): Model|Builder
+    public function updated(string $key, $attributes): Model|Builder
     {
-        $category = $this->getOneByKey($key);
+        $category = $this->getElementByKey($key);
         $category->update([
-            'name' => $request->name
+            'name' => $attributes->name
         ]);
         toast('Une mise a jour a ete effectuer', 'success');
         return $category;
     }
 
-    public function delete(string $key): Builder|Model
+    public function deleted(string $key): Builder|Model
     {
-        $category = $this->getOneByKey($key);
+        $category = $this->getElementByKey($key);
         $category->delete();
         toast('Categorie supprimer avec success', 'success');
         return $category;

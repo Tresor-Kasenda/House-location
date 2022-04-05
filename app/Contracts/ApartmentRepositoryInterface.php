@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\Contracts;
 
-
 interface ApartmentRepositoryInterface
 {
-    public function getAllVerified();
+    public function getContents();
 
-    public function getAllByCategoryId(string $categoryId);
+    public function show(string $key);
 
-    public function getOnlyValidatedByKey(string $id);
+    public function created($attributes);
+
+    public function updated(string $key, $attributes);
+
+    public function deleted(string $eky);
 }

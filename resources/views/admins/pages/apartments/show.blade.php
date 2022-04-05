@@ -17,7 +17,7 @@
                                     <li class="preview-item">
                                         @if ($room->status == false)
                                             @include('admins.components.update', [
-                                                'route' => 'apartment.active',
+                                                'route' => 'admins.apartment.active',
                                                 'callback' => $room->key,
                                                 'button' => 'btn-outline-success btn-sm',
                                                 'icon' => 'ni-check-circle',
@@ -25,7 +25,7 @@
                                             ])
                                         @else
                                             @include('admins.components.update', [
-                                                'route' => 'apartment.inactive',
+                                                'route' => 'admins.apartment.inactive',
                                                 'callback' => $room->key,
                                                 'button' => 'btn-outline-danger btn-sm',
                                                 'icon' => 'ni-check-circle',
@@ -34,7 +34,7 @@
                                         @endif
                                     </li>
                                     <li class="preview-item">
-                                        <a href="{{ route('apartment.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
+                                        <a href="{{ route('admins.apartments.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
                                             <em class="icon ni ni-arrow-left"></em>
                                             <span>Back</span>
                                         </a>

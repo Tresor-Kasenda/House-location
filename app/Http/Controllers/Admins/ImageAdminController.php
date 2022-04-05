@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admins;
 
+use App\Contracts\ImageRepositoryInterface;
 use App\Forms\ImageForm;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImageRequest;
-use App\Repository\ImageRepository;
-use App\Repository\Interface\ImageRepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -18,10 +18,10 @@ class ImageAdminController extends Controller
 {
     public function __construct(
         public FormBuilder $builder,
-        public ImageRepository $repository
+        public ImageRepositoryInterface $repository
     ){}
 
-    public function index(): Factory|View|Application
+    public function index(): Renderable
     {
         return view('admins.pages.images.index', [
             'images' => $this->repository->getContents()
@@ -32,24 +32,23 @@ class ImageAdminController extends Controller
     {
         $form = $this->builder->create(ImageForm::class, [
             'method' => 'POST',
-            'url' => route('images.store')
+            'url' => route('admins.images.store')
         ]);
         return view('admins.pages.images.create', compact('form'));
     }
 
     public function store(ImageRequest $request): RedirectResponse
     {
-        $this->repository->create($request);
-        return redirect()->route('images.index');
+        $this->repository->created(attributes: $request);
+        return redirect()->route('admins.images.index');
     }
-
 
     public function edit(string $key): Factory|View|Application
     {
-        $image = $this->repository->getOneByKey($key);
+        $image = $this->repository->show(key: $key);
         $form = $this->builder->create(ImageForm::class, [
             'method' => 'PUT',
-            'url' => route('images.update', $image->key),
+            'url' => route('admins.images.update', $image->key),
             'model' => $image
         ]);
         return view('admins.pages.images.create', compact('form', 'image'));
@@ -57,13 +56,13 @@ class ImageAdminController extends Controller
 
     public function update(string $key, ImageRequest $request): RedirectResponse
     {
-        $this->repository->update($key, $request);
-        return redirect()->route('images.index');
+        $this->repository->updated(key: $key, attributes: $request);
+        return redirect()->route('admins.images.index');
     }
 
     public function destroy(string $key): RedirectResponse
     {
-        $this->repository->forceDelete($key);
-        return redirect()->route('images.index');
+        $this->repository->deleted(key: $key);
+        return back();
     }
 }

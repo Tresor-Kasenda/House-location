@@ -6,7 +6,5 @@ namespace App\Contracts;
 
 interface ReadRepositoryInterface
 {
-    public function getContents();
-
-    public function update(string $key);
+    public function getElementByKey(string $key);
 }

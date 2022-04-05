@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Repository\Admins;
 
+use App\Contracts\ApartmentRepositoryInterface;
 use App\Enums\HouseEnum;
 use App\Models\House;
 use App\Traits\ImageUploader;
@@ -11,11 +12,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
-class ApartmentRepository
+class ApartmentRepository implements ApartmentRepositoryInterface
 {
     use ImageUploader;
 
-    public function getAll(): Collection
+    public function getContents(): Collection
     {
         return House::query()
             ->inRandomOrder()
@@ -33,7 +34,7 @@ class ApartmentRepository
             ->get();
     }
 
-    public function getOneByKey(string $key): Model|Builder
+    public function show(string $key): Model|Builder
     {
         return House::query()
             ->where('key', '=', $key)
@@ -49,31 +50,31 @@ class ApartmentRepository
         return $house->load('image');
     }
 
-    public function create(Request $request): Builder|Model
+    public function created($attributes): Builder|Model
     {
         $apartment = House::query()
             ->create([
-                'price_per_month' => $request->price_per_month,
-                'address'=> $request->address,
-                'guarantees'=> $request->guarantees,
-                'phone_number'=> $request->phone_number,
-                'email'=> $request->email,
-                'latitude'=> $request->latitude,
-                'longitude'=> $request->longitude,
-                'images'=> $this::uploadFiles($request),
-                'commune'=> $request->commune,
-                'district'=> $request->district,
-                'piece_number'=> $request->piece_number,
-                'town' => $request->town
+                'price_per_month' => $attributes->price_per_month,
+                'address'=> $attributes->address,
+                'guarantees'=> $attributes->guarantees,
+                'phone_number'=> $attributes->phone_number,
+                'email'=> $attributes->email,
+                'latitude'=> $attributes->latitude,
+                'longitude'=> $attributes->longitude,
+                'images'=> $this::uploadFiles($attributes),
+                'commune'=> $attributes->commune,
+                'district'=> $attributes->district,
+                'piece_number'=> $attributes->piece_number,
+                'town' => $attributes->town
             ]);
-        $apartment->categories()->attach($request->categories);
+        $apartment->categories()->attach($attributes->categories);
         toast("Un nouveau appartement à été ajouter", 'success');
         return $apartment;
     }
 
-    public function moveToTrash(string $key): Model|Builder|int|null
+    public function deleted(string $key): Model|Builder|int|null
     {
-        $room = $this->getOneByKey($key);
+        $room = $this->show($key);
         if ($room->status == true){
             toast('Veillez désactiver votre appartement avant de le suspendre', 'warning');
             return null;
@@ -83,10 +84,8 @@ class ApartmentRepository
         return $room;
     }
 
-    public function trashed(): array|Collection
+    public function updated(string $key, $attributes)
     {
-        return House::onlyTrashed()
-            ->orderByDesc('created_at')
-            ->get();
+        // TODO: Implement updated() method.
     }
 }

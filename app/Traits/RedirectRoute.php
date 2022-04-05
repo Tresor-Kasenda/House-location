@@ -16,15 +16,15 @@ trait RedirectRoute
     {
         switch(Auth::user()->role_id){
             case UserRoleEnum::ADMINS:
-                $this->redirectTo = route('');
+                $this->redirectTo = route('admins.backend.index');
                 return $this->redirectTo;
                 break;
             case UserRoleEnum::COMMISSIONNERS:
-                $this->redirectTo = route('');
+                $this->redirectTo = route('commissioner.backend.index');
                 return $this->redirectTo;
                 break;
             case UserRoleEnum::USERS:
-                $this->redirectTo = route('');
+                $this->redirectTo = route('users.backend.index');
                 return $this->redirectTo;
                 break;
             default:

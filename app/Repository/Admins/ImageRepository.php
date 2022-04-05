@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Repository\Admins;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
@@ -30,32 +30,32 @@ class ImageRepository implements ImageRepositoryInterface
             ->firstOrFail();
     }
 
-    public function create(Request $request): Builder|Model
+    public function created($attributes): Builder|Model
     {
         $images = Image::query()
             ->create([
-                'images' => self::uploadFiles($request),
-                'house_id' => $request->house_id
+                'images' => self::uploadFiles($attributes),
+                'house_id' => $attributes->house_id
             ]);
         toast('Une image a ete ajouter', 'success');
         return $images;
     }
 
-    public function update(string $key, $request): Model|Builder
+    public function updated(string $key, $attributes): Model|Builder
     {
-        $image = $this->getOneByKey($key);
+        $image = $this->show(key: $key);
         $this->removePathOfImages($image);
         $image->update([
-            'images' => self::uploadFiles($request),
-            'house_id' => $request->house_id
+            'images' => self::uploadFiles($attributes),
+            'house_id' => $attributes->house_id
         ]);
         toast('Une mise a jour a ete effectuer', 'success');
         return $image;
     }
 
-    public function forceDelete(string $key): Model|Builder
+    public function deleted(string $key): Model|Builder
     {
-        $image = $this->getOneByKey($key);
+        $image = $this->show(key: $key);
         $image->delete();
         toast('Photo Supprimer avec success', 'info');
         return $image;
