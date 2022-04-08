@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Apps;
 
 use App\Http\Controllers\Controller;
-use App\Repository\ApartmentRepository;
+use App\Repository\Admins\ApartmentRepository;
 use App\Repository\Apps\HomeFrontendRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Renderable;
@@ -20,7 +20,7 @@ class CategoryController extends Controller
 
     public function index(): Renderable
     {
-        return view('frontends.pages.category.index', [
+        return view('apps.pages.category.index', [
             'apartments' => $this->repository->getAllVerified()
         ]);
     }
@@ -28,7 +28,7 @@ class CategoryController extends Controller
     public function show(string $key): Factory|View|Application
     {
         $apartment = $this->repository->getOnlyValidatedByKey($key);
-        return view('frontends.pages.category.show', [
+        return view('apps.pages.category.show', [
             'apartment' => $apartment,
             'apartments' => $this->frontendRepository->getByDetail($apartment)
         ]);

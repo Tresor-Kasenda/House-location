@@ -1,17 +1,38 @@
-let hamburger = document.querySelector('#hamburger')
-let navItems = document.querySelector('#navitems')
-let layer = document.querySelector('#layer')
+const mobMenu = document.querySelector('#menuMob')
+const btnHumberger = document.querySelector('#btnHumberger')
+const overlayM = document.querySelector('#overlayM')
+const toggleSearchBox = document.querySelector('#toggleSearchBox')
+const modalSearch = document.querySelector('#modaleSearch')
+const closeModalSearch = document.querySelector('#closeModalSearch')
 
-hamburger.addEventListener('click', function(){
-    if (navItems.classList.contains('h-0')){
-        navItems.classList.replace('h-0', 'h-64')
-        navItems.classList.replace('-translate-y-10', 'translate-y-0')
-        navItems.classList.add('py-6')
-        layer.classList.replace('invisible', 'visible')
-    } else{
-        navItems.classList.replace('h-64', 'h-0')
-        navItems.classList.remove('py-6')
-        navItems.classList.replace('translate-y-0', '-translate-y-10')
-        layer.classList.replace('visible', 'invisible')
+btnHumberger.addEventListener('click', (e) => {
+    e.preventDefault()
+    if (mobMenu.classList.contains('-left-[83.333333%]')) {
+        mobMenu.classList.remove('-left-[83.333333%]')
+        mobMenu.classList.add('left-0')
+        overlayM.classList.replace('scale-0', 'scale-100')
+        return
     }
+    overlayM.classList.replace('scale-100', 'scale-0')
+    mobMenu.classList.remove('left-0')
+    mobMenu.classList.add('-left-[83.333333%]')
+})
+overlayM.addEventListener('click', (e) => {
+    e.preventDefault()
+    overlayM.classList.replace('scale-100', 'scale-0')
+    mobMenu.classList.remove('left-0')
+    mobMenu.classList.add('-left-[83.333333%]')
+})
+toggleSearchBox.addEventListener('click', (e) => {
+    e.preventDefault()
+    modalSearch.classList.remove('-z-10')
+    modalSearch.classList.add('z-[1006]')
+    modalSearch.classList.remove('opacity-0')
+    modalSearch.querySelector('#modalContent').classList.remove('-translate-y-full', 'opacity-0')
+})
+closeModalSearch.addEventListener('click', (e) => {
+    e.preventDefault()
+    modalSearch.classList.remove('z-[1006]')
+    modalSearch.classList.add('opacity-0', '-z-10')
+    modalSearch.querySelector('#modalContent').classList.add('-translate-y-full', 'opacity-0')
 })

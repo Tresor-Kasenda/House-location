@@ -3,52 +3,28 @@ declare(strict_types=1);
 
 namespace App\Repository\Apps;
 
+use App\Contracts\HomeRepositoryInterface;
 use App\Enums\HouseEnum;
 use App\Models\House;
-use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Collection;
 
-class HomeFrontendRepository
+class HomeFrontendRepository implements HomeRepositoryInterface
 {
-    public function getAll(): Collection
+    public function getContent(): Collection|array
     {
         return House::query()
-            ->orderBy('created_at', 'DESC')
-            ->when('status', fn ($builder) => $builder->where('status', HouseEnum::CONFIRM))
-            ->inRandomOrder()
+            ->orderByDesc('created_at')
+            ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
             ->get();
     }
 
-    public function getAllByPrices(): Collection
+    public function getAllByPrices(int|null $prices = 40): Collection
     {
         return House::query()
-            ->where('prices', '<=', 40)
-            ->when('status', fn ($builder) => $builder->where('status', HouseEnum::CONFIRM))
+            ->where('prices', '<=', $prices)
+            ->when('status', fn ($builder) => $builder->where('status', HouseEnum::CONFIRMED))
             ->limit(4)
             ->inRandomOrder()
-            ->get();
-    }
-
-    public function getByLatestCreation(): Collection
-    {
-        return House::query()
-            ->latest()
-            ->limit(4)
-            ->when('status', fn ($builder) => $builder->where('status', HouseEnum::CONFIRM))
-            ->get();
-    }
-
-
-    public function  getByDetail($model): Collection|array
-    {
-        return House::query()
-            ->limit(8)
-            ->inRandomOrder()
-            ->when('status',
-                fn ($builder) => $builder->where('status', HouseEnum::CONFIRM)
-            )
-            ->when('commune',
-                fn ($builder) => $builder->where('commune', $model->commune)
-            )
             ->get();
     }
 }

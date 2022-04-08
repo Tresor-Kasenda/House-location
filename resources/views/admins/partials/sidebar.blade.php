@@ -38,12 +38,6 @@
                     ])
 
                     @include('admins.components._link', [
-                        'route' => route('admins.images.index'),
-                        'name' => 'Images',
-                        'icon' => 'ni-camera'
-                    ])
-
-                    @include('admins.components._link', [
                         'route' => route('admins.reservations.index'),
                         'name' => 'Reservations',
                         'icon' => 'ni-coin-alt'

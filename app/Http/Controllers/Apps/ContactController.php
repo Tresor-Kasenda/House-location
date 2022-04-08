@@ -6,10 +6,10 @@ namespace App\Http\Controllers\Apps;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 
-class AboutController extends Controller
+class ContactController extends Controller
 {
-    public function __invoke(): Renderable
+    public function index(): Renderable
     {
-        return view('apps.pages.about.index');
+        return view('apps.pages.contacts.index');
     }
 }

@@ -11,12 +11,12 @@
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png')  }}">
     @livewireStyles
 </head>
-<body class="text-gray-500">
-    @include('frontends.partials.header')
+<body class="text-gray-500  overflow-x-hidden w-full">
+    @include('apps.partials.header')
     <div>
         @yield('content')
     </div>
-    @include('frontends.partials.footer')
+    @include('apps.partials.footer')
     @livewireStyles
     @if(env('APP_ENV') === 'local')
         <script src="{{ asset('app/js/jquery.js') }}"></script>

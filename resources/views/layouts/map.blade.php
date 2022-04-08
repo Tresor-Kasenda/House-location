@@ -14,7 +14,7 @@
     @livewireStyles
 </head>
 <body class="text-gray-500">
-    @include('frontends.partials.header')
+    @include('apps.partials.header')
     @yield('content')
     <script src="{{ asset('app/js/app.js') }}"></script>
     @yield('scripts')

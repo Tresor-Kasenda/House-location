@@ -7,14 +7,14 @@
         <div class="container m-auto">
             <div class="relative lg:flex gap-12">
                 <div class="absolute lg:relative hidden lg:block lg:w-3/12 md:w-6/12 md:right-0">
-                    @include('frontends.components._filter')
+                    @include('apps.components._filter')
                 </div>
 
                 <div class="lg:w-9/12">
                     @if (!$apartments->isEmpty())
                         <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                             @foreach($apartments as $apartment)
-                                @include('frontends.components._category')
+                                @include('apps.components._category')
                             @endforeach
                         </div>
                     @else

@@ -1,120 +1,77 @@
 @extends('layouts.auth')
 
-@section('title')
-    Creation des comptes
-@endsection
+@section('title', "Creation des comptes")
 
 @section('content')
-    <div class="nk-split nk-split-page nk-split-md">
-        <div class="nk-split-content nk-block-area nk-block-area-column nk-auth-container bg-white w-lg-45">
-            <div class="absolute-top-right d-lg-none p-3 p-sm-5">
-                <a href="#" class="toggle btn btn-white btn-icon btn-light" data-target="athPromo">
-                    <em class="icon ni ni-info"></em>
-                </a>
-            </div>
-            <div class="nk-block nk-block-middle nk-auth-body">
-                <div class="brand-logo pb-5">
-                    <a href="{{ route('home.index') }}" class="logo-link">
-                        <img src="{{ asset('app/images/logo.png')  }}" alt="logo" height="60%">
-                    </a>
-                </div>
-                <div class="nk-block-head">
-                    <div class="nk-block-head-content">
-                        <h5 class="nk-block-title">Register</h5>
-                    </div>
-                </div>
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
-                    <div class="form-group">
-                        <div class="form-label-group">
-                            <label class="form-label" for="name">Nom</label>
-                        </div>
-                        <input
-                            type="text"
-                            class="form-control form-control-lg @error('name') error @enderror"
-                            id="name"
-                            placeholder="Nom de l'utilisateur"
-                            name="name"
-                            value="{{ old('name') }}"
-                            required
-                            autocomplete="name"
-                            autofocus
-                        >
-                        @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <div class="form-label-group">
-                            <label class="form-label" for="email">Email</label>
-                        </div>
-                        <input
-                            type="email"
-                            class="form-control form-control-lg @error('email') error @enderror"
-                            id="email"
-                            name="email"
-                            value="{{ old('email') }}"
-                            required
-                            autocomplete="email"
-                            autofocus
-                            placeholder="Adresse email de l'utilisateur"
-                        >
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <div class="form-label-group">
-                            <label class="form-label" for="password">Mot de passe</label>
-                        </div>
-                        <div class="form-control-wrap">
-                            <input
-                                type="password"
-                                class="form-control form-control-lg @error('password') error @enderror"
-                                id="password"
-                                placeholder="Enter your password"
-                                name="password"
-                                required
-                                autocomplete="new-password"
-                            >
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <input type="hidden" value="avatar3.png" name="picture">
-                    <div class="form-group">
-                        <div class="form-label-group">
-                            <label class="form-label" for="password-confirm">Mot de passe (Confirmation)</label>
-                        </div>
-                        <div class="form-control-wrap">
-                            <input
-                                type="password"
-                                class="form-control form-control-lg @error('password') error @enderror"
-                                id="password-confirm"
-                                placeholder="Enter your password"
-                                name="password_confirmation"
-                                required
-                                autocomplete="new-password"
-                            >
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-lg btn-primary btn-block">S'inscrire</button>
-                    </div>
-                </form>
-                <div class="form-note-s2 pt-4"> Already have an account ?
-                    <a href="{{ route('login') }}">connexion</a>
-                </div>
-            </div>
+    <div class="bg-white w-11/12 sm:w-80 rounded-xl px-4 sm:px-6 py-8 sm:py-10 shadow-lg shadow-purple-200 flex flex-col">
+        <h1 class="text-center text-xl font-semibold text-gray-700 pb-4">Inscrivez-vous</h1>
+        <div class="flex justify-center pb-6">
+            <img src="{{ asset('app/images/logo.png') }}" alt="logoApp" class="block h-14 max-h-14">
         </div>
-        <div class="nk-split-content nk-split-stretch bg-abstract" style="background-image: url('{{ asset('admins/images/event.jpg') }}'); background-position: center; background-size: cover;"></div>
+        <form  method="POST" action="{{ route('register') }}" class="flex w-full flex-col gap-4">
+            @csrf
+            <div class="relative">
+                <input
+                    type="text"
+                    class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
+                    id="name"
+                    placeholder="Nom de l'utilisateur"
+                    name="name"
+                    value="{{ old('name') }}"
+                    autocomplete="name"
+                    autofocus
+                    required>
+                <label for="name" class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
+                    Nom
+                </label>
+            </div>
+            <div class="relative">
+                <input
+                    type="email"
+                    class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
+                    id="email"
+                    name="email"
+                    value="{{ old('email') }}"
+                    autocomplete="email"
+                    autofocus
+                    placeholder="Adresse email de l'utilisateur"
+                    required>
+                <label for="email" class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
+                    Email
+                </label>
+            </div>
+            <div class="relative">
+                <input
+                    type="password"
+                    class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
+                    id="password"
+                    placeholder="Enter your password"
+                    name="password"
+                    autocomplete="new-password"
+                    required>
+                <label for="password" class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
+                    Mot de passe
+                </label>
+            </div>
+            <div class="relative">
+                <input
+                    type="password"
+                    class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
+                    id="password-confirm"
+                    placeholder="Enter your password"
+                    name="password_confirmation"
+                    autocomplete="new-password"
+                    required>
+                <label for="password-confirm" class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
+                    Mot de passe (Confirmation)
+                </label>
+            </div>
+            <div class="w-full">
+                <button type="submit" class="bg-gradient-to-tr from-green-400 to-purple-600 text-white px-5 py-3 rounded-xl text-sm text-center w-full hover:from-purple-600 hover:to-green-400 transition">S'inscrire</button>
+            </div>
+            <div class="flex justify-center">
+                <a href="{{ route('login') }}" class="text-base transition text-gray-600 hover:text-purple-600 underline">Se connecter</a>
+            </div>
+        </form>
     </div>
 @endsection

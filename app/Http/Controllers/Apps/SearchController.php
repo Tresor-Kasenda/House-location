@@ -27,7 +27,7 @@ class SearchController extends Controller
     public function searchLocation(Request $request): Factory|View|Application
     {
         $houses = $this->repository->search(request: $request);
-        return view('frontends.search')
+        return view('apps.search')
             ->with('houses', $houses);
     }
 

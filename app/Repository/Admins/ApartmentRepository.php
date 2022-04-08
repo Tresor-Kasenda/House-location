@@ -28,7 +28,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         return House::query()
             ->with('image')
             ->when('status',
-                fn($builder) => $builder->where('status', HouseEnum::CONFIRM)
+                fn($builder) => $builder->where('status', HouseEnum::CONFIRMED)
             )
             ->orderByDesc('created_at')
             ->get();
