@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
 
+use App\Models\User;
 use App\Enums\StatusEnum;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -13,19 +14,23 @@ return new class extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
-            $table->integer('price_per_month');
+            $table->integer('prices');
             $table->string('commune');
             $table->string('town');
             $table->string('district');
             $table->string('address');
             $table->integer('guarantees');
-            $table->integer('phone_number');
-            $table->integer('piece_number');
+            $table->integer('phoneNumber');
+            $table->integer('roomNumber');
             $table->string('email')->unique();
             $table->decimal('latitude')->nullable();
             $table->decimal('longitude')->nullable();
             $table->string('images');
             $table->boolean('status')->default(StatusEnum::PENDING);
+            $table->string('reference')->unique();
+            $table->foreignIdFor(User::class)
+                ->constrained()
+                ->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -17,7 +17,7 @@ class Category extends Model
     public function houses(): BelongsToMany
     {
         return $this
-            ->belongsToMany(House::class, 'house_category', 'house_id', 'category_id')
+            ->belongsToMany(House::class, 'house_category')
             ->withTimestamps();
     }
 }

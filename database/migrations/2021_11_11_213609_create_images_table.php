@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use App\Models\House;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,8 +14,8 @@ return new class extends Migration
             $table->id();
             $table->string('key')->unique();
             $table->string('images');
-            $table->foreignId('house_id')
-                ->constrained('houses')
+            $table->foreignIdFor(House::class)
+                ->constrained()
                 ->cascadeOnDelete();
             $table->timestamps();
         });

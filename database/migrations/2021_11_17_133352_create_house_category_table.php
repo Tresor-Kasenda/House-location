@@ -1,9 +1,11 @@
 <?php
 declare(strict_types=1);
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\House;
+use App\Models\Category;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -11,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('house_category', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('house_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(House::class)
+                ->constrained()
+                ->cascadeOnDelete();
+            $table->foreignIdFor(Category::class)
+                ->constrained()
+                ->cascadeOnUpdate();
             $table->timestamps();
         });
     }

@@ -8,20 +8,14 @@
     <meta http-equiv="refresh" content="60">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png') }}">
     <title>{{ config('app.name') }} | @yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('admins/css/dashlite.css') }}">
+    <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('app/css/swiper-bundle.min.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="nk-body bg-white npc-default pg-auth">
-    <div class="nk-app-root">
-        <div class="nk-main ">
-            <div class="nk-wrap nk-wrap-nosidebar">
-                <div class="nk-content">
-                    @yield('content')
-                </div>
-            </div>
-        </div>
+<body  class="text-gray-500 min-h-screen bg-gray-100">
+    <div class="flex h-screen w-full justify-center items-center">
+        @yield('content')
     </div>
-    <script src="{{ asset('admins/js/bundle.js') }}"></script>
-    <script src="{{ asset('admins/js/scripts.js') }}"></script>
 </body>
 </html>

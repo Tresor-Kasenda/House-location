@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 
-@section('title')
-    ADMINISTRATION
-@endsection
+@section('title', "ADMINISTRATION")
 
 @section('content')
     <div class="nk-content-inner">
@@ -16,16 +14,16 @@
             </div>
             <div class="nk-block">
                 <div class="row g-gs">
-                    @include('admins.components.statistic', [
-                        'username' => "Appartement",
+                    @include('admins.components._statistic', [
+                        'username' => "Apartments",
                         'amount' => \App\Models\House::count()
                     ])
-                    @include('admins.components.statistic', [
+                    @include('admins.components._statistic', [
                        'username' => "Images",
                        'amount' => \App\Models\Image::count()
                    ])
-                    @include('admins.components.statistic', [
-                        'username' => "Utilisateur",
+                    @include('admins.components._statistic', [
+                        'username' => "Users",
                         'amount' => \App\Models\User::count()
                     ])
 
@@ -44,7 +42,7 @@
                                             class="ecommerce-line-chart-s4 chartjs-render-monitor"
                                             id="salesStatistics"
                                             width="798"
-                                            height="200"
+                                            height="250"
                                             style="display: block; width: 798px; height: 200px;"
                                         ></canvas>
                                     </div>

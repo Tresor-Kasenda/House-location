@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Enums;
 
-class StatusEnum
+enum StatusEnum
 {
     const PUBLISH = true;
     const PENDING = false;
