@@ -15,16 +15,8 @@ class HomeFrontendRepository implements HomeRepositoryInterface
         return House::query()
             ->orderByDesc('created_at')
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
-            ->get();
-    }
-
-    public function getAllByPrices(int|null $prices = 40): Collection
-    {
-        return House::query()
-            ->where('prices', '<=', $prices)
-            ->when('status', fn ($builder) => $builder->where('status', HouseEnum::CONFIRMED))
-            ->limit(4)
             ->inRandomOrder()
+            ->limit(4)
             ->get();
     }
 }

@@ -9,7 +9,6 @@ use App\Models\House;
 use App\Traits\ImageUploader;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
 class ApartmentRepository implements ApartmentRepositoryInterface
@@ -19,7 +18,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
     public function getContents(): Collection
     {
         return House::query()
-            ->inRandomOrder()
+            ->orderByDesc('created_at')
             ->get();
     }
 
@@ -36,16 +35,18 @@ class ApartmentRepository implements ApartmentRepositoryInterface
 
     public function show(string $key): Model|Builder
     {
-        return House::query()
+        $house = House::query()
             ->where('key', '=', $key)
+            ->withCount('reservations')
             ->firstOrFail();
+        return $house->load('categories');
     }
 
     public function getOnlyValidatedByKey(string $id): House|Builder
     {
         $house = House::query()
             ->where('key', '=', $id)
-            ->where('status', '=', HouseEnum::CONFIRM)
+            ->where('status', '=', HouseEnum::CONFIRMED)
             ->firstOrFail();
         return $house->load('image');
     }
@@ -54,18 +55,19 @@ class ApartmentRepository implements ApartmentRepositoryInterface
     {
         $apartment = House::query()
             ->create([
-                'price_per_month' => $attributes->price_per_month,
+                'prices' => $attributes->prices,
                 'address'=> $attributes->address,
                 'guarantees'=> $attributes->guarantees,
-                'phone_number'=> $attributes->phone_number,
+                'phoneNumber'=> $attributes->phoneNumber,
                 'email'=> $attributes->email,
                 'latitude'=> $attributes->latitude,
                 'longitude'=> $attributes->longitude,
                 'images'=> $this::uploadFiles($attributes),
                 'commune'=> $attributes->commune,
                 'district'=> $attributes->district,
-                'piece_number'=> $attributes->piece_number,
-                'town' => $attributes->town
+                'roomNumber'=> $attributes->roomNumber,
+                'town' => $attributes->town,
+                'user_id' => auth()->id()
             ]);
         $apartment->categories()->attach($attributes->categories);
         toast("Un nouveau appartement à été ajouter", 'success');

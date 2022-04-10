@@ -13,6 +13,7 @@ use App\Http\Controllers\Apps\ContactController;
 use App\Http\Controllers\Apps\HomeController;
 use App\Http\Controllers\Apps\LocationController;
 use App\Http\Controllers\Apps\NewsLetterController;
+use App\Http\Controllers\Apps\ReservationController;
 use App\Http\Controllers\Apps\SearchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,10 +35,6 @@ Route::group([
         ->except(['create', 'store', 'update', 'edit']);
 
     Route::controller(ConfirmedApartmentController::class)->group(function (){
-        Route::put('trashedApartment/{apartment}', 'reactivate')
-            ->name('apartment.restoreApartment');
-        Route::delete('trashedApartment/{apartment}', 'forceDelete')
-            ->name('apartment.forceDelete');
         Route::put('activeApartment/{key}','active')
             ->name('apartment.active');
         Route::put('invalidApartment/{key}', 'inactive')
@@ -71,3 +68,7 @@ Route::get('abouts', AboutController::class)->name('abouts.index');
 Route::get('localisation', LocationController::class)->name('location.index');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('news-letters', [NewsLetterController::class, 'index'])->name('newsletters.send');
+Route::controller(ReservationController::class)->group(function (){
+    Route::post('reservation', 'store')->name('reservation.store');
+    Route::get('confirmation/{reference}', 'show')->name('reservation.show');
+});

@@ -1,11 +1,11 @@
 const mobMenu = document.querySelector('#menuMob')
-const btnHumberger = document.querySelector('#btnHumberger')
+const btnHumb = document.querySelector('#btnHumberger')
 const overlayM = document.querySelector('#overlayM')
 const toggleSearchBox = document.querySelector('#toggleSearchBox')
-const modalSearch = document.querySelector('#modaleSearch')
+const modaleSearch = document.querySelector('#modaleSearch')
 const closeModalSearch = document.querySelector('#closeModalSearch')
 
-btnHumberger.addEventListener('click', (e) => {
+btnHumb.addEventListener('click', (e) => {
     e.preventDefault()
     if (mobMenu.classList.contains('-left-[83.333333%]')) {
         mobMenu.classList.remove('-left-[83.333333%]')
@@ -24,15 +24,15 @@ overlayM.addEventListener('click', (e) => {
     mobMenu.classList.add('-left-[83.333333%]')
 })
 toggleSearchBox.addEventListener('click', (e) => {
-    e.preventDefault()
-    modalSearch.classList.remove('-z-10')
-    modalSearch.classList.add('z-[1006]')
-    modalSearch.classList.remove('opacity-0')
-    modalSearch.querySelector('#modalContent').classList.remove('-translate-y-full', 'opacity-0')
+    e.preventDefault(),
+        modaleSearch.classList.remove('-z-10', 'scale-0', 'opacity-0')
+    modaleSearch.classList.add('z-[1006]')
+    //modaleSearch.classList.remove(
+    modaleSearch.querySelector('#modalContent').classList.remove('-translate-y-full', 'opacity-0')
 })
 closeModalSearch.addEventListener('click', (e) => {
     e.preventDefault()
-    modalSearch.classList.remove('z-[1006]')
-    modalSearch.classList.add('opacity-0', '-z-10')
-    modalSearch.querySelector('#modalContent').classList.add('-translate-y-full', 'opacity-0')
+    modaleSearch.classList.remove('z-[1006]')
+    modaleSearch.classList.add('-z-10', 'opacity-0', 'scale-0') // 'opacity-0',
+    modaleSearch.querySelector('#modalContent').classList.add('-translate-y-full', 'opacity-0')
 })

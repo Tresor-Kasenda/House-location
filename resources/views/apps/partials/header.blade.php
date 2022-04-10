@@ -1,4 +1,5 @@
-<header class="w-full lg:px-28 sm:px-12 px-6 relative lg:after:absolute lg:after:bottom-0 bg-white z-50 after:max-w-7xl after:h-0 after:left-1/2 after:-translate-x-1/2 after:bg-gradient-to-tr after:from-green-400 after:to-purple-600 shadow-md shadow-purple-100 lg:shadow-none lg:after:w-9/12 after:z-40">
+<header
+    class="w-full lg:px-28 sm:px-12 px-6 relative lg:after:absolute lg:after:bottom-0 bg-white z-50 after:max-w-7xl after:h-0 after:left-1/2 after:-translate-x-1/2 after:bg-gradient-to-tr after:from-green-400 after:to-purple-600 shadow-md shadow-purple-100 lg:shadow-none lg:after:w-9/12 after:z-40">
     <nav class="container m-auto h-16 md:h-20 py-4 flex items-center justify-between">
         <div class="flex items-center">
             <div class="flex items-center">
@@ -7,7 +8,6 @@
                     <span class="hidden sm:flex lg:hidden xl:flex">Karibukuako</span>
                 </a>
             </div>
-
         </div>
         <div class="hidden lg:flex items-center">
             <ul class="flex items-center text-gray-500 text-lg gap-3 capitalize">
@@ -38,11 +38,25 @@
                 ])
             </ul>
         </div>
-        <div id="overlayM" class="fixed flex bg-transparent scale-0 h-full w-full z-[998] top-0 left-0 lg:hidden ">
+        <div id="overlayM" class="fixed flex bg-transparent h-full w-full z-[998] top-0 left-0 lg:hidden ">
         </div>
         <div id="menuMob"
              class="flex flex-col -left-[83.333333%] fixed right-0 w-10/12 top-0 sm:w-60 md:w-64 bg-purple-50 h-full overflow-x-hidden overflow-y-scroll lg:hidden before:w-1 before:h-full before:absolute before:bg-gray-700 before:bg-opacity-50 before:backdrop-filter before:blur-lg before:top-0 before:right-0.5 p-5 z-[1000] transition-all duration-300">
-            <div class="py-4"></div>
+            <div class="py-4">
+                <form action="" class="relative w-full">
+                    <input type="text"
+                           class="px-4 py-3 rounded-xl outline-none bg-white shadow-sm shadow-purple-100 w-full placeholder:text-gray-300 text-sm text-gray-500"
+                           placeholder="Rechercher ici">
+                    <span class="absolute top-1/2 -translate-y-1/2 right-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor"
+                                 stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </span>
+                </form>
+            </div>
             <div class="flex flex-col text-lg text-gray-400 w-full pb-2">
                 @include('apps.components._mobile', [
                     'route' => route('home.index'),
@@ -91,9 +105,9 @@
                 </div>
             </div>
             <div class="flex gap-2 py-4 flex-wrap justify-between">
-                <a href="{{ route('login') }}"
+                <a href="{{ route('register') }}"
                    class="px-4 py-3 text-sm rounded-xl text-center text-white bg-gradient-to-br from-green-400 to-purple-600 w-full">S'inscrire</a>
-                <a href="" class="px-4 py-3 text-sm rounded-xl text-center bg-purple-600 text-white w-full">Se
+                <a href="{{ route('login') }}" class="px-4 py-3 text-sm rounded-xl text-center bg-purple-600 text-white w-full">Se
                     connecter</a>
 
             </div>
@@ -158,4 +172,5 @@
         </div>
     </nav>
     @include('apps.components._modal')
+
 </header>

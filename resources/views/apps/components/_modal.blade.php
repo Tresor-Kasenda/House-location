@@ -1,5 +1,5 @@
 <div id="modaleSearch"
-     class="fixed flex items-center justify-center w-full h-full top-0 left-0 bg-transparent transition-all duration-500  -z-10 bg-gray-700 bg-opacity-60 opacity-0">
+     class="fixed flex items-center justify-center w-full h-full top-0 left-0 bg-transparent transition-all duration-500 scale-0 -z-10 bg-gray-700 bg-opacity-60">
     <div id="modalContent"
          class="w-11/12 sm:w-[38rem] rounded-xl bg-white p-4 -translate-y-full transition-all duration-500">
         <div class="flex justify-end pb-3">

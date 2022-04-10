@@ -44,7 +44,17 @@
                                         <tr class="nk-tb-item text-center">
                                             <td class="nk-tb-col tb-col-sm">
                                                 <span class="tb-product">
-                                                    <img src="{{ asset('storage/'.$user->images) }}" alt="{{ $user->name }}" class="thumb">
+                                                    @if($user->images)
+                                                    <img
+                                                        src="{{ asset('storage/'.$user->images) }}"
+                                                        alt="{{ $user->name }}"
+                                                        class="thumb">
+                                                    @else
+                                                        <img
+                                                            src="{{ asset('app/images/logo.png') }}"
+                                                            alt="{{ $user->name }}"
+                                                            class="thumb">
+                                                    @endif
                                                 </span>
                                             </td>
                                             <td class="nk-tb-col tb-col-md">
@@ -58,13 +68,13 @@
                                             </td>
                                             <td class="nk-tb-col tb-col-md">
                                                 @if($user->role_id == \App\Enums\UserRoleEnum::COMMISSIONNERS)
-                                                    <span class="badge badge-dim badge-warning">
+                                                    <span class="badge badge-dim badge-success p-1">
                                                         <em class="icon ni ni-user"></em>
                                                         <span>Commissionners</span>
                                                     </span>
                                                 @endif
                                                 @if($user->role_id == \App\Enums\UserRoleEnum::USERS)
-                                                    <span class="badge badge-dim badge-warning">
+                                                    <span class="badge badge-dim badge-primary p-1">
                                                         <em class="icon ni ni-user"></em>
                                                         <span>Users</span>
                                                     </span>
@@ -86,7 +96,7 @@
                                                                         </a>
                                                                     </li>
                                                                     <li>
-                                                                        <form action="{{ route('admins.users.destroy', $key->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                                        <form action="{{ route('admins.users.destroy', $user->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
                                                                             @method('DELETE')
                                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                                             <button type="submit" class="btn btn-dim">

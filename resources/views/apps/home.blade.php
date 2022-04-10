@@ -4,6 +4,8 @@
 
 @section('content')
 
+    @include('apps.components._section')
+
     <section class="lg:px-28 md:px-12 px-6 py-16">
         @if ($apartments->count() > 0)
             <div class="container m-auto space-y-8">
@@ -11,14 +13,6 @@
                     <h4 class="mb-8 sm:text-2xl text-xl text-gray-800">Nouvelles maisons</h4>
                     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                         @foreach($apartments as $apartment)
-                            @include('apps.components._card')
-                        @endforeach
-                    </div>
-                </div>
-                <div>
-                    <h4 class="mb-8 sm:text-2xl text-xl text-gray-800">Bas prix</h4>
-                    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                        @foreach($apartmentPrices as $apartment)
                             @include('apps.components._card')
                         @endforeach
                     </div>

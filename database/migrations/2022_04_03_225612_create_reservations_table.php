@@ -23,6 +23,11 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
             $table->boolean('status')->default(StatusEnum::PENDING);
+            $table->string('name');
+            $table->string('address');
+            $table->string('phones');
+            $table->text('messages');
+            $table->string('reference')->unique();
             $table->timestamps();
         });
     }

@@ -66,7 +66,7 @@
                                             </span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $room->phone_number ?? "" }}</span>
+                                            <span>{{ $room->phoneNumber ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ $room->address ?? "" }}</span>

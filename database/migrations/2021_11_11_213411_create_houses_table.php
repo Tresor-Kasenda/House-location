@@ -27,6 +27,7 @@ return new class extends Migration
             $table->decimal('longitude')->nullable();
             $table->string('images');
             $table->boolean('status')->default(StatusEnum::PENDING);
+            $table->string('reference')->unique();
             $table->foreignIdFor(User::class)
                 ->constrained()
                 ->cascadeOnDelete();

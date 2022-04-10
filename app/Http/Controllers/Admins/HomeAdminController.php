@@ -10,6 +10,6 @@ class HomeAdminController extends Controller
 {
     public function index(): Renderable
     {
-        return view('admins.dashboard');
+        return view('admins..dashboard');
     }
 }

@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png')  }}">
+    @yield('styles')
     @livewireStyles
 </head>
 <body class="text-gray-500  overflow-x-hidden w-full">
@@ -17,14 +18,6 @@
         @yield('content')
     </div>
     @include('apps.partials.footer')
-    @livewireStyles
-    @if(env('APP_ENV') === 'local')
-        <script src="{{ asset('app/js/jquery.js') }}"></script>
-    @else
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        ></script>
-    @endif
     <script src="{{ asset('app/js/hamburger.js') }}"></script>
     @include('sweetalert::alert')
     @yield("scripts")

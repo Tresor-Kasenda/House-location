@@ -1,39 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Repository\Admins;
 
+use App\Contracts\TrashedRepositoryInterface;
 use App\Models\House;
-use App\Enums\HouseEnum;
 use App\Traits\ImageUploader;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use App\Contracts\ActiveApartmentRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
-class ActiveApartmentRepository implements ActiveApartmentRepositoryInterface
+class TrashedRepository implements TrashedRepositoryInterface
 {
     use ImageUploader;
 
-    public function confirmedRoom(string $key): Model|Builder
+    public function trashed()
     {
-        $room = House::query()
-            ->where('key', '=', $key)
-            ->firstOrFail();
-        $room->update([
-            'status' => HouseEnum::CONFIRM
-        ]);
-        return $room;
-    }
-
-    public function invalidateRoom(string $key): Model|Builder
-    {
-        $room = House::query()
-            ->where('key', '=', $key)
-            ->firstOrFail();
-        $room->update([
-            'status' => HouseEnum::DRAFT
-        ]);
-        return $room;
+        // TODO: Implement trashed() method.
     }
 
     public function restore(string $key): Model|Builder|House

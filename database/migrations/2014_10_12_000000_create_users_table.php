@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('phone_number')->nullable();
             $table->string('lastName')->nullable();
             $table->string('password');
-            $table->string('images')->default('logo.png');
+            $table->string('images')->nullable();
             $table->integer('role_id')->default(UserRoleEnum::USERS);
             $table->rememberToken();
             $table->timestamps();

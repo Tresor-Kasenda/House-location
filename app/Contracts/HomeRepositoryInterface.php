@@ -6,6 +6,4 @@ namespace App\Contracts;
 interface HomeRepositoryInterface
 {
     public function getContent();
-
-    public function getAllByPrices();
 }

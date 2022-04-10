@@ -169,6 +169,8 @@ return [
          */
 
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Stevebauman\Location\LocationServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -236,6 +238,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
+        'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+        'Location' => Stevebauman\Location\Facades\Location::class,
 
     ],
 
