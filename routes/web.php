@@ -5,6 +5,7 @@ use App\Http\Controllers\Admins\ApartmentAdminController;
 use App\Http\Controllers\Admins\CategoryAdminController;
 use App\Http\Controllers\Admins\ConfirmedApartmentController;
 use App\Http\Controllers\Admins\HomeAdminController;
+use App\Http\Controllers\Admins\ImagesAdminController;
 use App\Http\Controllers\Admins\ReservationAdminController;
 use App\Http\Controllers\Admins\UsersAdminController;
 use App\Http\Controllers\Apps\AboutController;
@@ -25,14 +26,12 @@ Route::group([
     'as' => 'admins.',
     'middleware' => ['admins', 'auth']
 ], function(){
-    Route::resource('backend', HomeAdminController::class)
-        ->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
+    Route::resource('backend', HomeAdminController::class)->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
     Route::resource('apartments', ApartmentAdminController::class);
     Route::resource('categories', CategoryAdminController::class);
-    Route::resource('users', UsersAdminController::class)
-        ->except(['create', 'store', 'update', 'edit']);
-    Route::resource('reservations', ReservationAdminController::class)
-        ->except(['create', 'store', 'update', 'edit']);
+    Route::resource('users', UsersAdminController::class)->except(['create', 'store', 'update', 'edit']);
+    Route::resource('reservations', ReservationAdminController::class)->except(['create', 'store', 'update', 'edit']);
+    Route::resource('image', ImagesAdminController::class);
 
     Route::controller(ConfirmedApartmentController::class)->group(function (){
         Route::put('activeApartment/{key}','active')

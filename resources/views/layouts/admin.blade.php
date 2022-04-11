@@ -11,12 +11,11 @@
     <title>{{ config('app.name') }} | @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('admins/css/dashlite.css') }}">
     @yield('styles')
-    @livewireStyles
 </head>
 
-<body class="nk-body bg-lighter npc-general has-sidebar ">
+<body class="nk-body bg-lighter npc-general has-sidebar">
     <div class="nk-app-root">
-        <div class="nk-main ">
+        <div class="nk-main">
             @include('admins.partials.sidebar')
             <div class="nk-wrap">
                 @include('admins.partials.header')
@@ -29,7 +28,6 @@
             </div>
         </div>
     </div>
-    @livewireStyles
     <script src="{{ asset('admins/js/bundle.js') }}"></script>
     <script src="{{ asset('admins/js/scripts.js') }}"></script>
     @include('sweetalert::alert')

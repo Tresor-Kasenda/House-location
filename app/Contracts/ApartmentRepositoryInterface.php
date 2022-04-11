@@ -14,5 +14,5 @@ interface ApartmentRepositoryInterface
 
     public function updated(string $key, $attributes);
 
-    public function deleted(string $eky);
+    public function deleted(string $key);
 }

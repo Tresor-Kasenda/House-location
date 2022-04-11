@@ -14,7 +14,7 @@
                     @if (!$apartments->isEmpty())
                         <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                             @foreach($apartments as $apartment)
-                                @include('apps.components._category')
+                                @include('apps.components._card')
                             @endforeach
                         </div>
                     @else

@@ -4,16 +4,16 @@ declare(strict_types=1);
 namespace App\Repository\Admins;
 
 use App\Contracts\ApartmentRepositoryInterface;
-use App\Enums\HouseEnum;
 use App\Models\House;
 use App\Traits\ImageUploader;
+use App\Traits\RandomValues;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 class ApartmentRepository implements ApartmentRepositoryInterface
 {
-    use ImageUploader;
+    use ImageUploader, RandomValues;
 
     public function getContents(): Collection
     {
@@ -22,33 +22,10 @@ class ApartmentRepository implements ApartmentRepositoryInterface
             ->get();
     }
 
-    public function getAllVerified(): Collection
-    {
-        return House::query()
-            ->with('image')
-            ->when('status',
-                fn($builder) => $builder->where('status', HouseEnum::CONFIRMED)
-            )
-            ->orderByDesc('created_at')
-            ->get();
-    }
-
     public function show(string $key): Model|Builder
     {
-        $house = House::query()
-            ->where('key', '=', $key)
-            ->withCount('reservations')
-            ->firstOrFail();
+        $house = $this->getHouse($key);
         return $house->load('categories');
-    }
-
-    public function getOnlyValidatedByKey(string $id): House|Builder
-    {
-        $house = House::query()
-            ->where('key', '=', $id)
-            ->where('status', '=', HouseEnum::CONFIRMED)
-            ->firstOrFail();
-        return $house->load('image');
     }
 
     public function created($attributes): Builder|Model
@@ -67,16 +44,39 @@ class ApartmentRepository implements ApartmentRepositoryInterface
                 'district'=> $attributes->district,
                 'roomNumber'=> $attributes->roomNumber,
                 'town' => $attributes->town,
-                'user_id' => auth()->id()
+                'user_id' => auth()->id(),
+                'reference' => $this->generateRandomTransaction(15)
             ]);
         $apartment->categories()->attach($attributes->categories);
         toast("Un nouveau appartement à été ajouter", 'success');
         return $apartment;
     }
 
+    public function updated(string $key, $attributes): Model|Builder
+    {
+        $house = $this->getHouse(key: $key);
+        $house->categories()->detach($attributes->categories);
+        $house->update([
+            'prices' => $attributes->prices,
+            'address'=> $attributes->address,
+            'guarantees'=> $attributes->guarantees,
+            'phoneNumber'=> $attributes->phoneNumber,
+            'email'=> $attributes->email,
+            'latitude'=> $attributes->latitude,
+            'longitude'=> $attributes->longitude,
+            'commune'=> $attributes->commune,
+            'district'=> $attributes->district,
+            'roomNumber'=> $attributes->roomNumber,
+            'town' => $attributes->town,
+        ]);
+        $house->categories()->attach($attributes->categories);
+        toast("Un nouveau appartement à été modifier", 'success');
+        return $house;
+    }
+
     public function deleted(string $key): Model|Builder|int|null
     {
-        $room = $this->show($key);
+        $room = $this->getHouse(key: $key);
         if ($room->status == true){
             toast('Veillez désactiver votre appartement avant de le suspendre', 'warning');
             return null;
@@ -86,8 +86,11 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         return $room;
     }
 
-    public function updated(string $key, $attributes)
+    private function getHouse(string $key): Builder|Model
     {
-        // TODO: Implement updated() method.
+        return House::query()
+            ->where('key', '=', $key)
+            ->withCount('reservations')
+            ->firstOrFail();
     }
 }

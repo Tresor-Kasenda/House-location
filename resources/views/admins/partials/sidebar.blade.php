@@ -44,6 +44,12 @@
                     ])
 
                     @include('admins.components._link', [
+                        'route' => route('admins.image.index'),
+                        'name' => "Images",
+                        'icon' => 'ni-img'
+                    ])
+
+                    @include('admins.components._link', [
                         'route' => route('admins.users.index'),
                         'name' => 'Users',
                         'icon' => 'ni-user-alt'
