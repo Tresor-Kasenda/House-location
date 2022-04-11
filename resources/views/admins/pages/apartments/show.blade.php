@@ -53,6 +53,15 @@
             @endif
             <div class="nk-block nk-block-lg">
                 <div class="nk-block">
+                    <div class="justify-content text-center p-2">
+                        <img
+                            src="{{ asset('storage/'.$room->images) }}"
+                            alt="{{ $room->commune }}"
+                            class="img-fluid img-thumbnail rounded-circle"
+                            height="15%"
+                            width="10%"
+                        >
+                    </div>
                     <div class="card">
                         <div class="card-inner">
                             <div class="tab-content">

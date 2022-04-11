@@ -5,7 +5,6 @@
     <meta name="author" content="{{ config('app.name') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="refresh" content="60">
     <meta name="description" content="Une partie d'administration pour la gestion d'un {{ config('app.name') }}">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png') }}">
     <title>{{ config('app.name') }} | @yield('title')</title>

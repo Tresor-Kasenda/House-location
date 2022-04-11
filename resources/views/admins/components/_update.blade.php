@@ -1,4 +1,4 @@
-<form action="{{ route($route, $callback) }}" method="POST" class="d-inline">
+<form action="{{ $route }}" method="POST" class="d-inline">
     @method('PUT')
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <button type="submit" class="btn {{ $button ?? "" }} d-none d-sm-inline-flex">

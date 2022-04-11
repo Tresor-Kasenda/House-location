@@ -15,7 +15,8 @@ class TrashedRepository implements TrashedRepositoryInterface
 
     public function trashed()
     {
-        // TODO: Implement trashed() method.
+        return House::onlyTrashed()
+            ->get();
     }
 
     public function restore(string $key): Model|Builder|House

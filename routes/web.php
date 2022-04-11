@@ -7,6 +7,7 @@ use App\Http\Controllers\Admins\ConfirmedApartmentController;
 use App\Http\Controllers\Admins\HomeAdminController;
 use App\Http\Controllers\Admins\ImagesAdminController;
 use App\Http\Controllers\Admins\ReservationAdminController;
+use App\Http\Controllers\Admins\TrashedAdminController;
 use App\Http\Controllers\Admins\UsersAdminController;
 use App\Http\Controllers\Apps\AboutController;
 use App\Http\Controllers\Apps\CategoryController;
@@ -32,6 +33,11 @@ Route::group([
     Route::resource('users', UsersAdminController::class)->except(['create', 'store', 'update', 'edit']);
     Route::resource('reservations', ReservationAdminController::class)->except(['create', 'store', 'update', 'edit']);
     Route::resource('image', ImagesAdminController::class);
+    Route::resource('trashedApartments', TrashedAdminController::class)->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
+    Route::controller(TrashedAdminController::class)->group(function (){
+        Route::put('trashedApartments/{key}', 'restore')->name('trashed.restore');
+        Route::delete('trashedApartments/{key}', 'delete')->name('trashed.delete');
+    });
 
     Route::controller(ConfirmedApartmentController::class)->group(function (){
         Route::put('activeApartment/{key}','active')
@@ -39,9 +45,6 @@ Route::group([
         Route::put('invalidApartment/{key}', 'inactive')
             ->name('apartment.inactive');
     });
-
-    Route::get('trashedApartment', [ApartmentAdminController::class, 'trashed'])
-        ->name('apartment.trashed');
 });
 
 Route::group([

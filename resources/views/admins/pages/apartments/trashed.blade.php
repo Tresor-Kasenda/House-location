@@ -88,16 +88,15 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li>
-                                                                    @include('admins.Components.update', [
-                                                                        'route' => 'admins.apartment.restoreApartment',
-                                                                        'callback' => $room->key,
+                                                                    @include('admins.components._update', [
+                                                                        'route' => route('admins.trashed.restore', $room->key),
                                                                         'button' => 'btn-dim',
                                                                         'icon' => 'ni-undo',
                                                                         'title' => 'Restaurer'
                                                                     ])
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('admins.apartment.forceDelete', $room->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                                    <form action="{{ route('admins.trashed.delete', $room->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')
                                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                                         <button type="submit" class="btn btn-dim">
