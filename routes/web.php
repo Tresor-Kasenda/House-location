@@ -72,5 +72,5 @@ Route::get('contact', [ContactController::class, 'index'])->name('contact.index'
 Route::post('news-letters', [NewsLetterController::class, 'index'])->name('newsletters.send');
 Route::controller(ReservationController::class)->group(function (){
     Route::post('reservation', 'store')->name('reservation.store');
-    Route::get('confirmation/{reference}', 'show')->name('reservation.show');
+    Route::get('confirmation/{key}', 'show')->name('reservation.show');
 });

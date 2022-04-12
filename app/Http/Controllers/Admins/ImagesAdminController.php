@@ -34,7 +34,7 @@ final class ImagesAdminController extends Controller
     public function store(ImageRequest $attributes): RedirectResponse
     {
         $this->repository->created(attributes: $attributes);
-        return back();
+        return redirect()->route('admins.image.index');
     }
 
     public function edit(string $key): Renderable
@@ -51,7 +51,7 @@ final class ImagesAdminController extends Controller
     public function update(string $key, ImageRequest $attributes): RedirectResponse
     {
         $this->repository->updated(key: $key, attributes: $attributes);
-        return back();
+        return redirect()->route('admins.image.index');
     }
 
     public function destroy(string $key): RedirectResponse

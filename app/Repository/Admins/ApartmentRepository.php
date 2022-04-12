@@ -66,6 +66,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
             'longitude'=> $attributes->longitude,
             'commune'=> $attributes->commune,
             'district'=> $attributes->district,
+            'images'=> $this::uploadFiles($attributes),
             'roomNumber'=> $attributes->roomNumber,
             'town' => $attributes->town,
         ]);

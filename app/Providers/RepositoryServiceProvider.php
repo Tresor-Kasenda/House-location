@@ -39,7 +39,7 @@ class RepositoryServiceProvider extends ServiceProvider
         TrashedRepositoryInterface::class => TrashedRepository::class,
         CategoryHomeRepositoryInterface::class => HomeCategory::class,
         ReservationHouseRepositoryInterface::class => Reservation::class,
-        ImageRepositoryInterface::class => ImageRepository::class
+        ImageRepositoryInterface::class => ImageRepository::class,
     ];
 
     public function register(){}

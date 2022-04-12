@@ -53,7 +53,7 @@ class ApartmentAdminController extends Controller
         $room = $this->repository->show(key: $key);
         $form = $this->builder->create(ApartmentForm::class, [
             'method' => 'PUT',
-            'url' => route('admins.apartments.store', $room->key),
+            'url' => route('admins.apartments.update', $room->key),
             'model' => $room
         ]);
         return view('admins.pages.apartments.create', compact('form', 'room'));

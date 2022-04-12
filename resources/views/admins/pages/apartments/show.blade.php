@@ -17,16 +17,14 @@
                                     <li class="preview-item">
                                         @if ($room->status == false)
                                             @include('admins.components._update', [
-                                                'route' => 'admins.apartment.active',
-                                                'callback' => $room->key,
+                                                'route' => route('admins.apartment.active',$room->key),
                                                 'button' => 'btn-outline-success btn-sm',
                                                 'icon' => 'ni-check-circle',
                                                 'title' => 'Activer'
                                             ])
                                         @else
                                             @include('admins.components._update', [
-                                                'route' => 'admins.apartment.inactive',
-                                                'callback' => $room->key,
+                                                'route' => route('admins.apartment.inactive',$room->key),
                                                 'button' => 'btn-outline-danger btn-sm',
                                                 'icon' => 'ni-check-circle',
                                                 'title' => 'Désactiver'
