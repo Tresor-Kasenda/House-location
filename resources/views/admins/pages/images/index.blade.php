@@ -52,7 +52,7 @@
                                                 </span>
                                             </td>
                                             <td class="nk-tb-col tb-col-md">
-                                                <span>{{ $image->houses->email ?? "" }}</span>
+                                                <span>{{ $image->houses->reference ?? "" }}</span>
                                             </td>
                                             <td class="nk-tb-col nk-tb-col-tools">
                                                 <ul class="nk-tb-actions gx-1">
@@ -64,13 +64,13 @@
                                                             <div class="dropdown-menu dropdown-menu-right">
                                                                 <ul class="link-list-opt no-bdr">
                                                                     <li>
-                                                                        <a href="{{ route('admins.images.edit', $image->key) }}">
+                                                                        <a href="{{ route('admins.image.edit', $image->key) }}">
                                                                             <em class="icon ni ni-edit"></em>
                                                                             <span>Editer</span>
                                                                         </a>
                                                                     </li>
                                                                     <li>
-                                                                        <form action="{{ route('admins.images.destroy', $image->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                                        <form action="{{ route('admins.image.destroy', $image->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
                                                                             @method('DELETE')
                                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                                             <button type="submit" class="btn btn-dim">
