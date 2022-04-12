@@ -15,7 +15,7 @@ class ActiveApartmentRepository implements ActiveApartmentRepositoryInterface
     {
         $room = House::query()
             ->where('key', '=', $key)
-            ->firstOrFail();
+            ->first();
         $room->update([
             'status' => HouseEnum::CONFIRMED
         ]);
@@ -26,7 +26,7 @@ class ActiveApartmentRepository implements ActiveApartmentRepositoryInterface
     {
         $room = House::query()
             ->where('key', '=', $key)
-            ->firstOrFail();
+            ->first();
         $room->update([
             'status' => HouseEnum::PENDING
         ]);
