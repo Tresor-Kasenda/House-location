@@ -17,16 +17,14 @@
                                     <li class="preview-item">
                                         @if ($room->status == false)
                                             @include('admins.components._update', [
-                                                'route' => 'admins.apartment.active',
-                                                'callback' => $room->key,
+                                                'route' => route('admins.apartment.active',$room->key),
                                                 'button' => 'btn-outline-success btn-sm',
                                                 'icon' => 'ni-check-circle',
                                                 'title' => 'Activer'
                                             ])
                                         @else
                                             @include('admins.components._update', [
-                                                'route' => 'admins.apartment.inactive',
-                                                'callback' => $room->key,
+                                                'route' => route('admins.apartment.inactive',$room->key),
                                                 'button' => 'btn-outline-danger btn-sm',
                                                 'icon' => 'ni-check-circle',
                                                 'title' => 'Désactiver'
@@ -34,7 +32,7 @@
                                         @endif
                                     </li>
                                     <li class="preview-item">
-                                        <a href="{{ route('admins.apartments.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
+                                        <a href="{{ route('admins.houses.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
                                             <em class="icon ni ni-arrow-left"></em>
                                             <span>Back</span>
                                         </a>
@@ -53,6 +51,15 @@
             @endif
             <div class="nk-block nk-block-lg">
                 <div class="nk-block">
+                    <div class="justify-content text-center p-2">
+                        <img
+                            src="{{ asset('storage/'.$room->images) }}"
+                            alt="{{ $room->commune }}"
+                            class="img-fluid img-thumbnail rounded-circle"
+                            height="15%"
+                            width="10%"
+                        >
+                    </div>
                     <div class="card">
                         <div class="card-inner">
                             <div class="tab-content">

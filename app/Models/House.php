@@ -42,11 +42,11 @@ class House extends Model
     public function getNameLinkAttribute(): string
     {
         $title = __('app.show_detail_title', [
-            'name' => $this->title, 'type' => __('outlet.outlet'),
+            'name' => $this->key, 'type' => __('outlet.outlet'),
         ]);
-        $link = '<a href="'.route('dashboard.index', $this).'"';
+        $link = '<a href="'.route('categories.index', $this).'"';
         $link .= ' title="'.$title.'">';
-        $link .= $this->title;
+        $link .= $this->address;
         $link .= '</a>';
         return $link;
     }
@@ -64,12 +64,12 @@ class House extends Model
         $mapPopupContent = '';
         $mapPopupContent .= '<div class="my-2 font-weight-bold text-red-900">
             <strong>' . 'Nom: ' . '</strong>
-            <br>' . $this->username . '</div>';
+            <br>' . $this->address . '</div>';
         $mapPopupContent .= '<div class="my-2 font-weight-bold text-red-900">
             <strong>' . 'Commune: ' . '</strong>
             <br>' . $this->commune . '</div>';
         $mapPopupContent .= '<div class="my-2"><stroong>
-            <a href="' . route('roomsParty.show', $this->key) . '" title="' . $this->title . '">
+            <a href="' . route('categories.show', $this->key) . '" title="' . $this->key . '">
                 ' . 'Voir plus' . '
             </a>
         </stroong></div>';

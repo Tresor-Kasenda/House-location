@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', "Liste des reservations")
+@section('title', "Administration des appartements")
 
 @section('content')
     <div class="nk-content-inner">
@@ -8,7 +8,20 @@
             <div class="nk-block-head nk-block-head-sm">
                 <div class="nk-block-between">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Reservations</h3>
+                        <h3 class="nk-block-title page-title">Apartments</h3>
+                    </div>
+                    <div class="nk-block-head-content">
+                        <div class="toggle-wrap nk-block-tools-toggle">
+                            <div class="toggle-expand-content" data-content="pageMenu">
+                                <ul class="nk-block-tools g-3">
+                                    <li class="preview-item">
+                                        <a href="{{ route('admins.houses.index') }}" class="btn btn-dim btn-light btn-sm">
+                                            <em class="icon ni ni-arrow-left"></em> Historique
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -18,18 +31,21 @@
                         <div class="card-inner">
                             <table class="datatable-init nowrap nk-tb-list nk-tb-ulist" data-auto-responsive="false">
                                 <thead>
-                                <tr class="nk-tb-item nk-tb-head text-center">
-                                    <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Name</span>
+                                <tr class="nk-tb-item nk-tb-head">
+                                    <th class="nk-tb-col tb-col-mb">
+                                        <span class="sub-text">Photo</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Email</span>
+                                        <span class="sub-text">Telephone</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Phones</span>
+                                        <span class="sub-text">Addresse</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Role</span>
+                                        <span class="sub-text">Status</span>
+                                    </th>
+                                    <th class="nk-tb-col tb-col-md">
+                                        <span class="sub-text">Commune</span>
                                     </th>
                                     <th class="nk-tb-col nk-tb-col-tools text-right">
                                         <span class="sub-text">Actions</span>
@@ -37,19 +53,30 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($reservations as $reservation)
-                                    <tr class="nk-tb-item text-center">
-                                        <td class="nk-tb-col tb-col-md">
-                                            <span></span>
+                                @foreach($rooms as $room)
+                                    <tr class="nk-tb-item">
+                                        <td class="nk-tb-col tb-col-sm">
+                                            <span class="tb-product text-center">
+                                                <img src="{{ asset('storage/'.$room->images) }}" alt="{{ $room->username }}" class="thumb">
+                                            </span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span></span>
+                                            <span>{{ $room->phone_number ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span></span>
+                                            <span>{{ $room->address ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span></span>
+                                            @if($room->status == true)
+                                                <span class="dot bg-success d-mb-none"></span>
+                                                <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">Confirmer</span>
+                                            @else
+                                                <span class="dot bg-warning d-mb-none"></span>
+                                                <span class="badge badge-sm badge-dot has-bg badge-warning d-none d-mb-inline-flex">En attente</span>
+                                            @endif
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            <span>{{ $room->commune ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col nk-tb-col-tools">
                                             <ul class="nk-tb-actions gx-1">
@@ -61,18 +88,21 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li>
-                                                                    <a href="">
-                                                                        <em class="icon ni ni-eye"></em>
-                                                                        <span>Voir</span>
-                                                                    </a>
+                                                                    @include('admins.Components.update', [
+                                                                        'route' => 'admins.apartment.restoreApartment',
+                                                                        'callback' => $room->key,
+                                                                        'button' => 'btn-dim',
+                                                                        'icon' => 'ni-undo',
+                                                                        'title' => 'Restaurer'
+                                                                    ])
                                                                 </li>
                                                                 <li>
-                                                                    <form action="" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                                    <form action="{{ route('admins.apartment.forceDelete', $room->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')
                                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                                         <button type="submit" class="btn btn-dim">
                                                                             <em class="icon ni ni-cross-sm"></em>
-                                                                            <span>Suspendre</span>
+                                                                            <span>Supprimer</span>
                                                                         </button>
                                                                     </form>
                                                                 </li>

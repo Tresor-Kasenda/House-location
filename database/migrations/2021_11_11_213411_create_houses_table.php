@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('district');
             $table->string('address');
             $table->integer('guarantees');
-            $table->integer('phoneNumber');
+            $table->string('phoneNumber');
             $table->integer('roomNumber');
             $table->string('email')->unique();
             $table->decimal('latitude')->nullable();

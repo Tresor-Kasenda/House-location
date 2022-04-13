@@ -16,11 +16,14 @@ class ReservationController extends Controller
     public function store(ReservationRequest $request): RedirectResponse
     {
         $reservation = $this->repository->stored(attributes: $request);
-        return redirect()->route('reservation.show', $reservation);
+        return redirect()->route('reservation.show', $reservation->key);
     }
 
-    public function show($reservation): Renderable
+    public function show(string $key): Renderable
     {
-        return view('apps.pages.reservations.confirmed', $reservation);
+        $reservation  = $this->repository->getReservation(key: $key);
+        return view('apps.pages.reservations.confirmed', [
+            'reservation' => $reservation
+        ]);
     }
 }

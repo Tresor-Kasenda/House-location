@@ -15,19 +15,26 @@ class ReservationRepository implements ReservationHouseRepositoryInterface
 {
     use RandomValues;
 
-    public function stored($attributes)
+    public function stored($attributes): Model|Builder
     {
         $house = $this->getHouse(attributes: $attributes);
 
         return Reservation::query()
             ->create([
                 "house_id" => $house->id,
-                "username" => $attributes->input('username'),
-                "email" => $attributes->input('email'),
-                "phoneNumber" => $attributes->input('phoneNumber'),
-                "message" => $attributes->input("message"),
+                "name" => $attributes->input('username'),
+                "address" => $attributes->input('email'),
+                "phones" => $attributes->input('phoneNumber'),
+                "messages" => $attributes->input("message"),
                 'reference' => $this->generateRandomTransaction(15)
             ]);
+    }
+
+    public function getReservation(string $key): Model|Builder|null
+    {
+        return Reservation::query()
+            ->where('key', '=', $key)
+            ->first();
     }
 
     private function getHouse($attributes): Model|Builder|null
@@ -37,5 +44,4 @@ class ReservationRepository implements ReservationHouseRepositoryInterface
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
             ->first();
     }
-
 }

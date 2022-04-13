@@ -26,7 +26,7 @@
                         <h6 class="overline-title text-primary-alt">Administration</h6>
                     </li>
                     @include('admins.components._link', [
-                        'route' => route('admins.apartments.index'),
+                        'route' => route('admins.houses.index'),
                         'name' => 'Apartments',
                         'icon' => 'ni-building'
                     ])
@@ -41,6 +41,12 @@
                         'route' => route('admins.reservations.index'),
                         'name' => 'Reservations',
                         'icon' => 'ni-coin-alt'
+                    ])
+
+                    @include('admins.components._link', [
+                        'route' => route('admins.image.index'),
+                        'name' => "Images",
+                        'icon' => 'ni-img'
                     ])
 
                     @include('admins.components._link', [

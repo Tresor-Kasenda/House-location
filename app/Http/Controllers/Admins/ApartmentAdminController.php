@@ -24,28 +24,28 @@ class ApartmentAdminController extends Controller
     public function index(): Renderable
     {
         $rooms = $this->repository->getContents();
-        return view('admins.pages.apartments.index', compact('rooms'));
+        return view('admins.pages.houses.index', compact('rooms'));
     }
 
     public function show(string $key): Factory|View|Application
     {
         $room = $this->repository->show(key: $key);
-        return view('admins.pages.apartments.show', compact('room'));
+        return view('admins.pages.houses.show', compact('room'));
     }
 
     public function create(): Factory|View|Application
     {
         $form = $this->builder->create(ApartmentForm::class, [
            'method' => 'POST',
-            'url' => route('admins.apartments.store')
+            'url' => route('admins.houses.store')
         ]);
-        return view('admins.pages.apartments.create', compact('form'));
+        return view('admins.pages.houses.create', compact('form'));
     }
 
     public function store(ApartmentRequest $request): RedirectResponse
     {
         $this->repository->created(attributes: $request);
-        return redirect()->route('admins.apartments.index');
+        return redirect()->route('admins.houses.index');
     }
 
     public function edit(string $key): Factory|View|Application
@@ -53,16 +53,16 @@ class ApartmentAdminController extends Controller
         $room = $this->repository->show(key: $key);
         $form = $this->builder->create(ApartmentForm::class, [
             'method' => 'PUT',
-            'url' => route('admins.apartments.store', $room->key),
+            'url' => route('admins.houses.update', $room->key),
             'model' => $room
         ]);
-        return view('admins.pages.apartments.create', compact('form', 'room'));
+        return view('admins.pages.houses.create', compact('form', 'room'));
     }
 
     public function update(ApartmentRequest $request, string $key): RedirectResponse
     {
         $this->repository->updated(key: $key,attributes: $request);
-        return redirect()->route('admins.apartments.index');
+        return redirect()->route('admins.houses.index');
     }
 
     public function destroy(string $key): RedirectResponse

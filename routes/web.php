@@ -5,7 +5,9 @@ use App\Http\Controllers\Admins\ApartmentAdminController;
 use App\Http\Controllers\Admins\CategoryAdminController;
 use App\Http\Controllers\Admins\ConfirmedApartmentController;
 use App\Http\Controllers\Admins\HomeAdminController;
+use App\Http\Controllers\Admins\ImagesAdminController;
 use App\Http\Controllers\Admins\ReservationAdminController;
+use App\Http\Controllers\Admins\TrashedAdminController;
 use App\Http\Controllers\Admins\UsersAdminController;
 use App\Http\Controllers\Apps\AboutController;
 use App\Http\Controllers\Apps\CategoryController;
@@ -15,6 +17,10 @@ use App\Http\Controllers\Apps\LocationController;
 use App\Http\Controllers\Apps\NewsLetterController;
 use App\Http\Controllers\Apps\ReservationController;
 use App\Http\Controllers\Apps\SearchController;
+use App\Http\Controllers\Commissioners\ApartmentCommissionerController;
+use App\Http\Controllers\Commissioners\HomeCommissionerController;
+use App\Http\Controllers\Commissioners\ImageCommissionerController;
+use App\Http\Controllers\Users\HomeUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,14 +31,17 @@ Route::group([
     'as' => 'admins.',
     'middleware' => ['admins', 'auth']
 ], function(){
-    Route::resource('backend', HomeAdminController::class)
-        ->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
-    Route::resource('apartments', ApartmentAdminController::class);
+    Route::resource('backend', HomeAdminController::class)->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
+    Route::resource('houses', ApartmentAdminController::class);
     Route::resource('categories', CategoryAdminController::class);
-    Route::resource('users', UsersAdminController::class)
-        ->except(['create', 'store', 'update', 'edit']);
-    Route::resource('reservations', ReservationAdminController::class)
-        ->except(['create', 'store', 'update', 'edit']);
+    Route::resource('users', UsersAdminController::class)->except(['create', 'store', 'update', 'edit']);
+    Route::resource('reservations', ReservationAdminController::class)->except(['create', 'store', 'update', 'edit']);
+    Route::resource('image', ImagesAdminController::class);
+    Route::resource('trashedApartments', TrashedAdminController::class)->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
+    Route::controller(TrashedAdminController::class)->group(function (){
+        Route::put('trashedApartments/{key}', 'restore')->name('trashed.restore');
+        Route::delete('trashedApartments/{key}', 'delete')->name('trashed.delete');
+    });
 
     Route::controller(ConfirmedApartmentController::class)->group(function (){
         Route::put('activeApartment/{key}','active')
@@ -40,9 +49,6 @@ Route::group([
         Route::put('invalidApartment/{key}', 'inactive')
             ->name('apartment.inactive');
     });
-
-    Route::get('trashedApartment', [ApartmentAdminController::class, 'trashed'])
-        ->name('apartment.trashed');
 });
 
 Route::group([
@@ -50,7 +56,9 @@ Route::group([
     'as' => 'commissioner.',
     'middleware' => ['commissioner', 'auth']
 ], function(){
-    Route::resource('backend', HomeAdminController::class);
+    Route::resource('backend', HomeCommissionerController::class);
+    Route::resource('houses', ApartmentCommissionerController::class);
+    Route::resource('imageHouses', ImageCommissionerController::class);
 });
 
 Route::group([
@@ -58,7 +66,7 @@ Route::group([
     'as' => 'users.',
     'middleware' => ['users', 'auth']
 ], function(){
-    Route::resource('backend', HomeAdminController::class);
+    Route::resource('backend', HomeUserController::class);
 });
 
 Route::get('/', HomeController::class)->name('home.index');
@@ -70,5 +78,5 @@ Route::get('contact', [ContactController::class, 'index'])->name('contact.index'
 Route::post('news-letters', [NewsLetterController::class, 'index'])->name('newsletters.send');
 Route::controller(ReservationController::class)->group(function (){
     Route::post('reservation', 'store')->name('reservation.store');
-    Route::get('confirmation/{reference}', 'show')->name('reservation.show');
+    Route::get('confirmation/{key}', 'show')->name('reservation.show');
 });
