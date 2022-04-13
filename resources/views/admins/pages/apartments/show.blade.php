@@ -32,7 +32,7 @@
                                         @endif
                                     </li>
                                     <li class="preview-item">
-                                        <a href="{{ route('admins.apartments.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
+                                        <a href="{{ route('admins.houses.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
                                             <em class="icon ni ni-arrow-left"></em>
                                             <span>Back</span>
                                         </a>

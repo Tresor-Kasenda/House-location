@@ -15,7 +15,7 @@
                             <div class="toggle-expand-content" data-content="pageMenu">
                                 <ul class="nk-block-tools g-3">
                                     <li class="preview-item">
-                                        <a href="{{ route('admins.apartments.index') }}" class="btn btn-dim btn-light btn-sm">
+                                        <a href="{{ route('admins.houses.index') }}" class="btn btn-dim btn-light btn-sm">
                                             <em class="icon ni ni-arrow-left"></em> Historique
                                         </a>
                                     </li>

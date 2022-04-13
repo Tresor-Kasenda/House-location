@@ -17,6 +17,10 @@ use App\Http\Controllers\Apps\LocationController;
 use App\Http\Controllers\Apps\NewsLetterController;
 use App\Http\Controllers\Apps\ReservationController;
 use App\Http\Controllers\Apps\SearchController;
+use App\Http\Controllers\Commissioners\ApartmentCommissionerController;
+use App\Http\Controllers\Commissioners\HomeCommissionerController;
+use App\Http\Controllers\Commissioners\ImageCommissionerController;
+use App\Http\Controllers\Users\HomeUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +32,7 @@ Route::group([
     'middleware' => ['admins', 'auth']
 ], function(){
     Route::resource('backend', HomeAdminController::class)->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
-    Route::resource('apartments', ApartmentAdminController::class);
+    Route::resource('houses', ApartmentAdminController::class);
     Route::resource('categories', CategoryAdminController::class);
     Route::resource('users', UsersAdminController::class)->except(['create', 'store', 'update', 'edit']);
     Route::resource('reservations', ReservationAdminController::class)->except(['create', 'store', 'update', 'edit']);
@@ -52,7 +56,9 @@ Route::group([
     'as' => 'commissioner.',
     'middleware' => ['commissioner', 'auth']
 ], function(){
-    Route::resource('backend', HomeAdminController::class);
+    Route::resource('backend', HomeCommissionerController::class);
+    Route::resource('houses', ApartmentCommissionerController::class);
+    Route::resource('imageHouses', ImageCommissionerController::class);
 });
 
 Route::group([
@@ -60,7 +66,7 @@ Route::group([
     'as' => 'users.',
     'middleware' => ['users', 'auth']
 ], function(){
-    Route::resource('backend', HomeAdminController::class);
+    Route::resource('backend', HomeUserController::class);
 });
 
 Route::get('/', HomeController::class)->name('home.index');

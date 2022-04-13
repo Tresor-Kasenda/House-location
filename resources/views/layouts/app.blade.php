@@ -17,6 +17,7 @@
     <div>
         @yield('content')
     </div>
+    @livewireScripts
     @include('apps.partials.footer')
     <script src="{{ asset('app/js/hamburger.js') }}"></script>
     @include('sweetalert::alert')

@@ -26,7 +26,7 @@
                         <h6 class="overline-title text-primary-alt">Administration</h6>
                     </li>
                     @include('admins.components._link', [
-                        'route' => route('admins.apartments.index'),
+                        'route' => route('admins.houses.index'),
                         'name' => 'Apartments',
                         'icon' => 'ni-building'
                     ])
