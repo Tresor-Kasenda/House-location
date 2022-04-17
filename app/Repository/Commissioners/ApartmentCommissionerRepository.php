@@ -6,13 +6,16 @@ namespace App\Repository\Commissioners;
 use App\Contracts\ApartmentCommissionerRepositoryInterface;
 use App\Enums\UserRoleEnum;
 use App\Models\House;
+use App\Traits\ApartmentCrud;
 use App\Traits\ImageUploader;
 use App\Traits\RandomValues;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class ApartmentCommissionerRepository implements ApartmentCommissionerRepositoryInterface
 {
-    use ImageUploader, RandomValues;
+    use ImageUploader, RandomValues, ApartmentCrud;
 
     public function getContents(): Collection|array
     {
@@ -22,23 +25,26 @@ class ApartmentCommissionerRepository implements ApartmentCommissionerRepository
             ->get();
     }
 
-    public function show(string $key)
+    public function show(string $key): Model
     {
-        // TODO: Implement show() method.
+        $house = $this->getHouse($key);
+        return $house->load('categories');
     }
 
-    public function created($attributes)
+    public function deleted(string $key): Model|Builder
     {
-        // TODO: Implement created() method.
+        $room = $this->getHouse(key: $key);
+        $room->delete();
+        toast('L appartement a été suspéndue pour des raisons de sécurité', 'success');
+        return $room;
     }
 
-    public function updated(string $key, $attributes)
+    private function getHouse(string $key): Builder|Model
     {
-        // TODO: Implement updated() method.
-    }
-
-    public function deleted(string $key)
-    {
-        // TODO: Implement deleted() method.
+        return House::query()
+            ->where('user_id', '=', UserRoleEnum::COMMISSIONNERS)
+            ->where('key', '=', $key)
+            ->withCount('reservations')
+            ->firstOrFail();
     }
 }
