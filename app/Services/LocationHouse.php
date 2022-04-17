@@ -15,5 +15,6 @@ class LocationHouse
             $userIp = $request;
             return Location::get($userIp);
         }
+        return $request;
     }
 }

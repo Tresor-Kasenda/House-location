@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.dealer')
 
 @section('title', "Administration des images")
 
@@ -15,7 +15,7 @@
                             <div class="toggle-expand-content" data-content="pageMenu">
                                 <ul class="nk-block-tools g-3">
                                     <li class="preview-item">
-                                        <a href="{{ route('admins.images.create') }}" class="btn btn-dim btn-primary btn-sm">
+                                        <a href="{{ route('commissioner.imageHouses.create') }}" class="btn btn-dim btn-primary btn-sm">
                                             <em class="icon ni ni-plus mr-1"></em> Ajouter
                                         </a>
                                     </li>

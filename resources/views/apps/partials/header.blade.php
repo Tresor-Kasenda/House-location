@@ -67,30 +67,27 @@
                 ])
             </div>
             <div class="relative h-2 w-36 mx-auto before:absolute before:top-1/2 before:-translate-y-1/2 before:bg-gray-400 before:w-full before:h-[1px] before:left-1/2 before:-translate-x-1/2"></div>
-            <div class="flex flex-col">
-                <div class="w-full text-lg text-gray-500">
-                    <a href="" class="flex gap-2 px-4 py-2.5 ">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <span>Mes Favoris (0)</span>
-                    </a>
-                    @auth
-                        @if(auth()->user()->role_id == \App\Enums\UserRoleEnum::USERS)
-                            <a href="" class="flex gap-2 px-4 py-2.5 ">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                </svg>
-                                <span>Mon compte</span>
-                            </a>
-                        @endif
-                    @endauth
+            @auth
+                <div class="flex flex-col">
+                    <div class="w-full text-lg text-gray-500">
+                        @auth
+                            @if(auth()->user()->role_id == \App\Enums\UserRoleEnum::USERS)
+                                <a href="" class="flex gap-2 px-4 py-2.5 ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                    </svg>
+                                    <span>Mon compte</span>
+                                </a>
+                            @endif
+                        @endauth
+                    </div>
                 </div>
-            </div>
-            <div class="flex gap-2 py-4 flex-wrap justify-between">
-                <a href="{{ route('register') }}" class="px-4 py-3 text-sm rounded-xl text-center text-white bg-gradient-to-br from-green-400 to-purple-600 w-full">S'inscrire</a>
-                <a href="{{ route('login') }}" class="px-4 py-3 text-sm rounded-xl text-center bg-purple-600 text-white w-full">Se connecter</a>
-            </div>
+            @else
+                <div class="flex gap-2 py-4 flex-wrap justify-between">
+                    <a href="{{ route('register') }}" class="px-4 py-3 text-sm rounded-xl text-center text-white bg-gradient-to-br from-green-400 to-purple-600 w-full">S'inscrire</a>
+                    <a href="{{ route('login') }}" class="px-4 py-3 text-sm rounded-xl text-center bg-purple-600 text-white w-full">Se connecter</a>
+                </div>
+            @endauth
         </div>
         <div class="flex gap-3 sm:gap-1 items-center relative">
             <div class="flex lg:flex items-center lg:gap-3 relative lg:before:absolute lg:before:w-full lg:before:h-full before:lg:-top-4 lg:before:left-0 lg:before:bg-gray-00 lg:p-4 lg:before:rounded-b-xl before:z-10 lg:before:border lg:before:bg-gray-100">
@@ -134,7 +131,6 @@
                 <span id="line2" class="left-0 w-full top-2 h-0.5 bg-gray-600 transition duration-300"></span>
                 <span id="line3" class="left-0 w-full h-0.5 bg-gray-600 transition duration-300"></span>
             </button>
-
         </div>
     </nav>
     @include('apps.components._modal')

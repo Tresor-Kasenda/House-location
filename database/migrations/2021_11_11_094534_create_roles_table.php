@@ -17,9 +17,9 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Role::create(['name' => 'USERS']);
-        Role::create(['name' => 'COMMISSIONNERS']);
-        Role::create(['name' => 'ADMINS']);
+        Role::create(['name' => 'Users']);
+        Role::create(['name' => 'Commissionners']);
+        Role::create(['name' => 'Admins']);
     }
 
     public function down()

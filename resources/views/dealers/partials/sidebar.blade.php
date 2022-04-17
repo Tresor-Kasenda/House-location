@@ -1,7 +1,7 @@
 <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
     <div class="nk-sidebar-element nk-sidebar-head">
         <div class="nk-sidebar-brand">
-            <a href="{{ route('admins.backend.index') }}" class="logo-link nk-sidebar-logo">
+            <a href="{{ route('commissioner.backend.index') }}" class="logo-link nk-sidebar-logo">
                 <img class="logo-light logo-img" src="{{ asset('app/images/logo.png')  }}" srcset="{{ asset('app/images/logo.png') }} 2x" alt="logo">
                 <img class="logo-dark logo-img" src="{{ asset('app/images/logo.png')  }}" srcset="{{ asset('app/images/logo.png') }} 2x" alt="logo-dark">
                 <img class="logo-small logo-img logo-img-small" src="{{ asset('app/images/logo.png')  }}" srcset="{{ asset('app/images/logo.png') }} 2x" alt="logo-small">
@@ -16,8 +16,8 @@
         <div class="nk-sidebar-content">
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
-                    @include('admins.components._link', [
-                        'route' => route('admins.backend.index'),
+                    @include('dealers.components._link', [
+                        'route' => route('commissioner.backend.index'),
                         'name' => 'Dashboard',
                         'icon' => 'ni-grid-c'
                     ])
@@ -25,28 +25,16 @@
                     <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">Administration</h6>
                     </li>
-                    @include('admins.components._link', [
-                        'route' => route('admins.houses.index'),
+                    @include('dealers.components._link', [
+                        'route' => route('commissioner.houses.index'),
                         'name' => 'Apartments',
                         'icon' => 'ni-building'
                     ])
 
-                    @include('admins.components._link', [
-                        'route' => route('admins.categories.index'),
-                        'name' => 'Categories',
-                        'icon' => 'ni-crop'
-                    ])
-
-                    @include('admins.components._link', [
-                        'route' => route('admins.reservations.index'),
-                        'name' => 'Reservations',
-                        'icon' => 'ni-coin-alt'
-                    ])
-
-                    @include('admins.components._link', [
-                        'route' => route('admins.users.index'),
-                        'name' => 'Users',
-                        'icon' => 'ni-user-alt'
+                    @include('dealers.components._link', [
+                        'route' => route('commissioner.imageHouses.index'),
+                        'name' => 'Images',
+                        'icon' => 'ni-img'
                     ])
                 </ul>
             </div>

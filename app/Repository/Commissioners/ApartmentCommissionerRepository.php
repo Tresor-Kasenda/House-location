@@ -4,16 +4,22 @@ declare(strict_types=1);
 namespace App\Repository\Commissioners;
 
 use App\Contracts\ApartmentCommissionerRepositoryInterface;
+use App\Enums\UserRoleEnum;
+use App\Models\House;
 use App\Traits\ImageUploader;
 use App\Traits\RandomValues;
+use Illuminate\Database\Eloquent\Collection;
 
 class ApartmentCommissionerRepository implements ApartmentCommissionerRepositoryInterface
 {
     use ImageUploader, RandomValues;
 
-    public function getContents()
+    public function getContents(): Collection|array
     {
-        // TODO: Implement getContents() method.
+        return House::query()
+            ->where('user_id', '=', UserRoleEnum::COMMISSIONNERS)
+            ->orderByDesc('created_at')
+            ->get();
     }
 
     public function show(string $key)

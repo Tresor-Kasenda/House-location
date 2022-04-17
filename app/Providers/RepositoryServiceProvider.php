@@ -15,6 +15,7 @@ use App\Contracts\ReservationHouseRepositoryInterface;
 use App\Contracts\ReservationRepositoryInterface;
 use App\Contracts\TrashedRepositoryInterface;
 use App\Contracts\UserRepositoryInterface;
+use App\Contracts\UsersProfileRepositoryInterface;
 use App\Repository\Admins\ActiveApartmentRepository;
 use App\Repository\Admins\ApartmentRepository;
 use App\Repository\Admins\CategoryRepository;
@@ -27,6 +28,7 @@ use App\Repository\Apps\NewsLetterRepository;
 use App\Repository\Commissioners\ApartmentCommissionerRepository;
 use App\Repository\Commissioners\HomeCommissionerRepository;
 use App\Repository\Commissioners\ImageCommissionerRepository;
+use App\Repository\Users\UsersProfileRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\ApartmentRepositoryInterface;
 use App\Repository\Apps\CategoryRepository as HomeCategory;
@@ -48,7 +50,8 @@ class RepositoryServiceProvider extends ServiceProvider
         ImageRepositoryInterface::class => ImageRepository::class,
         HomeCommissionerRepositoryInterface::class => HomeCommissionerRepository::class,
         ApartmentCommissionerRepositoryInterface::class => ApartmentCommissionerRepository::class,
-        ImageCommissionerRepositoryInterface::class => ImageCommissionerRepository::class
+        ImageCommissionerRepositoryInterface::class => ImageCommissionerRepository::class,
+        UsersProfileRepositoryInterface::class => UsersProfileRepository::class,
     ];
 
     public function register(){}

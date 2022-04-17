@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Apps;
 
 use App\Contracts\HomeRepositoryInterface;
+use App\Enums\UserRoleEnum;
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller
