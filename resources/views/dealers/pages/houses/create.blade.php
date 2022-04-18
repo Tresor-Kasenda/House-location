@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.dealer')
 
 @section('title', "Administration des appartements")
 
@@ -10,7 +10,7 @@
                     <h3 class="nk-block-title page-title">Creation des appartements</h3>
                 </div>
                 <div class="nk-block-head-content">
-                    <a href="{{ route('admins.houses.index') }}" class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
+                    <a href="{{ route('commissioner.houses.index') }}" class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
                         <em class="icon ni ni-arrow-left"></em>
                         <span>Back</span>
                     </a>
@@ -26,7 +26,7 @@
                                 <div id="maid" style="height: 250px; width: 920px;border-radius: 5px"></div>
                             </div>
                         </div>
-                        @include('admins.pages.apartments._form')
+                        @include('dealers.pages.houses._form')
                     </div>
                 </div>
             </div>

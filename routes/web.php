@@ -66,7 +66,7 @@ Route::group([
     'as' => 'users.',
     'middleware' => ['users', 'auth']
 ], function(){
-    Route::resource('backend', HomeUserController::class);
+    Route::resource('users', HomeUserController::class);
 });
 
 Route::get('/', HomeController::class)->name('home.index');

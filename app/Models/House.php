@@ -34,6 +34,11 @@ class House extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function type(): BelongsTo
+    {
+        return $this->belongsTo(Type::class, 'type_id');
+    }
+
     public function reservations(): HasMany
     {
         return $this->hasMany(Reservation::class);

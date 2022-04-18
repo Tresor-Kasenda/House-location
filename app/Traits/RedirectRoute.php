@@ -24,7 +24,7 @@ trait RedirectRoute
                 return $this->redirectTo;
                 break;
             case UserRoleEnum::USERS:
-                $this->redirectTo = route('users.backend.index');
+                $this->redirectTo = route('users.users.index');
                 return $this->redirectTo;
                 break;
             default:

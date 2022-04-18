@@ -27,7 +27,9 @@ class ApartmentRequest extends FormRequest
             'commune' => ['required', 'min:4'],
             'district' => ['required', 'min:4'],
             'roomNumber' => ['required', 'min:1'],
-            'town' => ['required', 'min:3']
+            'town' => ['required', 'min:3'],
+            'categories' => ['required'],
+            'categories.*' => ['required', Rule::exists('categories', 'name')]
         ];
     }
 }

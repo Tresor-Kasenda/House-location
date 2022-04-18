@@ -5,7 +5,6 @@
     <meta name="author" content="{{ config('app.name') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="refresh" content="60">
     <meta name="description" content="Une partie d'administration pour la gestion d'un {{ config('app.name') }}">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png') }}">
     <title>{{ config('app.name') }} | @yield('title')</title>
@@ -17,15 +16,15 @@
 <body class="nk-body bg-lighter npc-general has-sidebar ">
     <div class="nk-app-root">
         <div class="nk-main ">
-            @include('admins.partials.sidebar')
+            @include('dealers.partials.sidebar')
             <div class="nk-wrap">
-                @include('admins.partials.header')
+                @include('dealers.partials.header')
                 <div class="nk-content">
                     <div class="container-fluid">
                         @yield('content')
                     </div>
                 </div>
-                @include('admins.partials.footer')
+                @include('dealers.partials.footer')
             </div>
         </div>
     </div>

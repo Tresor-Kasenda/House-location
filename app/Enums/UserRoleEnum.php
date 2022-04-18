@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Enums;
 
-class UserRoleEnum: int
+class UserRoleEnum
 {
     const USERS = 1;
     const COMMISSIONNERS = 2;
