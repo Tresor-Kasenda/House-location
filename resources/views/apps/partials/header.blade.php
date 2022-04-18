@@ -1,5 +1,4 @@
-<header
-    class="w-full lg:px-28 sm:px-12 px-6 relative lg:after:absolute lg:after:bottom-0 bg-white z-50 after:max-w-7xl after:h-0 after:left-1/2 after:-translate-x-1/2 after:bg-gradient-to-tr after:from-green-400 after:to-purple-600 shadow-md shadow-purple-100 lg:shadow-none lg:after:w-9/12 after:z-40">
+<header class="w-full lg:px-28 sm:px-12 px-6 relative lg:after:absolute lg:after:bottom-0 bg-white z-50 after:max-w-7xl after:h-0 after:left-1/2 after:-translate-x-1/2 after:bg-gradient-to-tr after:from-green-400 after:to-purple-600 shadow-md shadow-purple-100 lg:shadow-none lg:after:w-9/12 after:z-40">
     <nav class="container m-auto h-16 md:h-20 py-4 flex items-center justify-between">
         <div class="flex items-center">
             <div class="flex items-center">
@@ -72,7 +71,7 @@
                     <div class="w-full text-lg text-gray-500">
                         @auth
                             @if(auth()->user()->role_id == \App\Enums\UserRoleEnum::USERS)
-                                <a href="" class="flex gap-2 px-4 py-2.5 ">
+                                <a href="{{ route('users.users.index') }}" class="flex gap-2 px-4 py-2.5 ">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                     </svg>
@@ -96,11 +95,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                 </button>
-                <a href="" class="sm:p-3 rounded-xl transition-all bg-gray-100 hover:text-purple-600 duration-300 hidden lg:flex lg:z-50">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                </a>
             </div>
             <div class="relative group hidden lg:flex z-[1002]">
                 <button class="p-2 sm:p-3 rounded-xl bg-gradient-to-tr from-green-400 to-purple-600 text-white ">
@@ -113,16 +107,17 @@
                         @auth
                             @if(auth()->user()->role_id == \App\Enums\UserRoleEnum::USERS)
                                 <li class="block hover:bg-purple-100 transition">
-                                    <a href="" class="py-2 px-4 hover:text-purple-600 block transition">Mon compte</a>
+                                    <a href="{{ route('users.users.index') }}" class="py-2 px-4 hover:text-purple-600 block transition">Mon compte</a>
                                 </li>
                             @endif
+                        @else
+                            <li class="block hover:bg-purple-100 transition">
+                                <a href="{{ route('login') }}" class="py-2 px-4 hover:text-purple-600 block transition">Se connecter</a>
+                            </li>
+                            <li class="block hover:bg-purple-100 transition">
+                                <a href="{{ route('register') }}" class="py-2 px-4 hover:text-purple-600 block transition">S'inscrire</a>
+                            </li>
                         @endauth
-                        <li class="block hover:bg-purple-100 transition">
-                            <a href="{{ route('login') }}" class="py-2 px-4 hover:text-purple-600 block transition">Se connecter</a>
-                        </li>
-                        <li class="block hover:bg-purple-100 transition">
-                            <a href="{{ route('register') }}" class="py-2 px-4 hover:text-purple-600 block transition">S'inscrire</a>
-                        </li>
                     </ul>
                 </div>
             </div>
