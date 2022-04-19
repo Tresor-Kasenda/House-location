@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Forms;
 
 use App\Models\Category;
+use App\Models\Type;
 use Kris\LaravelFormBuilder\Form;
 
 class ApartmentForm extends Form
@@ -51,6 +52,12 @@ class ApartmentForm extends Form
                 'label' => 'Categorie',
                 'choices' => Category::all()->pluck('name', 'id')->toArray(),
                 'multiple' => true,
+                'attr' => ['class' => 'form-select']
+            ])
+            ->add('type','choice',[
+                'label' => 'Type',
+                'choices' => Type::all()->pluck('name', 'id')->toArray(),
+                'multiple' => false,
                 'attr' => ['class' => 'form-select']
             ]);
     }

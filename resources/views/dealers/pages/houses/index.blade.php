@@ -1,6 +1,6 @@
-@extends('layouts.admin')
+@extends('layouts.dealer')
 
-@section('title', "Administration des appartements")
+@section('title', "Creation des maison")
 
 @section('content')
     <div class="nk-content-inner">
@@ -15,13 +15,8 @@
                             <div class="toggle-expand-content" data-content="pageMenu">
                                 <ul class="nk-block-tools g-3">
                                     <li class="preview-item">
-                                        <a href="{{ route('admins.houses.create') }}" class="btn btn-dim btn-primary btn-sm">
+                                        <a href="{{ route('commissioner.houses.create') }}" class="btn btn-dim btn-primary btn-sm">
                                             <em class="icon ni ni-plus mr-1"></em> Ajouter
-                                        </a>
-                                    </li>
-                                    <li class="preview-item">
-                                        <a href="{{ route('admins.apartment.trashed') }}" class="btn btn-dim btn-secondary btn-sm">
-                                            <em class="icon ni ni-histroy mr-1"></em> Historique
                                         </a>
                                     </li>
                                 </ul>
@@ -58,7 +53,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($rooms as $room)
+                                @foreach($houses as $room)
                                     <tr class="nk-tb-item">
                                         <td class="nk-tb-col tb-col-sm">
                                             <span class="tb-product text-center">
@@ -93,19 +88,19 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li>
-                                                                    <a href="{{ route('admins.houses.show', $room->key) }}">
+                                                                    <a href="{{ route('commissioner.houses.show', $room->key) }}">
                                                                         <em class="icon ni ni-eye"></em>
                                                                         <span>Voir</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="{{ route('admins.houses.edit', $room->key) }}">
+                                                                    <a href="{{ route('commissioner.houses.edit', $room->key) }}">
                                                                         <em class="icon ni ni-edit"></em>
                                                                         <span>Editer</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('admins.houses.destroy', $room->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                                    <form action="{{ route('commissioner.houses.destroy', $room->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')
                                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                                         <button type="submit" class="btn btn-dim">

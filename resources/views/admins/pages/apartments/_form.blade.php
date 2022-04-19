@@ -69,14 +69,21 @@
     </div>
 </div>
 <div class="row g-3">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
             <div class="form-control-wrap">
                 {!! form_row($form->categories) !!}
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
+        <div class="form-group">
+            <div class="form-control-wrap">
+                {!! form_row($form->type) !!}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
         <div class="form-group">
             <div class="form-control-wrap">
                 {!! form_row($form->town) !!}

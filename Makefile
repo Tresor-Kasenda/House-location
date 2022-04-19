@@ -30,6 +30,10 @@ clear: vendor/autoload.php ## vide le cache de l'application
 serve: vendor/autoload.php ## lance, le serve de development
 	php -S localhost:8000 -t public server.php
 
+.PHONE: create
+create: vendor/autoload.php # creer un administrateur
+	php artisan karibu:add-user
+
 .PHONY: watch
 watch: vendor/autoload.php ## lance, le serve de development
 	npm run watch
