@@ -75,6 +75,7 @@ Route::resource('categories', CategoryController::class);
 Route::get('abouts', AboutController::class)->name('abouts.index');
 Route::get('localisation', LocationController::class)->name('location.index');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 Route::post('news-letters', [NewsLetterController::class, 'index'])->name('newsletters.send');
 Route::controller(ReservationController::class)->group(function (){
     Route::post('reservation', 'store')->name('reservation.store');

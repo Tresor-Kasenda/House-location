@@ -26,6 +26,15 @@
                                 <div id="maid" style="height: 250px; width: 920px;border-radius: 5px"></div>
                             </div>
                         </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="list-unstyled">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         @include('admins.pages.apartments._form')
                     </div>
                 </div>

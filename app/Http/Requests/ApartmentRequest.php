@@ -29,7 +29,7 @@ class ApartmentRequest extends FormRequest
             'roomNumber' => ['required', 'min:1'],
             'town' => ['required', 'min:3'],
             'categories' => ['required'],
-            'categories.*' => ['required', Rule::exists('categories', 'name')]
+            'type' => ['required']
         ];
     }
 }

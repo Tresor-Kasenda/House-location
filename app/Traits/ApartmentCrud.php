@@ -26,7 +26,8 @@ trait ApartmentCrud
                 'roomNumber'=> $attributes->roomNumber,
                 'town' => $attributes->town,
                 'user_id' => auth()->id(),
-                'reference' => $this->generateRandomTransaction(15)
+                'reference' => $this->generateRandomTransaction(15),
+                'type_id' => $attributes->input('type')
             ]);
         $apartment->categories()->attach($attributes->categories);
         toast("Un nouveau appartement à été ajouter", 'success');
@@ -50,6 +51,7 @@ trait ApartmentCrud
             'images'=> $this::uploadFiles($attributes),
             'roomNumber'=> $attributes->roomNumber,
             'town' => $attributes->town,
+            'type_id' => $attributes->input('type')
         ]);
         $house->categories()->attach($attributes->categories);
         toast("Un nouveau appartement à été modifier", 'success');

@@ -3,27 +3,101 @@
 @section('title', "Les apartements par categorie")
 
 @section('content')
-    <section class="w-full h-screen flex items-center relative lg:px-28 sm:px-12 px-6 overflow-hidden">
-        <div class="absolute w-screen h-80 top-1/2 -translate-y-1/2">
-            <svg width="407" height="408" viewBox="0 0 407 408" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path opacity="0.698236" d="M365.474 102.147C380.763 123.373 403.29 140.892 406.203 168.577C409.17 196.771 403.454 232.347 381.48 254.239C357.854 277.775 315.107 258.633 291.822 282.526C263.025 312.077 277.927 368.132 245.74 393.53C218.359 415.137 177.491 408.366 151.577 393.194C125.307 377.813 128.833 334.87 107.937 312.848C89.8088 293.742 56.7714 294.773 39.3801 274.947C19.8138 252.642 -6.42542 225.23 2.6508 192.824C12.3866 158.064 57.7403 144.882 83.384 117.837C101.42 98.8149 111.484 73.5722 131.537 56.8921C151.692 40.1278 175.377 30.7209 198.987 21.681C224.161 12.0418 251.182 -4.20534 274.968 1.97412C298.887 8.18784 307.578 36.2018 323.741 54.0906C338.133 70.0208 352.856 84.6292 365.474 102.147Z" fill="#6842FF" fill-opacity="0.13" />
-            </svg>
+<section class="lg:px-28 md:px-12 px-6 pt-16 bg-gray-50 pb-16">
+    <div class="lg:max-w-screen-xl mx-auto flex flex-col gap-10">
+        <div class="flex justify-center mx-auto lg:w-5/6">
+            <h1 class="text-gray-600 font-semibold text-3xl text-center">Pour tout besoin, n'hesitez pas de nous contactactez</h1>
         </div>
-        <div class="container mx-auto flex items-center pt-24 md:pt-12 lg:pt-0">
-            <div class="grid md:grid-cols-2 gap-2 items-center">
-                <div class="flex flex-col gap-7">
-                    <h1 class="text-3xl sm:text-4xl lg:text-6xl font-semibold text-gray-600">
-                        Merci d'avoir choisi Karibukuako
-                    </h1>
-                    <p class="text-gray-500 text-base flex xl:leading-snug">
-                        Votre reservation est effextuée avec succes, le code de votre reservation est :
-                        <span class="font-semibold text-purple-600">{{ $reservation->reference ?? "" }}</span>
-                    </p>
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+            <div class="flex flex-col gap-4 bg-white shadow-lg shadow-purple-100 rounded-md p-4">
+                <div class="block mx-auto">
+                    <img src="{{ asset('app/images/icon_phone.png') }}" alt="" class="w-14">
                 </div>
-                <div class="flex items-end justify-end align-bottom">
-                    <img src="{{ asset('app/images/High five-pana.png') }}" alt="" class="flex">
+                <div class="w-full text-center block text-xl font-semibold text-gray-500"><span>Numero telephone</span></div>
+                <div class="w-full text-center block font-semibold text-gray-400 text-base"><span>+ 243 97 24 44 966</span></div>
+            </div>
+
+            <div class="flex flex-col gap-4 bg-white shadow-lg shadow-purple-100 rounded-md p-4">
+                <div class="block mx-auto">
+                    <img src="{{ asset('app/images/icon_map.png') }}" alt="" class="w-14">
                 </div>
+                <div class="w-full text-center block text-xl font-semibold text-gray-500"><span>Adresse physique</span></div>
+                <div class="w-full text-center block font-semibold text-gray-400 text-base"><span>+ 243 97 24 44 966</span></div>
+            </div>
+
+            <div class="flex flex-col gap-4 bg-white shadow-lg shadow-purple-100 rounded-md p-4">
+                <div class="block mx-auto">
+                    <img src="{{ asset('app/images/icon_mail.png') }}" alt="" class="w-14">
+                </div>
+                <div class="w-full text-center block text-xl font-semibold text-gray-500"><span>Adresse mail</span></div>
+                <div class="w-full text-center block font-semibold text-gray-400 text-base"><span>+ 243 97 24 44 966</span></div>
             </div>
         </div>
-    </section>
+        <div class="py-10"></div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+            <div class="relative lg:col-span-2  after:absolute after:w-1 after:rounded-full after:h-6 after:top-1.5 after:left-0 after:bg-purple-600">
+                <div class="flex flex-col pl-4 gap-5">
+                    <h1 class="text-3xl font-semibold text-gray-500">Laissez-nous un message</h1>
+                    <p class="text-base font-normal text-gray-400">
+                        Vous avez un probleme, une suggestion à donner, faites-nous savoir en nous laissant un message, echangez avec vous c'est un réel plaisir pour nous
+                    </p>
+                </div>
+            </div>
+            <div class="bg-white shadow-2xl rounded-md p-4 sm:p-6 lg:p-12 col-span-1 lg:col-span-3">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="list-unstyled">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form action="{{ route('contact.store') }}" method="post" class="flex flex-col gap-4">
+                    @csrf
+                    <div class="flex flex-col gap-1.5">
+                        <label for="username" class="text-lg font-medium text-gray-400">Nom complet</label>
+                        <input
+                            type="text"
+                            placeholder="John Katembue Mujila"
+                            name="username"
+                            id="username"
+                            value="{{ old('username') }}"
+                            class="bg-gray-100 focus:bg-white text-sm font-normal text-gray-500 px-4 py-3 rounded-md border-[3px] border-gray-100 outline-none transition duration-300 focus:border-purple-400 focus:shadow-2xl focus:shadow-purple-200">
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <label for="email" class="text-lg font-medium text-gray-400">Adresse mail</label>
+                        <input
+                            type="email"
+                            placeholder="johnkatembue4@gmail.com"
+                            name="email"
+                            id="email"
+                            value="{{ old('email') }}"
+                            class="bg-gray-100 focus:bg-white text-sm font-normal text-gray-500 px-4 py-3 rounded-md border-[3px] border-gray-100 outline-none transition duration-300 focus:border-purple-400 focus:shadow-2xl focus:shadow-purple-200">
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <label for="subject" class="text-lg font-medium text-gray-400">Objet</label>
+                        <input
+                            type="text"
+                            placeholder="Objet de votre message"
+                            name="subject"
+                            id="subject"
+                            value="{{ old('subject') }}"
+                            class="bg-gray-100 focus:bg-white text-sm font-normal text-gray-500 px-4 py-3 rounded-md border-[3px] border-gray-100 outline-none transition duration-300 focus:border-purple-400 focus:shadow-2xl focus:shadow-purple-200">
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <label for="message" class="text-lg font-medium text-gray-400">Message</label>
+                        <textarea
+                            name="message"
+                            id="message"
+                            class="bg-gray-100 focus:bg-white text-sm resize-none h-20 font-normal text-gray-500 px-4 py-3 rounded-md border-[3px] border-gray-100 outline-none transition duration-300 focus:border-purple-400 focus:shadow-2xl focus:shadow-purple-200">{{ old('message') }}</textarea>
+                    </div>
+                    <div class="flex">
+                        <button class="md:w-4/12 text-center bg-gradient-to-tr from-green-400 to-purple-600 text-sm font-semibold px-6 text-white py-3 rounded-md">Envoyer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection

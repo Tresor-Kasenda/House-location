@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use App\Models\Type;
 use App\Models\User;
 use App\Enums\StatusEnum;
 use Illuminate\Support\Facades\Schema;
