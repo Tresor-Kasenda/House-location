@@ -28,7 +28,7 @@ class CategoryRepository implements CategoryHomeRepositoryInterface
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
             ->withCount('reservations')
             ->first();
-        return $house->load(['categories','image']);
+        return $house->load(['categories','image', 'type']);
     }
 
     public function getHouseByDetails($house): Collection|array

@@ -119,7 +119,7 @@
                     <div class="py-7 flex flex-col gap-5 z-30">
                         <div class="flex flex-wrap gap-2">
                             <div class="px-3 py-2 text-white bg-green-600">
-                                A louer
+                                {{ $apartment->type->name ?? "" }}
                             </div>
                             <div class="px-3 py-2 text-white bg-orange-600">
                                 {{ $apartment->reservations_count }} reservations deja faites
