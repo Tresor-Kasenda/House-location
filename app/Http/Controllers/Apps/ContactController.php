@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Apps;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
+use App\Mail\ContactMail;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -15,8 +17,9 @@ class ContactController extends Controller
         return view('apps.pages.contacts.index');
     }
 
-    public function store(ContactRequest $request)
+    public function store(ContactRequest $request): RedirectResponse
     {
-        dd($request->all());
+        Mail::to($request->input('email'))->send(new ContactMail($request));
+        return back()->with('success', '');
     }
 }

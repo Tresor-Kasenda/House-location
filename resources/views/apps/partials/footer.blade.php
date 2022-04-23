@@ -7,10 +7,10 @@
                 </a>
             </div>
             <ul class="py-4 flex sm:flex-row flex-col sm:gap-8 gap-4 items-center justify-center">
-                <li><a href="" class="hover:text-blue-500">Accueil</a></li>
-                <li><a href="" class="hover:text-blue-500">Catégories</a></li>
-                <li><a href="" class="hover:text-blue-500">Carte</a></li>
-                <li><a href="" class="hover:text-blue-500">A propos</a></li>
+                <li><a href="{{ route('home.index') }}" class="hover:text-blue-500">Accueil</a></li>
+                <li><a href="{{ route('categories.index') }}" class="hover:text-blue-500">Catégories</a></li>
+                <li><a href="{{ route('location.index') }}" class="hover:text-blue-500">Carte</a></li>
+                <li><a href="{{ route('abouts.index') }}" class="hover:text-blue-500">A propos</a></li>
             </ul>
 
             <div class="text-center">

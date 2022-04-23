@@ -13,6 +13,7 @@ use App\Contracts\ImageRepositoryInterface;
 use App\Contracts\NewsLetterRepositoryInterface;
 use App\Contracts\ReservationHouseRepositoryInterface;
 use App\Contracts\ReservationRepositoryInterface;
+use App\Contracts\SearchRepositoryInterface;
 use App\Contracts\TrashedRepositoryInterface;
 use App\Contracts\UserRepositoryInterface;
 use App\Contracts\UsersProfileRepositoryInterface;
@@ -25,6 +26,7 @@ use App\Repository\Admins\TrashedRepository;
 use App\Repository\Admins\UserRepository;
 use App\Repository\Apps\HomeFrontendRepository;
 use App\Repository\Apps\NewsLetterRepository;
+use App\Repository\Apps\SearchRepository;
 use App\Repository\Commissioners\ApartmentCommissionerRepository;
 use App\Repository\Commissioners\HomeCommissionerRepository;
 use App\Repository\Commissioners\ImageCommissionerRepository;
@@ -52,6 +54,7 @@ class RepositoryServiceProvider extends ServiceProvider
         ApartmentCommissionerRepositoryInterface::class => ApartmentCommissionerRepository::class,
         ImageCommissionerRepositoryInterface::class => ImageCommissionerRepository::class,
         UsersProfileRepositoryInterface::class => UsersProfileRepository::class,
+        SearchRepositoryInterface::class => SearchRepository::class
     ];
 
     public function register(){}
