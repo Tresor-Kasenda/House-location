@@ -12,7 +12,7 @@ class ContactRequest extends FormRequest
         return true;
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             "username" => ['required', 'string'],

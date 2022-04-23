@@ -17,6 +17,7 @@ use App\Http\Controllers\Apps\LocationController;
 use App\Http\Controllers\Apps\NewsLetterController;
 use App\Http\Controllers\Apps\ReservationController;
 use App\Http\Controllers\Apps\SearchController;
+use App\Http\Controllers\Apps\SearchLocationController;
 use App\Http\Controllers\Commissioners\ApartmentCommissionerController;
 use App\Http\Controllers\Commissioners\HomeCommissionerController;
 use App\Http\Controllers\Commissioners\ImageCommissionerController;
@@ -81,3 +82,5 @@ Route::controller(ReservationController::class)->group(function (){
     Route::post('reservation', 'store')->name('reservation.store');
     Route::get('confirmation/{key}', 'show')->name('reservation.show');
 });
+
+Route::get('search', [SearchLocationController::class, 'searching'])->name('search.house');

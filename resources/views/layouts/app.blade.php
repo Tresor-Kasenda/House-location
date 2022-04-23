@@ -10,17 +10,40 @@
     <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png')  }}">
     @yield('styles')
-    @livewireStyles
+    @laravelPWA
 </head>
 <body class="text-gray-500  overflow-x-hidden w-full">
     @include('apps.partials.header')
     <div>
         @yield('content')
     </div>
-    @livewireScripts
     @include('apps.partials.footer')
     <script src="{{ asset('app/js/hamburger.js') }}"></script>
+    <script src="{{ asset('app/js/jquery.js') }}"></script>
     @include('sweetalert::alert')
     @yield("scripts")
+    <script>
+        $(document).ready(function(){
+            $('#search').on('keyup', function () {
+                const search = $('#search').val();
+                const render  = $('#searchResult');
+                if(search !== null){
+                    $.ajax({
+                        type: "GET",
+                        url: '{{ route('search.house') }}',
+                        data: {_search : search},
+                        dataType: 'json',
+                        delay: 220,
+                        success: function (response) {
+                            if(response.search){
+                                render.html(response.search)
+                            }
+                            render.html(response.empty)
+                        }
+                    })
+                }
+            })
+        })
+    </script>
 </body>
 </html>

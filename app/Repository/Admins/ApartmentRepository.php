@@ -32,7 +32,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
     public function deleted(string $key): Model|Builder|int|null
     {
         $room = $this->getHouse(key: $key);
-        if ($room->status == true){
+        if ($room->status){
             toast('Veillez désactiver votre appartement avant de le suspendre', 'warning');
             return null;
         }
