@@ -6,19 +6,34 @@ namespace App\Repository\Apps;
 use App\Contracts\CategoryHomeRepositoryInterface;
 use App\Enums\HouseEnum;
 use App\Models\House;
-use App\Services\LocationHouse;
+use App\Models\Type;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
-use Stevebauman\Location\Facades\Location;
+use Illuminate\Http\Request;
 
 class CategoryRepository implements CategoryHomeRepositoryInterface
 {
-    public function index(): Collection|array
+    public function index(?Request $request = null): Collection|array
     {
-        return House::query()
+        $query = House::query()
             ->orderByDesc('created_at')
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
             ->get();
+
+        if (!empty($request->type)){
+            $type = Type::query()
+                ->where('name', '=', $request->type)
+                ->first();
+            $query = House::query()
+                ->orWhere('type_id', '=', $type->id)
+                ->get();
+        }
+
+        if (!empty($request->query('number'))){
+            $query = House::query()
+                ->orWhere('roomNumber', '=', $request->query('number'))
+                ->get();
+        }
+        return $query;
     }
 
     public function show(string $key)

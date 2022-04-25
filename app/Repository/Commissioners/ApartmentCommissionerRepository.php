@@ -28,7 +28,7 @@ class ApartmentCommissionerRepository implements ApartmentCommissionerRepository
     public function show(string $key): Model
     {
         $house = $this->getHouse($key);
-        return $house->load('categories');
+        return $house->load('categories', 'type');
     }
 
     public function deleted(string $key): Model|Builder

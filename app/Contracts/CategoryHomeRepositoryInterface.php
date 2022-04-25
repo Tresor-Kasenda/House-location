@@ -3,9 +3,11 @@ declare(strict_types=1);
 
 namespace App\Contracts;
 
+use Illuminate\Http\Request;
+
 interface CategoryHomeRepositoryInterface
 {
-    public function index();
+    public function index(?Request $request = null);
 
     public function show(string $key);
 

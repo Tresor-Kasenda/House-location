@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.dealer')
 
 @section('title', "Administration des images")
 
@@ -10,7 +10,7 @@
                     <h3 class="nk-block-title page-title">Creation des images</h3>
                 </div>
                 <div class="nk-block-head-content">
-                    <a href="{{ route('images.index') }}" class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
+                    <a href="{{ route('commissioner.imageHouses.index') }}" class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
                         <em class="icon ni ni-arrow-left"></em>
                         <span>Back</span>
                     </a>
@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-aside-wrap">
                     <div class="card-inner card-inner-lg">
-                        @include('admins.pages.images._form')
+                        @include('dealers.pages.images._form')
                     </div>
                 </div>
             </div>

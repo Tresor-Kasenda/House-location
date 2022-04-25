@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 
 trait ApartmentCrud
 {
+    use ImageUploader;
+
     public function created($attributes): Builder|Model
     {
         $apartment = House::query()
@@ -25,7 +27,7 @@ trait ApartmentCrud
                 'district'=> $attributes->district,
                 'roomNumber'=> $attributes->roomNumber,
                 'town' => $attributes->town,
-                'user_id' => auth()->id(),
+                'user_id' => auth()->user()->role_id,
                 'reference' => $this->generateRandomTransaction(15),
                 'type_id' => $attributes->input('type')
             ]);
@@ -37,6 +39,7 @@ trait ApartmentCrud
     public function updated(string $key, $attributes): Model|Builder
     {
         $house = $this->getHouse(key: $key);
+        $this->removePathOfImages($house);
         $house->categories()->detach($attributes->categories);
         $house->update([
             'prices' => $attributes->prices,
