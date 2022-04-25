@@ -14,14 +14,14 @@ class ReservationRepository implements ReservationRepositoryInterface
     public function getContents(): Collection|array
     {
         return Reservation::query()
-            ->with(['house', 'user'])
+            ->with('house')
             ->get();
     }
 
     public function show(string $key): Model|Builder|null
     {
         $user = $this->getReservation(key: $key);
-        return $user->load(['house', 'user']);
+        return $user->load('house');
     }
 
     public function deleted(string $key): Model|Builder|null
@@ -35,7 +35,7 @@ class ReservationRepository implements ReservationRepositoryInterface
     private function getReservation(string $key): null|Builder|Model
     {
         return Reservation::query()
-            ->where('key', 'key', $key)
+            ->where('key', '=', $key)
             ->first();
     }
 }

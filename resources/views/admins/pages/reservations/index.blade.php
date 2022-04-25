@@ -20,6 +20,9 @@
                                 <thead>
                                 <tr class="nk-tb-item nk-tb-head text-center">
                                     <th class="nk-tb-col tb-col-md">
+                                        <span class="sub-text">Reference</span>
+                                    </th>
+                                    <th class="nk-tb-col tb-col-md">
                                         <span class="sub-text">Name</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
@@ -29,7 +32,7 @@
                                         <span class="sub-text">Phones</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Role</span>
+                                        <span class="sub-text">Code maison</span>
                                     </th>
                                     <th class="nk-tb-col nk-tb-col-tools text-right">
                                         <span class="sub-text">Actions</span>
@@ -39,17 +42,20 @@
                                 <tbody>
                                 @foreach($reservations as $reservation)
                                     <tr class="nk-tb-item text-center">
-                                        <td class="nk-tb-col tb-col-md">
-                                            <span></span>
+                                        <td class="nk-tb-col tb-col-md font-weight-bold">
+                                            <span>{{ $reservation->reference ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span></span>
+                                            <span>{{ $reservation->name ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span></span>
+                                            <span>{{ $reservation->address ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span></span>
+                                            <span>{{ $reservation->phones ?? "" }}</span>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md font-weight-bold">
+                                            <span>{{ $reservation->house->reference ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col nk-tb-col-tools">
                                             <ul class="nk-tb-actions gx-1">
@@ -61,13 +67,13 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li>
-                                                                    <a href="">
+                                                                    <a href="{{ route('admins.reservations.show', $reservation->key) }}">
                                                                         <em class="icon ni ni-eye"></em>
                                                                         <span>Voir</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <form action="" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                                    <form action="{{ route('admins.reservations.destroy', $reservation->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')
                                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                                         <button type="submit" class="btn btn-dim">

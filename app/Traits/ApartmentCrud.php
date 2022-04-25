@@ -28,7 +28,7 @@ trait ApartmentCrud
                 'roomNumber'=> $attributes->roomNumber,
                 'town' => $attributes->town,
                 'user_id' => auth()->user()->role_id,
-                'reference' => $this->generateRandomTransaction(15),
+                'reference' => $this->generateRandomTransaction(6),
                 'type_id' => $attributes->input('type')
             ]);
         $apartment->categories()->attach($attributes->categories);

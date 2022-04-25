@@ -118,16 +118,27 @@
 
                     <div class="py-7 flex flex-col gap-5 z-30">
                         <div class="flex flex-wrap gap-2">
-                            <div class="px-3 py-2 text-white bg-green-600">
-                                {{ $apartment->type->name ?? "" }}
-                            </div>
-                            <div class="px-3 py-2 text-white bg-orange-600">
-                                {{ $apartment->reservations_count }} reservations deja faites
-                            </div>
+                            @if($apartment->type->name !== \App\Enums\HouseType::FOR_HIRE)
+                                <div class="px-3 py-2 text-white bg-purple-600">
+                                    A louer
+                                </div>
+                            @else
+                                <div class="px-3 py-2 text-white bg-blue-600">
+                                    A vendre
+                                </div>
+                            @endif
+                            @if($apartment->reservations_count > 0)
+                                <div class="px-3 py-2 text-white bg-green-600">
+                                    {{ $apartment->reservations_count }} Negociation en cours
+                                </div>
+                            @else
+                                <div class="px-3 py-2 text-white bg-orange-600">
+                                    Aucune negociation pour cette maison
+                                </div>
+                            @endif
                         </div>
                     </div>
-                    <div
-                        class="flex flex-col pl-4 relative before:absolute before:w-1 before:h-6 before:bg-purple-600 before:top-1 before:left-0 z-20">
+                    <div class="flex flex-col pl-4 relative before:absolute before:w-1 before:h-6 before:bg-purple-600 before:top-1 before:left-0 z-20">
                         <h1 class="flex font-semibold text-gray-600 text-xl">Descriptions</h1>
                         <div class="flex py-4">
                             <p class="text-gray-500 font-light text-base text-justify">
@@ -136,19 +147,18 @@
                         </div>
                     </div>
 
-                    <div
-                        class="flex flex-col mt-4 pl-4 relative before:absolute before:w-1 before:h-6 before:bg-purple-600 before:top-1 before:left-0">
+                    <div class="flex flex-col mt-4 pl-4 relative before:absolute before:w-1 before:h-6 before:bg-purple-600 before:top-1 before:left-0">
                         <h1 class="flex font-semibold text-gray-600 text-xl">Details appartement</h1>
                         <div class="flex py-4 w-full">
                             <table class="w-full rounded-lg table-fixed bg-gray-100">
                                 <tbody>
                                 <tr>
                                     <td class="p-2 bg-gray-50 text-gray-700">Code Reference</td>
-                                    <td class="p-2 rounded">Ty00012000</td>
+                                    <td class="p-2 rounded">{{ $apartment->reference }}</td>
                                 </tr>
                                 <tr>
                                     <td class="p-2 bg-gray-50 text-gray-700">Chambres</td>
-                                    <td class="p-2 rounded">3</td>
+                                    <td class="p-2 rounded">{{ $apartment->roomNumber }}</td>
                                 </tr>
                                 <tr>
                                     <td class="p-2 bg-gray-50 text-gray-700">Salon</td>
