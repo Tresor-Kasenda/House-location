@@ -22,6 +22,7 @@ use App\Http\Controllers\Commissioners\ApartmentCommissionerController;
 use App\Http\Controllers\Commissioners\HomeCommissionerController;
 use App\Http\Controllers\Commissioners\ImageCommissionerController;
 use App\Http\Controllers\Users\HomeUserController;
+use App\Http\Controllers\Users\UpdateUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -68,6 +69,9 @@ Route::group([
     'middleware' => ['users', 'auth']
 ], function(){
     Route::resource('users', HomeUserController::class);
+    Route::controller(UpdateUserController::class)->group(function (){
+        Route::put('updateUser/{key}/update', 'update')->name('update.users');
+    });
 });
 
 Route::get('/', HomeController::class)->name('home.index');

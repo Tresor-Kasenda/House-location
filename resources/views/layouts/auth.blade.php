@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('app/css/swiper-bundle.min.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
-    @laravelPWA
 </head>
 
 <body  class="text-gray-500 min-h-screen bg-gray-100">

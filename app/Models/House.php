@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 
@@ -20,6 +21,11 @@ class House extends Model
     public function image(): HasMany
     {
         return $this->hasMany(Image::class);
+    }
+
+    public function detail(): HasOne
+    {
+        return $this->hasOne(Detail::class);
     }
 
     public function categories(): BelongsToMany

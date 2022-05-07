@@ -17,7 +17,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check() && Auth::user()->role_id == UserRoleEnum::USERS) {
-                return redirect()->route('users.backend.index');
+                return redirect()->route('users.users.index');
             } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == UserRoleEnum::COMMISSIONNERS){
                 return redirect()->route('commissioner.backend.index');
             } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == UserRoleEnum::ADMINS){

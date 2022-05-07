@@ -16,7 +16,6 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4.3",
         "realrashid/sweet-alert": "^4.1",
-        "silviolleite/laravelpwa": "^2.0",
         "spatie/laravel-newsletter": "^4.11",
         "stevebauman/location": "^6.4"
     },

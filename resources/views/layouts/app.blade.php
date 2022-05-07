@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png')  }}">
     @yield('styles')
-    @laravelPWA
 </head>
 <body class="text-gray-500  overflow-x-hidden w-full">
     @include('apps.partials.header')
