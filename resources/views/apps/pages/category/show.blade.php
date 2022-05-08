@@ -153,28 +153,20 @@
                             <table class="w-full rounded-lg table-fixed bg-gray-100">
                                 <tbody>
                                 <tr>
-                                    <td class="p-2 bg-gray-50 text-gray-700">Code Reference</td>
-                                    <td class="p-2 rounded">{{ $apartment->reference }}</td>
+                                    <td class="p-2 bg-gray-50 text-gray-700 font-weight-bolder">Code Reference</td>
+                                    <td class="p-2 rounded">{{ $apartment->reference ?? "" }}</td>
                                 </tr>
                                 <tr>
                                     <td class="p-2 bg-gray-50 text-gray-700">Chambres</td>
-                                    <td class="p-2 rounded">{{ $apartment->roomNumber }}</td>
+                                    <td class="p-2 rounded">{{ $apartment->roomNumber ?? 0 }}</td>
                                 </tr>
                                 <tr>
                                     <td class="p-2 bg-gray-50 text-gray-700">Salon</td>
-                                    <td class="p-2 rounded">2</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 bg-gray-50 text-gray-700">Douche</td>
-                                    <td class="p-2 rounded">2</td>
+                                    <td class="p-2 rounded">{{ $apartment->detail->roomNumber ?? 0 }}</td>
                                 </tr>
                                 <tr>
                                     <td class="p-2 bg-gray-50 text-gray-700">Toilette interieur</td>
-                                    <td class="p-2 rounded">2</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 bg-gray-50 text-gray-700">Toilette exterieur</td>
-                                    <td class="p-2 rounded">1</td>
+                                    <td class="p-2 rounded">{{ $apartment->detail->toilette ?? 0 }}</td>
                                 </tr>
                                 <tr>
                                     <td class="p-2 bg-gray-50 text-gray-700">Eau</td>
@@ -182,7 +174,7 @@
                                 </tr>
                                 <tr>
                                     <td class="p-2 bg-gray-50 text-gray-700">Electricité</td>
-                                    <td class="p-2 rounded">4 J / Semaine</td>
+                                    <td class="p-2 rounded">{{ $apartment->detail->electricity ?? "" }}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -308,8 +300,6 @@
             </div>
         </div>
     </section>
-
-
 @endsection
 
 @section('styles')
@@ -332,7 +322,6 @@
                 swiper: swiper,
             },
         })
-
 
         const btnTogFrmReser = document.querySelector('#btnTogFrmReser')
         const reservaForm = document.querySelector('#reservaForm')

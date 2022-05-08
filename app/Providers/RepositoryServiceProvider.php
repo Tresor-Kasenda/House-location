@@ -8,6 +8,7 @@ use App\Contracts\CategoryHomeRepositoryInterface;
 use App\Contracts\CategoryRepositoryInterface;
 use App\Contracts\HomeCommissionerRepositoryInterface;
 use App\Contracts\HomeRepositoryInterface;
+use App\Contracts\DetailsHouseCommissionerRepositoryInterface;
 use App\Contracts\ImageCommissionerRepositoryInterface;
 use App\Contracts\ImageRepositoryInterface;
 use App\Contracts\NewsLetterRepositoryInterface;
@@ -28,6 +29,7 @@ use App\Repository\Apps\HomeFrontendRepository;
 use App\Repository\Apps\NewsLetterRepository;
 use App\Repository\Apps\SearchRepository;
 use App\Repository\Commissioners\ApartmentCommissionerRepository;
+use App\Repository\Commissioners\DetailHouseCommissionerRepository;
 use App\Repository\Commissioners\HomeCommissionerRepository;
 use App\Repository\Commissioners\ImageCommissionerRepository;
 use App\Repository\Users\UsersProfileRepository;
@@ -54,7 +56,8 @@ class RepositoryServiceProvider extends ServiceProvider
         ApartmentCommissionerRepositoryInterface::class => ApartmentCommissionerRepository::class,
         ImageCommissionerRepositoryInterface::class => ImageCommissionerRepository::class,
         UsersProfileRepositoryInterface::class => UsersProfileRepository::class,
-        SearchRepositoryInterface::class => SearchRepository::class
+        SearchRepositoryInterface::class => SearchRepository::class,
+        DetailsHouseCommissionerRepositoryInterface::class => DetailHouseCommissionerRepository::class,
     ];
 
     public function register(){}

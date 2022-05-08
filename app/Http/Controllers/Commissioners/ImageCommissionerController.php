@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Commissioners;
 
+use App\Contracts\DetailsHouseCommissionerRepositoryInterface;
 use App\Contracts\ImageCommissionerRepositoryInterface;
 use App\Forms\ImageForm;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,7 @@ class ImageCommissionerController extends Controller
 {
     public function __construct(
         public ImageCommissionerRepositoryInterface $repository,
-        public FormBuilder $builder
+        public FormBuilder                                 $builder
     ){}
 
     public function index(): Renderable

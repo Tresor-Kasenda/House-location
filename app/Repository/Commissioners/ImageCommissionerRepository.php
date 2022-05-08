@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Repository\Commissioners;
 
+use App\Contracts\DetailsHouseCommissionerRepositoryInterface;
 use App\Contracts\ImageCommissionerRepositoryInterface;
 use App\Traits\ImageCrud;
 use App\Traits\ImageUploader;

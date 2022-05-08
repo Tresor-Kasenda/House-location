@@ -262,23 +262,6 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                           d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
                                                 </svg>
-                                                <span class="text-base text-gray-600">Pieces</span>
-                                            </div>
-                                            <div class="flex items-center gap-1">
-                                                <div id="nbPieces" class="flex">0</div>
-                                                <input type="range" name="" id="rangeNbPiece" value="1" min="1" max="10"
-                                                       class="costumRange appearance-none w-full h-2 rounded-full bg-gray-100 transition-all hover:bg-gray-200 border ">
-                                            </div>
-                                        </div>
-
-                                        <div class="flex flex-col w-full gap-2.5">
-                                            <div class="flex items-center gap-1">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                                     stroke="currentColor"
-                                                     stroke-width="2">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-                                                </svg>
                                                 <span class="text-base text-gray-600">Carateristiques</span>
                                             </div>
                                             <div class="grid grid-cols-2 gap-3">

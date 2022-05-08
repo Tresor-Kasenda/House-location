@@ -12,12 +12,14 @@ return new class extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->id();
+            $table->string('key')->unique();
             $table->foreignIdFor(House::class)
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->string('chamberNumber')->nullable();
+            $table->integer('chamberNumber')->nullable();
             $table->string('electricity')->nullable();
-            $table->string('')->nullable();
+            $table->integer('roomNumber')->nullable();
+            $table->integer('toilette')->nullable();
             $table->timestamps();
         });
     }

@@ -36,6 +36,11 @@
                         'name' => 'Images',
                         'icon' => 'ni-img'
                     ])
+                    @include('dealers.components._link', [
+                        'route' => route('commissioner.details.index'),
+                        'name' => 'ni-share-alt',
+                        'icon' => 'ni-img'
+                    ])
                 </ul>
             </div>
         </div>

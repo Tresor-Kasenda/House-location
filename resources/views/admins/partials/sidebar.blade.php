@@ -49,6 +49,12 @@
                         'icon' => 'ni-img'
                     ])
 
+                    @include('dealers.components._link', [
+                        'route' => route('admins.details.index'),
+                        'name' => 'ni-share-alt',
+                        'icon' => 'ni-img'
+                    ])
+
                     @include('admins.components._link', [
                         'route' => route('admins.users.index'),
                         'name' => 'Users',

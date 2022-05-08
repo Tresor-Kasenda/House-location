@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Apps;
 
 use App\Contracts\CategoryHomeRepositoryInterface;
-use App\Forms\SearchForm;
+use App\Forms\DetailHouseForm;
 use App\Http\Controllers\Controller;
 use App\Repository\Admins\ApartmentRepository;
 use App\Repository\Apps\HomeFrontendRepository;
@@ -24,7 +24,7 @@ class CategoryController extends Controller
 
     public function index(Request $request): Renderable
     {
-        $form = $this->builder->create(SearchForm::class, [
+        $form = $this->builder->create(DetailHouseForm::class, [
             'method' => 'get',
             'url' => route('categories.index')
         ]);
