@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Requests;
 
@@ -11,9 +12,9 @@ class UpdateUserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +22,14 @@ class UpdateUserRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            "images" => ['required', 'image', 'mimes:jpeg,jpg,png'],
+            'name' => ['required', 'string'],
+            'email' => ['required', 'email'],
+            'phone_number' => ['required', 'min:10'],
+            'lastName' => ['required', 'string']
         ];
     }
 }

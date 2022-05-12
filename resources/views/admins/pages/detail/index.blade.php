@@ -1,4 +1,4 @@
-@extends('layouts.dealer')
+@extends('layouts.admin')
 
 @section('title', "Description de la maison")
 
@@ -31,7 +31,7 @@
                         <div class="card-inner">
                             <table class="datatable-init nowrap nk-tb-list nk-tb-ulist" data-auto-responsive="false">
                                 <thead>
-                                    <tr class="nk-tb-item nk-tb-head">
+                                    <tr class="nk-tb-item nk-tb-head text-center">
                                         <th class="nk-tb-col tb-col-md">
                                             <span class="sub-text">Chambre a coucher</span>
                                         </th>
@@ -54,7 +54,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($details as $detail)
-                                        <tr class="nk-tb-item">
+                                        <tr class="nk-tb-item text-center">
                                             <td class="nk-tb-col tb-col-md">
                                                 <span>{{ $detail->chamberNumber ?? "" }}</span>
                                             </td>
@@ -68,7 +68,7 @@
                                                 <span>{{ $detail->toilette ?? "" }}</span>
                                             </td>
                                             <td class="nk-tb-col tb-col-md">
-                                                <span>{{ $detail->houses->reference ?? "" }}</span>
+                                                <span>{{ $detail->house->reference ?? "" }}</span>
                                             </td>
                                             <td class="nk-tb-col nk-tb-col-tools">
                                                 <ul class="nk-tb-actions gx-1">

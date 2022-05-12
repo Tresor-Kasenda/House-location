@@ -19,8 +19,8 @@
                         'amount' => \App\Models\House::count()
                     ])
                     @include('admins.components._statistic', [
-                       'username' => "Images",
-                       'amount' => \App\Models\Image::count()
+                       'username' => "Reservations",
+                       'amount' => \App\Models\Reservation::count()
                    ])
                     @include('admins.components._statistic', [
                         'username' => "Users",
@@ -39,11 +39,9 @@
 
                                     <div class="nk-ecwg8-ck">
                                         <canvas
-                                            class="ecommerce-line-chart-s4 chartjs-render-monitor"
+                                            class=""
                                             id="salesStatistics"
-                                            width="798"
-                                            height="250"
-                                            style="display: block; width: 798px; height: 200px;"
+                                            style="display: block; width: auto; height: 400px;"
                                         ></canvas>
                                     </div>
                                 </div>

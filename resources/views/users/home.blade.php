@@ -5,153 +5,7 @@
 @section('content')
     <section class="lg:px-28 md:px-12 px-6 pt-8">
         <div class="container mx-auto">
-            <div id="editeUserProfile"
-                 class="fixed -translate-y-full flex items-center justify-center top-0 left-0 w-full h-full transition-all duration-500 z-[1006] bg-gray-600 bg-opacity-30">
-                <div class="bg-white px-8 py-10 rounded-md shadow-2xl w-11/12 sm:w-96">
-                    <form action="{{ route('users.update.users', auth()->user()->key) }}" method="post" class="flex flex-col gap-6">
-                        @csrf
-                        @method('PUT')
-                        <div class="flex justify-between items-center">
-                            <h1 class="text-xl font-semibold text-gray-500">Editer votre profile</h1>
-                            <button id="closeProfile" class="rounded-md outline-none flex p-2 transition-all duration-300 hover:bg-red-600 hover:text-white bg-gray-100 text-gray-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="flex flex-col gap-4">
-                            <div class="relative">
-                                <input
-                                    id="images"
-                                    type="file"
-                                    class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                                    required>
-                                <label
-                                    for="images"
-                                    class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
-                                    Photo de profile
-                                </label>
-                            </div>
-                            <div class="relative">
-                                <input
-                                    id="mailAd"
-                                    type="text"
-                                    class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                                    placeholder="johnkat@gmail.com"
-                                    required>
-                                <label
-                                    for="mailAd"
-                                    class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
-                                    Adresse mail
-                                </label>
-                            </div>
-                            <div class="relative">
-                                <input
-                                    id="fullName"
-                                    type="text"
-                                    class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                                    placeholder="johnkat@gmail.com"
-                                    required>
-                                <label
-                                    for="fullName"
-                                    class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
-                                    Nom complet
-                                </label>
-                            </div>
-                            <div class="relative">
-                                <input
-                                    id="passW"
-                                    type="password"
-                                    class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                                    placeholder="johnkat@gmail.com" required>
-                                <label
-                                    for="passW"
-                                    class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
-                                    Mot de passe
-                                </label>
-                            </div>
-                            <div class="w-full">
-                                <button
-                                    type="submit"
-                                    class="bg-gradient-to-tr from-green-400 to-purple-600 text-white px-5 py-3 rounded-xl text-sm text-center w-full hover:from-purple-600 hover:to-green-400 transition">
-                                    Sauvergarder
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div id="editeUserPictures" class="fixed -translate-y-full flex items-center justify-center top-0 left-0 w-full h-full transition-all duration-500 z-[1006] bg-gray-600 bg-opacity-30">
-                <div class="bg-white px-8 py-10 rounded-md shadow-2xl w-11/12 sm:w-96">
-                    <form action="{{ route('users.update.users', auth()->user()->key) }}" method="post" class="flex flex-col gap-6">
-                        @csrf
-                        @method('PUT')
-                        <div class="flex justify-between items-center">
-                            <h1 class="text-xl font-semibold text-gray-500">Changer votre photo de profile</h1>
-                            <button id="closeProfile" class="rounded-md outline-none flex p-2 transition-all duration-300 hover:bg-red-600 hover:text-white bg-gray-100 text-gray-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="flex flex-col gap-4">
-                            <div class="relative">
-                                <input id="images" type="file"
-                                       class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                                       required>
-                                <label
-                                    for="images"
-                                    class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
-                                    Photo de profile
-                                </label>
-                            </div>
-                            <div class="relative">
-                                <input
-                                    id="mailAd"
-                                    type="text"
-                                    class=" relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                                    placeholder="johnkat@gmail.com" required>
-                                <label
-                                    for="mailAd"
-                                    class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
-                                    Adresse mail
-                                </label>
-                            </div>
-                            <div class="relative">
-                                <input
-                                    id="fullName"
-                                    type="text"
-                                    class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                                    placeholder="johnkat@gmail.com" required>
-                                <label
-                                    for="fullName"
-                                    class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
-                                    Nom complet
-                                </label>
-                            </div>
-                            <div class="relative">
-                                <input
-                                    id="passW"
-                                    type="password"
-                                    class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                                    placeholder="johnkat@gmail.com" required>
-                                <label
-                                    for="passW"
-                                    class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
-                                    Mot de passe
-                                </label>
-                            </div>
-                            <div class="w-full">
-                                <button
-                                    type="submit"
-                                    class="bg-gradient-to-tr from-green-400 to-purple-600 text-white px-5 py-3 rounded-xl text-sm text-center w-full hover:from-purple-600 hover:to-green-400 transition">Sauvergarder</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            @include('users.shared.update')
             <div class="md:grid md:grid-cols-3 gap-4">
                 <div class="lg:block lg:col-span-1">
                     <div class="lg:sticky top-16">
@@ -195,22 +49,12 @@
                                         </div>
                                     </div>
                                     <div class="flex justify-center flex-col gap-3">
-                                        <span class="text-2xl font-semibold text-center">Johnkat</span>
+                                        <span class="text-1xl font-medium">{{ auth()->user()->name }}  {{ auth()->user()->lastName }}</span>
+                                        <span class="text-1xl font-light">{{ auth()->user()->phone_number }}</span>
+                                        <span class="text-1xl font-light ">{{ auth()->user()->email }}</span>
                                         <div class="flex w-full rounded-md">
                                             <table class="w-full overflow-hidden table-fixed bg-gray-100 rounded-md">
                                                 <tbody>
-                                                <tr>
-                                                    <td class="p-2 bg-gray-200 text-gray-700">Favories</td>
-                                                    <td class="p-2 rounded">10</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="p-2 bg-gray-200 text-gray-700">En location</td>
-                                                    <td class="p-2 rounded">3</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="p-2 bg-gray-200 text-gray-700">En vente</td>
-                                                    <td class="p-2 rounded">2</td>
-                                                </tr>
                                                 <tr>
                                                     <td class="p-2 bg-gray-200 text-gray-700">Loué</td>
                                                     <td class="p-2 rounded">2</td>
@@ -229,37 +73,44 @@
                     </div>
                 </div>
                 <div class="md:col-span-2 overflow-hidden">
-                    <div id="tab-control" class="grid grid-cols-1 gap-5">
-                        <div id="tab-header" class="flex gap-3 bg-white p-2 rounded-md shadow-md shadow-purple-100">
-                            <button data-target="house" class="outline-none px-3 py-2 rounded-md bg-gray-100 text-gray-600 text-sm activeTabBtn">
-                                Maison ajoutée
-                            </button>
-                            <button data-target="houseRent" class="outline-none px-3 py-2 rounded-md bg-gray-100 text-gray-600 text-sm">
-                                Maison louée
-                            </button>
-                        </div>
-                        <div id="tab-content" class="flex w-full overflow-hidden">
-                            <div id="house" class="activeTab tab-cItem absolute origin-left scale-0 transition-all duration-300 opacity-0 ">
-                                <div class="flex justify-between gap-3 flex-wrap items-center">
-                                    <h1 class="text-xl font-semibold text-gray-500">Maison ajoutée par vous</h1>
-                                    <a href="" class="transition-all duration-300 hover:bg-purple-600 hover:text-white bg-white border border-purple-600 text-purple-600 text-sm outline-none px-3 py-2 rounded-md">
-                                        Ajouter une maison
-                                    </a>
+                    <div class="grid grid-cols-3 gap-3">
+                        @foreach($reservations as $reservation)
+                            <div class="col-span-1 rounded-lg bg-white p-4 grid gap-4">
+                                <div class="h-32 max-h-32 md:h-44 md:max-h-44">
+                                    <img
+                                        src="{{ asset('storage/'.$reservation->house->images) }}"
+                                         class="w-full h-full rounded-lg object-cover"
+                                        alt="{{ $reservation->house->commune }}">
                                 </div>
-                                <div class="grid sm:grid-cols-2 lg:grid-cols-3 py-4">
-                                    ici les maisons ajoutées par Johnkat
+                                <div class="flex justify-between">
+                                    <h1 class="text-lg font-semibold text-gray-600">
+                                        {{ $reservation->house->address }}
+                                    </h1>
+                                    <span class="text-gray-400">{{ $reservation->house->guarantees }}$ garantie</span>
+                                </div>
+                                <div class="">
+                                    @if($reservation->status == true)
+                                        <button class="w-full flex justify-between items-center text-center text-sm px-5 gap-2 py-3 rounded-lg bg-green-600 text-white">
+                                            <span>Telecharger la facture</span>
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-file-earmark-pdf w-6 h-6" viewBox="0 0 16 16">
+                                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+                                                    <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z" />
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    @else
+                                        <button class="w-full flex justify-between items-center text-center text-sm px-5 gap-2 py-3 rounded-lg bg-orange-600 text-white">
+                                            <span>Annuller la reserveration</span>
+                                        </button>
+                                    @endif
                                 </div>
                             </div>
-                            <div id="houseRent" class="tab-cItem absolute origin-left scale-0 transition-all duration-300 opacity-0 py-3 w-full">
-                                <div class="py-4">
-                                    <div class="w-full">
-                                        <div class="flex justify-center w-full text-center flex-col gap-4">
-                                            <img src="../public/images/icons/open-box.png" class="h-40 w-40 flex self-center" alt="">
-                                            <h1 class="font-semibold text-xl text-gray-500">Vous n'avez encore loué aucune maison sur Karibukuako</h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        @endforeach
+                    </div>
+                    <div class="flex flex-col gap-4 mt-16">
+                        <div class="flex justify-center">
+                            {{ $reservations->links() }}
                         </div>
                     </div>
                 </div>
@@ -280,28 +131,6 @@
         closeProfile.addEventListener('click', (e) => {
             e.preventDefault()
             editeUserProfile.classList.add('-translate-y-full')
-        })
-
-
-        const tabControl = document.querySelector('#tab-control')
-        const tabHeader = tabControl.querySelector('#tab-header')
-        const tab_container = tabControl.querySelector('#tab-content')
-        window.onload = () => {
-            const hT = parseInt(tabControl.querySelector('.activeTab').scrollHeight) + 35
-            tab_container.style.height = `${hT}px`
-        }
-        tabHeader.querySelectorAll("button").forEach(tabsBtn => {
-            tabsBtn.addEventListener('click', (e) => {
-                e.preventDefault()
-                tab_container.querySelectorAll('.tab-cItem').forEach(tab_cItem => {
-                    tab_cItem.classList.remove('activeTab', 'relative')
-                })
-                tabHeader.querySelectorAll("button").forEach(tabs_Btn => { tabs_Btn.classList.remove('activeTabBtn')  })
-                tabsBtn.classList.add('activeTabBtn')
-                tab_container.querySelector(`#${tabsBtn.getAttribute('data-target')}`).classList.add('activeTab')
-                let heightC = parseInt(tab_container.querySelector(`#${tabsBtn.getAttribute('data-target')}`).scrollHeight) + 35
-                tab_container.style.height = `${heightC}px`
-            })
         })
     </script>
 @endsection

@@ -20,7 +20,7 @@ class ApartmentCommissionerRepository implements ApartmentCommissionerRepository
     public function getContents(): Collection|array
     {
         return House::query()
-            ->where('user_id', '=', UserRoleEnum::COMMISSIONNERS)
+            ->where('user_id', '=', auth()->id())
             ->orderByDesc('created_at')
             ->get();
     }

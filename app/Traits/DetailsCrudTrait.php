@@ -5,16 +5,17 @@ namespace App\Traits;
 
 use App\Models\Detail;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 
 trait DetailsCrudTrait
 {
-    public function getContents(): Model|Builder|null
+    public function getContents(): array|Collection
     {
         return Detail::query()
             ->with('house')
-            ->first();
+            ->get();
     }
 
     public function show(string $key): Model|Builder|null

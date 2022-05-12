@@ -14,8 +14,10 @@ use App\Contracts\ImageRepositoryInterface;
 use App\Contracts\NewsLetterRepositoryInterface;
 use App\Contracts\ReservationHouseRepositoryInterface;
 use App\Contracts\ReservationRepositoryInterface;
+use App\Contracts\ReservationUserRepositoryInterface;
 use App\Contracts\SearchRepositoryInterface;
 use App\Contracts\TrashedRepositoryInterface;
+use App\Contracts\UpdateUserRepositoryInterface;
 use App\Contracts\UserRepositoryInterface;
 use App\Contracts\UsersProfileRepositoryInterface;
 use App\Repository\Admins\ActiveApartmentRepository;
@@ -32,6 +34,7 @@ use App\Repository\Commissioners\ApartmentCommissionerRepository;
 use App\Repository\Commissioners\DetailHouseCommissionerRepository;
 use App\Repository\Commissioners\HomeCommissionerRepository;
 use App\Repository\Commissioners\ImageCommissionerRepository;
+use App\Repository\Users\ReservationUserRepository;
 use App\Repository\Users\UsersProfileRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\ApartmentRepositoryInterface;
@@ -55,9 +58,10 @@ class RepositoryServiceProvider extends ServiceProvider
         HomeCommissionerRepositoryInterface::class => HomeCommissionerRepository::class,
         ApartmentCommissionerRepositoryInterface::class => ApartmentCommissionerRepository::class,
         ImageCommissionerRepositoryInterface::class => ImageCommissionerRepository::class,
-        UsersProfileRepositoryInterface::class => UsersProfileRepository::class,
+        UpdateUserRepositoryInterface::class => UsersProfileRepository::class,
         SearchRepositoryInterface::class => SearchRepository::class,
         DetailsHouseCommissionerRepositoryInterface::class => DetailHouseCommissionerRepository::class,
+        ReservationUserRepositoryInterface::class => ReservationUserRepository::class
     ];
 
     public function register(){}

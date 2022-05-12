@@ -37,7 +37,7 @@
                                             class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
                                             placeholder="votre nom"
                                             name="username"
-                                            value="{{ old('username') }}"
+                                            value="{{ old('username') ?? auth()->user()->name }}"
                                             required>
                                         <label for="username" class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">Nom complet</label>
                                     </div>
@@ -48,7 +48,7 @@
                                             class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
                                             placeholder="votre addresse email"
                                             name="email"
-                                            value="{{ old('email') }}"
+                                            value="{{ old('email') ?? auth()->user()->email }}"
                                             >
                                         <label for="email" class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">Adresse mail</label>
                                     </div>
@@ -59,7 +59,7 @@
                                             class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
                                             placeholder="Votre numero de telephone"
                                             name="phoneNumber"
-                                            value="{{ old('phoneNumber') }}"
+                                            value="{{ old('phoneNumber') ?? auth()->user()->phone_number }}"
                                             required>
                                         <label for="phoneNumber" class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">Numero de telephone</label>
                                     </div>
@@ -101,7 +101,7 @@
                             @endif
                         </div>
                     </div>
-                    <div thumbsSlider="" class="swiper mySwiper pt-1 max-h-24 overflow-hidden">
+                    <div class="swiper mySwiper pt-1 max-h-24 overflow-hidden">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <img src="{{ asset('storage/'.$apartment->images) }}" class="rounded-xl w-full h-full object-cover" />
@@ -129,11 +129,11 @@
                             @endif
                             @if($apartment->reservations_count > 0)
                                 <div class="px-3 py-2 text-white bg-green-600">
-                                    {{ $apartment->reservations_count }} Negociation en cours
+                                    {{ $apartment->reservations_count }} Proposition de location en cours
                                 </div>
                             @else
                                 <div class="px-3 py-2 text-white bg-orange-600">
-                                    Aucune negociation pour cette maison
+                                    Aucune proposition pour cette maison
                                 </div>
                             @endif
                         </div>
