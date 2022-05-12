@@ -4,10 +4,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Commissioners;
 
 use App\Contracts\DetailsHouseCommissionerRepositoryInterface;
-use App\Forms\DetailHouseForm;
+use App\Forms\DetailHouseCommissionnerForm;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DetailHouseRequest;
-use App\Http\Requests\ImageRequest;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Kris\LaravelFormBuilder\FormBuilder;
@@ -28,7 +27,7 @@ class DetailApartmentCommissionerController extends Controller
 
     public function create(): Renderable
     {
-        $form = $this->builder->create(DetailHouseForm::class, [
+        $form = $this->builder->create(DetailHouseCommissionnerForm::class, [
             'method' => 'POST',
             'url' => route('commissioner.details.store')
         ]);
@@ -44,7 +43,7 @@ class DetailApartmentCommissionerController extends Controller
     public function edit(string $key): Renderable
     {
         $image = $this->repository->show(key: $key);
-        $form = $this->builder->create(DetailHouseForm::class, [
+        $form = $this->builder->create(DetailHouseCommissionnerForm::class, [
             'method' => 'PUT',
             'url' => route('commissioner.details.update', $image->key),
             'model' => $image

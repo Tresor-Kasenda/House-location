@@ -24,13 +24,8 @@ class CategoryController extends Controller
 
     public function index(Request $request): Renderable
     {
-        $form = $this->builder->create(DetailHouseForm::class, [
-            'method' => 'get',
-            'url' => route('categories.index')
-        ]);
         return view('apps.pages.category.index', [
             'apartments' => $this->repository->index(request:  $request),
-            'form' => $form
         ]);
     }
 

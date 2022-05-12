@@ -27,7 +27,7 @@ trait ApartmentCrud
                 'district'=> $attributes->district,
                 'roomNumber'=> $attributes->roomNumber,
                 'town' => $attributes->town,
-                'user_id' => auth()->user()->role_id,
+                'user_id' => auth()->id(),
                 'reference' => $this->generateRandomTransaction(6),
                 'type_id' => $attributes->input('type')
             ]);

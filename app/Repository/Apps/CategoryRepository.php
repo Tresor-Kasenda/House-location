@@ -17,23 +17,20 @@ class CategoryRepository implements CategoryHomeRepositoryInterface
         $query = House::query()
             ->orderByDesc('created_at')
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
-            ->get();
+            ->latest();
 
         if (!empty($request->type)){
             $type = Type::query()
                 ->where('name', '=', $request->type)
                 ->first();
-            $query = House::query()
-                ->orWhere('type_id', '=', $type->id)
-                ->get();
+            $query = $query->where('type_id', '=', $type->id);
         }
 
         if (!empty($request->query('number'))){
-            $query = House::query()
-                ->orWhere('roomNumber', '=', $request->query('number'))
-                ->get();
+            $query = $query->where('roomNumber', '=', $request->query('number'));
         }
-        return $query;
+
+        return $query->get();
     }
 
     public function show(string $key)

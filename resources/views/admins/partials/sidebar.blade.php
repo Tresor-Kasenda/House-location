@@ -51,7 +51,7 @@
 
                     @include('dealers.components._link', [
                         'route' => route('admins.details.index'),
-                        'name' => 'ni-share-alt',
+                        'name' => 'Details apartement',
                         'icon' => 'ni-img'
                     ])
 

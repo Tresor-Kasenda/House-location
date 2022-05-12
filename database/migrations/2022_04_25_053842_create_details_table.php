@@ -18,8 +18,8 @@ return new class extends Migration
                 ->cascadeOnDelete();
             $table->integer('chamberNumber')->nullable();
             $table->string('electricity')->nullable();
-            $table->integer('roomNumber')->nullable();
-            $table->integer('toilette')->nullable();
+            $table->string('roomNumber')->nullable();
+            $table->string('toilette')->nullable();
             $table->timestamps();
         });
     }
