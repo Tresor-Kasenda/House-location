@@ -27,6 +27,7 @@
                         @empty
                         @endforelse
                     </div>
+                    {{ $apartments->links() }}
                 </div>
             </div>
         </div>

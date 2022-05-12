@@ -7,30 +7,19 @@ use App\Contracts\CategoryHomeRepositoryInterface;
 use App\Enums\HouseEnum;
 use App\Models\House;
 use App\Models\Type;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class CategoryRepository implements CategoryHomeRepositoryInterface
 {
-    public function index(?Request $request = null): Collection|array
+    public function index(?Request $request = null): LengthAwarePaginator
     {
-        $query = House::query()
+        return House::query()
             ->orderByDesc('created_at')
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
-            ->latest();
-
-        if (!empty($request->type)){
-            $type = Type::query()
-                ->where('name', '=', $request->type)
-                ->first();
-            $query = $query->where('type_id', '=', $type->id);
-        }
-
-        if (!empty($request->query('number'))){
-            $query = $query->where('roomNumber', '=', $request->query('number'));
-        }
-
-        return $query->get();
+            ->latest()
+            ->paginate(6);
     }
 
     public function show(string $key)

@@ -57,11 +57,15 @@
                                                 <tbody>
                                                 <tr>
                                                     <td class="p-2 bg-gray-200 text-gray-700">Loué</td>
-                                                    <td class="p-2 rounded">2</td>
+                                                    <td class="p-2 rounded">
+                                                        {{ \App\Models\Reservation::query()->where('user_id', '=', auth()->id())->where('status', '=', true)->count() }}
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="p-2 bg-gray-200 text-gray-700">Acheté</td>
-                                                    <td class="p-2 rounded">2</td>
+                                                    <td class="p-2 bg-gray-200 text-gray-700">En attente</td>
+                                                    <td class="p-2 rounded">
+                                                        {{ \App\Models\Reservation::query()->where('user_id', '=', auth()->id())->where('status', '=', false)->count() }}
+                                                    </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -75,7 +79,7 @@
                 <div class="md:col-span-2 overflow-hidden">
                     <div class="grid grid-cols-3 gap-3">
                         @foreach($reservations as $reservation)
-                            <div class="col-span-1 rounded-lg bg-white p-4 grid gap-4">
+                            <div class="col-span-1 rounded-lg bg-white p-4 grid gap-4 border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
                                 <div class="h-32 max-h-32 md:h-44 md:max-h-44">
                                     <img
                                         src="{{ asset('storage/'.$reservation->house->images) }}"
@@ -89,7 +93,7 @@
                                     <span class="text-gray-400">{{ $reservation->house->guarantees }}$ garantie</span>
                                 </div>
                                 <div class="">
-                                    @if($reservation->status == true)
+                                    @if($reservation->status)
                                         <button class="w-full flex justify-between items-center text-center text-sm px-5 gap-2 py-3 rounded-lg bg-green-600 text-white">
                                             <span>Telecharger la facture</span>
                                             <span>
