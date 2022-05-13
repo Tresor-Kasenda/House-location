@@ -9,7 +9,7 @@
             <img src="{{ asset('app/images/logo.png') }}" alt="logoApp" class="block h-14 max-h-14">
         </div>
         @if ($errors->any())
-            <div class="alert alert-danger">
+            <div class="alert alert-danger mt-4">
                 <ul class="list-unstyled">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>

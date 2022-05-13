@@ -6,19 +6,20 @@ namespace App\Repository\Apps;
 use App\Contracts\CategoryHomeRepositoryInterface;
 use App\Enums\HouseEnum;
 use App\Models\House;
-use App\Services\LocationHouse;
+use App\Models\Type;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
-use Stevebauman\Location\Facades\Location;
+use Illuminate\Http\Request;
 
 class CategoryRepository implements CategoryHomeRepositoryInterface
 {
-    public function index(): Collection|array
+    public function index(?Request $request = null): LengthAwarePaginator
     {
         return House::query()
             ->orderByDesc('created_at')
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
-            ->get();
+            ->latest()
+            ->paginate(6);
     }
 
     public function show(string $key)
@@ -28,7 +29,7 @@ class CategoryRepository implements CategoryHomeRepositoryInterface
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
             ->withCount('reservations')
             ->first();
-        return $house->load(['categories','image', 'type']);
+        return $house->load(['categories','image', 'type', 'detail']);
     }
 
     public function getHouseByDetails($house): Collection|array

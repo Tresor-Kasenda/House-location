@@ -15,26 +15,7 @@
                             <div class="toggle-expand-content" data-content="pageMenu">
                                 <ul class="nk-block-tools g-3">
                                     <li class="preview-item">
-                                        @if ($room->status == false)
-                                            @include('admins.components.update', [
-                                                'route' => 'admins.apartment.active',
-                                                'callback' => $room->key,
-                                                'button' => 'btn-outline-success btn-sm',
-                                                'icon' => 'ni-check-circle',
-                                                'title' => 'Activer'
-                                            ])
-                                        @else
-                                            @include('admins.components.update', [
-                                                'route' => 'admins.apartment.inactive',
-                                                'callback' => $room->key,
-                                                'button' => 'btn-outline-danger btn-sm',
-                                                'icon' => 'ni-check-circle',
-                                                'title' => 'Désactiver'
-                                            ])
-                                        @endif
-                                    </li>
-                                    <li class="preview-item">
-                                        <a href="{{ route('admins.houses.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
+                                        <a href="{{ route('commissioner.houses.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
                                             <em class="icon ni ni-arrow-left"></em>
                                             <span>Back</span>
                                         </a>
@@ -86,7 +67,7 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Telephone</span>
-                                                    <span class="profile-ud-value">{{ $room->phone_number ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->phoneNumber ?? "" }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
@@ -98,19 +79,25 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Prix</span>
-                                                    <span class="profile-ud-value">{{ $room->price_per_month ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->prices ?? "" }} $</span>
+                                                </div>
+                                            </div>
+                                            <div class="profile-ud-item">
+                                                <div class="profile-ud wider">
+                                                    <span class="profile-ud-label">Type </span>
+                                                    <span class="profile-ud-value font-bold">{{ strtoupper($room->type->name) ?? "" }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Nombre des pieces</span>
-                                                    <span class="profile-ud-value">{{ $room->piece_number ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->roomNumber ?? "" }} pieces</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Garantie</span>
-                                                    <span class="profile-ud-value">{{ $room->guarantees ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->guarantees ?? "" }} $ </span>
                                                 </div>
                                             </div>
                                         </div>

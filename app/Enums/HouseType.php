@@ -5,7 +5,7 @@ namespace App\Enums;
 
 class HouseType
 {
-    const FOR_SALE = 'a vendre';
-    const FOR_HIRE = 'a louer';
+    const FOR_SALE = 'A vendre';
+    const FOR_HIRE = 'A louer';
 
 }

@@ -16,7 +16,7 @@ class TrashedAdminController extends Controller
 
     public function index(): Renderable
     {
-        return view('admins.pages.houses.trashed', [
+        return view('admins.pages.apartments.trashed', [
             'rooms' => $this->repository->trashed()
         ]);
     }

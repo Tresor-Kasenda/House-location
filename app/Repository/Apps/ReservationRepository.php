@@ -26,7 +26,8 @@ class ReservationRepository implements ReservationHouseRepositoryInterface
                 "address" => $attributes->input('email'),
                 "phones" => $attributes->input('phoneNumber'),
                 "messages" => $attributes->input("message"),
-                'reference' => $this->generateRandomTransaction(15)
+                'reference' => $this->generateRandomTransaction(6),
+                'user_id' => auth()->id() ?? null
             ]);
     }
 

@@ -12,7 +12,7 @@ class SearchLocationController extends Controller
 {
     public function __construct(public SearchRepositoryInterface $repository){}
 
-    public function searching(Request $request)
+    public function searching(Request $request): JsonResponse
     {
         $searches = $this->repository->search(request:  $request);
         if ($searches->isNotEmpty()){

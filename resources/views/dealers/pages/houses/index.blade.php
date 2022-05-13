@@ -35,6 +35,9 @@
                                     <th class="nk-tb-col tb-col-mb">
                                         <span class="sub-text">Photo</span>
                                     </th>
+                                    <th class="nk-tb-col tb-col-mb">
+                                        <span class="sub-text">Reference</span>
+                                    </th>
                                     <th class="nk-tb-col tb-col-md">
                                         <span class="sub-text">Telephone</span>
                                     </th>
@@ -60,14 +63,17 @@
                                                 <img src="{{ asset('storage/'.$room->images) }}" alt="{{ $room->username }}" class="thumb">
                                             </span>
                                         </td>
+                                        <td class="nk-tb-col tb-col-md font-weight-bold">
+                                            <span>{{ $room->reference ?? "" }}</span>
+                                        </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $room->phone_number ?? "" }}</span>
+                                            <span>{{ $room->phoneNumber ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ $room->address ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            @if($room->status == true)
+                                            @if($room->status)
                                                 <span class="dot bg-success d-mb-none"></span>
                                                 <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">Confirmer</span>
                                             @else

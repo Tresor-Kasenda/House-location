@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class SearchRepository implements SearchRepositoryInterface
 {
-    public function search($request): Collection|array
+    public function search($request): Collection|array|null
     {
         if ($request->input('_search') !== null){
             return House::query()
@@ -18,7 +18,9 @@ class SearchRepository implements SearchRepositoryInterface
                 ->orWhere('address','like', '%'.$request->input('_search').'%')
                 ->orWhere('district', 'like', '%'.$request->input('_search').'%')
                 ->orWhere('town', 'like', '%'.$request->input('_search').'%')
+                ->orWhere('reference', 'like', '%'.$request->input('_search').'%')
                 ->get();
         }
+        return null;
     }
 }

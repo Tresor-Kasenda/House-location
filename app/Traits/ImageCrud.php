@@ -30,7 +30,8 @@ trait ImageCrud
         $image = Image::query()
             ->create([
                 'images' => self::uploadFiles($attributes),
-                'house_id' => $attributes->input('house_id')
+                'house_id' => $attributes->input('house_id'),
+                'user_id' => auth()->id()
             ]);
         toast('images added with success', 'success');
         return $image;

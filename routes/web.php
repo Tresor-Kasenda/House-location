@@ -4,6 +4,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Admins\ApartmentAdminController;
 use App\Http\Controllers\Admins\CategoryAdminController;
 use App\Http\Controllers\Admins\ConfirmedApartmentController;
+use App\Http\Controllers\Admins\DetailApartmentAdminController;
 use App\Http\Controllers\Admins\HomeAdminController;
 use App\Http\Controllers\Admins\ImagesAdminController;
 use App\Http\Controllers\Admins\ReservationAdminController;
@@ -16,12 +17,14 @@ use App\Http\Controllers\Apps\HomeController;
 use App\Http\Controllers\Apps\LocationController;
 use App\Http\Controllers\Apps\NewsLetterController;
 use App\Http\Controllers\Apps\ReservationController;
-use App\Http\Controllers\Apps\SearchController;
 use App\Http\Controllers\Apps\SearchLocationController;
 use App\Http\Controllers\Commissioners\ApartmentCommissionerController;
 use App\Http\Controllers\Commissioners\HomeCommissionerController;
+use App\Http\Controllers\Commissioners\DetailApartmentCommissionerController;
 use App\Http\Controllers\Commissioners\ImageCommissionerController;
+use App\Http\Controllers\Users\CancellingUserController;
 use App\Http\Controllers\Users\HomeUserController;
+use App\Http\Controllers\Users\UpdateUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +41,7 @@ Route::group([
     Route::resource('users', UsersAdminController::class)->except(['create', 'store', 'update', 'edit']);
     Route::resource('reservations', ReservationAdminController::class)->except(['create', 'store', 'update', 'edit']);
     Route::resource('image', ImagesAdminController::class);
+    Route::resource('details', DetailApartmentAdminController::class);
     Route::resource('trashedApartments', TrashedAdminController::class)->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
     Route::controller(TrashedAdminController::class)->group(function (){
         Route::put('trashedApartments/{key}', 'restore')->name('trashed.restore');
@@ -60,6 +64,7 @@ Route::group([
     Route::resource('backend', HomeCommissionerController::class);
     Route::resource('houses', ApartmentCommissionerController::class);
     Route::resource('imageHouses', ImageCommissionerController::class);
+    Route::resource('details', DetailApartmentCommissionerController::class);
 });
 
 Route::group([
@@ -68,6 +73,10 @@ Route::group([
     'middleware' => ['users', 'auth']
 ], function(){
     Route::resource('users', HomeUserController::class);
+    Route::controller(UpdateUserController::class)->group(function (){
+        Route::put('updateUser/{key}/update', 'update')->name('update.users');
+    });
+    Route::delete('cancel/{key}', [CancellingUserController::class, 'cancel'])->name('reservation.cancel');
 });
 
 Route::get('/', HomeController::class)->name('home.index');
