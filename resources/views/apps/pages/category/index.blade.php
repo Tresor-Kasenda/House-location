@@ -8,6 +8,7 @@
             <div class="relative lg:flex gap-12">
                 <div class="lg:w-full">
                     <div class="grid sm:grid-cols-2 gap-4 md:gap-6">
+
                         @forelse($apartments as $apartment)
                             <a href="{{ route('categories.show', $apartment->key) }}" title="{{ $apartment->commune }}"
                                class="block space-y-4 p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
@@ -29,7 +30,7 @@
                     </div>
                     <div class="flex flex-col gap-4 mt-16">
                         <div class="flex justify-center">
-                            {{ $reservations->links('users.component._pagination') }}
+                            {{ $apartments->links('users.component._pagination') }}
                         </div>
                     </div>
                 </div>
