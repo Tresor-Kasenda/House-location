@@ -14,7 +14,10 @@
                                 <div class="flex flex-col gap-2">
                                     <div class="relative flex justify-center p-6 pb-3">
                                         <div class="z-20 absolute top-0 left-0 w-full h-1/2 bg-gray-500 rounded-xl overflow-hidden">
-                                            <img src="." alt="image background" class="w-full h-full object-cover">
+                                            <img
+                                                src="{{ asset('storage/'.auth()->user()->images) }}"
+                                                alt="image background"
+                                                class="w-full h-full object-cover">
                                         </div>
                                         <div class="absolute flex items-center justify-center right-2.5 top-2.5 w-10 h-10 z-40 rounded-full  bg-white shadow-2xl">
                                             <button id="editProfile" class="outline-none w-full h-full rounded-md flex items-center justify-center bg-gradient-to-tr from-green-400 to-purple-600 text-white">
@@ -94,7 +97,7 @@
                                 </div>
                                 <div class="">
                                     @if($reservation->status)
-                                        <button class="w-full flex justify-between items-center text-center text-sm px-5 gap-2 py-3 rounded-lg bg-green-600 text-white">
+                                        <a href="" target="_blank"  class="w-full flex justify-between items-center text-center text-sm px-5 gap-2 py-3 rounded-lg bg-green-600 text-white">
                                             <span>Telecharger la facture</span>
                                             <span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-file-earmark-pdf w-6 h-6" viewBox="0 0 16 16">
@@ -102,11 +105,15 @@
                                                     <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z" />
                                                 </svg>
                                             </span>
-                                        </button>
+                                        </a>
                                     @else
-                                        <button class="w-full flex justify-between items-center text-center text-sm px-5 gap-2 py-3 rounded-lg bg-orange-600 text-white">
-                                            <span>Annuller la reserveration</span>
-                                        </button>
+                                        <form action="{{ route('users.reservation.cancel', $reservation->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                            @method('DELETE')
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <button class="w-full flex justify-between items-center text-center text-sm px-5 gap-2 py-3 rounded-lg bg-orange-600 text-white">
+                                                <span>Annuller la reserveration</span>
+                                            </button>
+                                        </form>
                                     @endif
                                 </div>
                             </div>
@@ -114,7 +121,7 @@
                     </div>
                     <div class="flex flex-col gap-4 mt-16">
                         <div class="flex justify-center">
-                            {{ $reservations->links() }}
+                            {{ $reservations->links('users.component._pagination') }}
                         </div>
                     </div>
                 </div>

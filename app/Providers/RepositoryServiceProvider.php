@@ -1,9 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Providers;
 
 use App\Contracts\ActiveApartmentRepositoryInterface;
 use App\Contracts\ApartmentCommissionerRepositoryInterface;
+use App\Contracts\CancellingUserRepositoryInterface;
 use App\Contracts\CategoryHomeRepositoryInterface;
 use App\Contracts\CategoryRepositoryInterface;
 use App\Contracts\HomeCommissionerRepositoryInterface;
@@ -34,6 +36,7 @@ use App\Repository\Commissioners\ApartmentCommissionerRepository;
 use App\Repository\Commissioners\DetailHouseCommissionerRepository;
 use App\Repository\Commissioners\HomeCommissionerRepository;
 use App\Repository\Commissioners\ImageCommissionerRepository;
+use App\Repository\Users\CancellingUserRepository;
 use App\Repository\Users\ReservationUserRepository;
 use App\Repository\Users\UsersProfileRepository;
 use Illuminate\Support\ServiceProvider;
@@ -61,7 +64,8 @@ class RepositoryServiceProvider extends ServiceProvider
         UpdateUserRepositoryInterface::class => UsersProfileRepository::class,
         SearchRepositoryInterface::class => SearchRepository::class,
         DetailsHouseCommissionerRepositoryInterface::class => DetailHouseCommissionerRepository::class,
-        ReservationUserRepositoryInterface::class => ReservationUserRepository::class
+        ReservationUserRepositoryInterface::class => ReservationUserRepository::class,
+        CancellingUserRepositoryInterface::class => CancellingUserRepository::class,
     ];
 
     public function register(){}

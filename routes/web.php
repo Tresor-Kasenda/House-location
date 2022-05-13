@@ -22,6 +22,7 @@ use App\Http\Controllers\Commissioners\ApartmentCommissionerController;
 use App\Http\Controllers\Commissioners\HomeCommissionerController;
 use App\Http\Controllers\Commissioners\DetailApartmentCommissionerController;
 use App\Http\Controllers\Commissioners\ImageCommissionerController;
+use App\Http\Controllers\Users\CancellingUserController;
 use App\Http\Controllers\Users\HomeUserController;
 use App\Http\Controllers\Users\UpdateUserController;
 use Illuminate\Support\Facades\Auth;
@@ -75,6 +76,7 @@ Route::group([
     Route::controller(UpdateUserController::class)->group(function (){
         Route::put('updateUser/{key}/update', 'update')->name('update.users');
     });
+    Route::delete('cancel/{key}', [CancellingUserController::class, 'cancel'])->name('reservation.cancel');
 });
 
 Route::get('/', HomeController::class)->name('home.index');

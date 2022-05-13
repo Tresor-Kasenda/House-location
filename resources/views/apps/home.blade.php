@@ -17,6 +17,11 @@
                         @endforeach
                     </div>
                 </div>
+                <div class="flex flex-col gap-4 mt-16">
+                    <div class="flex justify-center">
+                        {{ $reservations->links('users.component._pagination') }}
+                    </div>
+                </div>
             </div>
         @else
             <div class="sm:w-6/12 h-screen m-auto flex items-center justify-center">

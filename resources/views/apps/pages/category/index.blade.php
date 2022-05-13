@@ -27,7 +27,11 @@
                         @empty
                         @endforelse
                     </div>
-                    {{ $apartments->links() }}
+                    <div class="flex flex-col gap-4 mt-16">
+                        <div class="flex justify-center">
+                            {{ $reservations->links('users.component._pagination') }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
