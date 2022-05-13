@@ -171,6 +171,7 @@ return [
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         /*
          * Application Service Providers...
