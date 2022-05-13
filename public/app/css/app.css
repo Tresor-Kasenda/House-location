@@ -502,6 +502,20 @@ Ensure the default browser behavior of the `hidden` attribute.
     }
 }
 
+.activeBtnPagination {
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(147 51 234 / var(--tw-bg-opacity)) !important;
+    --tw-text-opacity: 1 !important;
+    color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+    transition-property: all !important;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition-duration: 300ms !important;
+}
+
+.activeBtnPagination:hover {
+    --tw-bg-opacity: 0.7;
+}
+
 .activeTabBtn {
     background-image: linear-gradient(to top right, var(--tw-gradient-stops)) !important;
     --tw-gradient-from: #4ade80 !important;
@@ -701,6 +715,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .right-1 {
     right: 0.25rem;
+}
+
+.bottom-4 {
+    bottom: 1rem;
+}
+
+.left-1\/2 {
+    left: 50%;
 }
 
 .top-28 {
@@ -933,6 +955,14 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 3rem;
 }
 
+.h-32 {
+    height: 8rem;
+}
+
+.h-52 {
+    height: 13rem;
+}
+
 .h-11 {
     height: 2.75rem;
 }
@@ -941,12 +971,12 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 0.75rem;
 }
 
-.h-20 {
-    height: 5rem;
-}
-
 .h-44 {
     height: 11rem;
+}
+
+.h-20 {
+    height: 5rem;
 }
 
 .h-7 {
@@ -981,10 +1011,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 50%;
 }
 
-.h-32 {
-    height: 8rem;
-}
-
 .h-40 {
     height: 10rem;
 }
@@ -999,6 +1025,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-\[20rem\] {
     height: 20rem;
+}
+
+.max-h-32 {
+    max-height: 8rem;
+}
+
+.max-h-52 {
+    max-height: 13rem;
 }
 
 .max-h-\[70vh\] {
@@ -1017,20 +1051,20 @@ Ensure the default browser behavior of the `hidden` attribute.
     max-height: 3.5rem;
 }
 
-.min-h-\[3rem\] {
-    min-height: 3rem;
-}
-
-.min-h-\[5rem\] {
-    min-height: 5rem;
-}
-
 .min-h-screen {
     min-height: 100vh;
 }
 
 .min-h-\[8rem\] {
     min-height: 8rem;
+}
+
+.min-h-\[3rem\] {
+    min-height: 3rem;
+}
+
+.min-h-\[5rem\] {
+    min-height: 5rem;
 }
 
 .w-max {
@@ -1099,6 +1133,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 3rem;
 }
 
+.w-\[calc\(100\%-2rem\)\] {
+    width: calc(100% - 2rem);
+}
+
 .w-4\/12 {
     width: 33.333333%;
 }
@@ -1135,6 +1173,14 @@ Ensure the default browser behavior of the `hidden` attribute.
     min-width: 8rem;
 }
 
+.max-w-screen-lg {
+    max-width: 1024px;
+}
+
+.flex-1 {
+    flex: 1 1 0%;
+}
+
 .table-fixed {
     table-layout: fixed;
 }
@@ -1159,6 +1205,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .-translate-y-full {
     --tw-translate-y: -100%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.-translate-x-1\/2 {
+    --tw-translate-x: -50%;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1570,16 +1621,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
-.bg-gray-50 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
-.bg-gray-800 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(31 41 55 / var(--tw-bg-opacity));
-}
-
 .bg-green-600 {
     --tw-bg-opacity: 1;
     background-color: rgb(22 163 74 / var(--tw-bg-opacity));
@@ -1588,6 +1629,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-orange-600 {
     --tw-bg-opacity: 1;
     background-color: rgb(234 88 12 / var(--tw-bg-opacity));
+}
+
+.bg-gray-50 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.bg-gray-800 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
 .bg-purple-100 {
@@ -1607,6 +1658,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .bg-opacity-60 {
     --tw-bg-opacity: 0.6;
+}
+
+.bg-opacity-90 {
+    --tw-bg-opacity: 0.9;
 }
 
 .bg-opacity-70 {
@@ -3000,6 +3055,10 @@ button, input {
         height: 9rem;
     }
 
+    .sm\:h-14 {
+        height: 3.5rem;
+    }
+
     .sm\:h-32 {
         height: 8rem;
     }
@@ -3034,6 +3093,10 @@ button, input {
 
     .sm\:w-80 {
         width: 20rem;
+    }
+
+    .sm\:w-14 {
+        width: 3.5rem;
     }
 
     .sm\:w-32 {
@@ -3167,6 +3230,10 @@ button, input {
         height: 5rem;
     }
 
+    .md\:h-44 {
+        height: 11rem;
+    }
+
     .md\:h-14 {
         height: 3.5rem;
     }
@@ -3177,6 +3244,10 @@ button, input {
 
     .md\:h-\[25rem\] {
         height: 25rem;
+    }
+
+    .md\:max-h-44 {
+        max-height: 11rem;
     }
 
     .md\:max-h-80 {
@@ -3199,28 +3270,8 @@ button, input {
         width: 45rem;
     }
 
-    .md\:min-w-\[384px\] {
-        min-width: 384px;
-    }
-
-    .md\:min-w-\[24rem\] {
-        min-width: 24rem;
-    }
-
     .md\:min-w-\[22rem\] {
         min-width: 22rem;
-    }
-
-    .md\:min-w-\[20rem\] {
-        min-width: 20rem;
-    }
-
-    .md\:min-w-\[21rem\] {
-        min-width: 21rem;
-    }
-
-    .md\:min-w-\[2rem\] {
-        min-width: 2rem;
     }
 
     .md\:flex-1 {
@@ -3289,6 +3340,11 @@ button, input {
     .md\:px-12 {
         padding-left: 3rem;
         padding-right: 3rem;
+    }
+
+    .md\:px-16 {
+        padding-left: 4rem;
+        padding-right: 4rem;
     }
 
     .md\:pt-0 {
@@ -3435,8 +3491,8 @@ button, input {
         width: 25%;
     }
 
-    .lg\:w-9\/12 {
-        width: 75%;
+    .lg\:w-full {
+        width: 100%;
     }
 
     .lg\:w-5\/6 {
@@ -3453,12 +3509,12 @@ button, input {
         width: max-content;
     }
 
-    .lg\:w-full {
-        width: 100%;
-    }
-
     .lg\:w-4\/12 {
         width: 33.333333%;
+    }
+
+    .lg\:max-w-screen-lg {
+        max-width: 1024px;
     }
 
     .lg\:max-w-screen-xl {
@@ -3587,6 +3643,11 @@ button, input {
         padding-right: 7rem;
     }
 
+    .lg\:px-0 {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
     .lg\:py-4 {
         padding-top: 1rem;
         padding-bottom: 1rem;
@@ -3615,11 +3676,6 @@ button, input {
     .lg\:px-4 {
         padding-left: 1rem;
         padding-right: 1rem;
-    }
-
-    .lg\:px-0 {
-        padding-left: 0px;
-        padding-right: 0px;
     }
 
     .lg\:pt-8 {
