@@ -30,10 +30,6 @@
     <script src="{{ asset('admins/js/bundle.js') }}"></script>
     <script src="{{ asset('admins/js/scripts.js') }}"></script>
     <script src="{{ asset('app/js/jquery.js') }}"></script>
-    <script>
-        $('#flash-overlay-modal').modal();
-        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-    </script>
     @include('sweetalert::alert')
     @yield('scripts')
 </body>

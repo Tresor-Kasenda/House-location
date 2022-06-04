@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Commissioners;
 
 use App\Contracts\HomeCommissionerRepositoryInterface;
 use App\Http\Controllers\Controller;
+use App\Models\House;
+use App\Models\Reservation;
+use Carbon\Carbon;
+use DB;
 use Illuminate\Contracts\Support\Renderable;
 
 class HomeCommissionerController extends Controller
@@ -13,6 +17,8 @@ class HomeCommissionerController extends Controller
 
     public function index(): Renderable
     {
-        return view('dealers.dashboard');
+        $charts = $this->repository->getContent();
+
+        return view('dealers.dashboard', compact('charts'));
     }
 }

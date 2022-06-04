@@ -51,3 +51,67 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+
+    <script>
+        $(function(){
+            //get the pie chart canvas
+            const cData = JSON.parse(`<?php echo $charts; ?>`);
+            const ctx = $("#salesStatistics");
+            const data = {
+                labels: cData.label,
+                datasets: [
+                    {
+                        label: "Users Count",
+                        data: cData.data,
+                        backgroundColor: [
+                            "#DEB887",
+                            "#A9A9A9",
+                            "#DC143C",
+                            "#F4A460",
+                            "#2E8B57",
+                            "#1D7A46",
+                            "#CDA776",
+                        ],
+                        borderColor: [
+                            "#CDA776",
+                            "#989898",
+                            "#CB252B",
+                            "#E39371",
+                            "#1D7A46",
+                            "#F4A460",
+                            "#CDA776",
+                        ],
+                        borderWidth: [1, 1, 1, 1, 1,1,1]
+                    }
+                ]
+            };
+            const options = {
+                responsive: true,
+                title: {
+                    display: true,
+                    position: "top",
+                    text: "Last Week Registered Users -  Day Wise Count",
+                    fontSize: 18,
+                    fontColor: "#111"
+                },
+                legend: {
+                    display: true,
+                    position: "bottom",
+                    labels: {
+                        fontColor: "#333",
+                        fontSize: 16
+                    }
+                }
+            };
+            const chart1 = new Chart(ctx, {
+                type: "pie",
+                data: data,
+                options: options
+            });
+
+        });
+    </script>
+@endsection
