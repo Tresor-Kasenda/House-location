@@ -15,6 +15,7 @@ class DetailHouseCommissionerRepository implements DetailsHouseCommissionerRepos
     public function getContents(): array|Collection
     {
         return Detail::query()
+            ->where('user_id', '=', auth()->id())
             ->with('house')
             ->get();
     }
@@ -29,18 +30,8 @@ class DetailHouseCommissionerRepository implements DetailsHouseCommissionerRepos
 
     public function created($attributes): Model|Builder|RedirectResponse
     {
-        $detail = Detail::query()
-            ->when('house_id', function ($query) use ($attributes){
-                $query->where('id', $attributes->input('house_id'));
-            })
-            ->first();
-
-        if ($detail->exists()){
-            toast('Une description a ete deja ajouter pour cette maison', 'error');
-            return back();
-        }
         $result = Detail::query()
-            ->create([
+            ->firstOrCreate([
                 'house_id' => $attributes->input('house_id'),
                 'chamberNumber' => $attributes->input('chamberNumber'),
                 'electricity' => $attributes->input('electricity'),

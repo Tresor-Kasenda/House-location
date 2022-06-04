@@ -26,7 +26,11 @@
                                 <div id="maid" style="height: 250px; width: 920px;border-radius: 5px"></div>
                             </div>
                         </div>
-                        @include('dealers.pages.houses._form')
+                        <div class="row justify-content-center">
+                            <div class="col-md-7">
+                                @include('dealers.pages.houses._form')
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

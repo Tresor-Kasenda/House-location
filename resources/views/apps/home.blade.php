@@ -26,5 +26,10 @@
                 </div>
             </div>
         @endif
+            <div class="flex flex-col gap-4 mt-16">
+                <div class="flex justify-center">
+                    {{ $apartments->links('users.component._pagination') }}
+                </div>
+            </div>
     </section>
 @endsection

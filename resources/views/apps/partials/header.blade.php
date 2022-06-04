@@ -3,8 +3,7 @@
         <div class="flex items-center">
             <div class="flex items-center">
                 <a href="{{ route('home.index') }}" class="flex items-center gap-2 text-xl font-semibold text-gray-500">
-                    <img src="{{ asset('app/images/logo.png') }}" class="w-8" alt="">
-                    <span class="hidden sm:flex lg:hidden xl:flex">Karibukuako</span>
+                    <img src="{{ asset('app/images/logo.png') }}" class="h-12 sm:h-10 md:h-14" alt="">
                 </a>
             </div>
         </div>
@@ -16,19 +15,19 @@
                      'name' => "Accueil"
                  ])
                 @include('apps.components._link', [
-                    'title' => "Apropos",
-                    'route' => route('abouts.index'),
-                    'name' => "Apropos"
+                    'title' => "categories",
+                    'route' => route('categories.index'),
+                    'name' => "Nos maisons"
                 ])
                 @include('apps.components._link', [
                     'title' => "Cartes",
                     'route' => route('location.index'),
-                    'name' => "Cartes"
+                    'name' => "Localisation"
                 ])
                 @include('apps.components._link', [
-                    'title' => "categories",
-                    'route' => route('categories.index'),
-                    'name' => "Categories"
+                    'title' => "Apropos",
+                    'route' => route('abouts.index'),
+                    'name' => "Apropos"
                 ])
                 @include('apps.components._link', [
                     'title' => "Contact",
@@ -162,7 +161,7 @@
                 </button>
             </div>
             <div class="relative flex w-full">
-                <form action="" class="bg-gray-100 w-full border focus:shadow-search focus:bg-white rounded-xl">
+                <form class="bg-gray-100 w-full border focus:shadow-search focus:bg-white rounded-xl">
                     <div class="w-full overflow-hidden flex items-center">
                         <div class="hidden md:flex items-center w-0.5 h-full bg-white">
                             <div class="bg-gray-300 h-5 w-0.5"></div>

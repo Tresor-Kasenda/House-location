@@ -1,6 +1,6 @@
 {!! form_start($form) !!}
 <div class="row gy-4">
-    <div class="col-md-md-6 col-lg-6">
+    <div class="col-md-md-12 col-lg-12">
         <div class="form-group">
             <div class="form-control-wrap">
                 {!! form_row($form->commune) !!}
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-md-6 col-lg-6">
+    <div class="col-md-md-12 col-lg-12">
         <div class="form-group">
             <div class="form-control-wrap">
                 {!! form_row($form->images) !!}
@@ -44,8 +44,6 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row gy-4">
     <div class="col-md-4">
         <div class="form-group">
             <div class="form-control-wrap">
@@ -67,8 +65,6 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row g-3">
     <div class="col-md-4">
         <div class="form-group">
             <div class="form-control-wrap">
@@ -91,9 +87,10 @@
         </div>
     </div>
 </div>
+
 <div class="form-group mt-3">
     <button type="submit" class="btn btn-primary btn-action">
-        Sauvegarder
+        Save
     </button>
 </div>
 {!! form_end($form) !!}

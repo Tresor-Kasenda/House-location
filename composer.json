@@ -11,6 +11,7 @@
         "guzzlehttp/guzzle": "^7.4.2",
         "juststeveking/laravel-key-factory": "^1.0",
         "kris/laravel-form-builder": "^1.51.1",
+        "laracasts/flash": "^3.2",
         "laravel/framework": "^8.83.12",
         "laravel/sanctum": "^2.15.1",
         "laravel/tinker": "^2.7.2",

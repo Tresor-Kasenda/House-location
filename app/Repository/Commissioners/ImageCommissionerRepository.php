@@ -18,5 +18,4 @@ class ImageCommissionerRepository implements ImageCommissionerRepositoryInterfac
     {
         return Image::getImagesHouse();
     }
-
 }

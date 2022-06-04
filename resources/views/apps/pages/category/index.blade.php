@@ -27,6 +27,7 @@
                             </a>
                         @empty
                         @endforelse
+
                     </div>
                     <div class="flex flex-col gap-4 mt-16">
                         <div class="flex justify-center">

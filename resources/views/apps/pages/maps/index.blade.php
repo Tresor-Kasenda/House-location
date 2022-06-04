@@ -70,13 +70,10 @@
     <script>
         let map = L.map('mapId').setView([{{ config('leaflet.map_center_latitude') }}, {{ config('leaflet.map_center_longitude') }}], {{ config('leaflet.zoom_level') }});
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
         let markers = L.markerClusterGroup();
         axios.get('{{ route('api.apartment.index') }}')
             .then(function (response) {
-                console.log(response.data)
                 let marker = L.geoJSON(response.data, {
                     pointToLayer: function (geoJsonPoint, latlng) {
                         return L.marker(latlng).bindPopup(function (layer) {

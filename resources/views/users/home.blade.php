@@ -81,6 +81,7 @@
                 </div>
                 <div class="md:col-span-2 overflow-hidden">
                     <div class="grid grid-cols-3 gap-3">
+                        @include('flash::message')
                         @foreach($reservations as $reservation)
                             <div class="col-span-1 rounded-lg bg-white p-4 grid gap-4 border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
                                 <div class="h-32 max-h-32 md:h-44 md:max-h-44">

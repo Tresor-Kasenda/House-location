@@ -21,6 +21,8 @@
     @include('sweetalert::alert')
     @yield("scripts")
     <script>
+        $('#flash-overlay-modal').modal();
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
         $(document).ready(function(){
             $('#search').on('keyup', function () {
                 const search = $('#search').val();

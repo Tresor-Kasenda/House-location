@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 interface CategoryHomeRepositoryInterface
 {
-    public function index(?Request $request = null);
+    public function index();
 
     public function show(string $key);
 

@@ -37,7 +37,7 @@
                                             class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
                                             placeholder="votre nom"
                                             name="username"
-                                            value="{{ old('username') ?? auth()->user()->name }}"
+                                            value="{{ old('username') }}"
                                             required>
                                         <label for="username" class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">Nom complet</label>
                                     </div>
@@ -48,7 +48,7 @@
                                             class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
                                             placeholder="votre addresse email"
                                             name="email"
-                                            value="{{ old('email') ?? auth()->user()->email }}"
+                                            value="{{ old('email') }}"
                                             >
                                         <label for="email" class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">Adresse mail</label>
                                     </div>
@@ -59,7 +59,7 @@
                                             class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
                                             placeholder="Votre numero de telephone"
                                             name="phoneNumber"
-                                            value="{{ old('phoneNumber') ?? auth()->user()->phone_number }}"
+                                            value="{{ old('phoneNumber') }}"
                                             required>
                                         <label for="phoneNumber" class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">Numero de telephone</label>
                                     </div>
@@ -133,7 +133,7 @@
                                 </div>
                             @else
                                 <div class="px-3 py-2 text-white bg-orange-600">
-                                    Aucune proposition pour cette maison
+                                    Pas de proposition
                                 </div>
                             @endif
                         </div>
@@ -154,7 +154,7 @@
                                 <tbody>
                                 <tr>
                                     <td class="p-2 bg-gray-50 text-gray-700 font-weight-bolder">Code Reference</td>
-                                    <td class="p-2 rounded">{{ $apartment->reference ?? "" }}</td>
+                                    <td class="p-2 rounded font-weight-bolder font-italic">{{ $apartment->reference ?? "" }}</td>
                                 </tr>
                                 <tr>
                                     <td class="p-2 bg-gray-50 text-gray-700">Chambres</td>
@@ -174,7 +174,7 @@
                                 </tr>
                                 <tr>
                                     <td class="p-2 bg-gray-50 text-gray-700">Electricité</td>
-                                    <td class="p-2 rounded">{{ $apartment->detail->electricity ?? "" }}</td>
+                                    <td class="p-2 rounded">{{ $apartment->detail->electricity ?? "Non disponible" }}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -211,7 +211,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
                             </svg>
-                            <span>A quelque KM de votre position actuelle</span>
+                            <span id="position">A quelque KM de votre position actuelle</span>
                         </div>
                     </div>
                 </div>
@@ -300,6 +300,9 @@
             </div>
         </div>
     </section>
+
+    <input type="hidden" name="latitude" value="{{ $apartment->latitude }}" id="latitude">
+    <input type="hidden" name="longitude" value="{{ $apartment->longitude }}" id="longitude">
 @endsection
 
 @section('styles')
@@ -335,5 +338,24 @@
             e.preventDefault()
             reservaForm.classList.remove('-translate-y-full', 'opacity-0')
         })
+    </script>
+    <script>
+        let position = document.querySelector('#position')
+        const latitude1 = parseFloat(document.querySelector('#latitude').value)
+        const longitude1 = parseFloat(document.querySelector('#longitude').value)
+
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(getPos)
+        }
+
+        function getPos(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            let distance  = (latitude, longitude, latitude1, longitude1) => {
+                console.log(latitude, longitude, latitude1, longitude1)
+            }
+            distance(latitude, longitude , latitude1, longitude1)
+        }
     </script>
 @endsection

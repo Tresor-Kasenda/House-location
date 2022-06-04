@@ -21,7 +21,11 @@
             <div class="card">
                 <div class="card-aside-wrap">
                     <div class="card-inner card-inner-lg">
-                        @include('dealers.pages.images._form')
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                @include('dealers.pages.images._form')
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -23,7 +23,7 @@
                     <div class="card-inner card-inner-lg">
                         <div class="row mb-2">
                             <div class="img-fluid">
-                                <div id="maid" style="height: 250px; width: 920px;border-radius: 5px"></div>
+                                <div id="maid" style="height: 250px; width: 920px;border-radius: 5px" class="img-fluid"></div>
                             </div>
                         </div>
                         @if ($errors->any())
@@ -35,7 +35,11 @@
                                 </ul>
                             </div>
                         @endif
-                        @include('admins.pages.apartments._form')
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                @include('admins.pages.apartments._form')
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

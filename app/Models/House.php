@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 
 /**
@@ -32,47 +35,47 @@ use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
  * @property int $status
  * @property string $reference
  * @property int $user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property Carbon|null $deleted_at
  * @property int $type_id
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
+ * @property-read Collection|Category[] $categories
  * @property-read int|null $categories_count
- * @property-read \App\Models\Detail|null $detail
+ * @property-read Detail|null $detail
  * @property-read string|null $coordinate
  * @property-read string $map_popup_content
  * @property-read string $name_link
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Image[] $image
+ * @property-read Collection|Image[] $image
  * @property-read int|null $image_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Reservation[] $reservations
+ * @property-read Collection|Reservation[] $reservations
  * @property-read int|null $reservations_count
- * @property-read \App\Models\Type $type
- * @property-read \App\Models\User $user
- * @method static \Illuminate\Database\Eloquent\Builder|House newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|House newQuery()
+ * @property-read Type $type
+ * @property-read User $user
+ * @method static Builder|House newModelQuery()
+ * @method static Builder|House newQuery()
  * @method static \Illuminate\Database\Query\Builder|House onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|House query()
- * @method static \Illuminate\Database\Eloquent\Builder|House whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereCommune($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereDistrict($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereGuarantees($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereImages($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereKey($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereLatitude($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereLongitude($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House wherePhoneNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House wherePrices($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereReference($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereRoomNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereTown($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereTypeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|House whereUserId($value)
+ * @method static Builder|House query()
+ * @method static Builder|House whereAddress($value)
+ * @method static Builder|House whereCommune($value)
+ * @method static Builder|House whereCreatedAt($value)
+ * @method static Builder|House whereDeletedAt($value)
+ * @method static Builder|House whereDistrict($value)
+ * @method static Builder|House whereEmail($value)
+ * @method static Builder|House whereGuarantees($value)
+ * @method static Builder|House whereId($value)
+ * @method static Builder|House whereImages($value)
+ * @method static Builder|House whereKey($value)
+ * @method static Builder|House whereLatitude($value)
+ * @method static Builder|House whereLongitude($value)
+ * @method static Builder|House wherePhoneNumber($value)
+ * @method static Builder|House wherePrices($value)
+ * @method static Builder|House whereReference($value)
+ * @method static Builder|House whereRoomNumber($value)
+ * @method static Builder|House whereStatus($value)
+ * @method static Builder|House whereTown($value)
+ * @method static Builder|House whereTypeId($value)
+ * @method static Builder|House whereUpdatedAt($value)
+ * @method static Builder|House whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|House withTrashed()
  * @method static \Illuminate\Database\Query\Builder|House withoutTrashed()
  * @mixin \Eloquent
@@ -97,6 +100,7 @@ class House extends Model
     {
         return $this
             ->belongsToMany(Category::class, 'house_category')
+            ->select(['name'])
             ->withTimestamps();
     }
 
@@ -107,7 +111,8 @@ class House extends Model
 
     public function type(): BelongsTo
     {
-        return $this->belongsTo(Type::class, 'type_id');
+        return $this
+            ->belongsTo(Type::class, 'type_id');
     }
 
     public function reservations(): HasMany

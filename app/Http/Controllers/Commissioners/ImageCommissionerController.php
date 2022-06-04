@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Commissioners;
 
 use App\Contracts\DetailsHouseCommissionerRepositoryInterface;
 use App\Contracts\ImageCommissionerRepositoryInterface;
+use App\Forms\ImageDealerForm;
 use App\Forms\ImageForm;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImageRequest;
@@ -28,7 +29,7 @@ class ImageCommissionerController extends Controller
 
     public function create(): Renderable
     {
-        $form = $this->builder->create(ImageForm::class, [
+        $form = $this->builder->create(ImageDealerForm::class, [
             'method' => 'POST',
             'url' => route('commissioner.imageHouses.store')
         ]);
@@ -44,7 +45,7 @@ class ImageCommissionerController extends Controller
     public function edit(string $key): Renderable
     {
         $image = $this->repository->show(key: $key);
-        $form = $this->builder->create(ImageForm::class, [
+        $form = $this->builder->create(ImageDealerForm::class, [
             'method' => 'PUT',
             'url' => route('commissioner.imageHouses.update', $image->key),
             'model' => $image

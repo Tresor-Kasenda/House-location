@@ -16,7 +16,7 @@
                                 <ul class="nk-block-tools g-3">
                                     <li class="preview-item">
                                         <a href="{{ route('admins.image.create') }}" class="btn btn-dim btn-primary btn-sm">
-                                            <em class="icon ni ni-plus mr-1"></em> Ajouter
+                                            <em class="icon ni ni-plus mr-1"></em> Create
                                         </a>
                                     </li>
                                 </ul>

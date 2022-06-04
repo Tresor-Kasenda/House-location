@@ -13,12 +13,11 @@ use Illuminate\Http\Request;
 
 class CategoryRepository implements CategoryHomeRepositoryInterface
 {
-    public function index(?Request $request = null): LengthAwarePaginator
+    public function index(): LengthAwarePaginator
     {
         return House::query()
             ->orderByDesc('created_at')
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
-            ->latest()
             ->paginate(6);
     }
 

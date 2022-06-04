@@ -10,7 +10,7 @@
 </div>
 <div class="form-group mt-3">
     <button type="submit" class="btn btn-primary btn-action">
-        Sauvegarder
+        Save
     </button>
 </div>
 {!! form_end($form) !!}

@@ -3,7 +3,7 @@
         <div class="container m-auto space-y-8">
             <div class="flex justify-center items-center gap-4">
                 <a href="{{ route('home.index') }}" class="md:hidden lg:block text-xl font-semibold text-gray-700">
-                    <img src="{{ asset('app/images/logo.png')  }}" class="w-12" alt="">
+                    <img src="{{ asset('app/images/logo.png')  }}" class="h-12 sm:h-10 md:h-14" alt="">
                 </a>
             </div>
             <ul class="py-4 flex sm:flex-row flex-col sm:gap-8 gap-4 items-center justify-center">
