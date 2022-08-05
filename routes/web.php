@@ -27,6 +27,7 @@ use App\Http\Controllers\Users\HomeUserController;
 use App\Http\Controllers\Users\UpdateUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\http\Controllers\SliderController;
 
 Auth::routes();
 
@@ -91,5 +92,12 @@ Route::controller(ReservationController::class)->group(function (){
     Route::post('reservation', 'store')->name('reservation.store');
     Route::get('confirmation/{key}', 'show')->name('reservation.show');
 });
-
 Route::get('search', [SearchLocationController::class, 'searching'])->name('search.house');
+
+// sliders routes
+Route::get("/sliders", [SliderController::class, "index"])->name("sliders.index");
+Route::get("/sliders/create", [SliderController::class, 'create']);
+Route::post("/sliders/store", [SliderController::class, 'store'])->name('create_slider');
+Route::get("/sliders/delete/{id}", [SliderController::class, 'destroy'])->name('delete_slider');
+Route::get("sliders/edit/{id}", [SliderController::class, 'edit'])->name('edit_slider');
+
