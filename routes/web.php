@@ -27,6 +27,7 @@ use App\Http\Controllers\Users\HomeUserController;
 use App\Http\Controllers\Users\UpdateUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NoteCommissionnaireController;
 
 Auth::routes();
 
@@ -93,3 +94,7 @@ Route::controller(ReservationController::class)->group(function (){
 });
 
 Route::get('search', [SearchLocationController::class, 'searching'])->name('search.house');
+
+Route::resource('best-commission', NoteCommissionnaireController::class)->except(['update', 'destroy', 'edit', 'create']);
+Route::get('best-commission/{key}/create', [NoteCommissionnaireController::class, 'create'])->name('best-commission.create');
+Route::get('/bests-commission/all', [NoteCommissionnaireController::class, 'best_notes'])->name('best-commission.all');

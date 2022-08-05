@@ -51,6 +51,12 @@ class Commissioner extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function noteCommissionnaire()
+    {
+        return $this->hasOne(Notecommissionnaire::class);
+    }
+
+
     public function apartments(): HasMany
     {
         return  $this->hasMany(House::class);
