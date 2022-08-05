@@ -156,4 +156,8 @@ class House extends Model
         </stroong></div>';
         return $mapPopupContent;
     }
+    public function notes()
+    {
+        return $this->hasMany(HouseNote::class);
+    }
 }

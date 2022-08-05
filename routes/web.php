@@ -27,6 +27,7 @@ use App\Http\Controllers\Users\HomeUserController;
 use App\Http\Controllers\Users\UpdateUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HouseNoteController;
 
 Auth::routes();
 
@@ -93,3 +94,17 @@ Route::controller(ReservationController::class)->group(function (){
 });
 
 Route::get('search', [SearchLocationController::class, 'searching'])->name('search.house');
+
+
+
+Route::get("/notes", [HouseNoteController::class, "index"])->name("notes.index"); //retourne les 10 maisons les mieux notées
+Route::get('/notes/create/{id}', [HouseNoteController::class, 'create'])->name('housenote.create');
+Route::post('/notes/create', [HouseNoteController::class, 'store'])->name('housenote.store');
+Route::get('/notes/delete/{id}', [HouseNoteController::class, 'destroy'])->name('housenote.delete')->middleware(['users', 'auth']);
+// Route::group([
+//     'prefix' => 'note',
+//     'as' => 'note.',
+//     'middleware' => ['auth']
+// ], function(){
+//     Route::resource('notes', HouseNoteController::class)->except(['update']);
+// });
