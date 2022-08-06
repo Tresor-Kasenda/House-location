@@ -27,6 +27,7 @@ use App\Http\Controllers\Users\HomeUserController;
 use App\Http\Controllers\Users\UpdateUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TemoignageController;
 
 Auth::routes();
 
@@ -93,3 +94,8 @@ Route::controller(ReservationController::class)->group(function (){
 });
 
 Route::get('search', [SearchLocationController::class, 'searching'])->name('search.house');
+Route::get("temoignages/", [TemoignageController::class, 'index'])->name('temoignages.index');
+Route::get("temoignages/post/", [TemoignageController::class, 'create'])->name('temoignages.post')->middleware('auth');
+Route::post("temoignages/create/", [TemoignageController::class, 'store'])->name('temoignages.store');
+Route::post("temoignages/delete/{key}", [TemoignageController::class, 'destroy'])->name('temoignages.destroy');
+Route::get("temoignages/{key}", [TemoignageController::class, 'show'])->name('temoignages.show');
