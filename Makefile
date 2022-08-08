@@ -34,6 +34,10 @@ serve: vendor/autoload.php ## lance, le serve de development
 create: vendor/autoload.php # creer un administrateur
 	php artisan karibu:add-user
 
+.PHONE: generate
+generate: vendor/autoload.php ## Generate Ide models
+	php artisan ide:models
+
 .PHONY: watch
 watch: vendor/autoload.php ## lance, le serve de development
 	npm run watch

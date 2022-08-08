@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use App\Enums\UserRoleEnum;
@@ -16,12 +17,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone_number')->nullable();
-            $table->string('lastName')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('password');
             $table->string('images')->nullable();
-            $table->integer('role_id')->default(UserRoleEnum::USERS);
+            $table->integer('role_id')->default(UserRoleEnum::USERS_ROLE);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

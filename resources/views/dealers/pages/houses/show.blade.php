@@ -1,4 +1,4 @@
-@extends('layouts.dealer')
+@extends('frontend.layouts.dealer')
 
 @section('title', "Administration des appartements")
 

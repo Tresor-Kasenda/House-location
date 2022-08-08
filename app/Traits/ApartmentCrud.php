@@ -16,24 +16,26 @@ trait ApartmentCrud
     {
         $apartment = House::query()
             ->create([
-                'prices' => $attributes->prices,
-                'address'=> $attributes->address,
-                'guarantees'=> $attributes->guarantees,
-                'phoneNumber'=> $attributes->phoneNumber,
-                'email'=> $attributes->email,
-                'latitude'=> $attributes->latitude,
-                'longitude'=> $attributes->longitude,
+                'prices' => $attributes->input('prices'),
+                'address'=> $attributes->input('address'),
+                'guarantees'=> $attributes->input('guarantees'),
+                'phone_number'=> $attributes->input('phoneNumber'),
+                'email'=> $attributes->input('email'),
+                'latitude'=> $attributes->input('latitude'),
+                'longitude'=> $attributes->input('longitude'),
                 'images'=> $this::uploadFiles($attributes),
-                'commune'=> $attributes->commune,
-                'district'=> $attributes->district,
-                'roomNumber'=> $attributes->roomNumber,
-                'town' => $attributes->town,
+                'commune'=> $attributes->input('commune'),
+                'district'=> $attributes->input('district'),
+                'town' => $attributes->input('town'),
                 'user_id' => auth()->id(),
                 'reference' => $this->generateRandomTransaction(6),
                 'type_id' => $attributes->input('type')
             ]);
         $apartment->categories()->attach($attributes->categories);
-        toast("Un nouveau appartement à été ajouter", 'success');
+        $this->service->success(
+            messages: "Un nouveau appartement à été ajouter",
+            type: "success"
+        );
         return $apartment;
     }
 
@@ -43,22 +45,25 @@ trait ApartmentCrud
         $this->removePathOfImages($house);
         $house->categories()->detach($attributes->categories);
         $house->update([
-            'prices' => $attributes->prices,
-            'address'=> $attributes->address,
-            'guarantees'=> $attributes->guarantees,
-            'phoneNumber'=> $attributes->phoneNumber,
-            'email'=> $attributes->email,
-            'latitude'=> $attributes->latitude,
-            'longitude'=> $attributes->longitude,
-            'commune'=> $attributes->commune,
-            'district'=> $attributes->district,
+            'prices' => $attributes->input('prices'),
+            'address'=> $attributes->input('address'),
+            'guarantees'=> $attributes->input('guarantees'),
+            'phone_number'=> $attributes->input('phoneNumber'),
+            'email'=> $attributes->input('email'),
+            'latitude'=> $attributes->input('latitude'),
+            'longitude'=> $attributes->input('longitude'),
+            'commune'=> $attributes->input('commune'),
+            'district'=> $attributes->input('district'),
             'images'=> $this::uploadFiles($attributes),
             'roomNumber'=> $attributes->roomNumber,
             'town' => $attributes->town,
             'type_id' => $attributes->input('type')
         ]);
         $house->categories()->attach($attributes->categories);
-        toast("Un nouveau appartement à été modifier", 'success');
+        $this->service->success(
+            messages: "Un nouveau appartement à été modifier",
+            type: "success"
+        );
         return $house;
     }
 }

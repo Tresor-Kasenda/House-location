@@ -17,12 +17,14 @@ return new class extends Migration
             $table->foreignIdFor(User::class)
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->string('phoneNumber')->unique()->nullable();
+            $table->string('phone_number')->unique()
+                ->nullable();
             $table->string('address')->nullable();
             $table->string('images')->nullable();
-            $table->string('email')->unique()->nullable();
-            $table->boolean('status')->default(StatusEnum::PENDING);
+            $table->string('email')->unique()
+                ->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

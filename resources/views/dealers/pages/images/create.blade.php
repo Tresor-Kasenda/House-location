@@ -1,4 +1,4 @@
-@extends('layouts.dealer')
+@extends('frontend.layouts.dealer')
 
 @section('title', "Administration des images")
 
@@ -23,6 +23,7 @@
                     <div class="card-inner card-inner-lg">
                         <div class="row justify-content-center">
                             <div class="col-md-6">
+                                <x-errors />
                                 @include('dealers.pages.images._form')
                             </div>
                         </div>
