@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Traits;
 
+use App\Enums\HouseEnum;
+use App\Models\Detail;
 use App\Models\House;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -14,24 +16,30 @@ trait ApartmentCrud
 
     public function created($attributes): Builder|Model
     {
-        $apartment = House::query()
-            ->create([
-                'prices' => $attributes->input('prices'),
-                'address'=> $attributes->input('address'),
-                'guarantees'=> $attributes->input('guarantees'),
-                'phone_number'=> $attributes->input('phoneNumber'),
-                'email'=> $attributes->input('email'),
-                'latitude'=> $attributes->input('latitude'),
-                'longitude'=> $attributes->input('longitude'),
-                'images'=> $this::uploadFiles($attributes),
-                'commune'=> $attributes->input('commune'),
-                'district'=> $attributes->input('district'),
-                'town' => $attributes->input('town'),
-                'user_id' => auth()->id(),
-                'reference' => $this->generateRandomTransaction(6),
-                'type_id' => $attributes->input('type')
-            ]);
+        $apartment = auth()->user()->house()->create([
+            'prices' => $attributes->input('prices'),
+            'commune'=> $attributes->input('commune'),
+            'town' => $attributes->input('town'),
+            'district'=> $attributes->input('district'),
+            'address'=> $attributes->input('address'),
+            'guarantees'=> $attributes->input('guarantees'),
+            'phone_number'=> $attributes->input('phone_number'),
+            'email'=> $attributes->input('email'),
+            'latitude'=> $attributes->input('latitude'),
+            'longitude'=> $attributes->input('longitude'),
+            'images'=> $this::uploadFiles($attributes),
+            'reference' => $this->generateRandomTransaction(6),
+            'type_id' => $attributes->input('type')
+        ]);
         $apartment->categories()->attach($attributes->categories);
+        Detail::query()
+            ->create([
+                'house_id' => $apartment->id,
+                'room_number' => $attributes->input('room_number'),
+                'number_pieces' => $attributes->input('room_pieces'),
+                'toilet' => $attributes->input('toilet'),
+                'electricity' => $attributes->input('electricity')
+            ]);
         $this->service->success(
             messages: "Un nouveau appartement à été ajouter",
             type: "success"

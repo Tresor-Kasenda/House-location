@@ -100,10 +100,8 @@ class House extends Model
         'images',
         'status',
         'reference',
-    ];
-
-    protected $casts = [
-        'status' => HouseEnum::INVALIDATED_HOUSE
+        'type_id',
+        'user_id'
     ];
 
     public function image(): HasMany

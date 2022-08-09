@@ -22,8 +22,11 @@
                 <div class="card-aside-wrap">
                     <div class="card-inner card-inner-lg">
                         <div class="row gy-4 justify-content-center">
-                            <x-errors/>
-                            @include('backend.pages.apartments._form')
+                            <div id="mapId" style="min-height: 200px;min-width: 900px;top: 0;"></div>
+                            <div class="col-md-9">
+                                <x-errors/>
+                                @include('backend.pages.apartments._form')
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -44,7 +47,7 @@
             {{ request('latitude', config('leaflet.map_center_latitude')) }},
             {{ request('longitude', config('leaflet.map_center_longitude')) }}
         ];
-        let map = L.map('maid').setView(mapCenter, {{ config('leaflet.zoom_level') }});
+        let map = L.map('mapId').setView(mapCenter, {{ config('leaflet.zoom_level') }});
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);

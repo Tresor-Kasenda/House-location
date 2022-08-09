@@ -1,6 +1,9 @@
+@php use App\Models\House; @endphp
 @extends('frontend.layouts.admin')
 
-@section('title', "Administration des appartements")
+@section('title')
+    Liste des appartements
+@endsection
 
 @section('content')
     <div class="nk-content-inner">
@@ -8,7 +11,7 @@
             <div class="nk-block-head nk-block-head-sm">
                 <div class="nk-block-between">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Apartments</h3>
+                        <h3 class="nk-block-title page-title">Liste des appartements</h3>
                     </div>
                     <div class="nk-block-head-content">
                         <div class="toggle-wrap nk-block-tools-toggle">
@@ -66,13 +69,13 @@
                                             </span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $room->phoneNumber ?? "" }}</span>
+                                            <span>{{ $room->phone_number ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ $room->address ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            @if($room->status == true)
+                                            @if($room->status == \App\Enums\HouseEnum::VALIDATED_HOUSE)
                                                 <span class="dot bg-success d-mb-none"></span>
                                                 <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">Confirmer</span>
                                             @else
