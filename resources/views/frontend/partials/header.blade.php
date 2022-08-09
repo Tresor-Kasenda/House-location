@@ -9,27 +9,27 @@
         </div>
         <div class="hidden lg:flex items-center">
             <ul class="flex items-center text-gray-500 text-lg gap-3 capitalize">
-                @include('apps.components._link', [
+                @include('frontend.components._link', [
                      'title' => "accueil",
                      'route' => route('home.index'),
                      'name' => "Accueil"
                  ])
-                @include('apps.components._link', [
+                @include('frontend.components._link', [
                     'title' => "categories",
                     'route' => route('categories.index'),
                     'name' => "Nos maisons"
                 ])
-                @include('apps.components._link', [
+                @include('frontend.components._link', [
                     'title' => "Cartes",
                     'route' => route('location.index'),
                     'name' => "Localisation"
                 ])
-                @include('apps.components._link', [
+                @include('frontend.components._link', [
                     'title' => "Apropos",
                     'route' => route('abouts.index'),
                     'name' => "Apropos"
                 ])
-                @include('apps.components._link', [
+                @include('frontend.components._link', [
                     'title' => "Contact",
                     'route' => route('contact.index'),
                     'name' => "Contact"
@@ -49,23 +49,23 @@
                 </form>
             </div>
             <div class="flex flex-col text-lg text-gray-400 w-full pb-2">
-                @include('apps.components._linkMenu', [
+                @include('frontend.components._linkMenu', [
                     'route' => route('home.index'),
                     'name' => "Accueil"
                 ])
-                @include('apps.components._linkMenu', [
+                @include('frontend.components._linkMenu', [
                     'route' => route('abouts.index'),
                     'name' => "Apropos"
                 ])
-                @include('apps.components._linkMenu', [
+                @include('frontend.components._linkMenu', [
                     'route' => route('location.index'),
                     'name' => "Cartes"
                 ])
-                @include('apps.components._linkMenu', [
+                @include('frontend.components._linkMenu', [
                     'route' => route('categories.index'),
                     'name' => "Categories"
                 ])
-                @include('apps.components._linkMenu', [
+                @include('frontend.components._linkMenu', [
                     'route' => route('contact.index'),
                     'name' => "Contact"
                 ])
@@ -74,7 +74,7 @@
             @auth
                 <div class="flex flex-col">
                     <div class="w-full text-lg text-gray-500">
-                        @if(auth()->user()->role_id == \App\Enums\UserRoleEnum::USERS)
+                        @if(auth()->user()->role_id == \App\Enums\UserRoleEnum::USERS_ROLE)
                             <a href="{{ route('users.users.index') }}" class="flex gap-2 px-4 py-2.5 ">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -117,7 +117,7 @@
                     class="absolute shadow-purple-100 left-8 top-full -translate-x-full w-40 bg-white shadow-lg rounded-xl scale-y-0 transition-all duration-500 group-hover:scale-y-100 origin-top border border-purple-100">
                     <ul class="flex flex-col pt-2 text-gray-500 w-full z-[1003]">
                         @auth
-                            @if(auth()->user()->role_id == \App\Enums\UserRoleEnum::USERS)
+                            @if(auth()->user()->role_id == \App\Enums\UserRoleEnum::USERS_ROLE)
                                 <li class="block hover:bg-purple-100 transition">
                                     <a href="{{ route('users.users.index') }}" class="py-2 px-4 hover:text-purple-600 block transition">Mon compte</a>
                                 </li>

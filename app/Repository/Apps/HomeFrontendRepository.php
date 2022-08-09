@@ -15,7 +15,7 @@ class HomeFrontendRepository implements HomeRepositoryInterface
     {
         return House::query()
             ->orderByDesc('created_at')
-            ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
+            ->when('status', fn($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
             ->inRandomOrder()
             ->paginate(8);
     }

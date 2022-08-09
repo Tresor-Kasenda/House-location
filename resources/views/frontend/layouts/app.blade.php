@@ -11,11 +11,11 @@
     @yield('styles')
 </head>
 <body class="text-gray-500  overflow-x-hidden w-full">
-    @include('apps.partials.header')
+    @include('frontend.partials.header')
     <div>
         @yield('content')
     </div>
-    @include('apps.partials.footer')
+    @include('frontend.partials.footer')
     <script src="{{ asset('app/js/hamburger.js') }}"></script>
     <script src="{{ asset('app/js/jquery.js') }}"></script>
     @include('sweetalert::alert')
