@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository\Apps;
@@ -7,9 +8,11 @@ use App\Contracts\ReservationHouseRepositoryInterface;
 use App\Enums\HouseEnum;
 use App\Models\House;
 use App\Models\Reservation;
+use App\Notifications\ReservationNotification;
 use App\Traits\RandomValues;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Notification;
 
 class ReservationRepository implements ReservationHouseRepositoryInterface
 {
@@ -19,7 +22,7 @@ class ReservationRepository implements ReservationHouseRepositoryInterface
     {
         $house = $this->getHouse(attributes: $attributes);
 
-        return Reservation::query()
+        $reservation = Reservation::query()
             ->create([
                 "house_id" => $house->id,
                 "name" => $attributes->input('username'),
@@ -29,6 +32,8 @@ class ReservationRepository implements ReservationHouseRepositoryInterface
                 'reference' => $this->generateRandomTransaction(6),
                 'user_id' => auth()->id() ?? null
             ]);
+        (new ReservationNotification($reservation))->toMail($reservation->address);
+        return $reservation;
     }
 
     public function getReservation(string $key): Model|Builder|null
@@ -42,7 +47,10 @@ class ReservationRepository implements ReservationHouseRepositoryInterface
     {
         return House::query()
             ->where('key', '=', $attributes->input('house'))
-            ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
+            ->when('status',
+                fn($builder) =>
+                $builder->where('status', HouseEnum::VALIDATED_HOUSE)
+            )
             ->first();
     }
 }
