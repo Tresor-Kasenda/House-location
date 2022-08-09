@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\DetailApartmentAdminController;
 use App\Http\Controllers\Backend\HomeAdminController;
 use App\Http\Controllers\Backend\ImagesAdminController;
 use App\Http\Controllers\Backend\ReservationAdminController;
+use App\Http\Controllers\Backend\SlideAdminController;
 use App\Http\Controllers\Backend\TrashedAdminController;
 use App\Http\Controllers\Backend\UsersAdminController;
 use App\Http\Controllers\Frontend\AboutController;
@@ -53,6 +54,8 @@ Route::group([
         Route::put('trashedApartments/{key}', 'restore')->name('trashed.restore');
         Route::delete('trashedApartments/{key}', 'delete')->name('trashed.delete');
     });
+
+    Route::resource('slides', SlideAdminController::class);
 
     Route::controller(ConfirmedApartmentController::class)->group(function (){
         Route::put('activeApartment/{key}','active')
