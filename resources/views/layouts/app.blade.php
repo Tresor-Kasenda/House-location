@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png')  }}">
+    <link rel="stylesheet" href="{{asset('dist/tailwind.css')}}">
+    <link rel="stylesheet" href="{{asset('dist/swiper-bundle.min.css')}}">
     @yield('styles')
 </head>
 <body class="text-gray-500  overflow-x-hidden w-full">
@@ -21,6 +23,7 @@
     @include('sweetalert::alert')
     @yield("scripts")
     <script>
+        
         $('#flash-overlay-modal').modal();
         $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
         $(document).ready(function(){
@@ -45,5 +48,88 @@
             })
         })
     </script>
+      <script src="{{asset('assets/js/app.js')}}"></script>
+
+
+<script src="{{asset('assets/js/swiper-bundle.min.js')}}"></script>
+<script>
+    var swiper = new Swiper(".homeSwiper", {
+        navigation: {
+            nextEl: '.swip-next-homeslide',
+            prevEl: '.swip-prev-homeslide',
+        },
+        pagination: {
+            el: ".home-swiper-pagination",
+            bulletClass: 'costum-bullet',
+            bulletActiveClass: 'costum-bullet-active',
+            clickable: true,
+            renderBullet: function (index, className) {
+                return '<span class="' + className + ' costumSwiperPagination">' + "</span>";
+            },
+        },
+    });
+
+    var swiperBestRate = new Swiper(".swiperBestrate", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swip-next-bestrate',
+            prevEl: '.swip-prev-bestrate',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+    })
+    
+    var swiperBestCommis = new Swiper(".swiperBestcommis", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swip-next-bestcommis',
+            prevEl: '.swip-prev-bestcommis',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+    })
+    
+    var swipertestimonial = new Swiper(".swipertestimonial", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swip-next-testim',
+            prevEl: '.swip-prev-testim',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1240: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
+        },
+    })
+
+</script>
 </body>
 </html>

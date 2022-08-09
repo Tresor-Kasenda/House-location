@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\NoteCommissionnaire;
 
 /**
  * App\Models\User
@@ -79,6 +80,10 @@ class User extends Authenticatable
     public function commissioner(): HasOne
     {
         return $this->hasOne(Commissioner::class);
+    }
+    public function notecommissioner(): HasOne
+    {
+        return $this->hasOne(NoteCommissionnaire::class, "commissioner_id");
     }
 
     public function reservations(): HasMany
