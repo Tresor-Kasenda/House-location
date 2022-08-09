@@ -1,4 +1,4 @@
-@extends('layouts.dealer')
+@extends('frontend.layouts.dealer')
 
 @section('title', "Administration des appartements")
 
@@ -28,6 +28,7 @@
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-7">
+                                <x-errors />
                                 @include('dealers.pages.houses._form')
                             </div>
                         </div>

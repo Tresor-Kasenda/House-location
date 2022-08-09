@@ -1,4 +1,5 @@
 const staticCacheName = "pwa-v" + new Date().getTime();
+
 const filesToCache = [
     '/offline',
     '/css/app.css',

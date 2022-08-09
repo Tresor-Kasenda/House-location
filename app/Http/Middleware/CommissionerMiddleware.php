@@ -16,15 +16,15 @@ class CommissionerMiddleware
             return redirect()->route('login');
         }
 
-        if (Auth::user()->role_id == UserRoleEnum::USERS) {
+        if (Auth::user()->role_id == UserRoleEnum::USERS_ROLE) {
             return redirect()->route('users.backend.index');
         }
 
-        if (Auth::user()->role_id == UserRoleEnum::COMMISSIONNERS) {
+        if (Auth::user()->role_id == UserRoleEnum::DEALER_ROLE) {
             return $next($request);
         }
 
-        if (Auth::user()->role_id == UserRoleEnum::ADMINS){
+        if (Auth::user()->role_id == UserRoleEnum::ADMINS_ROLE){
             return redirect()->route('admins.backend.index');
         }
     }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Forms;
@@ -13,52 +14,82 @@ class ApartmentForm extends Form
     {
         $this
             ->add('prices', 'number', [
-                'label' => "Prix mensuel"
-            ])
-            ->add('address', 'text', [
-                'label' => "Addresse"
-            ])
-            ->add('guarantees', 'number', [
-                'label' => "Garantie"
-            ])
-            ->add('phoneNumber', 'text',[
-                'label' => "Numero Telephone"
-            ])
-            ->add('email', 'text', [
-                'label' => "Addresse Email"
-            ])
-            ->add('latitude', 'text', [
-                'label' => 'Latitude'
-            ])
-            ->add('longitude', 'text', [
-                'label' => "Longitude"
-            ])
-            ->add('images', 'file',[
-                'label' => "Image"
+                'label' => "Prix mensuel",
             ])
             ->add('commune', 'text', [
-                'label' => "Commune"
+                'label' => "Commune",
             ])
             ->add('town', 'text', [
-                'label' => "ville"
+                'label' => "Ville",
             ])
             ->add('district', 'text', [
-                'label' => "Quartier"
+                'label' => "Quartier",
             ])
-            ->add('roomNumber', 'number', [
-                'label' => "Nombre des pieces"
+            ->add('address', 'text', [
+                'label' => "Adresse",
+            ])
+            ->add('guarantees', 'number', [
+                'label' => "Garantie",
+            ])
+            ->add('phone_number', 'text',[
+                'label' => "N° Téléphone",
+            ])
+            ->add('email', 'text', [
+                'label' => "Email",
+            ])
+            ->add('latitude', 'text', [
+                'label' => 'Latitude',
+            ])
+            ->add('longitude', 'text', [
+                'label' => "Longitude",
+            ])
+            ->add('images', 'file',[
+                'label' => "Image",
+            ])
+            ->add('reference', 'text',[
+                'label' => "Référence",
             ])
             ->add('categories','choice',[
-                'label' => 'Categorie',
+                'label' => 'Catégorie de Maison',
                 'choices' => Category::all()->pluck('name', 'id')->toArray(),
                 'multiple' => true,
-                'attr' => ['class' => 'form-select']
             ])
             ->add('type','choice',[
-                'label' => 'Type',
-                'choices' => Type::all()->pluck('name', 'id')->toArray(),
+                'label' => 'Type de Maison',
+                'choices' => $this->getHouseType(),
                 'multiple' => false,
-                'attr' => ['class' => 'form-select']
+            ])
+            ->add('room_number', 'number', [
+                'label' => "Nombre des chambres",
+            ])
+            ->add('room_pieces', 'number', [
+                'label' => "Nombre des Pieces",
+            ])
+            ->add('electricity', 'choice', [
+                'choices' => [1 => 'Oui', 0 => 'Non'],
+                'attr' => ['class' => 'form-control'],
+                'selected' => [1, 0],
+                'multiple' => false,
+            ])
+            ->add('toilet', 'choice', [
+                'choices' => ['external' => 'Externe', 'internal' => 'Interne'],
+                'attr' => ['class' => 'form-control'],
+                'selected' => ['external', 'internal'],
+                'multiple' => false,
             ]);
+    }
+
+    public function getCategories(): array
+    {
+        return Category::all()
+            ->pluck('name', 'id')
+            ->toArray();
+    }
+
+    public function getHouseType(): array
+    {
+        return Type::all()
+            ->pluck('name', 'id')
+            ->toArray();
     }
 }

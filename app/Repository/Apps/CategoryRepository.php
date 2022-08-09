@@ -17,7 +17,7 @@ class CategoryRepository implements CategoryHomeRepositoryInterface
     {
         return House::query()
             ->orderByDesc('created_at')
-            ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
+            ->when('status', fn($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
             ->paginate(6);
     }
 
@@ -25,7 +25,7 @@ class CategoryRepository implements CategoryHomeRepositoryInterface
     {
         $house = House::query()
             ->when('key', fn($builder) => $builder->where('key', $key))
-            ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
+            ->when('status', fn($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
             ->withCount('reservations')
             ->first();
         return $house->load(['categories','image', 'type', 'detail']);
@@ -34,7 +34,7 @@ class CategoryRepository implements CategoryHomeRepositoryInterface
     public function getHouseByDetails($house): Collection|array
     {
         return House::query()
-            ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
+            ->when('status', fn($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
             ->when('prices', fn($builder) => $builder->where('prices', $house->prices))
             ->orWhere('commune', '=', $house->commune)
             ->get();

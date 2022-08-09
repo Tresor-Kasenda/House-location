@@ -15,11 +15,12 @@ return new class extends Migration
             $table->string('key')->unique();
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
 
-        Role::create(['name' => 'Users']);
-        Role::create(['name' => 'Commissionners']);
-        Role::create(['name' => 'Admins']);
+        Role::create(['name' => 'USERS']);
+        Role::create(['name' => 'DEALER']);
+        Role::create(['name' => 'ADMINS']);
     }
 
     public function down()

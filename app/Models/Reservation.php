@@ -3,9 +3,14 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\ReservationEnum;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 
 /**
@@ -15,38 +20,56 @@ use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
  * @property string $key
  * @property int|null $user_id
  * @property int $house_id
- * @property int $status
+ * @property mixed $status
  * @property string $name
  * @property string $address
  * @property string $phones
  * @property string $messages
  * @property string $reference
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\House $house
- * @property-read \App\Models\User|null $user
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation query()
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation whereHouseId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation whereKey($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation whereMessages($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation wherePhones($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation whereReference($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Reservation whereUserId($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property Carbon|null $deleted_at
+ * @property-read House $house
+ * @property-read User|null $user
+ * @method static Builder|Reservation newModelQuery()
+ * @method static Builder|Reservation newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Reservation onlyTrashed()
+ * @method static Builder|Reservation query()
+ * @method static Builder|Reservation whereAddress($value)
+ * @method static Builder|Reservation whereCreatedAt($value)
+ * @method static Builder|Reservation whereDeletedAt($value)
+ * @method static Builder|Reservation whereHouseId($value)
+ * @method static Builder|Reservation whereId($value)
+ * @method static Builder|Reservation whereKey($value)
+ * @method static Builder|Reservation whereMessages($value)
+ * @method static Builder|Reservation whereName($value)
+ * @method static Builder|Reservation wherePhones($value)
+ * @method static Builder|Reservation whereReference($value)
+ * @method static Builder|Reservation whereStatus($value)
+ * @method static Builder|Reservation whereUpdatedAt($value)
+ * @method static Builder|Reservation whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|Reservation withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Reservation withoutTrashed()
+ * @mixin Eloquent
+ * @method static \Database\Factories\ReservationFactory factory(...$parameters)
  */
 class Reservation extends Model
 {
-    use HasFactory, HasKey;
+    use HasFactory, HasKey, SoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'key',
+        'status',
+        'name',
+        'address',
+        'phones',
+        'messages',
+        'reference'
+    ];
+
+    protected $casts = [
+        'status' => ReservationEnum::PENDING_RESERVATION
+    ];
 
     public function user(): BelongsTo
     {
