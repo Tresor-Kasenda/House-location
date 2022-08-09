@@ -21,6 +21,11 @@ class SliderController extends Controller
        ]);
     }
 
+    public function part()
+    {
+      return Slider::all();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -28,7 +28,7 @@ class HouseNoteController extends Controller
                 $conteur+= $value->note;
             }
             //dd($notes);
-            $notes[count($notes)-1]['note'] = $conteur/count($houseone->notes);
+            $notes[count($notes)-1]['note'] = count($houseone->notes)>0 ? $conteur/count($houseone->notes) : 1;
         }
         //trie des notes les plus élevées
 

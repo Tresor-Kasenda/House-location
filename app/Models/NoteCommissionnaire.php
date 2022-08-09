@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class NoteCommissionnaire extends Model
 {
@@ -12,7 +13,7 @@ class NoteCommissionnaire extends Model
     public function commissioner()
     {
 
-        return $this->belongsTo(Commissioner::class);
+        return $this->belongsTo(User::class, "id");
         
     }
 
