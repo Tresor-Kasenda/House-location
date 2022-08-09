@@ -1,10 +1,18 @@
 @extends('frontend.layouts.app')
 
-@section('title', "Trouvez une maison de vos reve")
+@section('title')
+    Trouvez une maison en un click
+@endsection
 
 @section('content')
 
+    @include('frontend.components.modal_search')
+
+    @include('frontend.partials.carousels')
+
     @include('frontend.components._section')
+
+
 
     <section class="lg:px-28 md:px-12 px-6 py-16">
         @if ($apartments->count() > 0)
@@ -26,10 +34,10 @@
                 </div>
             </div>
         @endif
-            <div class="flex flex-col gap-4 mt-16">
-                <div class="flex justify-center">
-                    {{ $apartments->links('users.component._pagination') }}
-                </div>
+        <div class="flex flex-col gap-4 mt-16">
+            <div class="flex justify-center">
+                {{ $apartments->links('users.component._pagination') }}
             </div>
+        </div>
     </section>
 @endsection

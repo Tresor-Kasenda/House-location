@@ -1,188 +1,160 @@
-<header class="w-full lg:px-28 sm:px-12 px-6 relative lg:after:absolute lg:after:bottom-0 bg-white z-50 after:max-w-7xl after:h-0 after:left-1/2 after:-translate-x-1/2 after:bg-gradient-to-tr after:from-green-400 after:to-purple-600 shadow-md shadow-purple-100 lg:shadow-none lg:after:w-9/12 after:z-40">
-    <nav class="container m-auto h-16 md:h-20 py-4 flex items-center justify-between">
-        <div class="flex items-center">
-            <div class="flex items-center">
-                <a href="{{ route('home.index') }}" class="flex items-center gap-2 text-xl font-semibold text-gray-500">
-                    <img src="{{ asset('app/images/logo.png') }}" class="h-12 sm:h-10 md:h-14" alt="">
-                </a>
-            </div>
-        </div>
-        <div class="hidden lg:flex items-center">
-            <ul class="flex items-center text-gray-500 text-lg gap-3 capitalize">
-                @include('frontend.components._link', [
-                     'title' => "accueil",
-                     'route' => route('home.index'),
-                     'name' => "Accueil"
-                 ])
-                @include('frontend.components._link', [
-                    'title' => "categories",
-                    'route' => route('categories.index'),
-                    'name' => "Nos maisons"
-                ])
-                @include('frontend.components._link', [
-                    'title' => "Cartes",
-                    'route' => route('location.index'),
-                    'name' => "Localisation"
-                ])
-                @include('frontend.components._link', [
-                    'title' => "Apropos",
-                    'route' => route('abouts.index'),
-                    'name' => "Apropos"
-                ])
-                @include('frontend.components._link', [
-                    'title' => "Contact",
-                    'route' => route('contact.index'),
-                    'name' => "Contact"
-                ])
-            </ul>
-        </div>
-        <div id="overlayM" class="fixed flex bg-transparent scale-0 h-full w-full z-[998] top-0 left-0 lg:hidden "></div>
-        <div id="menuMob" class="flex flex-col -left-[83.333333%] fixed right-0 w-10/12 top-0 sm:w-60 md:w-64 bg-purple-50 h-full overflow-x-hidden overflow-y-scroll lg:hidden before:w-1 before:h-full before:absolute before:bg-gray-700 before:bg-opacity-50 before:backdrop-filter before:blur-lg before:top-0 before:right-0.5 p-5 z-[1000] transition-all duration-300">
-            <div class="py-4">
-                <form action="" class="relative w-full">
-                    <input type="text" class="px-4 py-3 rounded-xl outline-none bg-white shadow-sm shadow-purple-100 w-full placeholder:text-gray-300 text-sm text-gray-500" placeholder="Rechercher ici">
-                    <span class="absolute top-1/2 -translate-y-1/2 right-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                    </span>
-                </form>
-            </div>
-            <div class="flex flex-col text-lg text-gray-400 w-full pb-2">
-                @include('frontend.components._linkMenu', [
-                    'route' => route('home.index'),
-                    'name' => "Accueil"
-                ])
-                @include('frontend.components._linkMenu', [
-                    'route' => route('abouts.index'),
-                    'name' => "Apropos"
-                ])
-                @include('frontend.components._linkMenu', [
-                    'route' => route('location.index'),
-                    'name' => "Cartes"
-                ])
-                @include('frontend.components._linkMenu', [
-                    'route' => route('categories.index'),
-                    'name' => "Categories"
-                ])
-                @include('frontend.components._linkMenu', [
-                    'route' => route('contact.index'),
-                    'name' => "Contact"
-                ])
-            </div>
-            <div class="relative h-2 w-36 mx-auto before:absolute before:top-1/2 before:-translate-y-1/2 before:bg-gray-400 before:w-full before:h-[1px] before:left-1/2 before:-translate-x-1/2"></div>
-            @auth
-                <div class="flex flex-col">
-                    <div class="w-full text-lg text-gray-500">
-                        @if(auth()->user()->role_id == \App\Enums\UserRoleEnum::USERS_ROLE)
-                            <a href="{{ route('users.users.index') }}" class="flex gap-2 px-4 py-2.5 ">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                </svg>
-                                <span>Mon compte</span>
-                            </a>
-                            <li class="block hover:bg-purple-100 transition">
-                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="py-2 px-4 hover:text-purple-600 block transition">
-                                    Se Deconnecter
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </li>
-                        @endif
+<header
+    aria-label="navbar"
+    class="w-full flex items-center justify-center  bg-white z-800 absolute top-0 left-0 border-b border-b-gray-200">
+    <div class="w-full relative max-w-screen-lg lg:max-w-screen-2xl px-4 xs:px-6 sm:px-10 lg:px-12 xl:px-16 py-3">
+        <nav class="w-full flex items-center justify-between">
+            <div class="flex gap-4 items-center">
+                <div
+                    data-toggle-navigation
+                    role="button"
+                    aria-label="humburger"
+                    id="hamburger"
+                    class="lg:hidden relative transition-all py-3 pr-3 border-r border-r-gray-200  z-800">
+                    <div
+                        role="hidden"
+                        id="line"
+                        class="mx-auto z-800 h-0.5 w-6 rounded bg-gray-600 transition duration-300 "></div>
+                    <div
+                        role="hidden"
+                        id="line2"
+                        class="mx-auto z-800 mt-2 h-0.5 w-6 rounded bg-gray-600 transition duration-300 ">
                     </div>
                 </div>
-            @else
-                <div class="flex gap-2 py-4 flex-wrap justify-between">
-                    <a href="{{ route('register') }}" class="px-4 py-3 text-sm rounded-xl text-center text-white bg-gradient-to-br from-green-400 to-purple-600 w-full">S'inscrire</a>
-                    <a href="{{ route('login') }}" class="px-4 py-3 text-sm rounded-xl text-center bg-purple-600 text-white w-full">Se connecter</a>
-                </div>
-            @endauth
-        </div>
-        <div class="flex gap-3 sm:gap-1 items-center relative">
-            <div class="flex lg:flex items-center lg:gap-3 relative lg:before:absolute lg:before:w-full lg:before:h-full before:lg:-top-4 lg:before:left-0 lg:before:bg-gray-00 lg:py-4 lg:px-1 lg:before:rounded-b-xl before:z-10 lg:before:border lg:before:bg-gray-100">
-                <button id="toggleSearchBox" class="bg-gray-100 p-3 rounded-xl transition-all hover:bg-gray-100 hover:text-purple-600 duration-300 z-50">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </button>
+                <a href="{{ route('home.index') }}" class="sm:flex hidden">
+                    <img src="{{ asset('app/images/logo.png') }}" alt="Karibukwako" width="100" class="w-auto h-10">
+                </a>
             </div>
-            <div class="relative group hidden lg:flex z-[1002]">
-                <button class="p-2 sm:p-3 rounded-xl bg-gradient-to-tr from-green-400 to-purple-600 text-white ">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                </button>
-                <div
-                    class="absolute shadow-purple-100 left-8 top-full -translate-x-full w-40 bg-white shadow-lg rounded-xl scale-y-0 transition-all duration-500 group-hover:scale-y-100 origin-top border border-purple-100">
-                    <ul class="flex flex-col pt-2 text-gray-500 w-full z-[1003]">
-                        @auth
-                            @if(auth()->user()->role_id == \App\Enums\UserRoleEnum::USERS_ROLE)
-                                <li class="block hover:bg-purple-100 transition">
-                                    <a href="{{ route('users.users.index') }}" class="py-2 px-4 hover:text-purple-600 block transition">Mon compte</a>
-                                </li>
-                                <li class="block hover:bg-purple-100 transition">
-                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="py-2 px-4 hover:text-purple-600 block transition">
-                                        Se Deconnecter
+            <div
+                data-overlay-navigation
+                aria-istoggle="false"
+                class="lg:hidden lg:invisible visible h-full hidden w-full fixed top-16 left-0 bg-gray-600 bg-opacity-50 z-780">
+            </div>
+            <div
+                data-navigation
+                class="flex lg:relative absolute left-0 lg:w-max w-full  lg:translate-x-0 -translate-y-full lg:-translate-y-0 lg:bg-transparent bg-white z-800 lg:px-0  px-4 xs:px-6 sm:px-10 transition-all duration-300" role="navigation">
+                <ul class="flex flex-col lg:flex-row lg:items-center lg:gap-4 lg:w-max w-full">
+                    @include('frontend.components._link', [
+                         'title' => "Accueil",
+                         'route' => route('home.index'),
+                         'name' => "Accueil"
+                    ])
+                    @include('frontend.components._link', [
+                        'title' => "Categories",
+                        'route' => route('categories.index'),
+                        'name' => "Categories"
+                    ])
+                    @include('frontend.components._link', [
+                        'title' => "Cartes",
+                        'route' => route('location.index'),
+                        'name' => "Cartes"
+                    ])
+                    @include('frontend.components._link', [
+                        'title' => "Maisons",
+                        'route' => route('abouts.index'),
+                        'name' => "Maisons"
+                    ])
+                    @include('frontend.components._link', [
+                        'title' => "Contact",
+                        'route' => route('contact.index'),
+                        'name' => "Contact"
+                    ])
+                </ul>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2">
+                    <div
+                        data-toggle-verify-reservation
+                        class="relative flex items-center gap-3 rounded-full md:rounded-md p-2.5 cursor-pointer text-gray-600">
+                            <span class="flex text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2h-1.528A6 6 0 004 9.528V4z" />
+                                    <path fill-rule="evenodd" d="M8 10a4 4 0 00-3.446 6.032l-1.261 1.26a1 1 0 101.414 1.415l1.261-1.261A4 4 0 108 10zm-2 4a2 2 0 114 0 2 2 0 01-4 0z" clip-rule="evenodd" />
+                                  </svg>
+                            </span>
+                    </div>
+                    <div
+                        data-toggle-search
+                        class="relative flex items-center gap-3 rounded-full md:rounded-md p-2.5 cursor-pointer border-2 border-gray-200 bg-gray-100 text-gray-600">
+                        <span class="flex text-gray-500">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                        clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="flex items-center relative">
+                    <input
+                        type="checkbox"
+                        name="toggleProfileBox"
+                        id="toggleProfileBox"
+                        class="hidden invisible peer">
+                    <label
+                        for="toggleProfileBox"
+                        role="button"
+                        class="hidden md:flex border-2 border-purple-200 items-center gap-2 px-5 py-2.5 bg-gradient-to-tr from-green-400 to-purple-600 hover:bg-gradient-to-tr hover:from-green-600 hover:to-purple-800 transition-all duration-300 text-white rounded-md">
+                        <span>Connexion</span>
+                        <span class="peer-checked:rotate-6">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </label>
+                    <label
+                        for="toggleProfileBox"
+                        role="button"
+                        class="md:hidden border-2 border-purple-200 items-center rounded-full">
+                        <img
+                            src="../public/images/johnkat.jfif"
+                            width="100"
+                            class="w-10 h-10 rounded-full"
+                            alt="avatar">
+                    </label>
+                    <div class="absolute right-0 top-[calc(100%+10px)] z-780 transition-all duration-500 invisible opacity-0 -translate-y-6 peer-checked:-translate-y-0 peer-checked:opacity-100 peer-checked:visible w-40 bg-white border border-gray-100 shadow-lg shadow-gray-200 border-t-4 border-t-gray-200 rounded-md py-3">
+                        <ul class="flex w-full flex-col">
+                            @auth
+                                @if(auth()->user()->role_id == \App\Enums\UserRoleEnum::USERS_ROLE)
+                                    <a href="{{ route('users.users.index') }}"
+                                       class="flex w-full items-center px-6 py-2.5 transition hover:bg-gray-100 text-gray-600">
+                                        Profile
+                                    </a>
+                                    <a
+                                        href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                       class="flex w-full items-center px-6 py-2.5 transition hover:bg-gray-100 text-gray-600">
+                                        Deconnexion
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                </li>
-                            @endif
-                        @else
-                            <li class="block hover:bg-purple-100 transition">
-                                <a href="{{ route('login') }}" class="py-2 px-4 hover:text-purple-600 block transition">Se connecter</a>
-                            </li>
-                            <li class="block hover:bg-purple-100 transition">
-                                <a href="{{ route('register') }}" class="py-2 px-4 hover:text-purple-600 block transition">S'inscrire</a>
-                            </li>
-                        @endauth
-                    </ul>
-                </div>
-            </div>
-            <button id="btnHumberger" class="z-[1000] relative flex flex-col justify-between h-5 w-5 transition duration-300 rotate-0 lg:hidden">
-                <span id="line1" class="left-0 w-full h-0.5 bg-gray-600 transition duration-300"></span>
-                <span id="line2" class="left-0 w-full top-2 h-0.5 bg-gray-600 transition duration-300"></span>
-                <span id="line3" class="left-0 w-full h-0.5 bg-gray-600 transition duration-300"></span>
-            </button>
-
-        </div>
-    </nav>
-    <div id="modaleSearch" class="fixed flex items-center justify-center w-full h-full top-0 left-0 bg-transparent transition-all duration-500 scale-0 -z-10 bg-gray-700 bg-opacity-60">
-        <div id="overlayBoxS" class="fixed top-0 left-0 w-full h-full transition-all duration-500  z-20 bg-gray-700 bg-opacity-60"></div>
-        <div id="modalContent"
-             class="z-[1006] w-11/12 space-y-4 sm:w-[38rem] rounded-xl bg-white p-4 -translate-y-full transition-all duration-500">
-            <div class="flex justify-end pb-3">
-                <button id="closeModalSearch" class="text-gray-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div class="relative flex w-full">
-                <form class="bg-gray-100 w-full border focus:shadow-search focus:bg-white rounded-xl">
-                    <div class="w-full overflow-hidden flex items-center">
-                        <div class="hidden md:flex items-center w-0.5 h-full bg-white">
-                            <div class="bg-gray-300 h-5 w-0.5"></div>
-                        </div>
-                        <input type="text" name="search" id="search" class="rounded-l-md md:rounded-none w-full px-4 py-3 outline-none bg-whitetext-sm text-gray-700 peer placeholder:text-gray-500" placeholder="Que voulez-vous chercher?">
-                        <div class="flex items-center w-0.5 h-full bg-white">
-                            <div class="bg-gray-300 h-5 w-0.5"></div>
-                        </div>
-                        <button type="submit" class="px-4 pr-5 py-3 rounded-r-md text-gray-600 transition duration-300 hover:bg-purple-600 peer-focus:bg-gradient-to-tr peer-focus:from-green-400 peer-focus:to-purple-600 peer-focus:text-white hover:text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 peer-focus:fill-white hover:fill-white" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                            </svg>
-                        </button>
+                                @endif
+                            @else
+                                <a href="{{ route('register') }}"
+                                   class="flex w-full items-center px-6 py-2.5 transition hover:bg-gray-100 text-gray-600">
+                                    S'inscrire
+                                </a>
+                                <a href="{{ route('login') }}"
+                                   class="flex w-full items-center px-6 py-2.5 transition hover:bg-gray-100 text-gray-600">
+                                    Se connecter
+                                </a>
+                            @endauth
+                        </ul>
                     </div>
-                </form>
-            </div>
-            <div class="result pt-3 rounded-xl w-full max-h-[70vh] lg:max-h-80 overflow-y-auto">
-                <div class="grid px-0 gap-5 w-full sm:grid-cols-2 sm:gap-4">
-                    <div id="searchResult"></div>
                 </div>
             </div>
-        </div>
+        </nav>
     </div>
 </header>

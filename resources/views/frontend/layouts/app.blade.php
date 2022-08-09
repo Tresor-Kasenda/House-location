@@ -5,19 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Karibu kwako - @yield('title')</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
-    <link rel="shortcut icon" href="{{ asset('app/images/logo.png')  }}">
+    <link rel="stylesheet" href="{{ asset('app/css/swiper-bundle.min.css') }}">
+    <link rel="shortcut icon" href="{{ asset('app/images/logo.png') }}">
     @yield('styles')
 </head>
-<body class="text-gray-500  overflow-x-hidden w-full">
+<body class="text-gray-500 overflow-y-auto  overflow-hidden overflow-x-hidden w-full">
     @include('frontend.partials.header')
+    @include('frontend.components._search')
     <div>
         @yield('content')
     </div>
     @include('frontend.partials.footer')
     <script src="{{ asset('app/js/hamburger.js') }}"></script>
     <script src="{{ asset('app/js/jquery.js') }}"></script>
+    <script src="{{ asset('app/js/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('app/js/config-swipe.js') }}"></script>
     @include('sweetalert::alert')
     @yield("scripts")
     <script>
