@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository\Admins;
 
 use App\Contracts\ApartmentRepositoryInterface;
 use App\Models\House;
+use App\Services\ToastService;
 use App\Traits\ApartmentCrud;
 use App\Traits\ImageUploader;
 use App\Traits\RandomValues;
@@ -14,38 +16,70 @@ use Illuminate\Support\Collection;
 
 class ApartmentRepository implements ApartmentRepositoryInterface
 {
-    use ImageUploader, RandomValues, ApartmentCrud;
+    use RandomValues, ApartmentCrud;
+
+    public function __construct(protected ToastService $service)
+    {
+    }
 
     public function getContents(): Collection
     {
         return House::query()
+            ->select([
+                'key',
+                'images',
+                'phone_number',
+                'address',
+                'status',
+                'commune'
+            ])
             ->orderByDesc('created_at')
             ->get();
     }
 
     public function show(string $key): Model|Builder
     {
-        $house = $this->getHouse($key);
-        return $house->load('categories');
+        $house = House::query()
+            ->select([
+                'key',
+                'prices',
+                'commune',
+                'town',
+                'district',
+                'address',
+                'guarantees',
+                'phone_number',
+                'email',
+                'latitude',
+                'longitude',
+                'images',
+                'status',
+                'reference',
+                'user_id',
+                'type_id',
+            ])
+            ->with('categories')
+            ->where('key', '=', $key)
+            ->firstOrFail();
+        return $house->load('type:id,name');
     }
 
     public function deleted(string $key): Model|Builder|int|null
     {
-        $room = $this->getHouse(key: $key);
+        $room = $this->show(key: $key);
         if ($room->status){
-            toast('Veillez désactiver votre appartement avant de le suspendre', 'warning');
+            $this->service->errors(
+                messages: "Appartement dois être suspendue avant d’être suspendue",
+                type: 'warning'
+            );
             return null;
         }
         $room->delete();
-        toast('L appartement a été suspéndue pour des raisons de sécurité', 'success');
+        $this->service->success(
+            messages: "Appartement a été suspéndue pour des raisons de sécurité",
+            type: "success"
+        );
         return $room;
     }
 
-    private function getHouse(string $key): Builder|Model
-    {
-        return House::query()
-            ->where('key', '=', $key)
-            ->withCount('reservations')
-            ->firstOrFail();
-    }
 }

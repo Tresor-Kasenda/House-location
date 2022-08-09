@@ -13,7 +13,7 @@ class AddUserCommand extends Command
 {
     protected $signature = 'karibu:add-user';
 
-    protected $description = 'Creates users and stores them in the database';
+    protected $description = 'Creation of a user with higher priorities';
 
     public function __construct()
     {
@@ -44,7 +44,7 @@ class AddUserCommand extends Command
             try {
                 $password = Hash::make($password);
                 $role = Role::query()
-                    ->where('id', '=', UserRoleEnum::ADMINS)
+                    ->where('id', '=', UserRoleEnum::ADMINS_ROLE)
                     ->first();
                 $role_id = $role->id;
                 $user = User::query()

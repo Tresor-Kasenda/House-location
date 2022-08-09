@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use App\Models\House;
@@ -18,7 +19,11 @@ return new class extends Migration
             $table->foreignIdFor(House::class)
                 ->constrained()
                 ->cascadeOnDelete();
+            $table->foreignIdFor(User::class)
+                ->constrained()
+                ->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

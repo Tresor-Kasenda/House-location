@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
+use App\Enums\ElectricityEnum;
 use App\Models\House;
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,11 +18,14 @@ return new class extends Migration
             $table->foreignIdFor(House::class)
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->integer('chamberNumber')->nullable();
-            $table->string('electricity')->nullable();
-            $table->string('roomNumber')->nullable();
-            $table->string('toilette')->nullable();
+            $table->integer('room_number')->nullable();
+            $table->integer('number_pieces')->nullable();
+            $table->enum('toilet', ['External', 'Internal'])
+                ->default('External');
+            $table->boolean('electricity')
+                ->default(ElectricityEnum::NOT_EXIST_ELECTRICITY);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

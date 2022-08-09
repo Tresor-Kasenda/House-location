@@ -16,11 +16,11 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check() && Auth::user()->role_id == UserRoleEnum::USERS) {
+            if (Auth::guard($guard)->check() && Auth::user()->role_id == UserRoleEnum::USERS_ROLE) {
                 return redirect()->route('users.users.index');
-            } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == UserRoleEnum::COMMISSIONNERS){
+            } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == UserRoleEnum::DEALER_ROLE){
                 return redirect()->route('commissioner.backend.index');
-            } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == UserRoleEnum::ADMINS){
+            } elseif (Auth::guard($guard)->check() && Auth::user()->role_id == UserRoleEnum::ADMINS_ROLE){
                 return redirect()->route('admins.backend.index');
             }
         }

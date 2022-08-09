@@ -21,7 +21,6 @@ class UsersProfileRepository implements UpdateUserRepositoryInterface
 
         $user->update([
             'name' => $request->input('name'),
-            'email' => $request->input('email'),
             'phone_number' => $request->input('phone_number'),
             'lastName' => $request->input('lastName'),
             'images' => self::uploadFiles(request: $request),

@@ -15,16 +15,16 @@ return new class extends Migration
             $table->string('key')->unique();
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
-        Type::query()
-            ->create([
-                'name' => 'a vendre'
-            ]);
+        $types = ['A Vendre', 'A Louer', 'Autre'];
 
-        Type::query()
-            ->create([
-                'name' => 'a louer'
-            ]);
+        foreach ($types as $type) {
+            Type::query()
+                ->create([
+                    'name' => $type
+                ]);
+        }
     }
 
     public function down()

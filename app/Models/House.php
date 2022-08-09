@@ -1,8 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\HouseEnum;
+use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +17,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
-
 /**
  * App\Models\House
  *
@@ -26,13 +28,12 @@ use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
  * @property string $district
  * @property string $address
  * @property int $guarantees
- * @property string $phoneNumber
- * @property int $roomNumber
+ * @property string $phone_number
  * @property string $email
  * @property string|null $latitude
  * @property string|null $longitude
  * @property string $images
- * @property int $status
+ * @property mixed $status
  * @property string $reference
  * @property int $user_id
  * @property Carbon|null $created_at
@@ -70,7 +71,6 @@ use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
  * @method static Builder|House wherePhoneNumber($value)
  * @method static Builder|House wherePrices($value)
  * @method static Builder|House whereReference($value)
- * @method static Builder|House whereRoomNumber($value)
  * @method static Builder|House whereStatus($value)
  * @method static Builder|House whereTown($value)
  * @method static Builder|House whereTypeId($value)
@@ -78,13 +78,31 @@ use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
  * @method static Builder|House whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|House withTrashed()
  * @method static \Illuminate\Database\Query\Builder|House withoutTrashed()
- * @mixin \Eloquent
+ * @mixin Eloquent
+ * @method static \Database\Factories\HouseFactory factory(...$parameters)
  */
 class House extends Model
 {
     use HasFactory, HasKey, SoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'key',
+        'prices',
+        'commune',
+        'town',
+        'district',
+        'address',
+        'guarantees',
+        'phone_number',
+        'email',
+        'latitude',
+        'longitude',
+        'images',
+        'status',
+        'reference',
+        'type_id',
+        'user_id'
+    ];
 
     public function image(): HasMany
     {
@@ -155,5 +173,9 @@ class House extends Model
             </a>
         </stroong></div>';
         return $mapPopupContent;
+    }
+    public function notes()
+    {
+        return $this->hasMany(HouseNote::class);
     }
 }

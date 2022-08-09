@@ -42,7 +42,7 @@ class ReservationRepository implements ReservationHouseRepositoryInterface
     {
         return House::query()
             ->where('key', '=', $attributes->input('house'))
-            ->when('status', fn($builder) => $builder->where('status', HouseEnum::CONFIRMED))
+            ->when('status', fn($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
             ->first();
     }
 }
