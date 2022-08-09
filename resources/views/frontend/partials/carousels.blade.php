@@ -10,7 +10,7 @@
             </div>
             <div class="swiper homeSwiper h-full z-30">
                 <div class="swiper-wrapper h-full">
-                    // foreach
+{{--                    carourse foreach--}}
                     <div class="swiper-slide h-full px-4 xs:px-6 sm:px-10 lg:px-0">
                         <div class="h-full items-center grid lg:grid-cols-2">
                             <div class="col-span-1 flex">

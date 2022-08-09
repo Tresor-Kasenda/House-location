@@ -66,9 +66,9 @@ class ApartmentForm extends Form
                 'label' => "Nombre des Pieces",
             ])
             ->add('electricity', 'choice', [
-                'choices' => ['oui' => 'Oui', 'non' => 'Non'],
+                'choices' => [1 => 'Oui', 0 => 'Non'],
                 'attr' => ['class' => 'form-control'],
-                'selected' => ['oui', 'non'],
+                'selected' => [1, 0],
                 'multiple' => false,
             ])
             ->add('toilet', 'choice', [

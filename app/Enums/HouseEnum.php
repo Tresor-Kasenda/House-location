@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Enums;
 
-class HouseEnum
+enum HouseEnum
 {
-    const VALIDATED_HOUSE = true;
-    const PENDING_HOUSE = false;
-    const INVALIDATED_HOUSE = false;
+    const VALIDATED_HOUSE = 1;
+    const PENDING_HOUSE = 0;
+    const INVALIDATED_HOUSE = 0;
 }

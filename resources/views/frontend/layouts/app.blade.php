@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Karibu kwako - @yield('title')</title>
+    <link rel="shortcut icon" href="{{ asset('app/images/logo.png')  }}">
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('app/css/swiper-bundle.min.css') }}">
-    <link rel="shortcut icon" href="{{ asset('app/images/logo.png') }}">
+    <link rel="stylesheet" href="{{asset('dist/swiper-bundle.min.css')}}">
     @yield('styles')
 </head>
 <body class="text-gray-500 overflow-y-auto  overflow-hidden overflow-x-hidden w-full">
@@ -25,6 +25,7 @@
     @include('sweetalert::alert')
     @yield("scripts")
     <script>
+
         $('#flash-overlay-modal').modal();
         $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
         $(document).ready(function(){
@@ -49,5 +50,88 @@
             })
         })
     </script>
+      <script src="{{asset('assets/js/app.js')}}"></script>
+
+
+<script src="{{asset('assets/js/swiper-bundle.min.js')}}"></script>
+<script>
+    var swiper = new Swiper(".homeSwiper", {
+        navigation: {
+            nextEl: '.swip-next-homeslide',
+            prevEl: '.swip-prev-homeslide',
+        },
+        pagination: {
+            el: ".home-swiper-pagination",
+            bulletClass: 'costum-bullet',
+            bulletActiveClass: 'costum-bullet-active',
+            clickable: true,
+            renderBullet: function (index, className) {
+                return '<span class="' + className + ' costumSwiperPagination">' + "</span>";
+            },
+        },
+    });
+
+    var swiperBestRate = new Swiper(".swiperBestrate", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swip-next-bestrate',
+            prevEl: '.swip-prev-bestrate',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+    })
+
+    var swiperBestCommis = new Swiper(".swiperBestcommis", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swip-next-bestcommis',
+            prevEl: '.swip-prev-bestcommis',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+    })
+
+    var swipertestimonial = new Swiper(".swipertestimonial", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swip-next-testim',
+            prevEl: '.swip-prev-testim',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1240: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
+        },
+    })
+
+</script>
 </body>
 </html>

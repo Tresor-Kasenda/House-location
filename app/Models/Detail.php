@@ -55,7 +55,8 @@ class Detail extends Model
         'room_number',
         'electricity',
         'number_pieces',
-        'toilette'
+        'toilette',
+        'house_id'
     ];
 
     public function house(): BelongsTo
