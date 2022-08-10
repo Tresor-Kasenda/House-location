@@ -11,7 +11,7 @@ use Illuminate\Contracts\Support\Renderable;
 class HouseController extends Controller
 {
     public function __construct(
-        protected readonly HomeRepositoryInterface $repository
+        protected readonly HomeRepositoryInterface $repository,
     )
     {
     }
@@ -19,7 +19,8 @@ class HouseController extends Controller
     public function __invoke(): Renderable
     {
         $apartments = $this->repository->getContent();
+        $apartment_notes = $this->repository->getHouseWithManyNotes();
 
-        return view('frontend.pages.houses.index')->with('apartments', $apartments);
+        return view('frontend.pages.houses.index', compact('apartments', 'apartment_notes'));
     }
 }

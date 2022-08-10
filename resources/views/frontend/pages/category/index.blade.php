@@ -10,17 +10,21 @@
             <div class="relative w-full h-full flex items-center max-w-screen-lg overflow-hidden overflow-x-auto lg:max-w-screen-2xl px-4 xs:px-6 sm:px-10 lg:px-12 xl:px-16">
                 @if($categories->count() > 0)
                     <div class="flex h-full items-center gap-3 w-full">
-                        <a
-                            href="#"
-                            class="min-w-max px-3 py-2 text-sm rounded hover:text-purple-600 transition activeCategorie">
-                            Toutes les categories
-                        </a>
+                        <form action="" class="flex">
+                            <input type="hidden" name="category" value="all">
+                            <button class="min-w-max px-3 py-2 text-sm rounded hover:text-purple-600 transition activeCategorie">
+                                Toutes les categories
+                            </button>
+                        </form>
                         @foreach($categories as $category)
-                            <a
-                                href="#"
-                                class="min-w-max px-3 py-2 text-sm rounded hover:text-purple-600 transition">
-                                {{ ucfirst($category->name) ?? "" }}
-                            </a>
+                            <form action="" class="flex">
+                                <input type="hidden" name="category"  value="{{ $category->name }}">
+                                <button
+                                    href="#"
+                                    class="min-w-max px-3 py-2 text-sm rounded hover:text-purple-600 transition">
+                                    {{ ucfirst($category->name) ?? "" }}
+                                </button>
+                            </form>
                         @endforeach
                     </div>
                 @else

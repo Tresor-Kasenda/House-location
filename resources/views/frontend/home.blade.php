@@ -5,8 +5,6 @@
 @endsection
 
 @section('content')
-    @include('frontend.components.modal_search')
-
     @include('frontend.partials.carousels')
 
     @include('frontend.components._section')
