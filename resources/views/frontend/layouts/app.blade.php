@@ -1,4 +1,5 @@
-<!doctype html>
+@php use Illuminate\Support\Facades\Route; @endphp
+    <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -17,7 +18,10 @@
     <div>
         @yield('content')
     </div>
-    @include('frontend.partials.footer')
+
+    @if(request()->getPathInfo() != '/localisation')
+        @include('frontend.partials.footer')
+    @endif
     <script src="{{ asset('app/js/hamburger.js') }}"></script>
     <script src="{{ asset('app/js/jquery.js') }}"></script>
     <script src="{{ asset('app/js/swiper-bundle.min.js') }}"></script>
