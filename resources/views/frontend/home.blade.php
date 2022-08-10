@@ -22,7 +22,7 @@
                 </div>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6 ">
                     @foreach($apartments as $apartment)
-                        @include('frontend.components._service', with($apartment));
+                        @include('frontend.components._service', with($apartment))
                     @endforeach
                 </div>
             </div>
@@ -46,10 +46,10 @@
                                             class="w-full flex flex-col p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
                                             <div class="w-full rounded-t-md relative">
                                                 <img
-                                                    src="{{ asset('storage/'. $apartment_note->images) }}"
+                                                    src="{{ asset('storage/'. $apartment_note->house->images) }}"
                                                     width="300"
-                                                    title="{{ $apartment_note->town }}"
-                                                    alt="{{ $apartment_note->commune }}"
+                                                    title="{{ $apartment_note->house->town }}"
+                                                    alt="{{ $apartment_note->house->commune }}"
                                                     class="w-full h-44 sm:h-52 lg:h-60 object-cover rounded-lg group-hover:!rounded-xl group:transition duration-200">
                                                 <span class="text-pink-600 absolute right-2 top-2 p-2 rounded-full bg-gray-100 bg-opacity-70">
                                             <svg
@@ -67,10 +67,8 @@
                                             <div class="flex flex-col px-3 py-4 gap-4">
                                                 <div class="flex flex-col gap-2">
                                                     <h1 class="flex text-lg leading-none text-gray-600 line-clamp-1 font-semibold">
-                                                        @foreach($apartment->categories as $category)
-                                                            {{ ucfirst($category->name) ?? "" }}
-                                                        @endforeach
-                                                        {{ $apartment_note->detail->number_pieces ?? 0 }} pieces
+                                                        Maison
+                                                        {{ $apartment_note->house->detail->number_pieces ?? 0 }} pieces
                                                     </h1>
                                                     <div class="flex items-center gap-3 text-sm text-gray-400">
                                                         <span class="text-purple-600">
@@ -86,17 +84,17 @@
                                                             </svg>
                                                         </span>
                                                         <span class="line-clamp-1">
-                                                            {{ ucfirst($apartment_note->distrinct) ?? "" }}, {{ ucfirst($apartment_note->town) }}
+                                                            {{ ucfirst($apartment_note->house->district) ?? "" }}, {{ ucfirst($apartment_note->house->town) }}
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="w-full justify-between flex items-center">
                                                     <div class="flex items-center gap-1 text-sm">
-                                                        <span>{{ $apartment_note->guarantees ?? 0 }} $ Garantie</span>
+                                                        <span>{{ $apartment_note->house->guarantees ?? 0 }} $ Garantie</span>
                                                     </div>
                                                     <div class="flex items-center">
                                                         <h5 class="text-2xl uppercase  leading-none md:text-right font-bold text-purple-500">
-                                                            {{ $apartment_note->prices ?? 0 }} $
+                                                            {{ $apartment_note->house->prices ?? 0 }} $
                                                         </h5>
                                                         <span class="text-xs md:text-sm">/mois</span>
                                                     </div>
@@ -104,13 +102,15 @@
                                             </div>
                                             <div class="py-3 px-3 border-t border-gray-300 flex justify-between">
                                                 <div class="flex items-center">
-                                                    @for($i = 1; $i <= $apartment_note->notes->note; $i++)
-                                                        <img
-                                                            src="{{ asset('images/icons/star.svg') }}"
-                                                            width="10"
-                                                            alt="star"
-                                                            class="w-5 h-5 lg:w-6 lg:h-6">
-                                                    @endfor
+                                                    @if($apartment_note->note)
+                                                        @for($i = 1; $i <= $apartment_note->note; $i++)
+                                                            <img
+                                                                src="{{ asset('images/icons/star.svg') }}"
+                                                                width="10"
+                                                                alt="star"
+                                                                class="w-5 h-5 lg:w-6 lg:h-6">
+                                                        @endfor
+                                                    @endif
                                                 </div>
                                                 <div class="flex items-center min-w-max">
                                                     <a

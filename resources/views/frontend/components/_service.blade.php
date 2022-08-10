@@ -43,7 +43,7 @@
                     </svg>
                 </span>
                 <span class="line-clamp-1">
-                    {{ ucfirst($apartment->distrinct) ?? "" }}, {{ ucfirst($apartment->town) }}
+                    {{ ucfirst($apartment->district) ?? "" }}, {{ ucfirst($apartment->town) }}
                 </span>
             </div>
         </div>

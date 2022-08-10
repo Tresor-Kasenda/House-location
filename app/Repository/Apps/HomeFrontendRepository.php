@@ -6,6 +6,7 @@ namespace App\Repository\Apps;
 use App\Contracts\HomeRepositoryInterface;
 use App\Enums\HouseEnum;
 use App\Models\House;
+use App\Models\HouseNote;
 use App\Models\Slider;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
@@ -43,12 +44,12 @@ class HomeFrontendRepository implements HomeRepositoryInterface
 
     public function getHouseWithManyNotes(): array|Collection
     {
-        return House::query()
-            ->with('notes', function ($query) {
-                $query->where('note', '>', 3);
+        return HouseNote::query()
+            ->where('note', '>', 3)
+            ->with('house', function ($query) {
+                $query
+                    ->where('status', HouseEnum::VALIDATED_HOUSE);
             })
-            ->with(['detail', 'type'])
-            ->where('status', '=', HouseEnum::VALIDATED_HOUSE)
             ->orderByDesc('created_at')
             ->get();
     }
