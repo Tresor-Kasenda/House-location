@@ -27,7 +27,6 @@
                 </div>
             </div>
         </section>
-    @else
     @endif
 
     @if($apartment_notes->count() > 0)
@@ -164,6 +163,5 @@
                 </div>
             </div>
         </section>
-    @else
     @endif
 @endsection
