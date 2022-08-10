@@ -50,7 +50,7 @@
                     ])
                     @include('frontend.components._link', [
                         'title' => "Maisons",
-                        'route' => route('abouts.index'),
+                        'route' => route('house.index'),
                         'name' => "Maisons"
                     ])
                     @include('frontend.components._link', [
@@ -118,7 +118,7 @@
                         role="button"
                         class="md:hidden border-2 border-purple-200 items-center rounded-full">
                         <img
-                            src="../public/images/johnkat.jfif"
+                            src="{{ asset('admins/images/johnkat.jfif') }}"
                             width="100"
                             class="w-10 h-10 rounded-full"
                             alt="avatar">

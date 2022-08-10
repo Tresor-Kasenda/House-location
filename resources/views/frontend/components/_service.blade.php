@@ -49,11 +49,11 @@
         </div>
         <div class="w-full justify-between flex items-center">
             <div class="flex items-center gap-1 text-sm">
-                <span>{{ $apartment_note->guarantees ?? 0 }} $ Garantie</span>
+                <span>{{ $apartment->guarantees ?? 0 }} $ Garantie</span>
             </div>
             <div class="flex items-center">
                 <h5 class="text-2xl uppercase  leading-none md:text-right font-bold text-purple-500">
-                    {{ $apartment_note->prices ?? 0 }} $
+                    {{ $apartment->prices ?? 0 }} $
                 </h5>
                 <span class="text-xs md:text-sm">/mois</span>
             </div>

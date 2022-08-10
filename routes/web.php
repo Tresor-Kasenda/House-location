@@ -15,6 +15,7 @@ use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\HouseController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\Frontend\NewsLetterController;
 use App\Http\Controllers\Frontend\ReservationController;
@@ -101,6 +102,7 @@ Route::controller(ReservationController::class)->group(function (){
     Route::get('confirmation/{key}', 'show')->name('reservation.show');
 });
 Route::get('search', [SearchLocationController::class, 'searching'])->name('search.house');
+Route::get('maisons', HouseController::class)->name('house.index');
 
 Route::resource('best-commission', NoteCommissionnaireController::class)->except(['update', 'destroy', 'edit', 'create']);
 Route::get('best-commission/{key}/create', [NoteCommissionnaireController::class, 'create'])->name('best-commission.create')->middleware(['admins', 'auth']);
