@@ -49,7 +49,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($slides as $slide)
+                                    @foreach($sliders as $slide)
                                         <tr class="nk-tb-item text-center">
                                             <td class="nk-tb-col tb-col-md">
                                                 <span class="tb-product text-center">

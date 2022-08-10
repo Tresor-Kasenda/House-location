@@ -26,7 +26,7 @@ class SlideAdminController extends Controller
     {
         $sliders = $this->repository->getContents();
 
-        return view('admins.sliders.index', compact('sliders'));
+        return view('backend.pages.slides.index', compact('sliders'));
     }
 
     public function create(): Factory|View|Application

@@ -19,18 +19,10 @@ class HomeController extends Controller
 
     public function __invoke(): Renderable
     {
-
-        $slider = new SliderController();
-        $best_houses = new HouseNoteController();
-        $best_commissioner = new NoteCommissionnaireController();
-        $temoignage = new TemoignageController();
         return view('frontend.home', [
             'apartments' => $this->repository->getContent(),
-            'sliders'=>$slider->part(),
-            'best_houses'=>$best_houses->index(),
-            'best_commissionnaires'=>$best_commissioner->best_notes(),
-            'temoignages'=>$temoignage->index()
-
+            'sliders'=> $this->repository->getSliders(),
+            'apartment_notes' => $this->repository->getHouseWithManyNotes()
         ]);
     }
 }
