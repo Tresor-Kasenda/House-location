@@ -34,29 +34,29 @@
                 class="flex lg:relative absolute left-0 lg:w-max w-full  lg:translate-x-0 -translate-y-full lg:-translate-y-0 lg:bg-transparent bg-white z-800 lg:px-0  px-4 xs:px-6 sm:px-10 transition-all duration-300" role="navigation">
                 <ul class="flex flex-col lg:flex-row lg:items-center lg:gap-4 lg:w-max w-full">
                     @include('frontend.components._link', [
-                         'title' => "Accueil",
+                         'title' => trans('karibu.header.home'),
                          'route' => route('home.index'),
-                         'name' => "Accueil"
+                         'name' => trans('karibu.header.home')
                     ])
                     @include('frontend.components._link', [
-                        'title' => "Categories",
+                        'title' => trans('karibu.header.categories'),
                         'route' => route('categories.index'),
-                        'name' => "Categories"
+                        'name' => trans('karibu.header.categories')
                     ])
                     @include('frontend.components._link', [
-                        'title' => "Cartes",
+                        'title' => trans('karibu.header.map'),
                         'route' => route('location.index'),
-                        'name' => "Cartes"
+                        'name' => trans('karibu.header.map')
                     ])
                     @include('frontend.components._link', [
-                        'title' => "Maisons",
+                        'title' => trans('karibu.header.house'),
                         'route' => route('house.index'),
-                        'name' => "Maisons"
+                        'name' => trans('karibu.header.house')
                     ])
                     @include('frontend.components._link', [
-                        'title' => "Contact",
+                        'title' => trans('karibu.header.contact'),
                         'route' => route('contact.index'),
-                        'name' => "Contact"
+                        'name' => trans('karibu.header.contact')
                     ])
                 </ul>
             </div>

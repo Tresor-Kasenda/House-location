@@ -11,6 +11,7 @@ use App\Models\Slider;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class HomeFrontendRepository implements HomeRepositoryInterface
 {
@@ -52,5 +53,21 @@ class HomeFrontendRepository implements HomeRepositoryInterface
             })
             ->orderByDesc('created_at')
             ->get();
+    }
+
+    public function showApartment(string $key): Model|Builder|House
+    {
+        $apartment = House::query()
+            ->where('status', '=', HouseEnum::VALIDATED_HOUSE)
+            ->where('key', '=', $key)
+            ->firstOrFail();
+
+        return $apartment->load([
+            'image',
+            'detail',
+            'categories',
+            'type',
+            'notes'
+        ]);
     }
 }

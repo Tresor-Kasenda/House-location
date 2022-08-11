@@ -12,4 +12,6 @@ interface HomeRepositoryInterface
     public function getSliders(): Collection|array;
 
     public function getHouseWithManyNotes(): array|Collection;
+
+    public function showApartment(string $key);
 }

@@ -107,7 +107,7 @@
                         <div class="swiper-wrapper">
                             @foreach($apartment_notes as $key => $apartment_note)
                                 <div class="swiper-slide">
-                                    <a href="">
+                                    <a href="{{ route('house.show', $apartment_note->house->key) }}">
                                         <div
                                             class="w-full flex flex-col p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
                                             <div class="w-full rounded-t-md relative">

@@ -1,5 +1,5 @@
 <a
-    href="{{ route('categories.show', $apartment->key) }}"
+    href="{{ route('house.show', $apartment->key) }}"
     class="w-full flex flex-col p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
     <div class="w-full rounded-t-md relative">
         <img

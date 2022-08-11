@@ -24,6 +24,7 @@ return new class extends Migration
                 ->default('External');
             $table->boolean('electricity')
                 ->default(ElectricityEnum::NOT_EXIST_ELECTRICITY);
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

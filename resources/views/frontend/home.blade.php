@@ -38,7 +38,7 @@
                         <div class="swiper-wrapper">
                             @foreach($apartment_notes as $key => $apartment_note)
                                 <div class="swiper-slide">
-                                    <a href="">
+                                    <a href="{{ route('house.show', $apartment_note->house->key) }}">
                                         <div
                                             class="w-full flex flex-col p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
                                             <div class="w-full rounded-t-md relative">
@@ -111,7 +111,7 @@
                                                 </div>
                                                 <div class="flex items-center min-w-max">
                                                     <a
-                                                        href="house"
+                                                        href="{{ route('house.show', $apartment_note->house->key) }}"
                                                         class="px-5 py-2 rounded bg-purple-600 text-white transition hover:bg-purple-700 text-sm">
                                                         Voir plus
                                                     </a>
@@ -139,23 +139,6 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
                             </div>
-                        </div>
-                        <div class="flex items-center min-w-max">
-                            <a
-                                href="allhouses.html"
-                                class="flex items-center gap-1 transition-all hover:gap-3 text-purple-600 font-normal">
-                                Decouvrir plus
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </a>
                         </div>
                     </div>
                 </div>

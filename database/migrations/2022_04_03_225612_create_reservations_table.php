@@ -22,7 +22,8 @@ return new class extends Migration
             $table->foreignIdFor(House::class)
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->boolean('status')->default(ReservationEnum::PENDING_RESERVATION);
+            $table->boolean('status')
+                ->default(ReservationEnum::PENDING_RESERVATION);
             $table->string('name');
             $table->string('address');
             $table->string('phones');
