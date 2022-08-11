@@ -14,13 +14,19 @@ use Illuminate\Http\Request;
 
 class CategoryRepository implements CategoryHomeRepositoryInterface
 {
-    public function index(): LengthAwarePaginator
+    public function index($request): array|Collection
     {
         return House::query()
             ->orderByDesc('created_at')
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
+            ->whereHas('categories', function ($query) use ($request) {
+                if ($request->input('category') == "all"){
+
+                }
+                $query->where('name', 'like', '%'.$request->input('category').'%');
+            })
             ->inRandomOrder()
-            ->paginate(12);
+            ->get();
     }
 
     public function show(string $key)

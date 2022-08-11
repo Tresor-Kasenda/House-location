@@ -18,7 +18,7 @@ class UserRepository implements UserRepositoryInterface
     public function getContents(): Collection|array
     {
         return User::query()
-            ->where('role_id', '!=', UserRoleEnum::ADMINS)
+            ->where('role_id', '!=', UserRoleEnum::ADMINS_ROLE)
             ->with(['commissioner', 'reservations'])
             ->get();
     }
@@ -42,7 +42,7 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::query()
             ->where('key', '=', $key)
-            ->where('role_id', '!=', UserRoleEnum::ADMINS)
+            ->where('role_id', '!=', UserRoleEnum::ADMINS_ROLE)
             ->first();
     }
 }

@@ -8,6 +8,7 @@ use App\Contracts\CategoryHomeRepositoryInterface;
 use App\Contracts\HomeRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -16,10 +17,10 @@ class CategoryController extends Controller
         protected readonly HomeRepositoryInterface $homeRepository,
     ){}
 
-    public function index(): Renderable
+    public function index(Request $request): Renderable
     {
         return view('frontend.pages.category.index', [
-            'apartments' => $this->repository->index(),
+            'apartments' => $this->repository->index($request),
             'categories' => $this->repository->getHouseCategories(),
             'apartment_notes' => $this->homeRepository->getHouseWithManyNotes()
         ]);

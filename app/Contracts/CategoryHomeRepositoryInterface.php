@@ -6,7 +6,7 @@ namespace App\Contracts;
 
 interface CategoryHomeRepositoryInterface
 {
-    public function index();
+    public function index($request);
 
     public function getHouseCategories();
 

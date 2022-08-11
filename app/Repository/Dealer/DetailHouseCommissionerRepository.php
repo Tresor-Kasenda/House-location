@@ -15,7 +15,11 @@ class DetailHouseCommissionerRepository implements DetailsHouseCommissionerRepos
     public function getContents(): array|Collection
     {
         return Detail::query()
-            ->where('user_id', '=', auth()->id())
+            ->whereHas('house', function ($query){
+                $query->whereHas('user', function ($query) {
+                    $query->where('id', auth()->id());
+                });
+            })
             ->with('house')
             ->get();
     }
