@@ -6,6 +6,7 @@ namespace App\Repository\Apps;
 
 use App\Contracts\ReservationHouseRepositoryInterface;
 use App\Enums\HouseEnum;
+use App\Enums\ReservationEnum;
 use App\Models\House;
 use App\Models\Reservation;
 use App\Notifications\ReservationNotification;
@@ -25,20 +26,27 @@ class ReservationRepository implements ReservationHouseRepositoryInterface
         $reservation = Reservation::query()
             ->create([
                 "house_id" => $house->id,
+                'user_id' => auth()->id() ?? null,
+                'status' => ReservationEnum::PENDING_RESERVATION,
                 "name" => $attributes->input('username'),
                 "address" => $attributes->input('email'),
-                "phones" => $attributes->input('phoneNumber'),
-                "messages" => $attributes->input("message"),
-                'reference' => $this->generateRandomTransaction(6),
-                'user_id' => auth()->id() ?? null
+                "phones" => $attributes->input('phone_number'),
+                "messages" => $attributes->input("messages"),
+                'transaction_code' => $this->generateRandomTransaction(6)
             ]);
-        (new ReservationNotification($reservation))->toMail($reservation->address);
+        //(new ReservationNotification($reservation))->toMail($reservation->address);
         return $reservation;
     }
 
     public function getReservation(string $key): Model|Builder|null
     {
         return Reservation::query()
+            ->select([
+                'key',
+                'transaction_code',
+                'address',
+                'phones'
+            ])
             ->where('key', '=', $key)
             ->first();
     }
@@ -46,7 +54,12 @@ class ReservationRepository implements ReservationHouseRepositoryInterface
     private function getHouse($attributes): Model|Builder|null
     {
         return House::query()
-            ->where('key', '=', $attributes->input('house'))
+            ->select([
+                'id',
+                'key',
+                'prices'
+            ])
+            ->where('key', '=', $attributes->input('apartment'))
             ->when('status',
                 fn($builder) =>
                 $builder->where('status', HouseEnum::VALIDATED_HOUSE)

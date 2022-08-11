@@ -37,7 +37,6 @@
                                 </svg>
                             </button>
                         </div>
-                        @include('frontend.components._reservation-form')
                     </div>
                 </div>
             </div>
@@ -79,7 +78,6 @@
                                 @endforeach
                             @endif
                         </div>
-
                     </div>
                     <div thumbsSlider="" class="swiper mySwiper pt-1 max-h-24 overflow-hidden">
                         <div class="swiper-wrapper">
@@ -101,7 +99,6 @@
                             @endif
                         </div>
                     </div>
-
                     <div
                         class="flex flex-col pl-4 relative before:absolute before:w-1 before:h-6 before:bg-purple-600 before:top-1 before:left-0 z-20">
                         <h1 class="flex font-semibold text-gray-600 text-xl">Descriptions</h1>
@@ -119,7 +116,6 @@
                             </p>
                         </div>
                     </div>
-
                     <div
                         class="flex flex-col mt-4 pl-4 relative before:absolute before:w-1 before:h-6 before:bg-purple-600 before:top-1 before:left-0">
                         <h1 class="flex font-semibold text-gray-600 text-xl">Details appartement</h1>
@@ -164,7 +160,6 @@
                             </table>
                         </div>
                     </div>
-
                     <div
                         class="flex mt-4 flex-col pl-4 relative before:absolute before:w-1 before:h-6 before:bg-purple-600 before:top-1 before:left-0">
                         <h1 class="flex font-semibold text-gray-600 text-xl">Localisation</h1>
@@ -181,52 +176,11 @@
                     <div class="w-full">
                         here the map
                     </div>
-
                 </div>
 
                 <div class="hidden lg:block lg:col-span-1">
                     <div class="lg:sticky top-16 space-y-6 lg:mt-8 bg-white shadow-lg rounded-xl w-full p-4">
-                        <form action="" class="w-full">
-                            <div class="flex flex-col gap-6 w-full">
-                                <h1 class="text-xl font-semibold text-gray-600">Reservation</h1>
-                                <div class="flex flex-col gap-4">
-                                    <div class="relative">
-                                        <input id="fullName" type="text"
-                                               class=" relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                                               placeholder="johnkat@gmail.com" required>
-                                        <label for="fullName"
-                                               class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">Nom
-                                            complet</label>
-                                    </div>
-                                    <div class="relative">
-                                        <input id="mailAdress" type="email"
-                                               class=" relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                                               placeholder="johnkat@gmail.com" required>
-                                        <label for="mailAdress"
-                                               class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">Adresse
-                                            mail</label>
-                                    </div>
-                                    <div class="relative">
-                                        <input id="phoneNumber" type="email"
-                                               class=" relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                                               placeholder="johnkat@gmail.com" required>
-                                        <label for="phoneNumber"
-                                               class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">Numero
-                                            de telephone</label>
-                                    </div>
-                                    <div class="relative">
-                                        <textarea name="" id="message" type="email"
-                                                  class="resize-none h-36 relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                                                  placeholder="johnkat@gmail.com" required></textarea>
-                                        <label for="message"
-                                               class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">Message</label>
-                                    </div>
-
-                                    <button
-                                        class="px-4 py-3 rounded-xl text-white bg-gradient-to-br  from-green-400 to-purple-600 transition-all duration-300 hover:bg-gradient-to-br hover:from-purple-600 hover:to-green-400">Reserver</button>
-                                </div>
-                            </div>
-                        </form>
+                        @include('frontend.components._reservation-form')
                     </div>
                 </div>
             </div>
