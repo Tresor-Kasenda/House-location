@@ -1,4 +1,4 @@
-@extends('frontend.layouts.admin')
+@extends('backend.layout.admin')
 
 @section('title', "Administration des appartements")
 
@@ -15,7 +15,8 @@
                             <div class="toggle-expand-content" data-content="pageMenu">
                                 <ul class="nk-block-tools g-3">
                                     <li class="preview-item">
-                                        <a href="{{ route('admins.houses.index') }}" class="btn btn-dim btn-light btn-sm">
+                                        <a href="{{ route('admins.houses.index') }}"
+                                           class="btn btn-dim btn-light btn-sm">
                                             <em class="icon ni ni-arrow-left"></em> Historique
                                         </a>
                                     </li>
@@ -57,7 +58,8 @@
                                     <tr class="nk-tb-item">
                                         <td class="nk-tb-col tb-col-sm">
                                             <span class="tb-product text-center">
-                                                <img src="{{ asset('storage/'.$room->images) }}" alt="{{ $room->username }}" class="thumb">
+                                                <img src="{{ asset('storage/'.$room->images) }}"
+                                                     alt="{{ $room->username }}" class="thumb">
                                             </span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
@@ -82,7 +84,8 @@
                                             <ul class="nk-tb-actions gx-1">
                                                 <li>
                                                     <div class="drodown">
-                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">
+                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
+                                                           data-toggle="dropdown">
                                                             <em class="icon ni ni-more-h"></em>
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right">
@@ -96,9 +99,12 @@
                                                                     ])
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('admins.trashed.delete', $room->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                                    <form action="{{ route('admins.trashed.delete', $room->key) }}"
+                                                                          method="POST"
+                                                                          onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')
-                                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                                        <input type="hidden" name="_token"
+                                                                               value="{{ csrf_token() }}">
                                                                         <button type="submit" class="btn btn-dim">
                                                                             <em class="icon ni ni-cross-sm"></em>
                                                                             <span>Supprimer</span>

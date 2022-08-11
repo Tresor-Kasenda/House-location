@@ -1,4 +1,4 @@
-@extends('frontend.layouts.admin')
+@extends('backend.layout.admin')
 
 @section('title', "Detail d'une reservation")
 
@@ -8,7 +8,8 @@
             <div class="nk-block-head nk-block-head-md">
                 <div class="nk-block-between g-3">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Détail / <strong class="text-primary small">{{ $reservation->house->reference ?? "" }}</strong></h3>
+                        <h3 class="nk-block-title page-title">Détail / <strong
+                                    class="text-primary small">{{ $reservation->house->reference ?? "" }}</strong></h3>
                     </div>
                     <div class="nk-block-head-content">
                         <div class="toggle-wrap nk-block-tools-toggle">
@@ -32,7 +33,8 @@
                                         @endif
                                     </li>
                                     <li class="preview-item">
-                                        <a href="{{ route('admins.reservations.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
+                                        <a href="{{ route('admins.reservations.index') }}"
+                                           class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
                                             <em class="icon ni ni-arrow-left"></em>
                                             <span>Back</span>
                                         </a>
@@ -53,11 +55,11 @@
                 <div class="nk-block">
                     <div class="justify-content text-center p-2">
                         <img
-                            src="{{ asset('storage/'.$reservation->house->images) }}"
-                            alt="{{ $reservation->name }}"
-                            class="img-fluid img-thumbnail rounded-circle"
-                            height="10%"
-                            width="15%"
+                                src="{{ asset('storage/'.$reservation->house->images) }}"
+                                alt="{{ $reservation->name }}"
+                                class="img-fluid img-thumbnail rounded-circle"
+                                height="10%"
+                                width="15%"
                         >
                     </div>
                     <div class="card">

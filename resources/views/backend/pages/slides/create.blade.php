@@ -1,4 +1,4 @@
-@extends('frontend.layouts.admin')
+@extends('backend.layout.admin')
 
 @section('title')
     Creation de slide
@@ -12,7 +12,8 @@
                     <h3 class="nk-block-title page-title">Ajouter un slide</h3>
                 </div>
                 <div class="nk-block-head-content">
-                    <a href="{{ route('admins.slides.index') }}" class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
+                    <a href="{{ route('admins.slides.index') }}"
+                       class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
                         <em class="icon ni ni-arrow-left"></em>
                         <span>Back</span>
                     </a>
@@ -25,7 +26,7 @@
                     <div class="card-inner card-inner-lg">
                         <div class="row justify-content-center">
                             <div class="col-md-7">
-                                <x-errors />
+                                <x-errors/>
                                 @include('backend.pages.slides._form')
                             </div>
                         </div>

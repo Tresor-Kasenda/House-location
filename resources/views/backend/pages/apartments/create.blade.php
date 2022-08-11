@@ -1,4 +1,4 @@
-@extends('frontend.layouts.admin')
+@extends('backend.layout.admin')
 
 @section('title', "Administration des appartements")
 
@@ -10,7 +10,8 @@
                     <h3 class="nk-block-title page-title">Creation des appartements</h3>
                 </div>
                 <div class="nk-block-head-content">
-                    <a href="{{ route('admins.houses.index') }}" class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
+                    <a href="{{ route('admins.houses.index') }}"
+                       class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
                         <em class="icon ni ni-arrow-left"></em>
                         <span>Back</span>
                     </a>
@@ -42,7 +43,7 @@
 
 @section('scripts')
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script >
+    <script>
         let mapCenter = [
             {{ request('latitude', config('leaflet.map_center_latitude')) }},
             {{ request('longitude', config('leaflet.map_center_longitude')) }}
@@ -52,6 +53,7 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
         let marker = L.marker(mapCenter).addTo(map);
+
         function updateMarker(lat, lng) {
             marker
                 .setLatLng([lat, lng])
@@ -59,7 +61,8 @@
                 .openPopup();
             return false;
         }
-        map.on('click', function(e) {
+
+        map.on('click', function (e) {
             let latitude = e.latlng.lat.toString().substring(0, 15);
             let longitude = e.latlng.lng.toString().substring(0, 15);
             $('#latitude').val(latitude);
@@ -67,7 +70,7 @@
             updateMarker(latitude, longitude);
         });
         let updateMarkerByInputs = () => {
-            return updateMarker( $('#latitude').val() , $('#longitude').val());
+            return updateMarker($('#latitude').val(), $('#longitude').val());
         }
         $('#latitude').on('input', updateMarkerByInputs);
         $('#longitude').on('input', updateMarkerByInputs);

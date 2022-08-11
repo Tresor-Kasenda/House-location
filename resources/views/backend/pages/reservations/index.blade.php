@@ -1,4 +1,4 @@
-@extends('frontend.layouts.admin')
+@extends('backend.layout.admin')
 
 @section('title', "Liste des reservations")
 
@@ -61,7 +61,8 @@
                                             <ul class="nk-tb-actions gx-1">
                                                 <li>
                                                     <div class="drodown">
-                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">
+                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
+                                                           data-toggle="dropdown">
                                                             <em class="icon ni ni-more-h"></em>
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right">
@@ -73,9 +74,12 @@
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('admins.reservations.destroy', $reservation->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                                    <form action="{{ route('admins.reservations.destroy', $reservation->key) }}"
+                                                                          method="POST"
+                                                                          onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')
-                                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                                        <input type="hidden" name="_token"
+                                                                               value="{{ csrf_token() }}">
                                                                         <button type="submit" class="btn btn-dim">
                                                                             <em class="icon ni ni-cross-sm"></em>
                                                                             <span>Suspendre</span>

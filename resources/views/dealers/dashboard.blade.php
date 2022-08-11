@@ -1,4 +1,4 @@
-@extends('frontend.layouts.dealer')
+@extends('dealers.layout.dealer')
 
 @section('title', "Commissionnaire  des maisons")
 
@@ -35,11 +35,11 @@
 
                                     <div class="nk-ecwg8-ck">
                                         <canvas
-                                            class="ecommerce-line-chart-s4 chartjs-render-monitor"
-                                            id="salesStatistics"
-                                            width="798"
-                                            height="300"
-                                            style="display: block; width: 798px; height: 200px;"
+                                                class="ecommerce-line-chart-s4 chartjs-render-monitor"
+                                                id="salesStatistics"
+                                                width="798"
+                                                height="300"
+                                                style="display: block; width: 798px; height: 200px;"
                                         ></canvas>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 
     <script>
-        $(function(){
+        $(function () {
             //get the pie chart canvas
             const cData = JSON.parse(`<?php echo json_encode($charts); ?>`);
             const ctx = $("#salesStatistics");
@@ -84,7 +84,7 @@
                             "#F4A460",
                             "#CDA776",
                         ],
-                        borderWidth: [1, 1, 1, 1, 1,1,1]
+                        borderWidth: [1, 1, 1, 1, 1, 1, 1]
                     }
                 ]
             };
