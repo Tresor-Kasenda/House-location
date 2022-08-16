@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use App\Models\Type;
@@ -12,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
             $table->string('name');
             $table->timestamps();
             $table->softDeletes();
         });
-        $types = ['A Vendre', 'A Louer', 'Autre'];
+        $types = ['Maison à vendre', 'Maison à Louer', 'Autre'];
 
         foreach ($types as $type) {
             Type::query()

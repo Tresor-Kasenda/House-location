@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
@@ -9,9 +10,13 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('last_name')->nullable();
+            $table->string('address')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phones_number')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -19,6 +24,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('clients');
     }
 };

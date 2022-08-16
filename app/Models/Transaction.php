@@ -9,18 +9,24 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class NoteCommissionnaire extends Model
+class Transaction extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'commissioner_id',
-        'note'
+        'client_id',
+        'reservation_id',
+        'payment_date',
+        'code_transaction'
     ];
-    public function commissioner(): BelongsTo
+
+    public function client(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Client::class);
     }
 
-
+    public function reservation(): BelongsTo
+    {
+        return $this->belongsTo(Reservation::class);
+    }
 }

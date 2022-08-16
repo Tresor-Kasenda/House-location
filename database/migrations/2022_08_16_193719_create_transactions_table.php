@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Models\Client;
 use App\Models\House;
-use App\Models\User;
+use App\Models\Reservation;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,22 +13,22 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(House::class)
+            $table->foreignIdFor(Client::class)
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->foreignIdFor(User::class)
+            $table->foreignIdFor(Reservation::class)
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->string('images');
+            $table->date('payment_date');
+            $table->string('code_transaction');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('transactions');
     }
 };

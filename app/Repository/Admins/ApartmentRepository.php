@@ -25,19 +25,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
 
     public function getContents(): Collection
     {
-        if (auth()->user()->role_id == UserRoleEnum::ADMINS_ROLE) {
-            return House::query()
-                ->select([
-                    'key',
-                    'images',
-                    'phone_number',
-                    'address',
-                    'status',
-                    'commune'
-                ])
-                ->orderByDesc('created_at')
-                ->get();
-        }
+        
         return House::query()
             ->select([
                 'key',

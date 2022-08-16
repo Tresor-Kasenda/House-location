@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use App\Models\User;
@@ -12,18 +13,14 @@ return new class extends Migration
     {
         Schema::create('commissioners', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
             $table->foreignIdFor(User::class)
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->string('phone_number')
-                ->unique()
-                ->nullable();
+            $table->string('phone_number')->unique()->nullable();
+            $table->string('email')->unique()->nullable();
             $table->string('address')->nullable();
+            $table->string('ville')->nullable();
             $table->string('images')->nullable();
-            $table->string('email')
-                ->unique()
-                ->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

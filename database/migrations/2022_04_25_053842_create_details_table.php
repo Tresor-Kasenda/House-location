@@ -14,14 +14,13 @@ return new class extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
             $table->foreignIdFor(House::class)
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->integer('room_number')->nullable();
+            $table->integer('number_rooms')->nullable();
             $table->integer('number_pieces')->nullable();
-            $table->enum('toilet', ['External', 'Internal'])
-                ->default('External');
+            $table->enum('toilet', ['Externe', 'Interne', 'Interne/Externe'])
+                ->default('Externe');
             $table->boolean('electricity')
                 ->default(ElectricityEnum::NOT_EXIST_ELECTRICITY);
             $table->text('description')->nullable();

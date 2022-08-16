@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
+use App\Enums\UserRoleEnum;
 use App\Models\Category;
 use App\Models\Role;
 use App\Models\User;
@@ -17,14 +18,15 @@ class CategoryTest extends TestCase
 
     public function test_example()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'role_id' => UserRoleEnum::ADMINS_ROLE
+        ]);
         $this->actingAs($user);
 
         $categories = Category::factory()->create();
 
-        $response = $this->get(route('admins.categories.index'));
+        $response = $this->get(route('admins.categories.index', compact('categories')));
 
-        $response->assertStatus(200)
-            ->assertCreated();
+        $response->assertStatus(200);
     }
 }

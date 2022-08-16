@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use App\Enums\HouseEnum;
@@ -13,13 +14,15 @@ return new class extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
+            $table->foreignIdFor(User::class)
+                ->constrained()
+                ->cascadeOnDelete();
             $table->integer('prices');
+            $table->integer('warranty_price');
             $table->string('commune');
             $table->string('town');
             $table->string('district');
             $table->string('address');
-            $table->integer('guarantees');
             $table->string('phone_number');
             $table->string('email')->unique();
             $table->decimal('latitude')->nullable();
@@ -28,9 +31,6 @@ return new class extends Migration
             $table->boolean('status')
                 ->default(HouseEnum::PENDING_HOUSE);
             $table->string('reference')->unique();
-            $table->foreignIdFor(User::class)
-                ->constrained()
-                ->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });
