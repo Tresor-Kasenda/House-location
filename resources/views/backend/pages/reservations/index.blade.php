@@ -1,6 +1,8 @@
 @extends('backend.layout.admin')
 
-@section('title', "Liste des reservations")
+@section('title')
+    Nos reservations
+@endsection
 
 @section('content')
     <div class="nk-content-inner">
@@ -8,7 +10,7 @@
             <div class="nk-block-head nk-block-head-sm">
                 <div class="nk-block-between">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Reservations</h3>
+                        <h3 class="nk-block-title page-title">Liste des reservations</h3>
                     </div>
                 </div>
             </div>
@@ -20,7 +22,7 @@
                                 <thead>
                                 <tr class="nk-tb-item nk-tb-head text-center">
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Reference</span>
+                                        <span class="sub-text">Code de Referance</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
                                         <span class="sub-text">Name</span>
@@ -43,7 +45,7 @@
                                 @foreach($reservations as $reservation)
                                     <tr class="nk-tb-item text-center">
                                         <td class="nk-tb-col tb-col-md font-weight-bold">
-                                            <span>{{ $reservation->reference ?? "" }}</span>
+                                            <span>{{ $reservation->transaction_code ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ $reservation->name ?? "" }}</span>

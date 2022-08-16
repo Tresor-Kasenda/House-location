@@ -2,8 +2,10 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Backend\ApartmentAdminController;
+use App\Http\Controllers\Backend\CancelReservationController;
 use App\Http\Controllers\Backend\CategoryAdminController;
 use App\Http\Controllers\Backend\ConfirmedApartmentController;
+use App\Http\Controllers\Backend\ConfirmReservationController;
 use App\Http\Controllers\Backend\DetailApartmentAdminController;
 use App\Http\Controllers\Backend\HomeAdminController;
 use App\Http\Controllers\Backend\ImagesAdminController;
@@ -57,6 +59,9 @@ Route::group([
     });
 
     Route::resource('slides', SlideAdminController::class);
+
+    Route::put('activeReservation/{key}', [ConfirmReservationController::class, 'confirm'])->name('reservation.active');
+    Route::put('cancelReservation/{key}', [CancelReservationController::class, 'inactive'])->name('reservation.inactive');
 
     Route::controller(ConfirmedApartmentController::class)->group(function (){
         Route::put('activeApartment/{key}','active')

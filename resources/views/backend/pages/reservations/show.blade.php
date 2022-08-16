@@ -8,8 +8,12 @@
             <div class="nk-block-head nk-block-head-md">
                 <div class="nk-block-between g-3">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Détail / <strong
-                                    class="text-primary small">{{ $reservation->house->reference ?? "" }}</strong></h3>
+                        <h3 class="nk-block-title page-title">
+                            Détail /
+                            <strong class="text-primary small">
+                                {{ $reservation->house->reference ?? "" }}
+                            </strong>
+                        </h3>
                     </div>
                     <div class="nk-block-head-content">
                         <div class="toggle-wrap nk-block-tools-toggle">
@@ -18,14 +22,14 @@
                                     <li class="preview-item">
                                         @if ($reservation->status == false)
                                             @include('backend.components._update', [
-                                                'route' => route('admins.apartment.active',$reservation->key),
+                                                'route' => route('admins.reservation.active',$reservation->key),
                                                 'button' => 'btn-outline-success btn-sm',
                                                 'icon' => 'ni-check-circle',
                                                 'title' => 'Activer'
                                             ])
                                         @else
                                             @include('backend.components._update', [
-                                                'route' => route('admins.apartment.inactive',$reservation->key),
+                                                'route' => route('admins.reservation.inactive',$reservation->key),
                                                 'button' => 'btn-outline-danger btn-sm',
                                                 'icon' => 'ni-check-circle',
                                                 'title' => 'Désactiver'
@@ -55,11 +59,11 @@
                 <div class="nk-block">
                     <div class="justify-content text-center p-2">
                         <img
-                                src="{{ asset('storage/'.$reservation->house->images) }}"
-                                alt="{{ $reservation->name }}"
-                                class="img-fluid img-thumbnail rounded-circle"
-                                height="10%"
-                                width="15%"
+                            src="{{ asset('storage/'.$reservation->house->images) }}"
+                            alt="{{ $reservation->name }}"
+                            class="img-fluid img-thumbnail rounded-circle"
+                            height="10%"
+                            width="15%"
                         >
                     </div>
                     <div class="card">

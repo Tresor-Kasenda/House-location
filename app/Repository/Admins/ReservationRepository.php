@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository\Admins;
@@ -14,7 +15,17 @@ class ReservationRepository implements ReservationRepositoryInterface
     public function getContents(): Collection|array
     {
         return Reservation::query()
-            ->with('house')
+            ->select([
+                'key',
+                'house_id',
+                'user_id',
+                'name',
+                'address',
+                'phones',
+                'transaction_code',
+                'status'
+            ])
+            ->with('house:id,prices,guarantees,commune,town,reference, images')
             ->get();
     }
 
@@ -35,6 +46,17 @@ class ReservationRepository implements ReservationRepositoryInterface
     private function getReservation(string $key): null|Builder|Model
     {
         return Reservation::query()
+            ->select([
+                'key',
+                'house_id',
+                'user_id',
+                'name',
+                'address',
+                'phones',
+                'transaction_code',
+                'status',
+                'messages'
+            ])
             ->where('key', '=', $key)
             ->first();
     }
