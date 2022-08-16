@@ -14,7 +14,7 @@ class ImageForm extends Form
             ->add('images', 'file', [
                 'label' => "Photo"
             ])
-            ->add('house_id', 'choice', [
+            ->add('house', 'choice', [
                 'label' => 'Apartement',
                 'choices' => $this->getHouses(),
                 'multiple' => false,

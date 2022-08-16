@@ -1,4 +1,4 @@
-@extends('frontend.layouts.admin')
+@extends('backend.layout.admin')
 
 @section('title')
     Administration Karibu Kwako
@@ -41,9 +41,9 @@
 
                                     <div class="nk-ecwg8-ck">
                                         <canvas
-                                            class=""
-                                            id="salesStatistics"
-                                            style="display: block; width: auto; height: 400px;"
+                                                class=""
+                                                id="salesStatistics"
+                                                style="display: block; width: auto; height: 400px;"
                                         ></canvas>
                                     </div>
                                 </div>

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repository\Admins;
 
 use App\Contracts\ApartmentRepositoryInterface;
+use App\Enums\UserRoleEnum;
 use App\Models\House;
 use App\Services\ToastService;
 use App\Traits\ApartmentCrud;
@@ -24,6 +25,19 @@ class ApartmentRepository implements ApartmentRepositoryInterface
 
     public function getContents(): Collection
     {
+        if (auth()->user()->role_id == UserRoleEnum::ADMINS_ROLE) {
+            return House::query()
+                ->select([
+                    'key',
+                    'images',
+                    'phone_number',
+                    'address',
+                    'status',
+                    'commune'
+                ])
+                ->orderByDesc('created_at')
+                ->get();
+        }
         return House::query()
             ->select([
                 'key',
@@ -31,8 +45,12 @@ class ApartmentRepository implements ApartmentRepositoryInterface
                 'phone_number',
                 'address',
                 'status',
-                'commune'
+                'commune',
+                'user_id'
             ])
+            ->whereHas('user', function ($query) {
+                $query->where('role_id', UserRoleEnum::DEALER_ROLE);
+            })
             ->orderByDesc('created_at')
             ->get();
     }
@@ -58,10 +76,10 @@ class ApartmentRepository implements ApartmentRepositoryInterface
                 'user_id',
                 'type_id',
             ])
-            ->with('categories')
+            ->with(['categories'])
             ->where('key', '=', $key)
             ->firstOrFail();
-        return $house->load('type:id,name');
+        return $house->load(['type:id,name', 'detail']);
     }
 
     public function deleted(string $key): Model|Builder|int|null

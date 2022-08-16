@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Enums\ReservationEnum;
-use Eloquent;
+use Database\Factories\ReservationFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -51,7 +50,7 @@ use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
  * @method static \Illuminate\Database\Query\Builder|Reservation withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Reservation withoutTrashed()
  * @mixin Eloquent
- * @method static \Database\Factories\ReservationFactory factory(...$parameters)
+ * @method static ReservationFactory factory(...$parameters)
  */
 class Reservation extends Model
 {
@@ -64,11 +63,9 @@ class Reservation extends Model
         'address',
         'phones',
         'messages',
-        'reference'
-    ];
-
-    protected $casts = [
-        'status' => ReservationEnum::PENDING_RESERVATION
+        'transaction_code',
+        'user_id',
+        'house_id'
     ];
 
     public function user(): BelongsTo

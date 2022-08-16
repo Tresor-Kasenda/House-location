@@ -15,6 +15,7 @@ class SearchLocationController extends Controller
     public function searching(Request $request): JsonResponse
     {
         $searches = $this->repository->search(request:  $request);
+
         if ($searches->isNotEmpty()){
             $result = view('frontend.components._render', [
                 'searches' => $searches

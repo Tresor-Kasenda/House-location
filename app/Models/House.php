@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Enums\HouseEnum;
-use Eloquent;
+use Barryvdh\LaravelIdeHelper\Eloquent;
+use Database\Factories\HouseFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -79,7 +79,7 @@ use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
  * @method static \Illuminate\Database\Query\Builder|House withTrashed()
  * @method static \Illuminate\Database\Query\Builder|House withoutTrashed()
  * @mixin Eloquent
- * @method static \Database\Factories\HouseFactory factory(...$parameters)
+ * @method static HouseFactory factory(...$parameters)
  */
 class House extends Model
 {
@@ -174,7 +174,8 @@ class House extends Model
         </stroong></div>';
         return $mapPopupContent;
     }
-    public function notes()
+
+    public function notes(): HasMany
     {
         return $this->hasMany(HouseNote::class);
     }

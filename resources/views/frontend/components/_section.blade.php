@@ -36,7 +36,7 @@
                                     <div class="relative pt-4 flex gap-2 before:absolute before:w-[60%] before:right-0 before:top-0 before:h-[1px] before:bg-gray-500 before:rounded-full">
 
                                         <div class="translate-y-8 group-hover:translate-y-0 transition delay-150 duration-300 ease-in-out">
-                                            <a href="{{ route('categories.show', $apartments[0]->key ) }}" class="block w-max py-2 px-6 border border-gray-600 text-white rounded-full hover:border-transparent hover:bg-white hover:text-purple-700 focus:bg-white focus:text-purple-700 active:scale-95 transition">
+                                            <a href="{{ route('house.show', $apartments[0]->key ) }}" class="block w-max py-2 px-6 border border-gray-600 text-white rounded-full hover:border-transparent hover:bg-white hover:text-purple-700 focus:bg-white focus:text-purple-700 active:scale-95 transition">
                                                 <span class="text-sm font-medium tracking-wide">Savoir plus</span>
                                             </a>
                                         </div>
@@ -89,7 +89,7 @@
                                         </div>
                                         <div class="relative pt-4 flex gap-2 group-hover:-mt-4 transition">
                                             <div class="translate-y-8 group-hover:translate-y-0 transition delay-150 duration-300 ease-in-out">
-                                                <a href="{{ route('categories.show', $apartments[1]->key ) }}" class="block w-max py-2 px-6 border border-gray-600 text-white rounded-full hover:border-transparent hover:bg-white hover:text-purple-700 focus:bg-white focus:text-purple-700 active:scale-95 transition">
+                                                <a href="{{ route('house.show', $apartments[1]->key ) }}" class="block w-max py-2 px-6 border border-gray-600 text-white rounded-full hover:border-transparent hover:bg-white hover:text-purple-700 focus:bg-white focus:text-purple-700 active:scale-95 transition">
                                                     <span class="text-sm font-medium tracking-wide">Savoir plus</span>
                                                 </a>
                                             </div>
@@ -142,7 +142,7 @@
                                         </div>
                                         <div class="relative pt-4 flex gap-2 group-hover:-mt-4 transition">
                                             <div class="translate-y-8 group-hover:translate-y-0 transition delay-150 duration-300 ease-in-out">
-                                                <a href="{{ route('categories.show', $apartments[0]->key ) }}" class="block w-max py-2 px-6 border border-gray-600 text-white rounded-full hover:border-transparent hover:bg-white hover:text-purple-700 focus:bg-white focus:text-purple-700 active:scale-95 transition">
+                                                <a href="{{ route('house.show', $apartments[0]->key ) }}" class="block w-max py-2 px-6 border border-gray-600 text-white rounded-full hover:border-transparent hover:bg-white hover:text-purple-700 focus:bg-white focus:text-purple-700 active:scale-95 transition">
                                                     <span class="text-sm font-medium tracking-wide">Savoir plus</span>
                                                 </a>
                                             </div>
@@ -196,7 +196,7 @@
                                         </div>
                                         <div class="relative pt-4 flex gap-2 group-hover:-mt-4 transition">
                                             <div class="translate-y-8 group-hover:translate-y-0 transition delay-150 duration-300 ease-in-out">
-                                                <a href="{{ route('categories.show', $apartments[0]->key ) }}" title="En savoir plus" class="block w-max py-2 px-6 border border-gray-600 text-white rounded-full hover:border-transparent hover:bg-white hover:text-purple-700 focus:bg-white focus:text-purple-700 active:scale-95 transition">
+                                                <a href="{{ route('house.show', $apartments[0]->key ) }}" title="En savoir plus" class="block w-max py-2 px-6 border border-gray-600 text-white rounded-full hover:border-transparent hover:bg-white hover:text-purple-700 focus:bg-white focus:text-purple-700 active:scale-95 transition">
                                                     <span class="text-sm font-medium tracking-wide">Savoir plus</span>
                                                 </a>
                                             </div>
@@ -253,7 +253,7 @@
                                         </div>
                                         <div class="relative pt-4 flex gap-4 group-hover:-mt-4 transition">
                                             <div class="translate-y-8 group-hover:translate-y-0 transition delay-150 duration-300 ease-in-out">
-                                                <a href="{{ route('categories.show', $apartments[1]->key ) }}"
+                                                <a href="{{ route('house.show', $apartments[1]->key ) }}"
                                                     class="block w-max py-2 px-6 border border-gray-600 text-white rounded-full hover:border-transparent hover:bg-white hover:text-purple-700 focus:bg-white focus:text-purple-700 active:scale-95 transition">
                                                     <span class="text-sm font-medium tracking-wide">Savoir plus</span>
                                                 </a>

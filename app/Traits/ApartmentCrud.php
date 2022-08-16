@@ -29,8 +29,10 @@ trait ApartmentCrud
             'reference' => $this->generateRandomTransaction(6),
             'type_id' => $attributes->input('type')
         ]);
-        $apartment->categories()->attach($attributes->categories);
+
         $this->createDetails($apartment, $attributes);
+
+        $apartment->categories()->attach($attributes->input('categories'));
         $this->service->success(
             messages: "Un nouveau appartement à été ajouter",
             type: "success"

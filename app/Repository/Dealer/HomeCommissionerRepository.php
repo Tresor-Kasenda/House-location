@@ -17,11 +17,11 @@ class HomeCommissionerRepository implements HomeCommissionerRepositoryInterface
             ->where('user_id', '=', auth()->id())
             ->first();
         if ($house){
-            $items = Reservation::select(
-                DB::raw("COUNT(*) as count"),
-                DB::raw("DAYNAME(created_at) as day_name"),
-                DB::raw("DAY(created_at) as day")
-            )
+            $items = Reservation::select([
+                    DB::raw("COUNT(*) as count"),
+                    DB::raw("DAYNAME(created_at) as day_name"),
+                    DB::raw("DAY(created_at) as day")
+                ])
                 ->where('created_at', '>', Carbon::today()->subDay(6))
                 ->where('house_id', '=', $house->id)
                 ->groupBy('day_name','day')

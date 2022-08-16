@@ -1,4 +1,4 @@
-@extends('frontend.layouts.admin')
+@extends('backend.layout.admin')
 
 @section('title', "Detail d'une reservation")
 
@@ -8,7 +8,12 @@
             <div class="nk-block-head nk-block-head-md">
                 <div class="nk-block-between g-3">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Détail / <strong class="text-primary small">{{ $reservation->house->reference ?? "" }}</strong></h3>
+                        <h3 class="nk-block-title page-title">
+                            Détail /
+                            <strong class="text-primary small">
+                                {{ $reservation->house->reference ?? "" }}
+                            </strong>
+                        </h3>
                     </div>
                     <div class="nk-block-head-content">
                         <div class="toggle-wrap nk-block-tools-toggle">
@@ -17,14 +22,14 @@
                                     <li class="preview-item">
                                         @if ($reservation->status == false)
                                             @include('backend.components._update', [
-                                                'route' => route('admins.apartment.active',$reservation->key),
+                                                'route' => route('admins.reservation.active',$reservation->key),
                                                 'button' => 'btn-outline-success btn-sm',
                                                 'icon' => 'ni-check-circle',
                                                 'title' => 'Activer'
                                             ])
                                         @else
                                             @include('backend.components._update', [
-                                                'route' => route('admins.apartment.inactive',$reservation->key),
+                                                'route' => route('admins.reservation.inactive',$reservation->key),
                                                 'button' => 'btn-outline-danger btn-sm',
                                                 'icon' => 'ni-check-circle',
                                                 'title' => 'Désactiver'
@@ -32,7 +37,8 @@
                                         @endif
                                     </li>
                                     <li class="preview-item">
-                                        <a href="{{ route('admins.reservations.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
+                                        <a href="{{ route('admins.reservations.index') }}"
+                                           class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
                                             <em class="icon ni ni-arrow-left"></em>
                                             <span>Back</span>
                                         </a>
@@ -55,9 +61,9 @@
                         <img
                             src="{{ asset('storage/'.$reservation->house->images) }}"
                             alt="{{ $reservation->name }}"
-                            class="img-fluid img-thumbnail rounded-circle"
-                            height="10%"
-                            width="15%"
+                            class="img-fluid img-thumbnail"
+                            height="20%"
+                            width="20%"
                         >
                     </div>
                     <div class="card">
@@ -87,7 +93,7 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Reference</span>
-                                                    <span class="profile-ud-value">{{ $reservation->reference ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $reservation->transaction_code ?? "" }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
@@ -104,14 +110,14 @@
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Prices maison</span>
+                                                    <span class="profile-ud-label">Prix maison</span>
                                                     <span class="profile-ud-value">{{ $reservation->house->prices ?? "" }} $</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Nombre des pieces</span>
-                                                    <span class="profile-ud-value">{{ $reservation->house->roomNumber ?? "" }} pieces</span>
+                                                    <span class="profile-ud-value">{{ $reservation->house->detail->room_number ?? "" }} pieces</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">

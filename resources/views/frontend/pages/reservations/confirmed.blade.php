@@ -3,18 +3,6 @@
 @section('title', "Merci d'avoir choisie notre plateforme")
 
 @section('content')
-    <header class="fixed z-[1000] top-0 left-0 w-full h-16 md:h-20 bg-white shadow-sm lg:px-28 sm:px-12 px-6 overflow-hidden">
-        <div class="container mx-auto items-center h-full flex justify-between">
-            <div class="">
-                <a href="{{ route('home.index') }}">
-                    <img src="{{ asset('app/images/logo.png') }}" alt="">
-                </a>
-            </div>
-            <div class="">
-                <a href="{{ route('home.index') }}" class="px-4 py-3 text-sm rounded-xl text-center text-white bg-gradient-to-br from-green-400 to-purple-600 w-full">Retour</a>
-            </div>
-        </div>
-    </header>
 
     <section class="w-full h-screen flex items-center relative lg:px-28 sm:px-12 px-6 overflow-hidden">
         <div class="absolute w-screen h-80 top-1/2 -translate-y-1/2">
@@ -30,7 +18,7 @@
                     </h1>
                     <p class="text-gray-500 text-base text-2xl flex xl:leading-snug">
                         Votre reservation est effextuée avec succes, le code de votre reservation est :
-                        <span class="font-semibold text-purple-600">{{ $reservation->reference ?? "" }}</span>
+                        <span class="font-semibold text-purple-600">{{ $reservation->transaction_code ?? "" }}</span>
                     </p>
                 </div>
                 <div class="flex items-end justify-end align-bottom">

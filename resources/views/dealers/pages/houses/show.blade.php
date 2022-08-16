@@ -1,4 +1,4 @@
-@extends('frontend.layouts.dealer')
+@extends('dealers.layout.dealer')
 
 @section('title', "Administration des appartements")
 
@@ -8,14 +8,16 @@
             <div class="nk-block-head nk-block-head-md">
                 <div class="nk-block-between g-3">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Détail / <strong class="text-primary small">{{ $room->commune ?? "" }}</strong></h3>
+                        <h3 class="nk-block-title page-title">Détail / <strong
+                                    class="text-primary small">{{ $room->commune ?? "" }}</strong></h3>
                     </div>
                     <div class="nk-block-head-content">
                         <div class="toggle-wrap nk-block-tools-toggle">
                             <div class="toggle-expand-content" data-content="pageMenu">
                                 <ul class="nk-block-tools g-3">
                                     <li class="preview-item">
-                                        <a href="{{ route('commissioner.houses.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
+                                        <a href="{{ route('commissioner.houses.index') }}"
+                                           class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
                                             <em class="icon ni ni-arrow-left"></em>
                                             <span>Back</span>
                                         </a>

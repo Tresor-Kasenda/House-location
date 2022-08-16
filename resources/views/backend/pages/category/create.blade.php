@@ -1,4 +1,4 @@
-@extends('frontend.layouts.admin')
+@extends('backend.layout.admin')
 
 @section('title', "Administration des categories")
 
@@ -10,7 +10,8 @@
                     <h3 class="nk-block-title page-title">Creation des categories</h3>
                 </div>
                 <div class="nk-block-head-content">
-                    <a href="{{ route('admins.categories.index') }}" class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
+                    <a href="{{ route('admins.categories.index') }}"
+                       class="btn btn-outline-light btn-sm bg-white d-none d-sm-inline-flex">
                         <em class="icon ni ni-arrow-left"></em>
                         <span>Back</span>
                     </a>
@@ -23,7 +24,7 @@
                     <div class="card-inner card-inner-lg">
                         <div class="row justify-content-center">
                             <div class="col-md-6">
-                                <x-errors />
+                                @include('backend.components.errors')
                                 @include('backend.pages.category._form')
                             </div>
                         </div>

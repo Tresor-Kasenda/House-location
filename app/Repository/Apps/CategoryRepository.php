@@ -5,6 +5,7 @@ namespace App\Repository\Apps;
 
 use App\Contracts\CategoryHomeRepositoryInterface;
 use App\Enums\HouseEnum;
+use App\Models\Category;
 use App\Models\House;
 use App\Models\Type;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -13,12 +14,20 @@ use Illuminate\Http\Request;
 
 class CategoryRepository implements CategoryHomeRepositoryInterface
 {
-    public function index(): LengthAwarePaginator
+    public function index($request): array|Collection
     {
-        return House::query()
+        $apartments = House::query()
             ->orderByDesc('created_at')
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
-            ->paginate(6);
+            ->inRandomOrder();
+
+        if ($request->input('category')) {
+            $apartments->whereHas('categories', function ($query) use ($request) {
+                $query->where('name', 'like', '%'.$request->input('category').'%');
+            });
+        }
+
+        return $apartments->get();
     }
 
     public function show(string $key)
@@ -37,6 +46,18 @@ class CategoryRepository implements CategoryHomeRepositoryInterface
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
             ->when('prices', fn($builder) => $builder->where('prices', $house->prices))
             ->orWhere('commune', '=', $house->commune)
+            ->get();
+    }
+
+    public function getHouseCategories(): Collection|array
+    {
+        return Category::query()
+            ->select([
+                'key',
+                'name',
+                'id'
+            ])
+            ->latest()
             ->get();
     }
 }

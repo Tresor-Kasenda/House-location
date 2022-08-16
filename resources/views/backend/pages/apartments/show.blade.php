@@ -1,4 +1,4 @@
-@extends('frontend.layouts.admin')
+@extends('backend.layout.admin')
 
 @section('title', "Administration des appartements")
 
@@ -8,7 +8,8 @@
             <div class="nk-block-head nk-block-head-md">
                 <div class="nk-block-between g-3">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Détail / <strong class="text-primary small">{{ $room->commune ?? "" }}</strong></h3>
+                        <h3 class="nk-block-title page-title">Détail / <strong
+                                    class="text-primary small">{{ $room->commune ?? "" }}</strong></h3>
                     </div>
                     <div class="nk-block-head-content">
                         <div class="toggle-wrap nk-block-tools-toggle">
@@ -32,7 +33,8 @@
                                         @endif
                                     </li>
                                     <li class="preview-item">
-                                        <a href="{{ route('admins.houses.index') }}" class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
+                                        <a href="{{ route('admins.houses.index') }}"
+                                           class="btn btn-outline-secondary btn-sm d-none d-sm-inline-flex">
                                             <em class="icon ni ni-arrow-left"></em>
                                             <span>Back</span>
                                         </a>
@@ -53,11 +55,11 @@
                 <div class="nk-block">
                     <div class="justify-content text-center p-2">
                         <img
-                            src="{{ asset('storage/'.$room->images) }}"
-                            alt="{{ $room->commune }}"
-                            class="img-fluid img-thumbnail rounded-circle"
-                            height="15%"
-                            width="10%"
+                                src="{{ asset('storage/'.$room->images) }}"
+                                alt="{{ $room->commune }}"
+                                class="img-fluid img-thumbnail rounded-circle"
+                                height="15%"
+                                width="10%"
                         >
                     </div>
                     <div class="card">
@@ -93,7 +95,7 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Telephone</span>
-                                                    <span class="profile-ud-value">{{ $room->phoneNumber ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->phone_number ?? "" }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
@@ -111,7 +113,7 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Nombre des pieces</span>
-                                                    <span class="profile-ud-value">{{ $room->roomNumber ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->detail->number_pieces ?? "" }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
@@ -122,8 +124,14 @@
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Reservations</span>
-                                                    <span class="profile-ud-value badge badge-circle">{{ $room->reservations_count ?? "" }} Reservation</span>
+                                                    <span class="profile-ud-label">Categories</span>
+                                                    @if($room->categories)
+                                                        @foreach($room->categories as $category)
+                                                            <span class="profile-ud-value badge badge-circle">
+                                                                {{ $category->name ?? "" }}
+                                                            </span>
+                                                        @endforeach
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

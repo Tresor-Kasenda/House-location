@@ -2,18 +2,22 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Backend\ApartmentAdminController;
+use App\Http\Controllers\Backend\CancelReservationController;
 use App\Http\Controllers\Backend\CategoryAdminController;
 use App\Http\Controllers\Backend\ConfirmedApartmentController;
+use App\Http\Controllers\Backend\ConfirmReservationController;
 use App\Http\Controllers\Backend\DetailApartmentAdminController;
 use App\Http\Controllers\Backend\HomeAdminController;
 use App\Http\Controllers\Backend\ImagesAdminController;
 use App\Http\Controllers\Backend\ReservationAdminController;
+use App\Http\Controllers\Backend\SlideAdminController;
 use App\Http\Controllers\Backend\TrashedAdminController;
 use App\Http\Controllers\Backend\UsersAdminController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\HouseController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\Frontend\NewsLetterController;
 use App\Http\Controllers\Frontend\ReservationController;
@@ -54,6 +58,11 @@ Route::group([
         Route::delete('trashedApartments/{key}', 'delete')->name('trashed.delete');
     });
 
+    Route::resource('slides', SlideAdminController::class);
+
+    Route::put('activeReservation/{key}', [ConfirmReservationController::class, 'confirm'])->name('reservation.active');
+    Route::put('cancelReservation/{key}', [CancelReservationController::class, 'inactive'])->name('reservation.inactive');
+
     Route::controller(ConfirmedApartmentController::class)->group(function (){
         Route::put('activeApartment/{key}','active')
             ->name('apartment.active');
@@ -92,42 +101,16 @@ Route::get('abouts', AboutController::class)->name('abouts.index');
 Route::get('localisation', LocationController::class)->name('location.index');
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('search', [SearchLocationController::class, 'searching'])->name('search.house');
+Route::get('maisons', HouseController::class)->name('house.index');
+Route::get('/maisons/{key}', [HouseController::class, 'show'])->name('house.show');
 Route::post('news-letters', [NewsLetterController::class, 'index'])->name('newsletters.send');
 Route::controller(ReservationController::class)->group(function (){
     Route::post('reservation', 'store')->name('reservation.store');
     Route::get('confirmation/{key}', 'show')->name('reservation.show');
 });
-Route::get('search', [SearchLocationController::class, 'searching'])->name('search.house');
-
-Route::resource('best-commission', NoteCommissionnaireController::class)->except(['update', 'destroy', 'edit', 'create']);
-Route::get('best-commission/{key}/create', [NoteCommissionnaireController::class, 'create'])->name('best-commission.create')->middleware(['admins', 'auth']);
-Route::get('/bests-commission/all', [NoteCommissionnaireController::class, 'best_notes'])->name('best-commission.all');
 
 
-
-Route::get("/notes", [HouseNoteController::class, "index"])->name("notes.index"); //retourne les 10 maisons les mieux notées
-Route::get('/notes/create/{id}', [HouseNoteController::class, 'create'])->name('housenote.create');
-Route::post('/notes/create', [HouseNoteController::class, 'store'])->name('housenote.store');
-Route::get('/notes/delete/{id}', [HouseNoteController::class, 'destroy'])->name('housenote.delete')->middleware(['users', 'auth']);
-// Route::group([
-//     'prefix' => 'note',
-//     'as' => 'note.',
-//     'middleware' => ['auth']
-// ], function(){
-//     Route::resource('notes', HouseNoteController::class)->except(['update']);
-// });
-
-// sliders routes
-Route::get("/sliders", [SliderController::class, "index"])->name("sliders.index");
-Route::get("/sliders/create", [SliderController::class, 'create']);
-Route::post("/sliders/store", [SliderController::class, 'store'])->name('create_slider');
-Route::get("/sliders/delete/{id}", [SliderController::class, 'destroy'])->name('delete_slider');
-Route::get("sliders/edit/{id}", [SliderController::class, 'edit'])->name('edit_slider');
-
-//temoignages routes
-Route::get("temoignages/", [TemoignageController::class, 'index'])->name('temoignages.index');
-Route::get("temoignages/post/", [TemoignageController::class, 'create'])->name('temoignages.post')->middleware('auth');
-Route::post("temoignages/create/", [TemoignageController::class, 'store'])->name('temoignages.store');
-Route::post("temoignages/delete/{key}", [TemoignageController::class, 'destroy'])->name('temoignages.destroy');
-Route::get("temoignages/{key}", [TemoignageController::class, 'show'])->name('temoignages.show');
-
+Route::get('welcome/{locale}', function ($locale) {
+    App::setLocale($locale);
+});

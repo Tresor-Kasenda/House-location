@@ -1,4 +1,4 @@
-@extends('frontend.layouts.admin')
+@extends('backend.layout.admin')
 
 @section('title', "Liste des clients")
 
@@ -40,79 +40,83 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($users as $user)
-                                        <tr class="nk-tb-item text-center">
-                                            <td class="nk-tb-col tb-col-sm">
+                                @foreach($users as $user)
+                                    <tr class="nk-tb-item text-center">
+                                        <td class="nk-tb-col tb-col-sm">
                                                 <span class="tb-product">
                                                     @if($user->images)
-                                                    <img
-                                                        src="{{ asset('storage/'.$user->images) }}"
-                                                        alt="{{ $user->name }}"
-                                                        class="thumb">
+                                                        <img
+                                                                src="{{ asset('storage/'.$user->images) }}"
+                                                                alt="{{ $user->name }}"
+                                                                class="thumb">
                                                     @else
                                                         <img
-                                                            src="{{ asset('app/images/logo.png') }}"
-                                                            alt="{{ $user->name }}"
-                                                            class="thumb">
+                                                                src="{{ asset('app/images/logo.png') }}"
+                                                                alt="{{ $user->name }}"
+                                                                class="thumb">
                                                     @endif
                                                 </span>
-                                            </td>
-                                            <td class="nk-tb-col tb-col-md">
-                                                <span>{{ $user->name ?? "" }}</span>
-                                            </td>
-                                            <td class="nk-tb-col tb-col-md">
-                                                <span>{{ $user->email ?? "" }}</span>
-                                            </td>
-                                            <td class="nk-tb-col tb-col-md">
-                                                <span>{{ $user->phone_number ?? "" }}</span>
-                                            </td>
-                                            <td class="nk-tb-col tb-col-md">
-                                                @if($user->role_id == \App\Enums\UserRoleEnum::DEALER_ROLE)
-                                                    <span class="badge badge-dim badge-success p-1">
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            <span>{{ $user->name ?? "" }}</span>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            <span>{{ $user->email ?? "" }}</span>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            <span>{{ $user->phone_number ?? "" }}</span>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            @if($user->role_id == \App\Enums\UserRoleEnum::DEALER_ROLE)
+                                                <span class="badge badge-dim badge-success p-1">
                                                         <em class="icon ni ni-user"></em>
                                                         <span>Commissionners</span>
                                                     </span>
-                                                @endif
-                                                @if($user->role_id == \App\Enums\UserRoleEnum::USERS_ROLE)
-                                                    <span class="badge badge-dim badge-primary p-1">
+                                            @endif
+                                            @if($user->role_id == \App\Enums\UserRoleEnum::USERS_ROLE)
+                                                <span class="badge badge-dim badge-primary p-1">
                                                         <em class="icon ni ni-user"></em>
                                                         <span>Users</span>
                                                     </span>
-                                                @endif
-                                            </td>
-                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                <ul class="nk-tb-actions gx-1">
-                                                    <li>
-                                                        <div class="drodown">
-                                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">
-                                                                <em class="icon ni ni-more-h"></em>
-                                                            </a>
-                                                            <div class="dropdown-menu dropdown-menu-right">
-                                                                <ul class="link-list-opt no-bdr">
-                                                                    <li>
-                                                                        <a href="{{ route('admins.users.show', $user->key) }}">
-                                                                            <em class="icon ni ni-eye"></em>
-                                                                            <span>Voir</span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <form action="{{ route('admins.users.destroy', $user->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
-                                                                            @method('DELETE')
-                                                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                                            <button type="submit" class="btn btn-dim">
-                                                                                <em class="icon ni ni-cross-sm"></em>
-                                                                                <span>Suspendre</span>
-                                                                            </button>
-                                                                        </form>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+                                            @endif
+                                        </td>
+                                        <td class="nk-tb-col nk-tb-col-tools">
+                                            <ul class="nk-tb-actions gx-1">
+                                                <li>
+                                                    <div class="drodown">
+                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
+                                                           data-toggle="dropdown">
+                                                            <em class="icon ni ni-more-h"></em>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-right">
+                                                            <ul class="link-list-opt no-bdr">
+                                                                <li>
+                                                                    <a href="{{ route('admins.users.show', $user->key) }}">
+                                                                        <em class="icon ni ni-eye"></em>
+                                                                        <span>Voir</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <form action="{{ route('admins.users.destroy', $user->key) }}"
+                                                                          method="POST"
+                                                                          onsubmit="return confirm('Voulez vous supprimer');">
+                                                                        @method('DELETE')
+                                                                        <input type="hidden" name="_token"
+                                                                               value="{{ csrf_token() }}">
+                                                                        <button type="submit" class="btn btn-dim">
+                                                                            <em class="icon ni ni-cross-sm"></em>
+                                                                            <span>Suspendre</span>
+                                                                        </button>
+                                                                    </form>
+                                                                </li>
+                                                            </ul>
                                                         </div>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

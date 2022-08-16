@@ -10,7 +10,7 @@
     <div class="col-md-12 col-lg-12">
         <div class="form-group">
             <div class="form-control-wrap">
-                {!! form_row($form->house_id) !!}
+                {!! form_row($form->house) !!}
             </div>
         </div>
     </div>

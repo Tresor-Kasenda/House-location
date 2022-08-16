@@ -42,7 +42,7 @@ class ApartmentCommissionerRepository implements ApartmentCommissionerRepository
     private function getHouse(string $key): Builder|Model
     {
         return House::query()
-            ->where('user_id', '=', UserRoleEnum::COMMISSIONNERS)
+            ->where('user_id', '=', UserRoleEnum::DEALER_ROLE)
             ->where('key', '=', $key)
             ->withCount('reservations')
             ->firstOrFail();

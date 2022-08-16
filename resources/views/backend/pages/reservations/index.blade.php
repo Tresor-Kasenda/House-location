@@ -1,6 +1,8 @@
-@extends('frontend.layouts.admin')
+@extends('backend.layout.admin')
 
-@section('title', "Liste des reservations")
+@section('title')
+    Nos reservations
+@endsection
 
 @section('content')
     <div class="nk-content-inner">
@@ -8,7 +10,7 @@
             <div class="nk-block-head nk-block-head-sm">
                 <div class="nk-block-between">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Reservations</h3>
+                        <h3 class="nk-block-title page-title">Liste des reservations</h3>
                     </div>
                 </div>
             </div>
@@ -20,7 +22,7 @@
                                 <thead>
                                 <tr class="nk-tb-item nk-tb-head text-center">
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Reference</span>
+                                        <span class="sub-text">Code de Referance</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
                                         <span class="sub-text">Name</span>
@@ -43,7 +45,7 @@
                                 @foreach($reservations as $reservation)
                                     <tr class="nk-tb-item text-center">
                                         <td class="nk-tb-col tb-col-md font-weight-bold">
-                                            <span>{{ $reservation->reference ?? "" }}</span>
+                                            <span>{{ $reservation->transaction_code ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ $reservation->name ?? "" }}</span>
@@ -61,7 +63,8 @@
                                             <ul class="nk-tb-actions gx-1">
                                                 <li>
                                                     <div class="drodown">
-                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">
+                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
+                                                           data-toggle="dropdown">
                                                             <em class="icon ni ni-more-h"></em>
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right">
@@ -73,9 +76,12 @@
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('admins.reservations.destroy', $reservation->key) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                                    <form action="{{ route('admins.reservations.destroy', $reservation->key) }}"
+                                                                          method="POST"
+                                                                          onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')
-                                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                                        <input type="hidden" name="_token"
+                                                                               value="{{ csrf_token() }}">
                                                                         <button type="submit" class="btn btn-dim">
                                                                             <em class="icon ni ni-cross-sm"></em>
                                                                             <span>Suspendre</span>

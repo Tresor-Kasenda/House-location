@@ -1,36 +1,28 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Frontend;
 
 use App\Contracts\CategoryHomeRepositoryInterface;
+use App\Contracts\HomeRepositoryInterface;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Kris\LaravelFormBuilder\FormBuilder;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function __construct(
-        public CategoryHomeRepositoryInterface $repository,
-        public FormBuilder $builder
+        protected readonly CategoryHomeRepositoryInterface $repository,
+        protected readonly HomeRepositoryInterface $homeRepository,
     ){}
 
-    public function index(): Renderable
+    public function index(Request $request): Renderable
     {
         return view('frontend.pages.category.index', [
-            'apartments' => $this->repository->index(),
-        ]);
-    }
-
-    public function show(string $key): Factory|View|Application
-    {
-        $apartment = $this->repository->show(key: $key);
-        return view('frontend.pages.category.show', [
-            'apartment' => $apartment,
-            'apartments' => $this->repository->getHouseByDetails(house: $apartment)
+            'apartments' => $this->repository->index($request),
+            'categories' => $this->repository->getHouseCategories(),
+            'apartment_notes' => $this->homeRepository->getHouseWithManyNotes()
         ]);
     }
 }

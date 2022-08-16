@@ -50,9 +50,9 @@
                     ])
 
                     @include('dealers.components._link', [
-                        'route' => route('admins.details.index'),
-                        'name' => 'Details apartement',
-                        'icon' => 'ni-img'
+                        'route' => route('admins.slides.index'),
+                        'name' => 'Slides',
+                        'icon' => 'ni-tile-thumb'
                     ])
 
                     @include('backend.components._link', [

@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 use App\Enums\ReservationEnum;
-use App\Enums\StatusEnum;
 use App\Models\House;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -23,12 +22,13 @@ return new class extends Migration
             $table->foreignIdFor(House::class)
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->boolean('status')->default(ReservationEnum::PENDING_RESERVATION);
+            $table->boolean('status')
+                ->default(ReservationEnum::PENDING_RESERVATION);
             $table->string('name');
             $table->string('address');
             $table->string('phones');
             $table->text('messages');
-            $table->string('reference')->unique();
+            $table->string('transaction_code')->unique();
             $table->timestamps();
             $table->softDeletes();
         });
