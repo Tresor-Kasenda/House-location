@@ -18,8 +18,7 @@ class ImageRequest extends FormRequest
     {
         return [
             'images' => ['required', 'mimes:jpeg,jpg,png'],
-            'house_id' => ['required'],
-            'house_id.*' => ['integer', Rule::exists('houses', 'id')],
+            'house' => ['required', Rule::exists('houses', 'id')],
         ];
     }
 }

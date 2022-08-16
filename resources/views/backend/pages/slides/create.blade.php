@@ -26,15 +26,7 @@
                     <div class="card-inner card-inner-lg">
                         <div class="row justify-content-center">
                             <div class="col-md-7">
-                                @if ($errors->any())
-                                    <div class="alert alert-danger mt-4">
-                                        <ul class="list-unstyled">
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
+                                @include('backend.components.errors')
                                 @include('backend.pages.slides._form')
                             </div>
                         </div>

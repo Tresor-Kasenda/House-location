@@ -49,7 +49,9 @@ class Image extends Model
 
     protected $fillable = [
         'key',
-        'images'
+        'images',
+        'user_id',
+        'house_id'
     ];
 
     public function houses(): BelongsTo
