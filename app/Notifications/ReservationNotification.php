@@ -9,11 +9,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ReservationNotification extends Notification
+class ReservationNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct(protected $reservation)
+    public function __construct(public $reservation)
     {
         //
     }
@@ -34,7 +34,9 @@ class ReservationNotification extends Notification
     public function toArray($notifiable): array
     {
         return [
-            //
+            'transaction_code' => $this->reservation->transaction_code,
+            'address' => $this->reservation->address,
+            'price' => $this->reservation->house->price
         ];
     }
 }

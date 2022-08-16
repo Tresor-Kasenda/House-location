@@ -10,7 +10,6 @@
         <div class="flex justify-center pb-6">
             <img src="{{ asset('app/images/logo.png') }}" alt="logoApp" class="block h-14 max-h-14">
         </div>
-       <x-errors/>
         <form method="POST" action="{{ route('register') }}" class="flex w-full flex-col gap-4">
             @csrf
             <div class="relative">

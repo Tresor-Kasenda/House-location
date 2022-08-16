@@ -55,16 +55,16 @@
                                         <td class="nk-tb-col tb-col-md">
                                                 <span class="tb-product text-center">
                                                     <img
-                                                            src="{{ $slide->images() }}"
-                                                            alt="{{ $slide->title ?? "" }}"
-                                                            class="thumb">
+                                                        src="{{ $slide->images() }}"
+                                                        alt="{{ $slide->title ?? "" }}"
+                                                        class="thumb">
                                                 </span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ ucfirst(strtr($slide->title, 0, 50)) ?? "" }}</span>
+                                            <span>{{ ucfirst(substr($slide->title, 0, 50)) ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ ucfirst(strtr($slide->description, 0, 40)) ?? "" }}</span>
+                                            <span>{{ ucfirst(substr($slide->description, 0, 50)) ?? "" }} ...</span>
                                         </td>
                                         <td class="nk-tb-col nk-tb-col-tools">
                                             <ul class="nk-tb-actions gx-1">

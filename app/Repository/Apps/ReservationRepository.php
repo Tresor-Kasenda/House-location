@@ -7,12 +7,15 @@ namespace App\Repository\Apps;
 use App\Contracts\ReservationHouseRepositoryInterface;
 use App\Enums\HouseEnum;
 use App\Enums\ReservationEnum;
+use App\Jobs\ReservationJob;
+use App\Mail\ReservationEmail;
 use App\Models\House;
 use App\Models\Reservation;
 use App\Notifications\ReservationNotification;
 use App\Traits\RandomValues;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
 class ReservationRepository implements ReservationHouseRepositoryInterface
@@ -34,7 +37,9 @@ class ReservationRepository implements ReservationHouseRepositoryInterface
                 "messages" => $attributes->input("messages"),
                 'transaction_code' => $this->generateRandomTransaction(6)
             ]);
-        //(new ReservationNotification($reservation))->toMail($reservation->address);
+
+        dispatch(new ReservationJob($reservation))->delay(now()->addSecond(10));
+
         return $reservation;
     }
 

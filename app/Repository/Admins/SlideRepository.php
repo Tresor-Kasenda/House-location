@@ -61,11 +61,14 @@ class SlideRepository implements SlideRepositoryInterface
 
     public function updated(string $key, SlideRequest $request): Model|Builder
     {
-        $slide = $this->show($key);
+        $slide = Slider::query()
+            ->where('key', '=', $key)
+            ->firstOrFail();
+
         $this->removePathOfImages($slide);
         $slide->update([
-            'images' => self::uploadFiles($request),
             'title' => $request->input('title'),
+            'images' => self::uploadFiles($request),
             'description' => $request->input('description')
         ]);
         $this->service->success("Un slide a ete modifier avec success", 'success');
