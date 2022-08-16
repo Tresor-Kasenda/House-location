@@ -19,38 +19,7 @@
                             </p>
                         </div>
                         <div class="flex sm:flex-row flex-col gap-4 z-40"></div>
-                        <div class="w-full flex">
-                            <form action="#" class="w-full relative lg:w-full flex flex-col  z-50 rounded-md">
-                                <div class="grid  items-center w-full pt-4 pb-1 lg:py-4 px-1 shadow-md bg-white  border border-gray-100 rounded-b-md z-50">
-                                    <div class="relative flex">
-                                        <input
-                                            type="text"
-                                            name="prix"
-                                            id="prix"
-                                            class="w-full text-sm bg-white text-gray-500 px-3 py-1 flex"
-                                            placeholder="Categorie prix">
-                                    </div>
-                                    <div class="border-t border-t-gray-200 pt-3 lg:pt-0 lg:border-none lg:w-max w-full col-span-2 flex lg:absolute lg:right-2 lg:top-1/2 lg:-translate-y-1/2">
-                                        <button
-                                            class="flex lg:w-auto w-full items-center gap-2 justify-center p-3 rounded bg-purple-600 text-white">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-5 w-5 hidden lg:flex"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor">
-                                                <path
-                                                    fill-rule="evenodd"
-                                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            <span class="lg:hidden flex">
-                                                Rechercher
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        <div class="w-full flex"></div>
                     </div>
                 </div>
                 <div class="col-span-1 absolute top-0 left-0 w-full lg:flex h-full items-center lg:relative">

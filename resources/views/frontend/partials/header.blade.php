@@ -100,17 +100,18 @@
                     </div>
                 </div>
                 <div class="flex items-center relative">
-                    <input
-                        type="checkbox"
-                        name="toggleProfileBox"
-                        id="toggleProfileBox"
-                        class="hidden invisible peer">
-                    <label
-                        for="toggleProfileBox"
-                        role="button"
-                        class="hidden md:flex border-2 border-purple-200 items-center gap-2 px-5 py-2.5 bg-gradient-to-tr from-green-400 to-purple-600 hover:bg-gradient-to-tr hover:from-green-600 hover:to-purple-800 transition-all duration-300 text-white rounded-md">
-                        <span>Connexion</span>
-                        <span class="peer-checked:rotate-6">
+                    @auth
+                        <input
+                            type="checkbox"
+                            name="toggleProfileBox"
+                            id="toggleProfileBox"
+                            class="hidden invisible peer">
+                        <label
+                            for="toggleProfileBox"
+                            role="button"
+                            class="hidden md:flex border-2 border-purple-200 items-center gap-2 px-5 py-2.5 bg-gradient-to-tr from-green-400 to-purple-600 hover:bg-gradient-to-tr hover:from-green-600 hover:to-purple-800 transition-all duration-300 text-white rounded-md">
+                            <span>{{ ucfirst(auth()->user()->name) }}</span>
+                            <span class="peer-checked:rotate-6">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 class="h-5 w-5"
@@ -122,17 +123,52 @@
                                         clip-rule="evenodd" />
                             </svg>
                         </span>
-                    </label>
-                    <label
-                        for="toggleProfileBox"
-                        role="button"
-                        class="md:hidden border-2 border-purple-200 items-center rounded-full">
-                        <img
-                            src="{{ asset('admins/images/johnkat.jfif') }}"
-                            width="100"
-                            class="w-10 h-10 rounded-full"
-                            alt="avatar">
-                    </label>
+                        </label>
+                        <label
+                            for="toggleProfileBox"
+                            role="button"
+                            class="md:hidden border-2 border-purple-200 items-center rounded-full">
+                            <img
+                                src="{{ asset('admins/images/johnkat.jfif') }}"
+                                width="100"
+                                class="w-10 h-10 rounded-full"
+                                alt="avatar">
+                        </label>
+                    @else
+                        <input
+                            type="checkbox"
+                            name="toggleProfileBox"
+                            id="toggleProfileBox"
+                            class="hidden invisible peer">
+                        <label
+                            for="toggleProfileBox"
+                            role="button"
+                            class="hidden md:flex border-2 border-purple-200 items-center gap-2 px-5 py-2.5 bg-gradient-to-tr from-green-400 to-purple-600 hover:bg-gradient-to-tr hover:from-green-600 hover:to-purple-800 transition-all duration-300 text-white rounded-md">
+                            <span>Connexion</span>
+                            <span class="peer-checked:rotate-6">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                        </label>
+                        <label
+                            for="toggleProfileBox"
+                            role="button"
+                            class="md:hidden border-2 border-purple-200 items-center rounded-full">
+                            <img
+                                src="{{ asset('admins/images/johnkat.jfif') }}"
+                                width="100"
+                                class="w-10 h-10 rounded-full"
+                                alt="avatar">
+                        </label>
+                    @endauth
                     <div class="absolute right-0 top-[calc(100%+10px)] z-780 transition-all duration-500 invisible opacity-0 -translate-y-6 peer-checked:-translate-y-0 peer-checked:opacity-100 peer-checked:visible w-40 bg-white border border-gray-100 shadow-lg shadow-gray-200 border-t-4 border-t-gray-200 rounded-md py-3">
                         <ul class="flex w-full flex-col">
                             @auth

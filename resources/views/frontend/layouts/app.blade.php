@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
     <link rel="stylesheet" href="{{asset('dist/swiper-bundle.min.css')}}">
     @yield('styles')
+    @include('sweetalert::alert')
 </head>
 <body class="text-gray-500 overflow-y-auto  overflow-hidden overflow-x-hidden w-full">
     @include('frontend.partials.header')
@@ -26,8 +27,7 @@
     <script src="{{ asset('app/js/jquery.js') }}"></script>
     <script src="{{ asset('app/js/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('app/js/config-swipe.js') }}"></script>
-    @include('sweetalert::alert')
-    @yield("scripts")
+    <script src="{{asset('assets/js/swiper-bundle.min.js')}}"></script>
     <script>
         $(document).ready(function(){
             $('#location').on('keyup', function () {
@@ -52,7 +52,6 @@
             })
         })
     </script>
-    <script src="{{asset('assets/js/swiper-bundle.min.js')}}"></script>
     <script>
         new Swiper(".homeSwiper", {
             navigation: {
@@ -132,5 +131,6 @@
         })
 
     </script>
+    @yield("scripts")
 </body>
 </html>

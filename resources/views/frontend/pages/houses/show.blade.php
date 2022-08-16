@@ -164,11 +164,15 @@
                         class="flex mt-4 flex-col pl-4 relative before:absolute before:w-1 before:h-6 before:bg-purple-600 before:top-1 before:left-0">
                         <h1 class="flex font-semibold text-gray-600 text-xl">Localisation</h1>
                         <div class="flex py-4 w-full gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                 fill="currentColor">
-                                <path fill-rule="evenodd"
-                                      d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                      clip-rule="evenodd" />
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                    clip-rule="evenodd" />
                             </svg>
                             <span>A 2 Heures de votre position actuelle</span>
                         </div>
@@ -180,6 +184,15 @@
 
                 <div class="hidden lg:block lg:col-span-1">
                     <div class="lg:sticky top-16 space-y-6 lg:mt-8 bg-white shadow-lg rounded-xl w-full p-4">
+                        @if ($errors->any())
+                            <div class="alert alert-danger mt-4">
+                                <ul class="list-unstyled">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         @include('frontend.components._reservation-form')
                     </div>
                 </div>

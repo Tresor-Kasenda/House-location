@@ -16,17 +16,18 @@ class CategoryRepository implements CategoryHomeRepositoryInterface
 {
     public function index($request): array|Collection
     {
-        return House::query()
+        $apartments = House::query()
             ->orderByDesc('created_at')
             ->when('status', fn($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
-            ->whereHas('categories', function ($query) use ($request) {
-                if ($request->input('category') == "all"){
+            ->inRandomOrder();
 
-                }
+        if ($request->input('category')) {
+            $apartments->whereHas('categories', function ($query) use ($request) {
                 $query->where('name', 'like', '%'.$request->input('category').'%');
-            })
-            ->inRandomOrder()
-            ->get();
+            });
+        }
+
+        return $apartments->get();
     }
 
     public function show(string $key)

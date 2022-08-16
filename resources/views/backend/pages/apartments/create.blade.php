@@ -25,7 +25,16 @@
                         <div class="row gy-4 justify-content-center">
                             <div id="mapId" style="min-height: 200px;min-width: 900px;top: 0;"></div>
                             <div class="col-md-9">
-                                <x-errors/>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger mt-4">
+                                        <ul class="list-unstyled">
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
                                 @include('backend.pages.apartments._form')
                             </div>
                         </div>
