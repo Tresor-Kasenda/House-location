@@ -30,6 +30,7 @@ class ApartmentAdminController extends Controller
     public function show(string $key): Factory|View|Application
     {
         $room = $this->repository->show(key: $key);
+
         return view('backend.pages.apartments.show', compact('room'));
     }
 

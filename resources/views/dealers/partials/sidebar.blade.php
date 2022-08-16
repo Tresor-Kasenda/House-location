@@ -36,11 +36,6 @@
                         'name' => 'Images',
                         'icon' => 'ni-img'
                     ])
-                    @include('dealers.components._link', [
-                        'route' => route('commissioner.details.index'),
-                        'name' => 'Detail apartement',
-                        'icon' => 'ni-img'
-                    ])
                 </ul>
             </div>
         </div>

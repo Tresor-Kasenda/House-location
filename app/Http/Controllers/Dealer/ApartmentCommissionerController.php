@@ -19,7 +19,8 @@ class ApartmentCommissionerController extends Controller
     public function __construct(
         public ApartmentCommissionerRepositoryInterface $repository,
         public FormBuilder $builder
-    ){}
+    ) {
+    }
 
     public function index(): Renderable
     {

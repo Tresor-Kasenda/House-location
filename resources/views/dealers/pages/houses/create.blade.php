@@ -29,7 +29,7 @@
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-7">
-                                <x-errors/>
+                                @include('backend.components.errors')
                                 @include('dealers.pages.houses._form')
                             </div>
                         </div>

@@ -25,7 +25,7 @@ class ReservationRepository implements ReservationRepositoryInterface
                 'transaction_code',
                 'status'
             ])
-            ->with('house:id,prices,guarantees,commune,town,reference, images')
+            ->with('house:id,prices,guarantees,commune,town,reference,images')
             ->get();
     }
 

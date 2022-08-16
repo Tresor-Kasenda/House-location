@@ -61,9 +61,9 @@
                         <img
                             src="{{ asset('storage/'.$reservation->house->images) }}"
                             alt="{{ $reservation->name }}"
-                            class="img-fluid img-thumbnail rounded-circle"
-                            height="10%"
-                            width="15%"
+                            class="img-fluid img-thumbnail"
+                            height="20%"
+                            width="20%"
                         >
                     </div>
                     <div class="card">
@@ -93,7 +93,7 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Reference</span>
-                                                    <span class="profile-ud-value">{{ $reservation->reference ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $reservation->transaction_code ?? "" }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
@@ -110,14 +110,14 @@
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Prices maison</span>
+                                                    <span class="profile-ud-label">Prix maison</span>
                                                     <span class="profile-ud-value">{{ $reservation->house->prices ?? "" }} $</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Nombre des pieces</span>
-                                                    <span class="profile-ud-value">{{ $reservation->house->roomNumber ?? "" }} pieces</span>
+                                                    <span class="profile-ud-value">{{ $reservation->house->detail->room_number ?? "" }} pieces</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">

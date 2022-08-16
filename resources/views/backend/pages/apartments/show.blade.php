@@ -95,7 +95,7 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Telephone</span>
-                                                    <span class="profile-ud-value">{{ $room->phoneNumber ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->phone_number ?? "" }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
@@ -113,7 +113,7 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Nombre des pieces</span>
-                                                    <span class="profile-ud-value">{{ $room->roomNumber ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->detail->number_pieces ?? "" }}</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
@@ -124,8 +124,14 @@
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Reservations</span>
-                                                    <span class="profile-ud-value badge badge-circle">{{ $room->reservations_count ?? "" }} Reservation</span>
+                                                    <span class="profile-ud-label">Categories</span>
+                                                    @if($room->categories)
+                                                        @foreach($room->categories as $category)
+                                                            <span class="profile-ud-value badge badge-circle">
+                                                                {{ $category->name ?? "" }}
+                                                            </span>
+                                                        @endforeach
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
