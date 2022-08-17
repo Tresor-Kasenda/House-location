@@ -13,6 +13,10 @@ use App\Http\Controllers\Backend\ReservationAdminController;
 use App\Http\Controllers\Backend\SlideAdminController;
 use App\Http\Controllers\Backend\TrashedAdminController;
 use App\Http\Controllers\Backend\UsersAdminController;
+use App\Http\Controllers\Dealer\ApartmentCommissionerController;
+use App\Http\Controllers\Dealer\DetailApartmentCommissionerController;
+use App\Http\Controllers\Dealer\HomeCommissionerController;
+use App\Http\Controllers\Dealer\ImageCommissionerController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\ContactController;
@@ -22,20 +26,11 @@ use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\Frontend\NewsLetterController;
 use App\Http\Controllers\Frontend\ReservationController;
 use App\Http\Controllers\Frontend\SearchLocationController;
-use App\Http\Controllers\Dealer\ApartmentCommissionerController;
-use App\Http\Controllers\Dealer\HomeCommissionerController;
-use App\Http\Controllers\Dealer\DetailApartmentCommissionerController;
-use App\Http\Controllers\Dealer\ImageCommissionerController;
 use App\Http\Controllers\Users\CancellingUserController;
 use App\Http\Controllers\Users\HomeUserController;
 use App\Http\Controllers\Users\UpdateUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-use App\http\Controllers\SliderController;
-use App\Http\Controllers\NoteCommissionnaireController;
-use App\Http\Controllers\HouseNoteController;
-use App\Http\Controllers\TemoignageController;
 
 
 Auth::routes();

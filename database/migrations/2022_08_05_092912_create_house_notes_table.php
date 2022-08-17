@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('note');
             $table->string('comment')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

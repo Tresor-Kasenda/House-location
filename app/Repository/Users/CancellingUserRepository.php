@@ -11,8 +11,8 @@ class CancellingUserRepository implements CancellingUserRepositoryInterface
     public function cancelReservation(string $key)
     {
         $reservation = Reservation::query()
-            ->when('key', function ($query) use ($key){
-                $query->where('key', $key);
+            ->when('id', function ($query) use ($key){
+                $query->where('id', $key);
             })
             ->when('user_id', function ($query) use ($key){
                 $query->where('user_id', auth()->id());

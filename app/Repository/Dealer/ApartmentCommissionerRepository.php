@@ -35,7 +35,7 @@ class ApartmentCommissionerRepository implements ApartmentCommissionerRepository
     {
         $room = $this->getHouse(key: $key);
         $room->delete();
-        toast('L appartement a été suspéndue pour des raisons de sécurité', 'success');
+
         return $room;
     }
 
@@ -43,8 +43,7 @@ class ApartmentCommissionerRepository implements ApartmentCommissionerRepository
     {
         return House::query()
             ->where('user_id', '=', UserRoleEnum::DEALER_ROLE)
-            ->where('key', '=', $key)
-            ->withCount('reservations')
+            ->where('id', '=', $key)
             ->firstOrFail();
     }
 }

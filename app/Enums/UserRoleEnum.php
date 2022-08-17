@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Enums;
 
-class UserRoleEnum
+enum UserRoleEnum
 {
     const USERS_ROLE = 1;
     const DEALER_ROLE = 2;

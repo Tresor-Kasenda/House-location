@@ -1,4 +1,4 @@
-@extends('backend.layout.admin')
+@extends('backend.layout.backend')
 
 @section('title')
     Administration Karibu Kwako

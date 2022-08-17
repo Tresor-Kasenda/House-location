@@ -16,7 +16,7 @@ class UsersProfileRepository implements UpdateUserRepositoryInterface
     public function updated(string $key, $request): RedirectResponse
     {
         $user = User::query()
-            ->where('key', '=', $key)
+            ->where('id', '=', $key)
             ->first();
 
         $user->update([
@@ -24,9 +24,6 @@ class UsersProfileRepository implements UpdateUserRepositoryInterface
             'name' => $request->input('username'),
             'password' => Hash::make($request->input('password'))
         ]);
-
-        alert()->success('Update','Votre profile a ete mise a jours');
-
         return back();
     }
 }

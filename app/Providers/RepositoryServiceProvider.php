@@ -23,17 +23,17 @@ use App\Contracts\TrashedRepositoryInterface;
 use App\Contracts\UpdateUserRepositoryInterface;
 use App\Contracts\UserRepositoryInterface;
 use App\Contracts\UsersProfileRepositoryInterface;
-use App\Repository\Admins\ActiveApartmentRepository;
-use App\Repository\Admins\ApartmentRepository;
-use App\Repository\Admins\CategoryRepository;
-use App\Repository\Admins\ImageRepository;
-use App\Repository\Admins\ReservationRepository;
-use App\Repository\Admins\SlideRepository;
-use App\Repository\Admins\TrashedRepository;
-use App\Repository\Admins\UserRepository;
-use App\Repository\Apps\HomeFrontendRepository;
-use App\Repository\Apps\NewsLetterRepository;
-use App\Repository\Apps\SearchRepository;
+use App\Repository\Backend\ActiveApartmentRepository;
+use App\Repository\Backend\ApartmentRepository;
+use App\Repository\Backend\CategoryRepository;
+use App\Repository\Backend\ImageRepository;
+use App\Repository\Backend\ReservationRepository;
+use App\Repository\Backend\SlideRepository;
+use App\Repository\Backend\TrashedRepository;
+use App\Repository\Backend\UserRepository;
+use App\Repository\Frontend\HomeFrontendRepository;
+use App\Repository\Frontend\NewsLetterRepository;
+use App\Repository\Frontend\SearchRepository;
 use App\Repository\Dealer\ApartmentCommissionerRepository;
 use App\Repository\Dealer\DetailHouseCommissionerRepository;
 use App\Repository\Dealer\HomeCommissionerRepository;
@@ -43,8 +43,8 @@ use App\Repository\Users\ReservationUserRepository;
 use App\Repository\Users\UsersProfileRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\ApartmentRepositoryInterface;
-use App\Repository\Apps\CategoryRepository as HomeCategory;
-use App\Repository\Apps\ReservationRepository as Reservation;
+use App\Repository\Frontend\CategoryRepository as HomeCategory;
+use App\Repository\Frontend\ReservationRepository as Reservation;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -65,7 +65,6 @@ class RepositoryServiceProvider extends ServiceProvider
         ImageCommissionerRepositoryInterface::class => ImageCommissionerRepository::class,
         UpdateUserRepositoryInterface::class => UsersProfileRepository::class,
         SearchRepositoryInterface::class => SearchRepository::class,
-        DetailsHouseCommissionerRepositoryInterface::class => DetailHouseCommissionerRepository::class,
         ReservationUserRepositoryInterface::class => ReservationUserRepository::class,
         CancellingUserRepositoryInterface::class => CancellingUserRepository::class,
         SlideRepositoryInterface::class => SlideRepository::class

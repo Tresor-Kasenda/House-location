@@ -13,6 +13,12 @@ trait ImageCrud
     public function getContents(): Collection|array
     {
         return Image::query()
+            ->select([
+                'id',
+                'images',
+                'house_id',
+                'user_id'
+            ])
             ->with('houses')
             ->orderByDesc('created_at')
             ->get();
@@ -21,7 +27,7 @@ trait ImageCrud
     public function show(string $key): Model|Builder|null
     {
         return Image::query()
-            ->where('key', '=', $key)
+            ->where('id', '=', $key)
             ->first();
     }
 
@@ -33,7 +39,6 @@ trait ImageCrud
                 'house_id' => $attributes->input('house'),
                 'images' => self::uploadFiles($attributes)
             ]);
-        toast('images added with success', 'success');
         return $image;
     }
 
@@ -45,7 +50,6 @@ trait ImageCrud
             'images' => self::uploadFiles($attributes),
             'house_id' => $attributes->input('house_id')
         ]);
-        toast('images successfully modified', 'success');
         return $image;
     }
 
@@ -54,7 +58,6 @@ trait ImageCrud
         $image = $this->show(key: $key);
         $this->removePathOfImages($image);
         $image->delete();
-        toast('images successfully deleted', 'success');
         return $image;
     }
 }

@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ConfirmRequest;
-use App\Repository\Admins\ConfirmRepository;
+use App\Repository\Backend\ConfirmRepository;
 use Illuminate\Http\RedirectResponse;
 
 class ConfirmReservationController extends Controller

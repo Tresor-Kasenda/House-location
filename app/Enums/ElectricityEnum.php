@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-class ElectricityEnum
+enum ElectricityEnum
 {
     const EXIST_ELECTRICITY = true;
     const NOT_EXIST_ELECTRICITY = false;

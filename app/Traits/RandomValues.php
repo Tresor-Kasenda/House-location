@@ -14,6 +14,7 @@ trait RandomValues
             $randomString .= $characters[$index];
         }
         return strtoupper($randomString);
+
     }
 
     public function generateNumericValues(int $firstValue, int $secondValue): int

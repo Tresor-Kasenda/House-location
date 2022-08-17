@@ -30,7 +30,6 @@
     <script src="{{ asset('admins/js/bundle.js') }}"></script>
     <script src="{{ asset('admins/js/scripts.js') }}"></script>
     <script src="{{ asset('app/js/jquery.js') }}"></script>
-    @include('sweetalert::alert')
     @yield('scripts')
 </body>
 </html>

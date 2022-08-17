@@ -6,10 +6,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Contracts\HomeRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
-use App\Http\Controllers\SliderController;
-use App\Http\Controllers\HouseNoteController;
-use App\Http\Controllers\NoteCommissionnaireController;
-use App\Http\Controllers\TemoignageController;
 
 class HomeController extends Controller
 {
