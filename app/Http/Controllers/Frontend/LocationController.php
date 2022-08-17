@@ -13,7 +13,7 @@ class LocationController extends Controller
 
     public function __invoke(): Renderable
     {
-        return view('frontend.pages.maps.index',[
+        return view('frontend.domain.maps.index',[
             'apartments' => $this->repository->getContents()
         ]);
     }

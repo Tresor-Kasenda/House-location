@@ -25,6 +25,6 @@ class ReservationController extends Controller
     {
         $reservation  = $this->repository->getReservation(key: $key);
 
-        return view('frontend.pages.reservations.confirmed', compact('reservation'));
+        return view('frontend.domain.reservations.confirmed', compact('reservation'));
     }
 }

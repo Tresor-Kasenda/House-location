@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{asset('dist/swiper-bundle.min.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     @yield('styles')
+    @vite('resources/css/app.css')
 </head>
 <body class="text-gray-500 overflow-y-auto  overflow-hidden overflow-x-hidden w-full">
     @include('frontend.partials.header')
@@ -22,6 +23,7 @@
     @if(request()->getPathInfo() != '/localisation')
         @include('frontend.partials.footer')
     @endif
+    @vite('resources/js/app.js')
     <script src="{{ asset('app/js/hamburger.js') }}"></script>
     <script src="{{ asset('app/js/jquery.js') }}"></script>
     <script src="{{ asset('app/js/swiper-bundle.min.js') }}"></script>

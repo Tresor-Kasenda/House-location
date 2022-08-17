@@ -10,6 +10,6 @@ class AboutController extends Controller
 {
     public function __invoke(): Renderable
     {
-        return view('frontend.pages.about.index');
+        return view('frontend.domain.about.index');
     }
 }

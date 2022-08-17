@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function index(Request $request): Renderable
     {
-        return view('frontend.pages.category.index', [
+        return view('frontend.domain.category.index', [
             'apartments' => $this->repository->index($request),
             'categories' => $this->repository->getHouseCategories(),
             'apartment_notes' => $this->homeRepository->getHouseWithManyNotes()

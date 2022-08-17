@@ -1,3 +1,203 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: 'Oxygen', sans-serif;
+}
+
+button,
+input {
+    outline: none;
+}
+button,
+input, *, *::before, *::after , button::before, button::after,
+input::before, input::after, textarea, textarea::before, textarea::after
+{
+    outline: 0px solid transparent !important;
+    outline-offset: 0px !important;
+    outline-width: 0px !important;
+    @apply outline-none outline-0;
+}
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.mySwiper2 {
+    width: 100%;
+}
+.swiper-slide {
+    padding-bottom: 10px !important;
+    transition: all .3s ease-in-out;
+}
+.mySwiper .swiper-slide {
+    position: relative;
+    opacity: 0.4;
+    padding-bottom: 10px !important;
+    transition: all .3s ease-in-out;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+    opacity: 1;
+    transition: all .3s ease-in-out;
+}
+
+
+.costumRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #9333ea;
+    cursor: pointer;
+}
+
+.costumRange::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #9333ea;
+    cursor: pointer;
+}
+
+.grid-mensory {
+    grid-template-rows: masonry;
+}
+
+
+.activeCategorie
+{
+    @apply bg-purple-600 text-white hover:bg-opacity-80;
+
+}
+.activeCategorie:hover{
+    color: white !important;
+}
+
+.openOverlayOnMob{
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    @apply block visible bg-gray-600 bg-opacity-40
+    opacity-100 lg:hidden lg:invisible
+}
+
+.openNavBarOnMob{
+    transform:   translateY(0) !important;
+    -webkit-transform: translateY(0) !important;
+    -moz-transform: translateY(0) !important;
+    -ms-transform: translateY(0) !important;
+    -o-transform: translateY(0) !important;
+    visibility: visible !important;
+    top: 100% !important
+}
+
+.humbergerIsToggle #line {
+    @apply rotate-45 translate-y-1.5
+}
+
+.humbergerIsToggle #line2 {
+    @apply -rotate-45 -translate-y-1
+}
+
+
+
+
+@layer components {
+
+
+    .isActiveLinkProfile{
+        @apply text-purple-600 after:bg-purple-600
+    }
+
+    .costum-bullet {
+        @apply rounded-full flex w-2 h-2
+        bg-gray-400 transition-all duration-300;
+
+    }
+
+    .costum-bullet.costum-bullet-active {
+        @apply w-4  bg-purple-600
+    }
+
+    [data-is-activepage="true"] {
+        @apply relative text-gray-700 after:scale-100 !important
+    }
+
+    .activeBtnPagination {
+        @apply bg-purple-600 text-white transition-all duration-300 !important;
+    }
+
+    .activeBtnPagination:hover {
+        @apply bg-opacity-70;
+    }
+
+    .activeTabBtn {
+        @apply bg-gradient-to-tr from-green-400 to-purple-600 text-white !important;
+    }
+
+    .select-box {
+        @apply relative flex flex-col w-full select-none;
+    }
+
+    .select-box .optionsBox {
+        @apply absolute top-full mt-1 order-1 overflow-hidden bg-gray-100 text-gray-600 max-h-0 w-full opacity-0 transition-all duration-500 rounded-lg border-2 border-purple-100;
+    }
+
+    .selected {
+        @apply bg-gray-100 rounded-lg relative text-gray-600 text-sm;
+    }
+
+
+    .select-box .optionsBox.active {
+        @apply max-h-60 opacity-100 transition-all overflow-y-scroll;
+    }
+
+    .select-box .optionsBox.active+.selected+.angle {
+        @apply rotate-180;
+    }
+
+    .select-box .optionsBox::-webkit-scrollbar {
+        @apply w-1 bg-gray-100 rounded-t-lg;
+    }
+
+    .select-box .optionsBox::-webkit-scrollbar-thumb {
+        @apply bg-purple-600 rounded-t-lg;
+    }
+
+    .select-box .option,
+    .selected {
+        @apply text-gray-500 px-4 py-2.5 cursor-pointer;
+    }
+
+    .select-box .selected {
+        @apply border-2 border-purple-100 select-none;
+        content: " "
+    }
+
+    .select-box .option:hover {
+        @apply bg-gray-200;
+    }
+
+    .select-box label {
+        cursor: pointer;
+    }
+
+    .select-box .option .radio {
+        display: none;
+    }
+
+    .select-box .angle {
+        @apply absolute top-1/2 -translate-y-1/2 right-4 transition-all duration-500;
+    }
+}
+
+@layer components {
+    .shadow-search {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15)
+    }
+}

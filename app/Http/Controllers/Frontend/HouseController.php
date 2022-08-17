@@ -24,13 +24,13 @@ class HouseController extends Controller
         $apartments = $this->repository->getContent();
         $apartment_notes = $this->repository->getHouseWithManyNotes();
 
-        return view('frontend.pages.houses.index', compact('apartments', 'apartment_notes'));
+        return view('frontend.domain.houses.index', compact('apartments', 'apartment_notes'));
     }
 
     public function show(string $key): Factory|View|Application
     {
         $apartment = $this->repository->showApartment($key);
 
-        return view('frontend.pages.houses.show')->with('apartment', $apartment);
+        return view('frontend.domain.houses.show')->with('apartment', $apartment);
     }
 }

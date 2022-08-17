@@ -14,7 +14,7 @@ class ContactController extends Controller
 {
     public function index(): Renderable
     {
-        return view('frontend.pages.contacts.index');
+        return view('frontend.domain.contacts.index');
     }
 
     public function store(ContactRequest $request): RedirectResponse
