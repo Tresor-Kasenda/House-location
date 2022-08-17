@@ -52,9 +52,10 @@ class SlideAdminController extends Controller
 
         $form = $this->builder->create(SlideForm::class, [
             'method' => 'PUT',
-            'url' => route('admins.slides.update', $slide->key),
+            'url' => route('admins.slides.update', $slide->id),
             'model' => $slide
         ]);
+
         return view('backend.pages.slides.create', compact('form', 'slide'));
     }
 

@@ -20,6 +20,7 @@ class ContactController extends Controller
     public function store(ContactRequest $request): RedirectResponse
     {
         Mail::to($request->input('email'))->send(new ContactMail($request));
+
         return back()->with('success', '');
     }
 }

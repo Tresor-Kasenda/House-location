@@ -2,7 +2,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-    Nos Maison
+    Detail de la maison
 @endsection
 
 @section('content')
@@ -104,15 +104,7 @@
                         <h1 class="flex font-semibold text-gray-600 text-xl">Descriptions</h1>
                         <div class="flex py-4">
                             <p class="text-gray-500 font-light text-base text-justify">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores illo similique reprehenderit odit.
-                                Sequi rem ipsam autem, minima consequuntur, exercitationem quae doloremque cumque officiis similique,
-                                corporis illo nesciunt iusto enim.
-                                Harum rerum, magnam suscipit quae aut quis eos, odio, voluptates atque doloremque vero?
-                                Doloribus quam laudantium, atque quia optio dolore ut. Reprehenderit, doloribus veniam.
-                                Quidem sapiente voluptas ab distinctio ad.
-                                Soluta vero quaerat officiis corrupti, numquam rem minima illo modi doloribus quia optio
-                                commodi laborum. Laborum ratione, nostrum eveniet id ex consectetur suscipit ducimus
-                                officiis tenetur quae a eius reprehenderit.
+                                {{ $apartment->detail->description ?? "" }}
                             </p>
                         </div>
                     </div>
@@ -128,7 +120,7 @@
                                     </tr>
                                     <tr>
                                         <td class="p-2 bg-gray-50 text-gray-700">Chambres</td>
-                                        <td class="p-2 rounded">{{ $apartment->detail->room_number ?? 0 }}</td>
+                                        <td class="p-2 rounded">{{ $apartment->detail->number_room ?? 0 }}</td>
                                     </tr>
                                     <tr>
                                         <td class="p-2 bg-gray-50 text-gray-700">Nombre des pieces</td>
@@ -144,7 +136,7 @@
                                     </tr>
                                     <tr>
                                         <td class="p-2 bg-gray-50 text-gray-700">Guaratie</td>
-                                        <td class="p-2 rounded">{{ $apartment->guarantees ?? 0 }} $</td>
+                                        <td class="p-2 rounded">{{ $apartment->warranty_price ?? 0 }} $</td>
                                     </tr>
                                     <tr>
                                         <td class="p-2 bg-gray-50 text-gray-700">Electricité</td>

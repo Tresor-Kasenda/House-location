@@ -14,21 +14,22 @@ class UsersAdminController extends Controller
 
     public function index(): Renderable
     {
-        return view('backend.pages.users.index', [
-            'users' => $this->repository->getContents()
-        ]);
+        $users = $this->repository->getContents();
+
+        return view('backend.pages.users.index', compact('users'));
     }
 
     public function show(string $key): Renderable
     {
-        return view('backend.pages.users.show', [
-            'user' => $this->repository->show(key: $key)
-        ]);
+        $user = $this->repository->show(key: $key);
+
+        return view('backend.pages.users.show', compact('user'));
     }
 
     public function destroy(string $key): RedirectResponse
     {
         $this->repository->deleted(key:  $key);
+
         return back();
     }
 }

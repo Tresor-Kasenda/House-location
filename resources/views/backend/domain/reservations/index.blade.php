@@ -70,13 +70,13 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li>
-                                                                    <a href="{{ route('admins.reservations.show', $reservation->key) }}">
+                                                                    <a href="{{ route('admins.reservations.show', $reservation->id }}">
                                                                         <em class="icon ni ni-eye"></em>
                                                                         <span>Voir</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('admins.reservations.destroy', $reservation->key) }}"
+                                                                    <form action="{{ route('admins.reservations.destroy', $reservation->id) }}"
                                                                           method="POST"
                                                                           onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')

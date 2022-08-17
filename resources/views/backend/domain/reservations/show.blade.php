@@ -22,14 +22,14 @@
                                     <li class="preview-item">
                                         @if ($reservation->status == false)
                                             @include('backend.components._update', [
-                                                'route' => route('admins.reservation.active',$reservation->key),
+                                                'route' => route('admins.reservation.active',$reservation->id),
                                                 'button' => 'btn-outline-success btn-sm',
                                                 'icon' => 'ni-check-circle',
                                                 'title' => 'Activer'
                                             ])
                                         @else
                                             @include('backend.components._update', [
-                                                'route' => route('admins.reservation.inactive',$reservation->key),
+                                                'route' => route('admins.reservation.inactive',$reservation->id),
                                                 'button' => 'btn-outline-danger btn-sm',
                                                 'icon' => 'ni-check-circle',
                                                 'title' => 'Désactiver'

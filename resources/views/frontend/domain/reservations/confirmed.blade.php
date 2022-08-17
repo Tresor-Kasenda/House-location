@@ -18,7 +18,7 @@
                     </h1>
                     <p class="text-gray-500 text-base text-2xl flex xl:leading-snug">
                         Votre reservation est effextuée avec succes, le code de votre reservation est :
-                        <span class="font-semibold text-purple-600">{{ $reservation->transaction_code ?? "" }}</span>
+                        <span class="font-semibold text-purple-600">{{ $reservation->house->reference ?? "" }}</span>
                     </p>
                 </div>
                 <div class="flex items-end justify-end align-bottom">

@@ -24,6 +24,7 @@ class CategoryAdminController extends Controller
     public function index(): Factory|View|Application
     {
         $categories = $this->repository->getContents();
+
         return view('backend.pages.category.index', compact('categories'));
     }
 
@@ -33,35 +34,41 @@ class CategoryAdminController extends Controller
             'method' => 'POST',
             'url' => route('admins.categories.store')
         ]);
+
         return view('backend.pages.category.create', compact('form'));
     }
 
     public function store(CategoryRequest $request): RedirectResponse
     {
         $this->repository->created($request);
+
         return redirect()->route('admins.categories.index');
     }
 
     public function edit(string $id): Factory|View|Application
     {
         $category = $this->repository->getElementByKey($id);
+
         $form = $this->builder->create(CategoryForm::class, [
             'method' => 'PUT',
-            'url' => route('admins.categories.update', $category->key),
+            'url' => route('admins.categories.update', $category->id),
             'model' => $category
         ]);
+
         return view('backend.pages.category.create', compact('form', 'category'));
     }
 
     public function update(CategoryRequest $request, string $key): RedirectResponse
     {
         $this->repository->updated($key, $request);
+
         return redirect()->route('admins.categories.index');
     }
 
     public function destroy(string $key): RedirectResponse
     {
         $this->repository->deleted($key);
+
         return back();
     }
 }

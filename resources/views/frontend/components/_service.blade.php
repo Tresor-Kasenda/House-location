@@ -1,5 +1,5 @@
 <a
-    href="{{ route('house.show', $apartment->key) }}"
+    href="{{ route('house.show', $apartment->id) }}"
     class="w-full flex flex-col p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
     <div class="w-full rounded-t-md relative">
         <img
@@ -49,7 +49,7 @@
         </div>
         <div class="w-full justify-between flex items-center">
             <div class="flex items-center gap-1 text-sm">
-                <span>{{ $apartment->guarantees ?? 0 }} $ Garantie</span>
+                <span>{{ $apartment->warranty_price ?? 0 }} $ Garantie</span>
             </div>
             <div class="flex items-center">
                 <h5 class="text-2xl uppercase  leading-none md:text-right font-bold text-purple-500">
@@ -61,7 +61,7 @@
     </div>
     <div class="py-3 px-3 border-t border-gray-300 flex justify-between">
         <div class="flex items-center">
-            <span class="line-clamp-1 text-sm">{{ $apartment->detail->number_pieces ?? 0 }} Pieces, {{ $apartment->detail->room_number ?? 0 }} Chambres ....</span>
+            <span class="line-clamp-1 text-sm">{{ $apartment->detail->number_pieces ?? 0 }} Pieces, {{ $apartment->detail->number_room ?? 0 }} Chambres ....</span>
         </div>
         <div class="flex items-center min-w-max">
             <span class="px-2 py-0.5 rounded-full bg-purple-200 text-gray-600 text-sm">{{ ucfirst($apartment->type->name) ?? '' }}</span>

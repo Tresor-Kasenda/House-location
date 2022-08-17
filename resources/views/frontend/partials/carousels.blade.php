@@ -63,7 +63,7 @@
                                             </div>
                                             <div class="flex sm:flex-row flex-col gap-4 z-40">
                                                 <a
-                                                    href="#"
+                                                    href="#service"
                                                     class="w-full z-40 sm:w-auto flex items-center justify-center rounded-md px-5 py-2.5 bg-purple-600 text-white transition border-2 border-purple-600 hover:border-purple-800 hover:bg-purple-800">
                                                     Get Started
                                                 </a>

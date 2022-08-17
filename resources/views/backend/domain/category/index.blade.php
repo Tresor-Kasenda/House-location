@@ -1,6 +1,8 @@
 @extends('backend.layout.backend')
 
-@section('title', "Administration des categories")
+@section('title')
+    Gestion des categories
+@endsection
 
 @section('content')
     <div class="nk-content-inner">
@@ -8,7 +10,7 @@
             <div class="nk-block-head nk-block-head-sm">
                 <div class="nk-block-between">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Categorie</h3>
+                        <h3 class="nk-block-title page-title">Categories</h3>
                     </div>
                     <div class="nk-block-head-content">
                         <div class="toggle-wrap nk-block-tools-toggle">
@@ -60,13 +62,13 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li>
-                                                                    <a href="{{ route('admins.categories.edit', $category->key) }}">
+                                                                    <a href="{{ route('admins.categories.edit', $category->id) }}">
                                                                         <em class="icon ni ni-edit"></em>
                                                                         <span>Editer</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('admins.categories.destroy', $category->key) }}"
+                                                                    <form action="{{ route('admins.categories.destroy', $category->id) }}"
                                                                           method="POST"
                                                                           onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')

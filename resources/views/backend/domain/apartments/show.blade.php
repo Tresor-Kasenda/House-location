@@ -18,14 +18,14 @@
                                     <li class="preview-item">
                                         @if ($room->status == false)
                                             @include('backend.components._update', [
-                                                'route' => route('admins.apartment.active',$room->key),
+                                                'route' => route('admins.apartment.active',$room->id),
                                                 'button' => 'btn-outline-success btn-sm',
                                                 'icon' => 'ni-check-circle',
                                                 'title' => 'Activer'
                                             ])
                                         @else
                                             @include('backend.components._update', [
-                                                'route' => route('admins.apartment.inactive',$room->key),
+                                                'route' => route('admins.apartment.inactive',$room->id),
                                                 'button' => 'btn-outline-danger btn-sm',
                                                 'icon' => 'ni-check-circle',
                                                 'title' => 'Désactiver'

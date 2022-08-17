@@ -1,7 +1,7 @@
 <div id="editeUserProfile"
      class="fixed -translate-y-full flex items-center justify-center top-0 left-0 w-full h-full transition-all duration-500 z-[1006] bg-gray-600 bg-opacity-30">
     <div class="bg-white px-8 py-10 rounded-md shadow-2xl w-11/12 sm:w-96">
-        <form action="{{ route('users.update.users', auth()->user()->key) }}" method="post" class="flex flex-col gap-6" enctype="multipart/form-data">
+        <form action="{{ route('users.update.users', auth()->user()->id) }}" method="post" class="flex flex-col gap-6" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="flex justify-between items-center">

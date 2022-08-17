@@ -1,6 +1,8 @@
 @extends('dealers.layout.dealer')
 
-@section('title', "Commissionnaire  des maisons")
+@section('title')
+    Administrattion Commissionaire
+@endsection
 
 @section('content')
     <div class="nk-content-inner">
@@ -8,7 +10,7 @@
             <div class="nk-block-head nk-block-head-sm">
                 <div class="nk-block-between">
                     <div class="nk-block-head-content">
-                        <h4 class="nk-block-title page-title">Pannel d'administration</h4>
+                        <h4 class="nk-block-title page-title">Commissionnaire</h4>
                     </div>
                 </div>
             </div>
@@ -16,11 +18,11 @@
                 <div class="row g-gs">
                     @include('dealers.components._statistic', [
                         'username' => "Apartments",
-                        'amount' => \App\Models\House::count()
+                        'amount' => \App\Models\House::query()->where('user_id', auth()->id)->count()
                     ])
                     @include('dealers.components._statistic', [
                        'username' => "Images",
-                       'amount' => \App\Models\Image::count()
+                       'amount' => \App\Models\Image::query()->where('user_id', auth()->id)->count()
                    ])
 
                     <div class="col-xxl-6">

@@ -91,13 +91,13 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li>
-                                                                    <a href="{{ route('admins.users.show', $user->key) }}">
+                                                                    <a href="{{ route('admins.users.show', $user->id) }}">
                                                                         <em class="icon ni ni-eye"></em>
                                                                         <span>Voir</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('admins.users.destroy', $user->key) }}"
+                                                                    <form action="{{ route('admins.users.destroy', $user->id) }}"
                                                                           method="POST"
                                                                           onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')

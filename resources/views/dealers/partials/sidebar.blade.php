@@ -36,6 +36,18 @@
                         'name' => 'Images',
                         'icon' => 'ni-img'
                     ])
+
+                    @include('dealers.components._link', [
+                        'route' => route('commissioner.imageHouses.index'),
+                        'name' => 'Reservation',
+                        'icon' => 'ni-img'
+                    ])
+
+                    @include('dealers.components._link', [
+                        'route' => route('commissioner.imageHouses.index'),
+                        'name' => 'Transaction',
+                        'icon' => 'ni-img'
+                    ])
                 </ul>
             </div>
         </div>

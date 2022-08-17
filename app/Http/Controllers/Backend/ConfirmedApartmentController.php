@@ -14,12 +14,14 @@ class ConfirmedApartmentController extends Controller
     public function active(string $key): RedirectResponse
     {
         $this->repository->confirmedRoom($key);
+
         return back();
     }
 
     public function inactive(string $key): RedirectResponse
     {
         $this->repository->invalidateRoom($key);
+
         return back();
     }
 }

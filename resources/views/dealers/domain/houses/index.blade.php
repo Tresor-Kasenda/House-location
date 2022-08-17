@@ -97,19 +97,19 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li>
-                                                                    <a href="{{ route('commissioner.houses.show', $room->key) }}">
+                                                                    <a href="{{ route('commissioner.houses.show', $room->id) }}">
                                                                         <em class="icon ni ni-eye"></em>
                                                                         <span>Voir</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="{{ route('commissioner.houses.edit', $room->key) }}">
+                                                                    <a href="{{ route('commissioner.houses.edit', $room->id) }}">
                                                                         <em class="icon ni ni-edit"></em>
                                                                         <span>Editer</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('commissioner.houses.destroy', $room->key) }}"
+                                                                    <form action="{{ route('commissioner.houses.destroy', $room->di) }}"
                                                                           method="POST"
                                                                           onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')

@@ -53,12 +53,12 @@
                                 @foreach($sliders as $slide)
                                     <tr class="nk-tb-item text-center">
                                         <td class="nk-tb-col tb-col-md">
-                                                <span class="tb-product text-center">
-                                                    <img
-                                                            src="{{ $slide->images() }}"
-                                                            alt="{{ $slide->title ?? "" }}"
-                                                            class="thumb">
-                                                </span>
+                                            <span class="tb-product text-center">
+                                                <img
+                                                    src="{{ $slide->images() }}"
+                                                    alt="{{ $slide->title ?? "" }}"
+                                                    class="thumb">
+                                            </span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ ucfirst(substr($slide->title, 0, 50)) ?? "" }}</span>
@@ -77,13 +77,13 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li>
-                                                                    <a href="{{ route('admins.slides.edit', $slide->key) }}">
+                                                                    <a href="{{ route('admins.slides.edit', $slide->id) }}">
                                                                         <em class="icon ni ni-edit"></em>
                                                                         <span>Editer</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('admins.slides.destroy', $slide->key) }}"
+                                                                    <form action="{{ route('admins.slides.destroy', $slide->id) }}"
                                                                           method="POST"
                                                                           onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')

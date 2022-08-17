@@ -24,14 +24,15 @@ class ApartmentCommissionerController extends Controller
 
     public function index(): Renderable
     {
-        return view('dealers.pages.houses.index', [
-            'houses' => $this->repository->getContents()
-        ]);
+        $houses = $this->repository->getContents();
+
+        return view('dealers.pages.houses.index', compact('houses'));
     }
 
     public function show(string $key): Factory|View|Application
     {
         $room = $this->repository->show(key: $key);
+
         return view('dealers.pages.houses.show', compact('room'));
     }
 
@@ -41,35 +42,41 @@ class ApartmentCommissionerController extends Controller
             'method' => 'POST',
             'url' => route('commissioner.houses.store')
         ]);
+
         return view('dealers.pages.houses.create', compact('form'));
     }
 
     public function store(ApartmentRequest $request): RedirectResponse
     {
         $this->repository->created(attributes: $request);
+
         return redirect()->route('commissioner.houses.index');
     }
 
     public function edit(string $key): Factory|View|Application
     {
         $room = $this->repository->show(key: $key);
+
         $form = $this->builder->create(ApartmentForm::class, [
             'method' => 'PUT',
-            'url' => route('commissioner.houses.update', $room->key),
+            'url' => route('commissioner.houses.update', $room->id),
             'model' => $room
         ]);
+
         return view('dealers.pages.houses.create', compact('form', 'room'));
     }
 
     public function update(ApartmentRequest $request, string $key): RedirectResponse
     {
         $this->repository->updated(key: $key,attributes: $request);
+
         return redirect()->route('commissioner.houses.index');
     }
 
     public function destroy(string $key): RedirectResponse
     {
         $this->repository->deleted($key);
+
         return back();
     }
 }

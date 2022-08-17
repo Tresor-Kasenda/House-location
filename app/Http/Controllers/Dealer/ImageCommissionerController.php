@@ -22,9 +22,9 @@ class ImageCommissionerController extends Controller
 
     public function index(): Renderable
     {
-        return view('dealers.pages.images.index', [
-            'images' => $this->repository->getContents()
-        ]);
+        $images = $this->repository->getContents();
+
+        return view('dealers.pages.images.index', compact('images'));
     }
 
     public function create(): Renderable
@@ -33,35 +33,41 @@ class ImageCommissionerController extends Controller
             'method' => 'POST',
             'url' => route('commissioner.imageHouses.store')
         ]);
+
         return view('dealers.pages.images.create', compact('form'));
     }
 
     public function store(ImageRequest $attributes): RedirectResponse
     {
         $this->repository->created(attributes: $attributes);
+
         return redirect()->route('commissioner.imageHouses.index');
     }
 
     public function edit(string $key): Renderable
     {
         $image = $this->repository->show(key: $key);
+
         $form = $this->builder->create(ImageDealerForm::class, [
             'method' => 'PUT',
-            'url' => route('commissioner.imageHouses.update', $image->key),
+            'url' => route('commissioner.imageHouses.update', $image->id),
             'model' => $image
         ]);
+
         return view('dealers.pages.images.create', compact('form', 'image'));
     }
 
     public function update(string $key, ImageRequest $attributes): RedirectResponse
     {
         $this->repository->updated(key: $key, attributes: $attributes);
+
         return redirect()->route('commissioner.imageHouses.index');
     }
 
     public function destroy(string $key): RedirectResponse
     {
         $this->repository->deleted(key: $key);
+
         return back();
     }
 }

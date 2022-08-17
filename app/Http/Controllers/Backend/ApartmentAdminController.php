@@ -24,6 +24,7 @@ class ApartmentAdminController extends Controller
     public function index(): Renderable
     {
         $rooms = $this->repository->getContents();
+
         return view('backend.pages.apartments.index', compact('rooms'));
     }
 
@@ -40,35 +41,41 @@ class ApartmentAdminController extends Controller
            'method' => 'POST',
             'url' => route('admins.houses.store')
         ]);
+
         return view('backend.pages.apartments.create', compact('form'));
     }
 
     public function store(ApartmentRequest $request): RedirectResponse
     {
         $this->repository->created(attributes: $request);
+
         return redirect()->route('admins.houses.index');
     }
 
     public function edit(string $key): Factory|View|Application
     {
         $room = $this->repository->show(key: $key);
+
         $form = $this->builder->create(ApartmentForm::class, [
             'method' => 'PUT',
-            'url' => route('admins.houses.update', $room->key),
+            'url' => route('admins.houses.update', $room->id),
             'model' => $room
         ]);
+
         return view('backend.pages.apartments.create', compact('form', 'room'));
     }
 
     public function update(ApartmentRequest $request, string $key): RedirectResponse
     {
         $this->repository->updated(key: $key,attributes: $request);
+
         return redirect()->route('admins.houses.index');
     }
 
     public function destroy(string $key): RedirectResponse
     {
         $this->repository->deleted($key);
+
         return back();
     }
 }

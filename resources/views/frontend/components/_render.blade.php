@@ -1,5 +1,5 @@
 @foreach($searches as $search)
-    <a href="{{ route('house.show', $search->key) }}" class="flex items-center py-2 px-4 hover:bg-gray-100 text-gray-600 transition">
+    <a href="{{ route('house.show', $search->id) }}" class="flex items-center py-2 px-4 hover:bg-gray-100 text-gray-600 transition">
         <div class="min-w-[10rem] text-gray-700 w-40 font-semibold">
             {{ ucfirst($search->district) ?? "" }}
         </div>

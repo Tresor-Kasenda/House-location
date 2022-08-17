@@ -39,6 +39,9 @@
                                     <th class="nk-tb-col tb-col-md">
                                         <span class="sub-text">Apartement</span>
                                     </th>
+                                    <th class="nk-tb-col tb-col-md">
+                                        <span class="sub-text">Utilisateurs</span>
+                                    </th>
                                     <th class="nk-tb-col nk-tb-col-tools text-right">
                                         <span class="sub-text">Actions</span>
                                     </th>
@@ -56,6 +59,9 @@
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ $image->houses->reference ?? "" }}</span>
                                         </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            <span>{{ ucfirst($image->user->name) ?? "" }}</span>
+                                        </td>
                                         <td class="nk-tb-col nk-tb-col-tools">
                                             <ul class="nk-tb-actions gx-1">
                                                 <li>
@@ -67,13 +73,13 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <ul class="link-list-opt no-bdr">
                                                                 <li>
-                                                                    <a href="{{ route('admins.image.edit', $image->key) }}">
+                                                                    <a href="{{ route('admins.image.edit', $image->id) }}">
                                                                         <em class="icon ni ni-edit"></em>
                                                                         <span>Editer</span>
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('admins.image.destroy', $image->key) }}"
+                                                                    <form action="{{ route('admins.image.destroy', $image->id) }}"
                                                                           method="POST"
                                                                           onsubmit="return confirm('Voulez vous supprimer');">
                                                                         @method('DELETE')

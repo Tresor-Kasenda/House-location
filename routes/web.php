@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use App\Http\Controllers\Backend\ApartmentAdminController;
@@ -14,7 +15,6 @@ use App\Http\Controllers\Backend\SlideAdminController;
 use App\Http\Controllers\Backend\TrashedAdminController;
 use App\Http\Controllers\Backend\UsersAdminController;
 use App\Http\Controllers\Dealer\ApartmentCommissionerController;
-use App\Http\Controllers\Dealer\DetailApartmentCommissionerController;
 use App\Http\Controllers\Dealer\HomeCommissionerController;
 use App\Http\Controllers\Dealer\ImageCommissionerController;
 use App\Http\Controllers\Frontend\AboutController;
@@ -74,7 +74,6 @@ Route::group([
     Route::resource('backend', HomeCommissionerController::class);
     Route::resource('houses', ApartmentCommissionerController::class);
     Route::resource('imageHouses', ImageCommissionerController::class);
-    Route::resource('details', DetailApartmentCommissionerController::class);
 });
 
 Route::group([

@@ -76,7 +76,7 @@
                         <div class="swiper-wrapper">
                             @foreach($apartment_notes as $key => $apartment_note)
                                 <div class="swiper-slide">
-                                    <a href="{{ route('house.show', $apartment_note->house->key) }}">
+                                    <a href="{{ route('house.show', $apartment_note->house->id) }}">
                                         <div
                                             class="w-full flex flex-col p-1 rounded-xl border hover:shadow-lg hover:rounded-2xl hover:border-transparent group transition duration-200">
                                             <div class="w-full rounded-t-md relative">
@@ -125,7 +125,7 @@
                                                 </div>
                                                 <div class="w-full justify-between flex items-center">
                                                     <div class="flex items-center gap-1 text-sm">
-                                                        <span>{{ $apartment_note->house->guarantees ?? 0 }} $ Garantie</span>
+                                                        <span>{{ $apartment_note->house->warranty_price ?? 0 }} $ Garantie</span>
                                                     </div>
                                                     <div class="flex items-center">
                                                         <h5 class="text-2xl uppercase  leading-none md:text-right font-bold text-purple-500">

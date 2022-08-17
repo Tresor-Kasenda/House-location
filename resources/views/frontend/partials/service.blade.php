@@ -1,5 +1,5 @@
 
-<section class="w-full flex justify-center overflow-hidden py-10">
+<section class="w-full flex justify-center overflow-hidden py-10" id="service">
     <div
         class="relative w-full max-w-screen-lg lg:max-w-screen-2xl px-4 xs:px-6 sm:px-10 lg:px-12 xl:px-16 flex flex-col gap-6 lg:gap-8">
         <div class="w-full flex">
