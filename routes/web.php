@@ -46,7 +46,6 @@ Route::group([
     Route::resource('users', UsersAdminController::class)->except(['create', 'store', 'update', 'edit']);
     Route::resource('reservations', ReservationAdminController::class)->except(['create', 'store', 'update', 'edit']);
     Route::resource('image', ImagesAdminController::class);
-    Route::resource('details', DetailApartmentAdminController::class);
     Route::resource('trashedApartments', TrashedAdminController::class)->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
     Route::controller(TrashedAdminController::class)->group(function (){
         Route::put('trashedApartments/{key}', 'restore')->name('trashed.restore');

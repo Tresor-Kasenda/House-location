@@ -35,7 +35,7 @@ class HomeFrontendRepository implements HomeRepositoryInterface
             ->select([
                 'id',
                 'title',
-                'image',
+                'images',
                 'description'
             ])
             ->orderByDesc('created_at')

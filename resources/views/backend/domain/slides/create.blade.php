@@ -27,7 +27,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-7">
                                 @include('backend.components.errors')
-                                @include('backend.pages.slides._form')
+                                @include('backend.domain.slides._form')
                             </div>
                         </div>
                     </div>

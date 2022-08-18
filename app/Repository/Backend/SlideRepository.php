@@ -25,6 +25,7 @@ class SlideRepository implements SlideRepositoryInterface
     {
         return Slider::query()
             ->select([
+                'id',
                 'title',
                 'images',
                 'description'
@@ -37,6 +38,7 @@ class SlideRepository implements SlideRepositoryInterface
     {
         return Slider::query()
             ->select([
+                'id',
                 'title',
                 'images',
                 'description'
