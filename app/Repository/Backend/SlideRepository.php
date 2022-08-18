@@ -53,7 +53,7 @@ class SlideRepository implements SlideRepositoryInterface
                 'title' => $request->input('title'),
                 'description' => $request->input('description')
             ]);
-        $this->service->success("Un nouveau slide a ete ajouter avec success", 'success');
+        $this->service->success("Un nouveau slide a ete ajouter avec success");
         return $slide;
     }
 

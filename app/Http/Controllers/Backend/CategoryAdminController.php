@@ -25,7 +25,7 @@ class CategoryAdminController extends Controller
     {
         $categories = $this->repository->getContents();
 
-        return view('backend.pages.category.index', compact('categories'));
+        return view('backend.domain.category.index', compact('categories'));
     }
 
     public function create(): Factory|View|Application
@@ -35,7 +35,7 @@ class CategoryAdminController extends Controller
             'url' => route('admins.categories.store')
         ]);
 
-        return view('backend.pages.category.create', compact('form'));
+        return view('backend.domain.category.create', compact('form'));
     }
 
     public function store(CategoryRequest $request): RedirectResponse
@@ -55,7 +55,7 @@ class CategoryAdminController extends Controller
             'model' => $category
         ]);
 
-        return view('backend.pages.category.create', compact('form', 'category'));
+        return view('backend.domain.category.create', compact('form', 'category'));
     }
 
     public function update(CategoryRequest $request, string $key): RedirectResponse

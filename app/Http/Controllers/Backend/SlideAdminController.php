@@ -26,7 +26,7 @@ class SlideAdminController extends Controller
     {
         $sliders = $this->repository->getContents();
 
-        return view('backend.pages.slides.index', compact('sliders'));
+        return view('backend.domain.slides.index', compact('sliders'));
     }
 
     public function create(): Factory|View|Application
@@ -36,7 +36,7 @@ class SlideAdminController extends Controller
             'url' => route('admins.slides.store')
         ]);
 
-        return view('backend.pages.slides.create', compact('form'));
+        return view('backend.domain.slides.create', compact('form'));
     }
 
     public function store(SlideRequest $request): RedirectResponse
@@ -56,7 +56,7 @@ class SlideAdminController extends Controller
             'model' => $slide
         ]);
 
-        return view('backend.pages.slides.create', compact('form', 'slide'));
+        return view('backend.domain.slides.create', compact('form', 'slide'));
     }
 
     public function update(SlideRequest $request, string $key): RedirectResponse

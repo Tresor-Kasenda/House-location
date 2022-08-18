@@ -30,5 +30,6 @@
     <script src="{{ asset('admins/js/bundle.js') }}"></script>
     <script src="{{ asset('admins/js/scripts.js') }}"></script>
     @yield('scripts')
+    @flasher_render
 </body>
 </html>

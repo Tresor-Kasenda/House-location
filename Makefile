@@ -28,7 +28,7 @@ clear: vendor/autoload.php ## vide le cache de l'application
 
 .PHONY: serve
 serve: vendor/autoload.php ## lance, le serve de development
-	php -S localhost:8000 -t public server.php
+	php artisan serve
 
 .PHONE: create
 create: vendor/autoload.php # creer un administrateur

@@ -22,7 +22,7 @@ final class ImagesAdminController extends Controller
     {
         $images = $this->repository->getContents();
 
-        return view('backend.pages.images.index', compact('images'));
+        return view('backend.domain.images.index', compact('images'));
     }
 
     public function create(): Renderable
@@ -32,7 +32,7 @@ final class ImagesAdminController extends Controller
             'url' => route('admins.image.store')
         ]);
 
-        return view('backend.pages.images.create', compact('form'));
+        return view('backend.domain.images.create', compact('form'));
     }
 
     public function store(ImageRequest $attributes): RedirectResponse
@@ -52,7 +52,7 @@ final class ImagesAdminController extends Controller
             'model' => $image
         ]);
 
-        return view('backend.pages.images.create', compact('form', 'image'));
+        return view('backend.domain.images.create', compact('form', 'image'));
     }
 
     public function update(string $key, ImageRequest $attributes): RedirectResponse

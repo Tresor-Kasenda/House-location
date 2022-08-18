@@ -25,22 +25,18 @@
                     <li class="nk-menu-heading">
                         <h6 class="overline-title text-primary-alt">Administration</h6>
                     </li>
+
+                    @include('backend.components._link', [
+                       'route' => route('admins.categories.index'),
+                       'name' => 'Categorie',
+                       'icon' => 'ni-crop'
+                   ])
+
                     @include('backend.components._link', [
                         'route' => route('admins.houses.index'),
-                        'name' => 'Apartments',
+                        'name' => 'Apartment',
                         'icon' => 'ni-building'
-                    ])
 
-                    @include('backend.components._link', [
-                        'route' => route('admins.categories.index'),
-                        'name' => 'Categories',
-                        'icon' => 'ni-crop'
-                    ])
-
-                    @include('backend.components._link', [
-                        'route' => route('admins.reservations.index'),
-                        'name' => 'Reservations',
-                        'icon' => 'ni-coin-alt'
                     ])
 
                     @include('backend.components._link', [
@@ -50,14 +46,32 @@
                     ])
 
                     @include('dealers.components._link', [
-                        'route' => route('admins.slides.index'),
-                        'name' => 'Slides',
-                        'icon' => 'ni-tile-thumb'
+                       'route' => route('admins.slides.index'),
+                       'name' => 'Slides',
+                       'icon' => 'ni-tile-thumb'
+                   ])
+
+                    @include('backend.components._link', [
+                        'route' => route('admins.reservations.index'),
+                        'name' => 'Reservation',
+                        'icon' => 'ni-coin-alt'
+                    ])
+
+                    @include('backend.components._link', [
+                        'route' => route('admins.reservations.index'),
+                        'name' => 'Transaction',
+                        'icon' => 'ni-coin-alt'
                     ])
 
                     @include('backend.components._link', [
                         'route' => route('admins.users.index'),
-                        'name' => 'Users',
+                        'name' => 'Clients',
+                        'icon' => 'ni-user-alt'
+                    ])
+
+                    @include('backend.components._link', [
+                        'route' => route('admins.users.index'),
+                        'name' => 'Commissionnaire',
                         'icon' => 'ni-user-alt'
                     ])
                 </ul>

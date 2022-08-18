@@ -17610,159 +17610,6 @@
      
 }
 
-    namespace Laracasts\Flash { 
-            /**
-     * 
-     *
-     */ 
-        class Flash {
-                    /**
-         * Flash an information message.
-         *
-         * @param string|null $message
-         * @return \Laracasts\Flash\FlashNotifier 
-         * @static 
-         */ 
-        public static function info($message = null)
-        {
-                        /** @var \Laracasts\Flash\FlashNotifier $instance */
-                        return $instance->info($message);
-        }
-                    /**
-         * Flash a success message.
-         *
-         * @param string|null $message
-         * @return \Laracasts\Flash\FlashNotifier 
-         * @static 
-         */ 
-        public static function success($message = null)
-        {
-                        /** @var \Laracasts\Flash\FlashNotifier $instance */
-                        return $instance->success($message);
-        }
-                    /**
-         * Flash an error message.
-         *
-         * @param string|null $message
-         * @return \Laracasts\Flash\FlashNotifier 
-         * @static 
-         */ 
-        public static function error($message = null)
-        {
-                        /** @var \Laracasts\Flash\FlashNotifier $instance */
-                        return $instance->error($message);
-        }
-                    /**
-         * Flash a warning message.
-         *
-         * @param string|null $message
-         * @return \Laracasts\Flash\FlashNotifier 
-         * @static 
-         */ 
-        public static function warning($message = null)
-        {
-                        /** @var \Laracasts\Flash\FlashNotifier $instance */
-                        return $instance->warning($message);
-        }
-                    /**
-         * Flash a general message.
-         *
-         * @param string|null $message
-         * @param string|null $level
-         * @return \Laracasts\Flash\FlashNotifier 
-         * @static 
-         */ 
-        public static function message($message = null, $level = null)
-        {
-                        /** @var \Laracasts\Flash\FlashNotifier $instance */
-                        return $instance->message($message, $level);
-        }
-                    /**
-         * Flash an overlay modal.
-         *
-         * @param string|null $message
-         * @param string $title
-         * @return \Laracasts\Flash\FlashNotifier 
-         * @static 
-         */ 
-        public static function overlay($message = null, $title = 'Notice')
-        {
-                        /** @var \Laracasts\Flash\FlashNotifier $instance */
-                        return $instance->overlay($message, $title);
-        }
-                    /**
-         * Add an "important" flash to the session.
-         *
-         * @return \Laracasts\Flash\FlashNotifier 
-         * @static 
-         */ 
-        public static function important()
-        {
-                        /** @var \Laracasts\Flash\FlashNotifier $instance */
-                        return $instance->important();
-        }
-                    /**
-         * Clear all registered messages.
-         *
-         * @return \Laracasts\Flash\FlashNotifier 
-         * @static 
-         */ 
-        public static function clear()
-        {
-                        /** @var \Laracasts\Flash\FlashNotifier $instance */
-                        return $instance->clear();
-        }
-                    /**
-         * Register a custom macro.
-         *
-         * @param string $name
-         * @param object|callable $macro
-         * @return void 
-         * @static 
-         */ 
-        public static function macro($name, $macro)
-        {
-                        \Laracasts\Flash\FlashNotifier::macro($name, $macro);
-        }
-                    /**
-         * Mix another object into the class.
-         *
-         * @param object $mixin
-         * @param bool $replace
-         * @return void 
-         * @throws \ReflectionException
-         * @static 
-         */ 
-        public static function mixin($mixin, $replace = true)
-        {
-                        \Laracasts\Flash\FlashNotifier::mixin($mixin, $replace);
-        }
-                    /**
-         * Checks if macro is registered.
-         *
-         * @param string $name
-         * @return bool 
-         * @static 
-         */ 
-        public static function hasMacro($name)
-        {
-                        return \Laracasts\Flash\FlashNotifier::hasMacro($name);
-        }
-                    /**
-         * Flush the existing macros.
-         *
-         * @return void 
-         * @static 
-         */ 
-        public static function flushMacros()
-        {
-                        \Laracasts\Flash\FlashNotifier::flushMacros();
-        }
-         
-    }
-     
-}
-
     namespace Collective\Html { 
             /**
      * 
@@ -18924,6 +18771,204 @@
         public static function customLabel($name, $value, $options = [], $escape_html = true)
         {
                         return \Collective\Html\FormBuilder::customLabel($name, $value, $options, $escape_html);
+        }
+         
+    }
+     
+}
+
+    namespace Flasher\Laravel\Facade { 
+            /**
+     * 
+     *
+     * @method static NotificationBuilder addSuccess(string $message, array $options = array())
+     * @method static NotificationBuilder addError(string $message, array $options = array())
+     * @method static NotificationBuilder addWarning(string $message, array $options = array())
+     * @method static NotificationBuilder addInfo(string $message, array $options = array())
+     * @method static NotificationBuilder addFlash(string|NotificationInterface $type, string $message = null, array $options = array())
+     * @method static NotificationBuilder flash(StampInterface[] $stamps = array())
+     * @method static NotificationBuilder type(string $type, string $message = null, array $options = array())
+     * @method static NotificationBuilder message(string $message)
+     * @method static NotificationBuilder options(array $options, bool $merge = true)
+     * @method static NotificationBuilder option(string $name, $value)
+     * @method static NotificationBuilder success(string $message = null, array $options = array())
+     * @method static NotificationBuilder error(string $message = null, array $options = array())
+     * @method static NotificationBuilder info(string $message = null, array $options = array())
+     * @method static NotificationBuilder warning(string $message = null, array $options = array())
+     * @method static NotificationBuilder priority(int $priority)
+     * @method static NotificationBuilder hops(int $amount)
+     * @method static NotificationBuilder keep()
+     * @method static NotificationBuilder delay(int $delay)
+     * @method static NotificationBuilder now()
+     * @method static NotificationBuilder with(StampInterface[] $stamps = array())
+     * @method static NotificationBuilder withStamp(StampInterface $stamp)
+     * @method static NotificationBuilder handler(string $handler)
+     * @method static Envelope getEnvelope()
+     */ 
+        class Flasher {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function create($alias = null)
+        {
+                        /** @var \Flasher\Prime\Flasher $instance */
+                        return $instance->create($alias);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function using($alias)
+        {
+                        /** @var \Flasher\Prime\Flasher $instance */
+                        return $instance->using($alias);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function addFactory($alias, $factory)
+        {
+                        /** @var \Flasher\Prime\Flasher $instance */
+                        return $instance->addFactory($alias, $factory);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function render($criteria = [], $presenter = 'html', $context = [])
+        {
+                        /** @var \Flasher\Prime\Flasher $instance */
+                        return $instance->render($criteria, $presenter, $context);
+        }
+         
+    }
+     
+}
+
+    namespace Flasher\SweetAlert\Laravel\Facade { 
+            /**
+     * 
+     *
+     * @method static SweetAlertBuilder addSuccess(string $message, array $options = array())
+     * @method static SweetAlertBuilder addError(string $message, array $options = array())
+     * @method static SweetAlertBuilder addWarning(string $message, array $options = array())
+     * @method static SweetAlertBuilder addInfo(string $message, array $options = array())
+     * @method static SweetAlertBuilder addFlash(string|NotificationInterface $type, string $message = null, array $options = array())
+     * @method static SweetAlertBuilder flash(StampInterface[] $stamps = array())
+     * @method static SweetAlertBuilder type(string $type, string $message = null, array $options = array())
+     * @method static SweetAlertBuilder message(string $message)
+     * @method static SweetAlertBuilder options(array $options, bool $merge = true)
+     * @method static SweetAlertBuilder option(string $name, string $value)
+     * @method static SweetAlertBuilder success(string $message = null, array $options = array())
+     * @method static SweetAlertBuilder error(string $message = null, array $options = array())
+     * @method static SweetAlertBuilder info(string $message = null, array $options = array())
+     * @method static SweetAlertBuilder warning(string $message = null, array $options = array())
+     * @method static SweetAlertBuilder priority(int $priority)
+     * @method static SweetAlertBuilder hops(int $amount)
+     * @method static SweetAlertBuilder keep()
+     * @method static SweetAlertBuilder delay(int $delay)
+     * @method static SweetAlertBuilder now()
+     * @method static SweetAlertBuilder with(StampInterface[] $stamps = array())
+     * @method static SweetAlertBuilder withStamp(StampInterface $stamp)
+     * @method static SweetAlertBuilder handler(string $handler)
+     * @method static Envelope getEnvelope()
+     * @method static SweetAlertBuilder question(string $message = null, array $options = array())
+     * @method static SweetAlertBuilder title(string $title)
+     * @method static SweetAlertBuilder titleText(string $titleText)
+     * @method static SweetAlertBuilder html(string $html)
+     * @method static SweetAlertBuilder text(string $text)
+     * @method static SweetAlertBuilder icon(string $icon)
+     * @method static SweetAlertBuilder iconColor(string $iconColor)
+     * @method static SweetAlertBuilder iconHtml(string $iconHtml)
+     * @method static SweetAlertBuilder showClass(string $showClass, string $value)
+     * @method static SweetAlertBuilder hideClass(string $hideClass, string $value)
+     * @method static SweetAlertBuilder footer($footer)
+     * @method static SweetAlertBuilder backdrop(bool $backdrop = true)
+     * @method static SweetAlertBuilder toast(bool $toast = true, string $position = 'top-end', bool $showConfirmButton = false)
+     * @method static SweetAlertBuilder target(string $target)
+     * @method static SweetAlertBuilder input(string $input)
+     * @method static SweetAlertBuilder width(string $width)
+     * @method static SweetAlertBuilder padding(string $padding)
+     * @method static SweetAlertBuilder background(string $background)
+     * @method static SweetAlertBuilder position(string $position)
+     * @method static SweetAlertBuilder grow(bool|string $grow)
+     * @method static SweetAlertBuilder customClass(string $customClass, string $value)
+     * @method static SweetAlertBuilder timer(int $timer)
+     * @method static SweetAlertBuilder timerProgressBar(bool $timerProgressBar = true)
+     * @method static SweetAlertBuilder heightAuto(bool $heightAuto = true)
+     * @method static SweetAlertBuilder allowOutsideClick(bool|string $allowOutsideClick = true)
+     * @method static SweetAlertBuilder allowEscapeKey(bool $allowEscapeKey = true)
+     * @method static SweetAlertBuilder allowEnterKey(bool $allowEnterKey = true)
+     * @method static SweetAlertBuilder stopKeydownPropagation(bool $stopKeydownPropagation = true)
+     * @method static SweetAlertBuilder keydownListenerCapture(bool $keydownListenerCapture = true)
+     * @method static SweetAlertBuilder showConfirmButton(bool $showConfirmButton = true, string $confirmButtonText = null, string $confirmButtonColor = null, string $confirmButtonAriaLabel = null)
+     * @method static SweetAlertBuilder showDenyButton(bool $showDenyButton = true, string $denyButtonText = null, string $denyButtonColor = null, string $denyButtonAriaLabel = null)
+     * @method static SweetAlertBuilder showCancelButton(bool $showCancelButton = true, string $cancelButtonText = null, string $cancelButtonColor = null, string $cancelButtonAriaLabel = null)
+     * @method static SweetAlertBuilder confirmButtonText(string $confirmButtonText, string $confirmButtonColor = null, string $confirmButtonAriaLabel = null)
+     * @method static SweetAlertBuilder denyButtonText(string $denyButtonText, string $denyButtonColor = null, string $denyButtonAriaLabel = null)
+     * @method static SweetAlertBuilder cancelButtonText(string $cancelButtonText, string $cancelButtonColor = null, string $cancelButtonAriaLabel = null)
+     * @method static SweetAlertBuilder confirmButtonColor(string $confirmButtonColor)
+     * @method static SweetAlertBuilder denyButtonColor(string $denyButtonColor)
+     * @method static SweetAlertBuilder cancelButtonColor(string $cancelButtonColor)
+     * @method static SweetAlertBuilder confirmButtonAriaLabel(string $confirmButtonAriaLabel)
+     * @method static SweetAlertBuilder denyButtonAriaLabel(string $denyButtonAriaLabel)
+     * @method static SweetAlertBuilder cancelButtonAriaLabel(string $cancelButtonAriaLabel)
+     * @method static SweetAlertBuilder buttonsStyling(bool $buttonsStyling = true)
+     * @method static SweetAlertBuilder reverseButtons(bool $reverseButtons = true)
+     * @method static SweetAlertBuilder focusConfirm(bool $focusConfirm = true)
+     * @method static SweetAlertBuilder focusDeny(bool $focusDeny = true)
+     * @method static SweetAlertBuilder focusCancel(bool $focusCancel = true)
+     * @method static SweetAlertBuilder showCloseButton(bool $showCloseButton = true)
+     * @method static SweetAlertBuilder closeButtonHtml(string $closeButtonHtml)
+     * @method static SweetAlertBuilder closeButtonAriaLabel(string $closeButtonAriaLabel)
+     * @method static SweetAlertBuilder loaderHtml(string $loaderHtml)
+     * @method static SweetAlertBuilder showLoaderOnConfirm(bool $showLoaderOnConfirm = true)
+     * @method static SweetAlertBuilder scrollbarPadding(bool $scrollbarPadding = true)
+     * @method static SweetAlertBuilder preConfirm(bool|string $preConfirm)
+     * @method static SweetAlertBuilder preDeny(string $preDeny)
+     * @method static SweetAlertBuilder returnInputValueOnDeny(bool $returnInputValueOnDeny = true)
+     * @method static SweetAlertBuilder imageUrl(string $imageUrl, int $imageWidth = null, int $imageHeight = null, string $imageAlt = null)
+     * @method static SweetAlertBuilder imageWidth(int $imageWidth)
+     * @method static SweetAlertBuilder imageHeight(int $imageHeight)
+     * @method static SweetAlertBuilder imageAlt(string $imageAlt)
+     * @method static SweetAlertBuilder image(string $title, string $text, string $imageUrl, int $imageWidth = 400, int $imageHeight = 200, string $imageAlt = null)
+     * @method static SweetAlertBuilder addImage(string $title, string $text, string $imageUrl, int $imageWidth = 400, int $imageHeight = 200, string $imageAlt = null)
+     * @method static SweetAlertBuilder inputLabel(string $inputLabel)
+     * @method static SweetAlertBuilder inputPlaceholder(string $inputPlaceholder)
+     * @method static SweetAlertBuilder inputValue(string $inputValue)
+     * @method static SweetAlertBuilder inputOptions(string $inputOptions)
+     * @method static SweetAlertBuilder inputAutoTrim(bool $inputAutoTrim = true)
+     * @method static SweetAlertBuilder inputAttributes(string $inputAttributes)
+     * @method static SweetAlertBuilder inputValidator(string $inputValidator)
+     * @method static SweetAlertBuilder validationMessage(string $validationMessage)
+     */ 
+        class SweetAlert {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function createNotificationBuilder()
+        {
+                        /** @var \Flasher\SweetAlert\Prime\SweetAlertFactory $instance */
+                        return $instance->createNotificationBuilder();
+        }
+                    /**
+         * 
+         *
+         * @return \Flasher\Prime\Factory\StorageManagerInterface 
+         * @static 
+         */ 
+        public static function getStorageManager()
+        {            //Method inherited from \Flasher\Prime\Factory\NotificationFactory         
+                        /** @var \Flasher\SweetAlert\Prime\SweetAlertFactory $instance */
+                        return $instance->getStorageManager();
         }
          
     }
@@ -23194,9 +23239,10 @@ namespace  {
             class FormBuilder extends \Kris\LaravelFormBuilder\Facades\FormBuilder {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
             class Location extends \Stevebauman\Location\Facades\Location {}
-            class Flash extends \Laracasts\Flash\Flash {}
             class Form extends \Collective\Html\FormFacade {}
             class Html extends \Collective\Html\HtmlFacade {}
+            class Flasher extends \Flasher\Laravel\Facade\Flasher {}
+            class SweetAlert extends \Flasher\SweetAlert\Laravel\Facade\SweetAlert {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
      
 }

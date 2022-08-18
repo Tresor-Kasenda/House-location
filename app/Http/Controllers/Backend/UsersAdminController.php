@@ -16,14 +16,14 @@ class UsersAdminController extends Controller
     {
         $users = $this->repository->getContents();
 
-        return view('backend.pages.users.index', compact('users'));
+        return view('backend.domain.users.index', compact('users'));
     }
 
     public function show(string $key): Renderable
     {
         $user = $this->repository->show(key: $key);
 
-        return view('backend.pages.users.show', compact('user'));
+        return view('backend.domain.users.show', compact('user'));
     }
 
     public function destroy(string $key): RedirectResponse

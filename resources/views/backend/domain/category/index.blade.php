@@ -34,12 +34,12 @@
                         <div class="card-inner">
                             <table class="datatable-init nowrap nk-tb-list nk-tb-ulist" data-auto-responsive="false">
                                 <thead>
-                                <tr class="nk-tb-item nk-tb-head">
+                                <tr class="nk-tb-item nk-tb-head text-center">
                                     <th class="nk-tb-col tb-col-md">
                                         <span class="sub-text">Nom</span>
                                     </th>
 
-                                    <th class="nk-tb-col nk-tb-col-tools text-right">
+                                    <th class="nk-tb-col text-center">
                                         <span class="sub-text">Actions</span>
                                     </th>
                                 </tr>
@@ -47,44 +47,24 @@
                                 <tbody>
                                 @foreach($categories as $category)
                                     <tr class="nk-tb-item">
-
-                                        <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $category->name ?? "" }}</span>
+                                        <td class="nk-tb-col tb-col-md text-center">
+                                            <span class="font-weight-bold">{{ ucfirst($category->name) ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col nk-tb-col-tools">
-                                            <ul class="nk-tb-actions gx-1">
-                                                <li>
-                                                    <div class="drodown">
-                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
-                                                           data-toggle="dropdown">
-                                                            <em class="icon ni ni-more-h"></em>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li>
-                                                                    <a href="{{ route('admins.categories.edit', $category->id) }}">
-                                                                        <em class="icon ni ni-edit"></em>
-                                                                        <span>Editer</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <form action="{{ route('admins.categories.destroy', $category->id) }}"
-                                                                          method="POST"
-                                                                          onsubmit="return confirm('Voulez vous supprimer');">
-                                                                        @method('DELETE')
-                                                                        <input type="hidden" name="_token"
-                                                                               value="{{ csrf_token() }}">
-                                                                        <button type="submit" class="btn btn-dim">
-                                                                            <em class="icon ni ni-cross-sm"></em>
-                                                                            <span>Supprimer</span>
-                                                                        </button>
-                                                                    </form>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                            <span class="tb-lead">
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{ route('admins.categories.edit', $category->id) }}" class="btn btn-dim btn-primary btn-sm ml-1">
+                                                        <em class="icon ni ni-edit"></em>
+                                                    </a>
+                                                    <form action="{{ route('admins.categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                        @method('DELETE')
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        <button type="submit" class="btn btn-dim btn-danger btn-sm">
+                                                            <em class="icon ni ni-trash"></em>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </span>
                                         </td>
                                     </tr>
                                 @endforeach

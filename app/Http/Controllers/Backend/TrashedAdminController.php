@@ -18,7 +18,7 @@ class TrashedAdminController extends Controller
     {
         $rooms = $this->repository->trashed();
 
-        return view('backend.pages.apartments.trashed', compact('rooms'));
+        return view('backend.domain.apartments.trashed', compact('rooms'));
     }
 
     public function restore(string $key): RedirectResponse

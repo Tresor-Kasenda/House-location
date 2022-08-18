@@ -25,14 +25,14 @@ class ApartmentAdminController extends Controller
     {
         $rooms = $this->repository->getContents();
 
-        return view('backend.pages.apartments.index', compact('rooms'));
+        return view('backend.domain.apartments.index', compact('rooms'));
     }
 
     public function show(string $key): Factory|View|Application
     {
         $room = $this->repository->show(key: $key);
 
-        return view('backend.pages.apartments.show', compact('room'));
+        return view('backend.domain.apartments.show', compact('room'));
     }
 
     public function create(): Factory|View|Application
@@ -42,7 +42,7 @@ class ApartmentAdminController extends Controller
             'url' => route('admins.houses.store')
         ]);
 
-        return view('backend.pages.apartments.create', compact('form'));
+        return view('backend.domain.apartments.create', compact('form'));
     }
 
     public function store(ApartmentRequest $request): RedirectResponse
@@ -62,7 +62,7 @@ class ApartmentAdminController extends Controller
             'model' => $room
         ]);
 
-        return view('backend.pages.apartments.create', compact('form', 'room'));
+        return view('backend.domain.apartments.create', compact('form', 'room'));
     }
 
     public function update(ApartmentRequest $request, string $key): RedirectResponse

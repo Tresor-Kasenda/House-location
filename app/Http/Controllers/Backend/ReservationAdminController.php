@@ -16,14 +16,14 @@ class ReservationAdminController extends Controller
     {
         $reservations = $this->repository->getContents();
 
-        return view('backend.pages.reservations.index', compact('reservations'));
+        return view('backend.domain.reservations.index', compact('reservations'));
     }
 
     public function show(string $key): Renderable
     {
         $reservation = $this->repository->show(key:  $key);
 
-        return view('backend.pages.reservations.show', compact('reservation'));
+        return view('backend.domain.reservations.show', compact('reservation'));
     }
 
     public function destroy(string $key): RedirectResponse
