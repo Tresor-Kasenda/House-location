@@ -16,7 +16,7 @@ trait ApartmentCrud
     {
         $apartment = auth()->user()->house()->create([
             'prices' => $attributes->input('prices'),
-            'warranty_price'=> $attributes->input('guarantees'),
+            'warranty_price'=> $attributes->input('warranty_price'),
             'commune'=> $attributes->input('commune'),
             'town' => $attributes->input('town'),
             'district'=> $attributes->input('district'),
@@ -35,8 +35,7 @@ trait ApartmentCrud
         $this->createDetails($apartment, $attributes);
 
         $this->service->success(
-            messages: "Un nouveau appartement à été ajouter",
-            type: "success"
+            messages: "Un nouveau appartement à été ajouter"
         );
         return $apartment;
     }
@@ -48,7 +47,7 @@ trait ApartmentCrud
         $house->categories()->detach($attributes->categories);
         $house->update([
             'prices' => $attributes->input('prices'),
-            'warranty_price'=> $attributes->input('guarantees'),
+            'warranty_price'=> $attributes->input('warranty_price'),
             'commune'=> $attributes->input('commune'),
             'town' => $attributes->input('town'),
             'district'=> $attributes->input('district'),
@@ -58,27 +57,42 @@ trait ApartmentCrud
             'latitude'=> $attributes->input('latitude'),
             'longitude'=> $attributes->input('longitude'),
             'images'=> $this::uploadFiles($attributes),
-            'type_id' => $attributes->input('type'),
+            'type_id' => $attributes->input('type')
         ]);
         $house->categories()->attach($attributes->categories);
 
+        $this->updateDetails($attributes, $house);
+
         $this->service->success(
-            messages: "Un nouveau appartement à été modifier",
-            type: "success"
+            messages: "Un nouveau appartement à été modifier"
         );
         return $house;
     }
 
-    public function createDetails($apartment, $attributes): void
+    private function createDetails($apartment, $attributes): void
     {
          Detail::query()
             ->create([
                 'house_id' => $apartment->id,
-                'number_rooms' => $attributes->input('room_number'),
-                'number_pieces' => $attributes->input('room_pieces'),
+                'number_rooms' => $attributes->input('number_rooms'),
+                'number_pieces' => $attributes->input('number_pieces'),
                 'toilet' => $attributes->input('toilet'),
                 'electricity' => $attributes->input('electricity'),
                 'description' => $attributes->input('description')
             ]);
+    }
+
+    private function updateDetails($attributes, $house): void
+    {
+        $department = Detail::query()
+            ->where('house_id', '=', $house->id)
+            ->firstOrFail();
+        $department->update([
+            'number_rooms' => $attributes->input('number_rooms'),
+            'number_pieces' => $attributes->input('number_pieces'),
+            'toilet' => $attributes->input('toilet'),
+            'electricity' => $attributes->input('electricity'),
+            'description' => $attributes->input('description')
+        ]);
     }
 }

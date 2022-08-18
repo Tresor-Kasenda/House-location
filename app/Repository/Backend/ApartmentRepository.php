@@ -28,12 +28,12 @@ class ApartmentRepository implements ApartmentRepositoryInterface
 
         return House::query()
             ->select([
+                'id',
                 'images',
                 'phone_number',
-                'address',
                 'status',
                 'commune',
-                'user_id'
+                'town'
             ])
             ->orderByDesc('created_at')
             ->get();
@@ -71,15 +71,13 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         $room = $this->show(key: $key);
         if ($room->status){
             $this->service->errors(
-                messages: "Appartement dois être suspendue avant d’être suspendue",
-                type: 'warning'
+                messages: "Appartement dois être suspendue avant d’être suspendue"
             );
             return null;
         }
         $room->delete();
         $this->service->success(
-            messages: "Appartement a été suspéndue pour des raisons de sécurité",
-            type: "success"
+            messages: "Appartement a été suspéndue pour des raisons de sécurité"
         );
         return $room;
     }

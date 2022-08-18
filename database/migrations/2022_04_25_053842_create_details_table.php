@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Enums\ElectricityEnum;
+use App\Enums\ToiletEnum;
 use App\Models\House;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,8 +20,12 @@ return new class extends Migration
                 ->cascadeOnDelete();
             $table->integer('number_rooms')->nullable();
             $table->integer('number_pieces')->nullable();
-            $table->enum('toilet', ['Externe', 'Interne', 'Interne/Externe'])
-                ->default('Externe');
+            $table->enum('toilet', [
+                ToiletEnum::INTERNE,
+                ToiletEnum::EXTERNE,
+                ToiletEnum::INTERNE_EXTERNE
+            ])
+                ->default(ToiletEnum::INTERNE);
             $table->boolean('electricity')
                 ->default(ElectricityEnum::NOT_EXIST_ELECTRICITY);
             $table->text('description')->nullable();

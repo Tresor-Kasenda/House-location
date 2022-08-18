@@ -46,16 +46,16 @@
                                         <span class="sub-text">Photo</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Telephone</span>
+                                        <span class="sub-text">Ville</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Addresse</span>
+                                        <span class="sub-text">Commune</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
                                         <span class="sub-text">Status</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Commune</span>
+                                        <span class="sub-text">N° Telephone</span>
                                     </th>
                                     <th class="nk-tb-col nk-tb-col-tools text-right">
                                         <span class="sub-text">Actions</span>
@@ -68,14 +68,14 @@
                                         <td class="nk-tb-col tb-col-sm">
                                             <span class="tb-product text-center">
                                                 <img src="{{ asset('storage/'.$room->images) }}"
-                                                     alt="{{ $room->username }}" class="thumb">
+                                                     alt="{{ $room->commune }}" class="thumb">
                                             </span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $room->phone_number ?? "" }}</span>
+                                            <span>{{ ucfirst($room->town) ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $room->address ?? "" }}</span>
+                                            <span>{{ ucfirst($room->commune) ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
                                             @if($room->status == \App\Enums\HouseEnum::VALIDATED_HOUSE)
@@ -87,48 +87,26 @@
                                             @endif
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $room->commune ?? "" }}</span>
+                                            <span>{{ $room->phone_number ?? "" }}</span>
                                         </td>
-                                        <td class="nk-tb-col nk-tb-col-tools">
-                                            <ul class="nk-tb-actions gx-1">
-                                                <li>
-                                                    <div class="drodown">
-                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
-                                                           data-toggle="dropdown">
-                                                            <em class="icon ni ni-more-h"></em>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li>
-                                                                    <a href="{{ route('admins.houses.show', $room->id) }}">
-                                                                        <em class="icon ni ni-eye"></em>
-                                                                        <span>Voir</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="{{ route('admins.houses.edit', $room->id) }}">
-                                                                        <em class="icon ni ni-edit"></em>
-                                                                        <span>Editer</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <form action="{{ route('admins.houses.destroy', $room->id) }}"
-                                                                          method="POST"
-                                                                          onsubmit="return confirm('Voulez vous supprimer');">
-                                                                        @method('DELETE')
-                                                                        <input type="hidden" name="_token"
-                                                                               value="{{ csrf_token() }}">
-                                                                        <button type="submit" class="btn btn-dim">
-                                                                            <em class="icon ni ni-cross-sm"></em>
-                                                                            <span>Suspendre</span>
-                                                                        </button>
-                                                                    </form>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                        <td class="nk-tb-col">
+                                            <span class="tb-lead">
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{ route('admins.houses.show', $room->id) }}" class="btn btn-dim btn-primary btn-sm">
+                                                        <em class="icon ni ni-eye"></em>
+                                                    </a>
+                                                    <a href="{{ route('admins.houses.edit', $room->id) }}" class="btn btn-dim btn-primary btn-sm">
+                                                        <em class="icon ni ni-edit"></em>
+                                                    </a>
+                                                    <form action="{{ route('admins.houses.destroy', $room->id) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                        @method('DELETE')
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        <button type="submit" class="btn btn-dim btn-danger btn-sm">
+                                                            <em class="icon ni ni-trash"></em>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </span>
                                         </td>
                                     </tr>
                                 @endforeach

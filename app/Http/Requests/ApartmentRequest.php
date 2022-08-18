@@ -25,25 +25,21 @@ class ApartmentRequest extends FormRequest
             'address' => ['required', 'string', 'regex:/(^[-0-9A-Za-z.,\/ ]+$)/'],
             'email' => ['required', 'email', 'regex:/(.+)@(.+)\.(.+)/i'],
             'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10'],
-
             // deuxieme steppers
-
             'prices' => ['required','numeric'],
-            'guarantees' => ['required', 'numeric'],
-            'room_number' => ['required', 'numeric'],
-            'room_pieces' => ['required', 'numeric'],
+            'warranty_price' => ['required', 'numeric'],
+            'number_rooms' => ['required', 'numeric'],
+            'number_pieces' => ['required', 'numeric'],
             'images' => ['required', 'image', 'mimes:jpeg,jpg,png', 'max:5000'],
-            'reference' => ['required', 'string', 'min:4'],
             'categories' => ['required'],
             'categories.*' => ['integer', Rule::exists(Category::class, 'id')],
             'type' => ['required', Rule::exists(Type::class, 'id')],
-
             // troisieme steppers
-
             'latitude' => ['nullable', 'required_with:longitude', 'max:15'],
             'longitude' => ['nullable', 'required_with:latitude', 'max:15'],
             'electricity' => ['required', 'string'],
-            'toilet' => ['required', 'string']
+            'toilet' => ['required', 'string'],
+            'description' => ['required', 'string', 'min:30']
         ];
     }
 }

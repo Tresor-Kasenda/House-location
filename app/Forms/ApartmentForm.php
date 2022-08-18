@@ -16,6 +16,9 @@ class ApartmentForm extends Form
             ->add('prices', 'number', [
                 'label' => "Prix mensuel",
             ])
+            ->add('warranty_price', 'number', [
+                'label' => "Garantie",
+            ])
             ->add('commune', 'text', [
                 'label' => "Commune",
             ])
@@ -27,9 +30,6 @@ class ApartmentForm extends Form
             ])
             ->add('address', 'text', [
                 'label' => "Adresse",
-            ])
-            ->add('guarantees', 'number', [
-                'label' => "Garantie",
             ])
             ->add('phone_number', 'text',[
                 'label' => "N° Téléphone",
@@ -46,44 +46,46 @@ class ApartmentForm extends Form
             ->add('images', 'file',[
                 'label' => "Image",
             ])
-            ->add('reference', 'text',[
-                'label' => "Référence",
-            ])
             ->add('categories','choice',[
-                'label' => 'Catégorie de Maison',
+                'label' => 'Categories',
                 'choices' => Category::all()->pluck('name', 'id')->toArray(),
                 'multiple' => true,
+                'attr' => ['class' => 'form-select js-select2 select2-hidden-accessible']
             ])
             ->add('type','choice',[
                 'label' => 'Type de Maison',
                 'choices' => $this->getHouseType(),
                 'multiple' => false,
             ])
-            ->add('room_number', 'number', [
+            ->add('number_rooms', 'number', [
                 'label' => "Nombre des chambres",
             ])
-            ->add('room_pieces', 'number', [
+            ->add('number_pieces', 'number', [
                 'label' => "Nombre des Pieces",
             ])
+            ->add('toilet', 'choice', [
+                'choices' => [
+                    'external' => 'Externe',
+                    'internal' => 'Interne',
+                    'interne/interne' => "Interne/Externe"
+                ],
+                'attr' => ['class' => 'form-control'],
+                'selected' => ['external', 'internal', 'interne/interne'],
+                'multiple' => false,
+            ])
             ->add('electricity', 'choice', [
-                'choices' => [1 => 'Oui', 0 => 'Non'],
+                'choices' => [1 => 'Avec Electricite', 0 => 'Pas d\'electricite'],
                 'attr' => ['class' => 'form-control'],
                 'selected' => [1, 0],
                 'multiple' => false,
             ])
-            ->add('toilet', 'choice', [
-                'choices' => ['external' => 'Externe', 'internal' => 'Interne'],
-                'attr' => ['class' => 'form-control'],
-                'selected' => ['external', 'internal'],
-                'multiple' => false,
+            ->add('description', 'textarea', [
+                'label' => 'Description',
+                'attr' => [
+                    'class' => 'form-control form-control-sm',
+                    'rows' => 2
+                ]
             ]);
-    }
-
-    public function getCategories(): array
-    {
-        return Category::all()
-            ->pluck('name', 'id')
-            ->toArray();
     }
 
     public function getHouseType(): array
