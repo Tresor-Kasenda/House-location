@@ -48,25 +48,25 @@
                     @include('dealers.components._link', [
                        'route' => route('admins.slides.index'),
                        'name' => 'Slides',
-                       'icon' => 'ni-tile-thumb'
+                       'icon' => "ni-windows"
                    ])
 
                     @include('backend.components._link', [
                         'route' => route('admins.reservations.index'),
                         'name' => 'Reservation',
-                        'icon' => 'ni-coin-alt'
+                        'icon' => 'ni-calendar-check'
                     ])
 
                     @include('backend.components._link', [
-                        'route' => route('admins.reservations.index'),
+                        'route' => route('admins.transaction.index'),
                         'name' => 'Transaction',
-                        'icon' => 'ni-coin-alt'
+                        'icon' => 'ni-money'
                     ])
 
                     @include('backend.components._link', [
-                        'route' => route('admins.users.index'),
+                        'route' => route('admins.client.index'),
                         'name' => 'Clients',
-                        'icon' => 'ni-user-alt'
+                        'icon' => 'ni-user-list'
                     ])
 
                     @include('backend.components._link', [

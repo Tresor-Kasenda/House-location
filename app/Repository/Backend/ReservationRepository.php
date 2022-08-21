@@ -19,10 +19,9 @@ class ReservationRepository implements ReservationRepositoryInterface
                 'id',
                 'house_id',
                 'status',
-                'messages',
                 'client_id'
             ])
-            ->with(['house:id,prices,guarantees,commune,town,reference,images', 'client'])
+            ->with(['house:id,reference,images', 'client:id,name,phones_number'])
             ->get();
     }
 

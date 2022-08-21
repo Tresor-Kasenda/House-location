@@ -47,26 +47,26 @@
                         </div>
                     </li>
                     <li class="dropdown user-dropdown">
-                        <a href="#" class="dropdown-toggle mr-n1" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle me-n1" data-bs-toggle="dropdown">
                             <div class="user-toggle">
                                 <div class="user-avatar sm">
                                     <em class="icon ni ni-user-alt"></em>
                                 </div>
                                 <div class="user-info d-none d-xl-block">
-                                    <div class="user-status user-status-active">{{ auth()->user()->name }}</div>
-                                    <div class="user-name dropdown-indicator">{{ auth()->user()->email }}</div>
+                                    <div class="user-status user-status-active">{{ auth()->user()->name ?? "" }}</div>
+                                    <div class="user-name dropdown-indicator">{{ auth()->user()->email ?? "" }}</div>
                                 </div>
                             </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-end">
                             <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                                 <div class="user-card">
                                     <div class="user-avatar">
-                                        <span>{{ substr(auth()->user()->name, 0,2) }}</span>
+                                        <span>{{ substr(auth()->user()->name, 0,2) ?? "" }}</span>
                                     </div>
                                     <div class="user-info">
-                                        <span class="lead-text">{{ auth()->user()->name }}</span>
-                                        <span class="sub-text">{{ auth()->user()->email }}</span>
+                                        <span class="lead-text">{{ auth()->user()->name ?? "" }}</span>
+                                        <span class="sub-text">{{ auth()->user()->email ?? "" }}</span>
                                     </div>
                                 </div>
                             </div>

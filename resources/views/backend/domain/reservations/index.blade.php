@@ -22,21 +22,21 @@
                                 <thead>
                                 <tr class="nk-tb-item nk-tb-head text-center">
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Code de Referance</span>
+                                        <span class="sub-text">Images</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Name</span>
+                                        <span class="sub-text">Code Maison</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Email</span>
+                                        <span class="sub-text">Nom Client</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Phones</span>
+                                        <span class="sub-text">N° Telephone</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Code maison</span>
+                                        <span class="sub-text">Status</span>
                                     </th>
-                                    <th class="nk-tb-col nk-tb-col-tools text-right">
+                                    <th class="nk-tb-col">
                                         <span class="sub-text">Actions</span>
                                     </th>
                                 </tr>
@@ -45,54 +45,53 @@
                                 @foreach($reservations as $reservation)
                                     <tr class="nk-tb-item text-center">
                                         <td class="nk-tb-col tb-col-md font-weight-bold">
-                                            <span>{{ $reservation->transaction_code ?? "" }}</span>
+                                            <span>
+                                                <img
+                                                    src="{{ asset('storage/'.$reservation->house->images) }}"
+                                                    class="img-fluid rounded"
+                                                    alt="{{ $reservation->house_id }}">
+                                            </span>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md font-weight-bold">
+                                            <span>{{ $reservation->house->reference ?? "Pas de code maison" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $reservation->name ?? "" }}</span>
+                                            <span>{{ ucfirst($reservation->client->name) ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ $reservation->address ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $reservation->phones ?? "" }}</span>
+                                            <span>{{ $reservation->client->phones_number ?? "" }}</span>
                                         </td>
-                                        <td class="nk-tb-col tb-col-md font-weight-bold">
-                                            <span>{{ $reservation->house->reference ?? "" }}</span>
+                                        <td class="nk-tb-col tb-col-md">
+                                            @if($reservation->status == \App\Enums\ReservationEnum::CONFIRMED_RESERVATION)
+                                                <span class="dot bg-success d-mb-none"></span>
+                                                <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">
+                                                    Confirmer
+                                                </span>
+                                            @else
+                                                <span class="dot bg-warning d-mb-none"></span>
+                                                <span class="badge badge-sm badge-dot has-bg badge-warning d-none d-mb-inline-flex">
+                                                    En attente
+                                                </span>
+                                            @endif
                                         </td>
-                                        <td class="nk-tb-col nk-tb-col-tools">
-                                            <ul class="nk-tb-actions gx-1">
-                                                <li>
-                                                    <div class="drodown">
-                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
-                                                           data-toggle="dropdown">
-                                                            <em class="icon ni ni-more-h"></em>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li>
-                                                                    <a href="{{ route('admins.reservations.show', $reservation->id }}">
-                                                                        <em class="icon ni ni-eye"></em>
-                                                                        <span>Voir</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <form action="{{ route('admins.reservations.destroy', $reservation->id) }}"
-                                                                          method="POST"
-                                                                          onsubmit="return confirm('Voulez vous supprimer');">
-                                                                        @method('DELETE')
-                                                                        <input type="hidden" name="_token"
-                                                                               value="{{ csrf_token() }}">
-                                                                        <button type="submit" class="btn btn-dim">
-                                                                            <em class="icon ni ni-cross-sm"></em>
-                                                                            <span>Suspendre</span>
-                                                                        </button>
-                                                                    </form>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                        <td class="nk-tb-col">
+                                             <span class="tb-lead">
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{ route('admins.reservations.show', $reservation->id) }}" class="btn btn-dim btn-primary btn-sm">
+                                                        <em class="icon ni ni-eye"></em>
+                                                    </a>
+                                                    <form action="{{ route('admins.reservations.destroy', $reservation->id) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                        @method('DELETE')
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        <button type="submit" class="btn btn-dim btn-danger btn-sm">
+                                                            <em class="icon ni ni-trash"></em>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </span>
                                         </td>
                                     </tr>
                                 @endforeach

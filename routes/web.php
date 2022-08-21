@@ -5,13 +5,14 @@ declare(strict_types=1);
 use App\Http\Controllers\Backend\ApartmentAdminController;
 use App\Http\Controllers\Backend\CancelReservationController;
 use App\Http\Controllers\Backend\CategoryAdminController;
+use App\Http\Controllers\Backend\ClientBackendController;
 use App\Http\Controllers\Backend\ConfirmedApartmentController;
 use App\Http\Controllers\Backend\ConfirmReservationController;
-use App\Http\Controllers\Backend\DetailApartmentAdminController;
 use App\Http\Controllers\Backend\HomeAdminController;
 use App\Http\Controllers\Backend\ImagesAdminController;
 use App\Http\Controllers\Backend\ReservationAdminController;
 use App\Http\Controllers\Backend\SlideAdminController;
+use App\Http\Controllers\Backend\TransactionBackendController;
 use App\Http\Controllers\Backend\TrashedAdminController;
 use App\Http\Controllers\Backend\UsersAdminController;
 use App\Http\Controllers\Dealer\ApartmentCommissionerController;
@@ -53,6 +54,12 @@ Route::group([
     });
 
     Route::resource('slides', SlideAdminController::class);
+
+    Route::get('transactions', [TransactionBackendController::class, 'index'])->name('transaction.index');
+    Route::get('transaction/{key}', [TransactionBackendController::class, 'show'])->name('transaction.show');
+
+    Route::get('clients', [ClientBackendController::class, 'index'])->name('client.index');
+    Route::get('client/{key}', [ClientBackendController::class, 'show'])->name('client.show');
 
     Route::put('activeReservation/{key}', [ConfirmReservationController::class, 'confirm'])->name('reservation.active');
     Route::put('cancelReservation/{key}', [CancelReservationController::class, 'inactive'])->name('reservation.inactive');

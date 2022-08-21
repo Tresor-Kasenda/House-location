@@ -8,9 +8,9 @@ use App\Contracts\ApartmentCommissionerRepositoryInterface;
 use App\Contracts\CancellingUserRepositoryInterface;
 use App\Contracts\CategoryHomeRepositoryInterface;
 use App\Contracts\CategoryRepositoryInterface;
+use App\Contracts\ClientRepositoryInterface;
 use App\Contracts\HomeCommissionerRepositoryInterface;
 use App\Contracts\HomeRepositoryInterface;
-use App\Contracts\DetailsHouseCommissionerRepositoryInterface;
 use App\Contracts\ImageCommissionerRepositoryInterface;
 use App\Contracts\ImageRepositoryInterface;
 use App\Contracts\NewsLetterRepositoryInterface;
@@ -19,23 +19,24 @@ use App\Contracts\ReservationRepositoryInterface;
 use App\Contracts\ReservationUserRepositoryInterface;
 use App\Contracts\SearchRepositoryInterface;
 use App\Contracts\SlideRepositoryInterface;
+use App\Contracts\TransactionRepositoryInterface;
 use App\Contracts\TrashedRepositoryInterface;
 use App\Contracts\UpdateUserRepositoryInterface;
 use App\Contracts\UserRepositoryInterface;
-use App\Contracts\UsersProfileRepositoryInterface;
 use App\Repository\Backend\ActiveApartmentRepository;
 use App\Repository\Backend\ApartmentRepository;
 use App\Repository\Backend\CategoryRepository;
+use App\Repository\Backend\ClientRepository;
 use App\Repository\Backend\ImageRepository;
 use App\Repository\Backend\ReservationRepository;
 use App\Repository\Backend\SlideRepository;
+use App\Repository\Backend\TransactionRepository;
 use App\Repository\Backend\TrashedRepository;
 use App\Repository\Backend\UserRepository;
 use App\Repository\Frontend\HomeFrontendRepository;
 use App\Repository\Frontend\NewsLetterRepository;
 use App\Repository\Frontend\SearchRepository;
 use App\Repository\Dealer\ApartmentCommissionerRepository;
-use App\Repository\Dealer\DetailHouseCommissionerRepository;
 use App\Repository\Dealer\HomeCommissionerRepository;
 use App\Repository\Dealer\ImageCommissionerRepository;
 use App\Repository\Users\CancellingUserRepository;
@@ -67,7 +68,9 @@ class RepositoryServiceProvider extends ServiceProvider
         SearchRepositoryInterface::class => SearchRepository::class,
         ReservationUserRepositoryInterface::class => ReservationUserRepository::class,
         CancellingUserRepositoryInterface::class => CancellingUserRepository::class,
-        SlideRepositoryInterface::class => SlideRepository::class
+        SlideRepositoryInterface::class => SlideRepository::class,
+        TransactionRepositoryInterface::class => TransactionRepository::class,
+        ClientRepositoryInterface::class => ClientRepository::class,
     ];
 
     public function register(){}
