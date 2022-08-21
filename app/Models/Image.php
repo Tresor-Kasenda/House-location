@@ -25,6 +25,12 @@ class Image extends Model
         return $this->belongsTo(House::class, 'house_id');
     }
 
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public static function getImagesHouse(): Collection
     {
         return DB::table('images')

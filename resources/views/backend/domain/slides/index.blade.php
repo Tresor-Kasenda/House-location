@@ -66,7 +66,7 @@
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ ucfirst(substr($slide->description, 0, 50)) ?? "" }} ...</span>
                                         </td>
-                                        <td class="nk-tb-col nk-tb-col-tools">
+                                        <td class="nk-tb-col">
                                             <span class="tb-lead">
                                                 <div class="d-flex justify-content-center">
                                                     <a href="{{ route('admins.slides.edit', $slide->id) }}" class="btn btn-dim btn-primary btn-sm ml-1">

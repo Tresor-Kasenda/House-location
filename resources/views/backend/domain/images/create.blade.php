@@ -25,7 +25,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-6">
                                 @include('backend.components.errors')
-                                @include('backend.pages.images._form')
+                                @include('backend.domain.images._form')
                             </div>
                         </div>
                     </div>

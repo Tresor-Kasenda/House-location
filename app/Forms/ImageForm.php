@@ -12,13 +12,14 @@ class ImageForm extends Form
     {
         $this
             ->add('images', 'file', [
-                'label' => "Photo"
+                'label' => "Photo",
+                'multiple' => true
             ])
             ->add('house', 'choice', [
                 'label' => 'Apartement',
                 'choices' => $this->getHouses(),
                 'multiple' => false,
-                'attr' => ['class' => 'form-select']
+                'attr' => ['class' => 'form-control']
             ]);
     }
 

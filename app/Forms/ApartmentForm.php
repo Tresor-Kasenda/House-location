@@ -65,12 +65,12 @@ class ApartmentForm extends Form
             ])
             ->add('toilet', 'choice', [
                 'choices' => [
-                    'external' => 'Externe',
-                    'internal' => 'Interne',
-                    'interne/interne' => "Interne/Externe"
+                    'externe' => 'Externe',
+                    'interne' => 'Interne',
+                    'interne_externe' => "Interne/Externe"
                 ],
                 'attr' => ['class' => 'form-control'],
-                'selected' => ['external', 'internal', 'interne/interne'],
+                'selected' => ['externe', 'interne', 'interne_externe'],
                 'multiple' => false,
             ])
             ->add('electricity', 'choice', [

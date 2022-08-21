@@ -24,11 +24,6 @@ class Detail extends Model
         'description'
     ];
 
-    protected $casts = [
-        'toilet' => ToiletEnum::class,
-        'electricity' => ElectricityEnum::class
-    ];
-
     public function house(): BelongsTo
     {
         return $this->belongsTo(House::class);

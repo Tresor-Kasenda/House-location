@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests;
 
 use App\Models\Category;
+use App\Models\House;
 use App\Models\Type;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -22,9 +23,9 @@ class ApartmentRequest extends FormRequest
             'town' => ['required', 'string', 'max:255'],
             'commune' => ['required', 'string', 'max:255'],
             'district' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'regex:/(^[-0-9A-Za-z.,\/ ]+$)/'],
-            'email' => ['required', 'email', 'regex:/(.+)@(.+)\.(.+)/i'],
-            'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10'],
+            'address' => ['required', 'string', 'regex:/(^[-0-9A-Za-z.,\/ ]+$)/', Rule::unique(House::class, 'address')],
+            'email' => ['required', 'email', 'regex:/(.+)@(.+)\.(.+)/i', Rule::unique(House::class, 'email')],
+            'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10', Rule::unique(House::class, 'phone_number')],
             // deuxieme steppers
             'prices' => ['required','numeric'],
             'warranty_price' => ['required', 'numeric'],

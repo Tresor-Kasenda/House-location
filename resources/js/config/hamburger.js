@@ -1,4 +1,4 @@
-var swiper = new Swiper(".homeSwiper", {
+new Swiper(".homeSwiper", {
     navigation: {
         nextEl: '.swip-next-homeslide',
         prevEl: '.swip-prev-homeslide',

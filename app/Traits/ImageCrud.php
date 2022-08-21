@@ -39,6 +39,8 @@ trait ImageCrud
                 'house_id' => $attributes->input('house'),
                 'images' => self::uploadFiles($attributes)
             ]);
+
+        $this->service->success("Images ajouter avec succes");
         return $image;
     }
 
@@ -50,6 +52,7 @@ trait ImageCrud
             'images' => self::uploadFiles($attributes),
             'house_id' => $attributes->input('house_id')
         ]);
+        $this->service->success("Images modifier avec succes");
         return $image;
     }
 
@@ -58,6 +61,7 @@ trait ImageCrud
         $image = $this->show(key: $key);
         $this->removePathOfImages($image);
         $image->delete();
+        $this->service->success("images supprimer avec succes");
         return $image;
     }
 }
