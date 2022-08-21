@@ -9,7 +9,7 @@ use App\Http\Requests\ConfirmRequest;
 use App\Repository\Backend\ConfirmRepository;
 use Illuminate\Http\RedirectResponse;
 
-class ConfirmReservationController extends Controller
+class ConfirmBookingController extends Controller
 {
 
     public function __construct(protected ConfirmRepository $repository)

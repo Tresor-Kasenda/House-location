@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Contracts\ReservationHouseRepositoryInterface;
+use App\Contracts\BookingHouseRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 
-class ReservationController extends Controller
+class BookingController extends Controller
 {
-    public function __construct(public ReservationHouseRepositoryInterface $repository){}
+    public function __construct(public BookingHouseRepositoryInterface $repository){}
 
     public function store(ReservationRequest $request): RedirectResponse
     {

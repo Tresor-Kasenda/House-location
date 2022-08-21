@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use App\Models\Role;
@@ -17,8 +18,8 @@ return new class extends Migration
             $table->softDeletes();
         });
 
-        Role::create(['name' => 'USERS']);
-        Role::create(['name' => 'DEALER']);
+        Role::create(['name' => 'Client']);
+        Role::create(['name' => 'Commissionnaire']);
         Role::create(['name' => 'ADMINS']);
     }
 

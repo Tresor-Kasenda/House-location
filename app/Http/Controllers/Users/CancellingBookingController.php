@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Users;
 
-use App\Contracts\CancellingUserRepositoryInterface;
+use App\Contracts\CancelBookingRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
-class CancellingUserController extends Controller
+class CancellingBookingController extends Controller
 {
-    public function __construct(public CancellingUserRepositoryInterface $repository){}
+    public function __construct(public CancelBookingRepositoryInterface $repository){}
 
     public function cancel(string $key): RedirectResponse
     {

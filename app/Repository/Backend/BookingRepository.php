@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Repository\Backend;
 
-use App\Contracts\ReservationRepositoryInterface;
+use App\Contracts\BookingRepositoryInterface;
 use App\Models\Reservation;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-class ReservationRepository implements ReservationRepositoryInterface
+class BookingRepository implements BookingRepositoryInterface
 {
     public function getContents(): Collection|array
     {

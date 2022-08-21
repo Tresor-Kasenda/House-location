@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Contracts;
 
-interface ReservationUserRepositoryInterface
+interface BookingUserRepositoryInterface
 {
     public function getReservations();
 }

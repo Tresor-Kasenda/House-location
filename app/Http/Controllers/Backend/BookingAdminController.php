@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Backend;
 
-use App\Contracts\ReservationRepositoryInterface;
+use App\Contracts\BookingRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 
-class ReservationAdminController extends Controller
+class BookingAdminController extends Controller
 {
-    public function __construct(public ReservationRepositoryInterface $repository){}
+    public function __construct(public BookingRepositoryInterface $repository){}
 
     public function index(): Renderable
     {

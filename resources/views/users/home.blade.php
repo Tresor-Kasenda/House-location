@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
     @include('users.component._update')
 
     <div class="w-full flex justify-center overflow-hidden">
@@ -45,7 +46,6 @@
                                 @foreach($reservations as $reservation)
                                     @include('users.component.card', with($reservation))
                                 @endforeach
-
                             </div>
                         </div>
                     </div>
@@ -98,8 +98,6 @@
                                             </svg>
                                         </button>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>

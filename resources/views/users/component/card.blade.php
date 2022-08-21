@@ -8,8 +8,13 @@
             alt="{{ $reservation->town ?? "" }}">
     </div>
     <div class="flex justify-between">
-        <h1 class="text-lg font-semibold text-gray-600">{{ ucfirst($reservation->house->commune) ?? "" }}, {{ ucfirst($reservation->house->town) ?? "" }}</h1>
-        <span class="text-gray-400">{{ $reservation->house->prices ?? 0 }} $ garantie</span>
+        <h1 class="text-lg font-semibold text-gray-600">
+            {{ ucfirst($reservation->house->commune) ?? "" }},
+            {{ ucfirst($reservation->house->town) ?? "" }}
+        </h1>
+        <span class="text-gray-400">
+            {{ $reservation->house->prices ?? 0 }} $ garantie
+        </span>
     </div>
     <div>
         @if($reservation->status  == ReservationEnum::CONFIRMED_RESERVATION)

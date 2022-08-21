@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Repository\Backend\InactiveRepository;
 use Illuminate\Http\RedirectResponse;
 
-class CancelReservationController extends Controller
+class CancelBookingController extends Controller
 {
 
     public function __construct(protected InactiveRepository $repository)

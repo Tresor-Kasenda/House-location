@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository\Frontend;
 
-use App\Contracts\ReservationHouseRepositoryInterface;
+use App\Contracts\BookingHouseRepositoryInterface;
 use App\Enums\HouseEnum;
 use App\Enums\ReservationEnum;
 use App\Jobs\ReservationJob;
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
-class ReservationRepository implements ReservationHouseRepositoryInterface
+class BookingRepository implements BookingHouseRepositoryInterface
 {
     use RandomValues;
 

@@ -8,7 +8,7 @@ use App\Models\Reservation;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
-class ReservationChartRepository
+class BookingChartRepository
 {
     public function getReservationPerDays(): Collection|array
     {

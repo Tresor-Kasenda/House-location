@@ -17,6 +17,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
         $types = ['Maison à vendre', 'Maison à Louer', 'Autre'];
 
         foreach ($types as $type) {

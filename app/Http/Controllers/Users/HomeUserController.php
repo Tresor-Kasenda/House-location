@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Users;
 
-use App\Contracts\ReservationUserRepositoryInterface;
+use App\Contracts\BookingUserRepositoryInterface;
 use App\Contracts\UsersProfileRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 
 class HomeUserController extends Controller
 {
-    public function __construct(public ReservationUserRepositoryInterface $repository){}
+    public function __construct(public BookingUserRepositoryInterface $repository){}
 
     public function index(): Renderable
     {
-        return view('users.home', [
-            'reservations' => $this->repository->getReservations()
-        ]);
+        $reservations = $this->repository->getReservations();
+
+        return view('users.home', compact('reservations'));
     }
 }

@@ -3,14 +3,14 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Backend\ApartmentAdminController;
-use App\Http\Controllers\Backend\CancelReservationController;
+use App\Http\Controllers\Backend\CancelBookingController;
 use App\Http\Controllers\Backend\CategoryAdminController;
 use App\Http\Controllers\Backend\ClientBackendController;
 use App\Http\Controllers\Backend\ConfirmedApartmentController;
-use App\Http\Controllers\Backend\ConfirmReservationController;
+use App\Http\Controllers\Backend\ConfirmBookingController;
 use App\Http\Controllers\Backend\HomeAdminController;
 use App\Http\Controllers\Backend\ImagesAdminController;
-use App\Http\Controllers\Backend\ReservationAdminController;
+use App\Http\Controllers\Backend\BookingAdminController;
 use App\Http\Controllers\Backend\SlideAdminController;
 use App\Http\Controllers\Backend\TransactionBackendController;
 use App\Http\Controllers\Backend\TrashedAdminController;
@@ -25,10 +25,11 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\HouseController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\Frontend\NewsLetterController;
-use App\Http\Controllers\Frontend\ReservationController;
+use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\SearchLocationController;
-use App\Http\Controllers\Users\CancellingUserController;
+use App\Http\Controllers\Users\CancellingBookingController;
 use App\Http\Controllers\Users\HomeUserController;
+use App\Http\Controllers\Users\InvoiceUserController;
 use App\Http\Controllers\Users\UpdateUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -45,7 +46,7 @@ Route::group([
     Route::resource('houses', ApartmentAdminController::class);
     Route::resource('categories', CategoryAdminController::class);
     Route::resource('users', UsersAdminController::class)->except(['create', 'store', 'update', 'edit']);
-    Route::resource('reservations', ReservationAdminController::class)->except(['create', 'store', 'update', 'edit']);
+    Route::resource('reservations', BookingAdminController::class)->except(['create', 'store', 'update', 'edit']);
     Route::resource('image', ImagesAdminController::class);
     Route::resource('trashedApartments', TrashedAdminController::class)->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
     Route::controller(TrashedAdminController::class)->group(function (){
@@ -61,8 +62,8 @@ Route::group([
     Route::get('clients', [ClientBackendController::class, 'index'])->name('client.index');
     Route::get('client/{key}', [ClientBackendController::class, 'show'])->name('client.show');
 
-    Route::put('activeReservation/{key}', [ConfirmReservationController::class, 'confirm'])->name('reservation.active');
-    Route::put('cancelReservation/{key}', [CancelReservationController::class, 'inactive'])->name('reservation.inactive');
+    Route::put('activeReservation/{key}', [ConfirmBookingController::class, 'confirm'])->name('reservation.active');
+    Route::put('cancelReservation/{key}', [CancelBookingController::class, 'inactive'])->name('reservation.inactive');
 
     Route::controller(ConfirmedApartmentController::class)->group(function (){
         Route::put('activeApartment/{key}','active')
@@ -91,7 +92,8 @@ Route::group([
     Route::controller(UpdateUserController::class)->group(function (){
         Route::put('updateUser/{key}/update', 'update')->name('update.users');
     });
-    Route::delete('cancel/{key}', [CancellingUserController::class, 'cancel'])->name('reservation.cancel');
+    Route::get('invoice/{key}', InvoiceUserController::class)->name('invoice.download');
+    Route::delete('cancel/{key}', [CancellingBookingController::class, 'cancel'])->name('reservation.cancel');
 });
 
 Route::get('/', HomeController::class)->name('home.index');
@@ -105,7 +107,7 @@ Route::get('search', [SearchLocationController::class, 'searching'])->name('sear
 Route::get('maisons', HouseController::class)->name('house.index');
 Route::get('/maisons/{key}', [HouseController::class, 'show'])->name('house.show');
 Route::post('news-letters', [NewsLetterController::class, 'index'])->name('newsletters.send');
-Route::controller(ReservationController::class)->group(function (){
+Route::controller(BookingController::class)->group(function (){
     Route::post('reservation', 'store')->name('reservation.store');
     Route::get('confirmation/{key}', 'show')->name('reservation.show');
 });
