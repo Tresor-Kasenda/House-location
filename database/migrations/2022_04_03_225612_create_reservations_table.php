@@ -17,6 +17,10 @@ return new class extends Migration
             $table->foreignIdFor(House::class)
                 ->constrained()
                 ->cascadeOnDelete();
+            $table->foreignIdFor(User::class)
+                ->nullable()
+                ->constrained()
+                ->cascadeOnDelete();
             $table->boolean('status')
                 ->default(ReservationEnum::PENDING_RESERVATION);
             $table->text('messages');

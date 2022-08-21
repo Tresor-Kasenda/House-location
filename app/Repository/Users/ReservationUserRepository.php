@@ -12,7 +12,7 @@ class ReservationUserRepository implements ReservationUserRepositoryInterface
     public function getReservations(): LengthAwarePaginator
     {
         return Reservation::query()
-            ->with('house')
+            ->with(['house', 'transaction'])
             ->where('user_id', '=', auth()->id())
             ->orderByDesc('created_at')
             ->paginate(6);
