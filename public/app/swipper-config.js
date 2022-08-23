@@ -14,43 +14,7 @@ var swiper = new Swiper(".homeSwiper", {
     },
 });
 
-
-new Swiper(".swiperBestcommis", {
-    slidesPerView: 1,
-    spaceBetween: 10,
-    navigation: {
-        nextEl: '.swip-next-bestcommis',
-        prevEl: '.swip-prev-bestcommis',
-    },
-    breakpoints: {
-        640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-        },
-        1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-        },
-    },
-})
-
-new Swiper(".homeSwiper", {
-    navigation: {
-        nextEl: '.swip-next-homeslide',
-        prevEl: '.swip-prev-homeslide',
-    },
-    pagination: {
-        el: ".home-swiper-pagination",
-        bulletClass: 'costum-bullet',
-        bulletActiveClass: 'costum-bullet-active',
-        clickable: true,
-        renderBullet: function (index, className) {
-            return '<span class="' + className + ' costumSwiperPagination">' + "</span>";
-        },
-    },
-});
-
-new Swiper(".swiperBestrate", {
+var swiperBestRate = new Swiper(".swiperBestrate", {
     slidesPerView: 1,
     spaceBetween: 10,
     navigation: {
@@ -69,7 +33,7 @@ new Swiper(".swiperBestrate", {
     },
 })
 
-new Swiper(".swiperBestcommis", {
+var swiperBestCommis = new Swiper(".swiperBestcommis", {
     slidesPerView: 1,
     spaceBetween: 10,
     navigation: {
@@ -88,7 +52,7 @@ new Swiper(".swiperBestcommis", {
     },
 })
 
-new Swiper(".swipertestimonial", {
+var swipertestimonial = new Swiper(".swipertestimonial", {
     slidesPerView: 1,
     spaceBetween: 10,
     navigation: {
@@ -110,3 +74,4 @@ new Swiper(".swipertestimonial", {
         },
     },
 })
+

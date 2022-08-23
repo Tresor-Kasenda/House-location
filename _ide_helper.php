@@ -12269,6 +12269,26 @@
         {
                         return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring($ignoreQuery, $absolute);
         }
+                    /**
+         * 
+         *
+         * @see \Tonysm\TurboLaravel\TurboServiceProvider::configureRequestAndResponseMacros()
+         * @static 
+         */ 
+        public static function wantsTurboStream()
+        {
+                        return \Illuminate\Http\Request::wantsTurboStream();
+        }
+                    /**
+         * 
+         *
+         * @see \Tonysm\TurboLaravel\TurboServiceProvider::configureRequestAndResponseMacros()
+         * @static 
+         */ 
+        public static function wasFromTurboNative()
+        {
+                        return \Illuminate\Http\Request::wasFromTurboNative();
+        }
          
     }
             /**
@@ -12527,6 +12547,30 @@
         public static function flushMacros()
         {
                         \Illuminate\Routing\ResponseFactory::flushMacros();
+        }
+                    /**
+         * 
+         *
+         * @see \Tonysm\TurboLaravel\TurboServiceProvider::configureRequestAndResponseMacros()
+         * @param mixed $model
+         * @param string|null $action
+         * @static 
+         */ 
+        public static function turboStream($model = null, $action = null)
+        {
+                        return \Illuminate\Routing\ResponseFactory::turboStream($model, $action);
+        }
+                    /**
+         * 
+         *
+         * @see \Tonysm\TurboLaravel\TurboServiceProvider::configureRequestAndResponseMacros()
+         * @param mixed $view
+         * @param array $data
+         * @static 
+         */ 
+        public static function turboStreamView($view, $data = [])
+        {
+                        return \Illuminate\Routing\ResponseFactory::turboStreamView($view, $data);
         }
          
     }
@@ -17564,52 +17608,6 @@
      
 }
 
-    namespace Stevebauman\Location\Facades { 
-            /**
-     * 
-     *
-     * @see \Stevebauman\Location\Location
-     */ 
-        class Location {
-                    /**
-         * Set the current driver to use.
-         *
-         * @param \Stevebauman\Location\Drivers\Driver $driver
-         * @static 
-         */ 
-        public static function setDriver($driver)
-        {
-                        /** @var \Stevebauman\Location\Location $instance */
-                        return $instance->setDriver($driver);
-        }
-                    /**
-         * Set the default location driver to use.
-         *
-         * @throws DriverDoesNotExistException
-         * @static 
-         */ 
-        public static function setDefaultDriver()
-        {
-                        /** @var \Stevebauman\Location\Location $instance */
-                        return $instance->setDefaultDriver();
-        }
-                    /**
-         * Attempt to retrieve the location of the user.
-         *
-         * @param string|null $ip
-         * @return \Stevebauman\Location\Position|bool 
-         * @static 
-         */ 
-        public static function get($ip = null)
-        {
-                        /** @var \Stevebauman\Location\Location $instance */
-                        return $instance->get($ip);
-        }
-         
-    }
-     
-}
-
     namespace Collective\Html { 
             /**
      * 
@@ -19363,6 +19361,73 @@
      
 }
 
+    namespace Tonysm\TurboLaravel\Facades { 
+            /**
+     * 
+     *
+     * @see \Tonysm\TurboLaravel\Turbo
+     * @mixin \Tonysm\TurboLaravel\Turbo
+     * @method static bool shouldBroadcastToOthers
+     * @method static string domId(Model $model, string $prefix = "")
+     */ 
+        class Turbo {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isTurboNativeVisit()
+        {
+                        /** @var \Tonysm\TurboLaravel\Turbo $instance */
+                        return $instance->isTurboNativeVisit();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setVisitingFromTurboNative()
+        {
+                        /** @var \Tonysm\TurboLaravel\Turbo $instance */
+                        return $instance->setVisitingFromTurboNative();
+        }
+                    /**
+         * 
+         *
+         * @param bool|\Closure $toOthers
+         * @return \Illuminate\Support\HigherOrderTapProxy|mixed 
+         * @static 
+         */ 
+        public static function broadcastToOthers($toOthers = true)
+        {
+                        /** @var \Tonysm\TurboLaravel\Turbo $instance */
+                        return $instance->broadcastToOthers($toOthers);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function shouldBroadcastToOthers()
+        {
+                        /** @var \Tonysm\TurboLaravel\Turbo $instance */
+                        return $instance->shouldBroadcastToOthers();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function broadcaster()
+        {
+                        /** @var \Tonysm\TurboLaravel\Turbo $instance */
+                        return $instance->broadcaster();
+        }
+         
+    }
+     
+}
+
     namespace Illuminate\Http { 
             /**
      * 
@@ -19427,6 +19492,26 @@
         {
                         return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring($ignoreQuery, $absolute);
         }
+                    /**
+         * 
+         *
+         * @see \Tonysm\TurboLaravel\TurboServiceProvider::configureRequestAndResponseMacros()
+         * @static 
+         */ 
+        public static function wantsTurboStream()
+        {
+                        return \Illuminate\Http\Request::wantsTurboStream();
+        }
+                    /**
+         * 
+         *
+         * @see \Tonysm\TurboLaravel\TurboServiceProvider::configureRequestAndResponseMacros()
+         * @static 
+         */ 
+        public static function wasFromTurboNative()
+        {
+                        return \Illuminate\Http\Request::wasFromTurboNative();
+        }
          
     }
      
@@ -19479,6 +19564,37 @@
         public static function emailVerification()
         {
                         return \Illuminate\Routing\Router::emailVerification();
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class ResponseFactory {
+                    /**
+         * 
+         *
+         * @see \Tonysm\TurboLaravel\TurboServiceProvider::configureRequestAndResponseMacros()
+         * @param mixed $model
+         * @param string|null $action
+         * @static 
+         */ 
+        public static function turboStream($model = null, $action = null)
+        {
+                        return \Illuminate\Routing\ResponseFactory::turboStream($model, $action);
+        }
+                    /**
+         * 
+         *
+         * @see \Tonysm\TurboLaravel\TurboServiceProvider::configureRequestAndResponseMacros()
+         * @param mixed $view
+         * @param array $data
+         * @static 
+         */ 
+        public static function turboStreamView($view, $data = [])
+        {
+                        return \Illuminate\Routing\ResponseFactory::turboStreamView($view, $data);
         }
          
     }
@@ -23238,12 +23354,12 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class FormBuilder extends \Kris\LaravelFormBuilder\Facades\FormBuilder {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
-            class Location extends \Stevebauman\Location\Facades\Location {}
             class Form extends \Collective\Html\FormFacade {}
             class Html extends \Collective\Html\HtmlFacade {}
             class Flasher extends \Flasher\Laravel\Facade\Flasher {}
             class SweetAlert extends \Flasher\SweetAlert\Laravel\Facade\SweetAlert {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
+            class Turbo extends \Tonysm\TurboLaravel\Facades\Turbo {}
      
 }
 

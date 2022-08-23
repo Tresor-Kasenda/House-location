@@ -1,7 +1,5 @@
 <?php
 
-use App\Providers\ViewComposerServiceProvider;
-
 return [
 
     /*
@@ -170,7 +168,6 @@ return [
 
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        Stevebauman\Location\LocationServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         /*
@@ -178,7 +175,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
@@ -240,7 +237,6 @@ return [
 
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
-        'Location' => Stevebauman\Location\Facades\Location::class,
 
     ],
 

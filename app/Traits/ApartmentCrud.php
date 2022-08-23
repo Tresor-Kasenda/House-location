@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace App\Traits;
 
 use App\Jobs\ReservationJob;
-use App\Jobs\UpdateApartmentJob;
 use App\Models\Detail;
+use App\Notifications\ApartmentNotification;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Notification;
 
 trait ApartmentCrud
 {
@@ -36,7 +37,9 @@ trait ApartmentCrud
 
         $this->createDetails($apartment, $attributes);
 
-        dispatch(new ReservationJob($apartment))->delay(now()->addSecond(10));
+        $user = auth()->user();
+
+        Notification::sendNow($user, new ApartmentNotification($apartment));
 
         $this->service->success(
             messages: "Un nouveau appartement à été ajouter"
@@ -66,8 +69,6 @@ trait ApartmentCrud
         $house->categories()->attach($attributes->categories);
 
         $this->updateDetails($attributes, $house);
-
-        dispatch(new UpdateApartmentJob())->delay(now()->addSeconds(10));
 
         $this->service->success(
             messages: "Un nouveau appartement à été modifier"

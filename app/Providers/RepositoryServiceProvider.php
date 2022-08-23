@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Providers;
@@ -18,6 +19,7 @@ use App\Contracts\NewsLetterRepositoryInterface;
 use App\Contracts\BookingHouseRepositoryInterface;
 use App\Contracts\BookingRepositoryInterface;
 use App\Contracts\BookingUserRepositoryInterface;
+use App\Contracts\NotificationRepositoryInterface;
 use App\Contracts\SearchRepositoryInterface;
 use App\Contracts\SlideRepositoryInterface;
 use App\Contracts\TransactionRepositoryInterface;
@@ -30,6 +32,7 @@ use App\Repository\Backend\CategoryRepository;
 use App\Repository\Backend\ClientRepository;
 use App\Repository\Backend\ImageRepository;
 use App\Repository\Backend\BookingRepository;
+use App\Repository\Backend\NotificationRepository;
 use App\Repository\Backend\SlideRepository;
 use App\Repository\Backend\TransactionRepository;
 use App\Repository\Backend\TrashedRepository;
@@ -73,7 +76,8 @@ class RepositoryServiceProvider extends ServiceProvider
         SlideRepositoryInterface::class => SlideRepository::class,
         TransactionRepositoryInterface::class => TransactionRepository::class,
         ClientRepositoryInterface::class => ClientRepository::class,
-        InvoiceRepositoryInterface::class => InvoiceRepository::class
+        InvoiceRepositoryInterface::class => InvoiceRepository::class,
+        NotificationRepositoryInterface::class => NotificationRepository::class
     ];
 
     public function register(){}

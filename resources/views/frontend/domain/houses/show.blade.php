@@ -1,4 +1,4 @@
-@php use App\Enums\ElectricityEnum; @endphp
+@php use App\Enums\ElectricityEnum;use App\Enums\ToiletEnum; @endphp
 @extends('frontend.layouts.app')
 
 @section('title')
@@ -7,7 +7,8 @@
 
 @section('content')
     <section class="w-full flex justify-center overflow-hidden pt-24 pb-20">
-        <div class="relative w-full max-w-screen-lg lg:max-w-screen-2xl px-4 xs:px-6 sm:px-10 lg:px-12 xl:px-16 gap-6 lg:gap-8">
+        <div
+            class="relative w-full max-w-screen-lg lg:max-w-screen-2xl px-4 xs:px-6 sm:px-10 lg:px-12 xl:px-16 gap-6 lg:gap-8">
             <div class="fixed bottom-0 left-0 w-full px-10 py-3 bg-transparent md:hidden  z-[1000]">
                 <button
                     id="btnTogFrmReser"
@@ -33,7 +34,7 @@
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        d="M6 18L18 6M6 6l12 12" />
+                                        d="M6 18L18 6M6 6l12 12"/>
                                 </svg>
                             </button>
                         </div>
@@ -56,7 +57,7 @@
                                         src="{{ asset('storage/'. $apartment->images) }}"
                                         title="{{ $apartment->town ?? "" }}"
                                         alt="{{ $apartment->town ?? "" }}"
-                                        class="rounded-xl w-full h-full object-cover transition-all hover:scale-105 duration-300" />
+                                        class="rounded-xl w-full h-full object-cover transition-all hover:scale-105 duration-300"/>
                                 </a>
                             </div>
 
@@ -72,7 +73,7 @@
                                                 src="{{ asset('storage/'. $image->images) }}"
                                                 title="{{ $apartment->town ?? "" }}"
                                                 alt="{{ $apartment->town ?? "" }}"
-                                                class="rounded-xl w-full h-full object-cover transition-all hover:scale-105 duration-300" />
+                                                class="rounded-xl w-full h-full object-cover transition-all hover:scale-105 duration-300"/>
                                         </a>
                                     </div>
                                 @endforeach
@@ -85,7 +86,7 @@
                                 <img
                                     src="{{ asset('storage/'. $apartment->images) }}"
                                     title="{{ $apartment->town ?? "" }}"
-                                    class="rounded-xl w-full h-full object-cover" />
+                                    class="rounded-xl w-full h-full object-cover"/>
                             </div>
                             @if($apartment->image)
                                 @foreach($apartment->image as $image)
@@ -93,7 +94,7 @@
                                         <img
                                             src="{{ asset('storage/'. $image->images) }}"
                                             title="{{ $apartment->town ?? "" }}"
-                                            class="rounded-xl w-full h-full object-cover" />
+                                            class="rounded-xl w-full h-full object-cover"/>
                                     </div>
                                 @endforeach
                             @endif
@@ -114,40 +115,48 @@
                         <div class="flex py-4 w-full">
                             <table class="w-full rounded-lg table-fixed bg-gray-100">
                                 <tbody>
-                                    <tr>
-                                        <td class="p-2 bg-gray-50 text-gray-700">Code Reference</td>
-                                        <td class="p-2 rounded">{{ $apartment->reference ?? 0 }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 bg-gray-50 text-gray-700">Chambres</td>
-                                        <td class="p-2 rounded">{{ $apartment->detail->number_room ?? 0 }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 bg-gray-50 text-gray-700">Nombre des pieces</td>
-                                        <td class="p-2 rounded">{{ $apartment->detail->number_pieces }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 bg-gray-50 text-gray-700">Toilette interieur</td>
-                                        <td class="p-2 rounded">{{ $apartment->detail->toilet ?? "" }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 bg-gray-50 text-gray-700">Prix Mensuel</td>
-                                        <td class="p-2 rounded">{{ $apartment->prices ?? 0 }} $</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 bg-gray-50 text-gray-700">Guaratie</td>
-                                        <td class="p-2 rounded">{{ $apartment->warranty_price ?? 0 }} $</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 bg-gray-50 text-gray-700">Electricité</td>
-                                        <td class="p-2 rounded">
-                                            @if($apartment->detail->electrity  == ElectricityEnum::EXIST_ELECTRICITY)
-                                                Disponible
-                                            @else
-                                                Non Disponible
-                                            @endif
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td class="p-2 bg-gray-50 text-gray-700">Code Reference</td>
+                                    <td class="p-2 rounded">{{ $apartment->reference ?? 0 }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 bg-gray-50 text-gray-700">Chambres</td>
+                                    <td class="p-2 rounded">{{ $apartment->detail->number_rooms ?? 0 }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 bg-gray-50 text-gray-700">Nombre des pieces</td>
+                                    <td class="p-2 rounded">{{ $apartment->detail->number_pieces }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 bg-gray-50 text-gray-700">Toilette interieur</td>
+                                    <td class="p-2 rounded">
+                                        @if($apartment->detail->toilet == ToiletEnum::INTERNE)
+                                            Toilete Interne
+                                        @elseif($apartment->detail->toilet == ToiletEnum::EXTERNE)
+                                            Toilete Externe
+                                        @else
+                                            Interne/Externe
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 bg-gray-50 text-gray-700">Prix Mensuel</td>
+                                    <td class="p-2 rounded">{{ $apartment->prices ?? 0 }} $</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 bg-gray-50 text-gray-700">Guaratie</td>
+                                    <td class="p-2 rounded">{{ $apartment->warranty_price ?? 0 }} $</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 bg-gray-50 text-gray-700">Electricité</td>
+                                    <td class="p-2 rounded">
+                                        @if($apartment->detail->electrity  == ElectricityEnum::EXIST_ELECTRICITY)
+                                            Disponible
+                                        @else
+                                            Non Disponible
+                                        @endif
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -164,7 +173,7 @@
                                 <path
                                     fill-rule="evenodd"
                                     d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                    clip-rule="evenodd" />
+                                    clip-rule="evenodd"/>
                             </svg>
                             <span>A 2 Heures de votre position actuelle</span>
                         </div>

@@ -1,9 +1,8 @@
 import '../css/app.css';
 import './bootstrap'
+
+import Turbolinks from 'turbolinks'
+Turbolinks.start()
+
 import './config/hamburger'
-import './config/swipper'
-
-import 'fslightbox'
-
-import $ from 'jquery';
-window.$ = window.jQuery = $;
+import './components/search'

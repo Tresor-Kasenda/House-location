@@ -8,14 +8,19 @@
     <meta http-equiv="refresh" content="60">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png') }}">
     <title>{{ config('app.name') }} | @yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('app/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
-<body  class="text-gray-500 min-h-screen bg-gray-100">
-    <div class="flex h-screen w-full justify-center items-center">
-        @yield('content')
+<body class="overflow-hidden overflow-y-auto min-h-screen  bg-[#F9FAFB] flex items-center justify-center md:flex-none py-10">
+    <div class="w-full h-full z-100 flex justify-center">
+        <div class="w-full flex justify-center md:justify-start px-4 small:px-6 md:px-10 lg:px-8 z-50">
+            <div class="z-100 w-full max-w-md mx-auto flex flex-col items-center gap-4">
+            @yield('content')
+            </div>
+        </div>
     </div>
+
+    <script src="{{ assert('js/app.js') }}"></script>
 </body>
 </html>

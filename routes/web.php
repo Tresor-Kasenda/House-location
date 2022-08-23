@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\ConfirmBookingController;
 use App\Http\Controllers\Backend\HomeAdminController;
 use App\Http\Controllers\Backend\ImagesAdminController;
 use App\Http\Controllers\Backend\BookingAdminController;
+use App\Http\Controllers\Backend\NotificationAdminController;
 use App\Http\Controllers\Backend\SlideAdminController;
 use App\Http\Controllers\Backend\TransactionBackendController;
 use App\Http\Controllers\Backend\TrashedAdminController;
@@ -61,6 +62,10 @@ Route::group([
 
     Route::get('clients', [ClientBackendController::class, 'index'])->name('client.index');
     Route::get('client/{key}', [ClientBackendController::class, 'show'])->name('client.show');
+
+    Route::get('notification', [NotificationAdminController::class, 'index'])->name('notification.index');
+    Route::delete('notification/{key}', [NotificationAdminController::class, 'delete'])->name('notification.delete');
+    Route::get('notification/markRead', [NotificationAdminController::class, 'markAllReads'])->name('notification.markReads');
 
     Route::put('activeReservation/{key}', [ConfirmBookingController::class, 'confirm'])->name('reservation.active');
     Route::put('cancelReservation/{key}', [CancelBookingController::class, 'inactive'])->name('reservation.inactive');

@@ -75,6 +75,7 @@
                     <div class="swiper swiperBestrate">
                         <div class="swiper-wrapper">
                             @foreach($apartment_notes as $key => $apartment_note)
+                                <turbo-frame id="{{$apartment_notes}}">
                                 <div class="swiper-slide">
                                     <a href="{{ route('house.show', $apartment_note->house->id) }}">
                                         <div
@@ -158,6 +159,7 @@
                                         </div>
                                     </a>
                                 </div>
+                                </turbo-frame>
                             @endforeach
                         </div>
                     </div>
@@ -175,7 +177,9 @@
                 <div class="flex flex-col gap-5">
                     <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6 ">
                         @foreach($apartments as $apartment)
+                            <turbo-frame id="{{$apartments}}">
                             @include('frontend.components._service', with($apartment))
+                            </turbo-frame>
                         @endforeach
                     </div>
                     <div class="flex items-center w-full pt-4">
