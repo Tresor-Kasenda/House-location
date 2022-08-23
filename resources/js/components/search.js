@@ -4,14 +4,13 @@ import 'jquery-ui/ui/widgets/autocomplete';
 $('#location').on('keyup', function () {
     const search = $('#location').val();
     const render  = $('#resultRender');
-    if(search != null){
+    if(search.length > 3){
         $.ajax({
             type: "GET",
             url: '/search',
             data: {_search : search},
             dataType: 'json',
             delay: 220,
-            minLength: 4,
             autofocus: true,
             success: function (response) {
                 if(response.search){
@@ -20,7 +19,5 @@ $('#location').on('keyup', function () {
                 render.html(response.empty)
             }
         })
-    } else {
-        render.html("")
     }
 })
