@@ -27,7 +27,6 @@ btnHumb.addEventListener("click", (e) => {
 
 overlayM.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log("");
     toggleNavigation();
 });
 

@@ -18,14 +18,14 @@
     </div>
     <div>
         @if($reservation->status  == ReservationEnum::CONFIRMED_RESERVATION)
-            <a href="#"
+            <a href="{{ route('users.invoice.download', $reservation->id) }}"
                 class="w-full flex justify-between items-center text-center text-sm px-5 gap-2 py-3 rounded-lg bg-green-600 text-white">
                 <span>Telecharger la facture</span>
             </a>
         @else
             <div class="w-full flex">
                 <span class="w-full block text-center text-sm px-5 py-3 rounded-lg bg-orange-600 text-white">
-                    En attente
+                    Annuler
                 </span>
             </div>
         @endif

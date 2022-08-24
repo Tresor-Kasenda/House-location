@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="{{ asset('app/swipper.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     @yield('styles')
-    <script>
-        var siteUrl = "{{url('/')}}";
-    </script>
 </head>
 <body class="text-gray-500 overflow-y-auto  overflow-hidden overflow-x-hidden w-full">
     @include('frontend.partials.header')
@@ -24,6 +21,9 @@
     @if(request()->getPathInfo() != '/localisation')
         @include('frontend.partials.footer')
     @endif
+
+
+
     <script
         src="{{ asset('js/app.js') }}"
         data-turbolinks-track="true"

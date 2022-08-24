@@ -94,9 +94,7 @@ Route::group([
     'middleware' => ['users', 'auth']
 ], function(){
     Route::resource('users', HomeUserController::class);
-    Route::controller(UpdateUserController::class)->group(function (){
-        Route::put('updateUser/{key}/update', 'update')->name('update.users');
-    });
+    Route::put('updateUser/{key}/update', UpdateUserController::class)->name('update.users');
     Route::get('invoice/{key}', InvoiceUserController::class)->name('invoice.download');
     Route::delete('cancel/{key}', [CancellingBookingController::class, 'cancel'])->name('reservation.cancel');
 });

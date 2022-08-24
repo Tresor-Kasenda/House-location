@@ -65,7 +65,7 @@
                     <div class="flex items-center">
                         <div data-langues class="flex relative flex-col w-full">
                             <div data-fetch-selected-lang class="flex items-center gap-2 cursor-pointer">
-                                <img src="/public/images/icons/flagfrance.svg" alt="langue"  width="30" class="h-auto w-5"/>
+                                <img src="{{ asset('images/icons/flagfrance.svg') }}" alt="langue"  width="30" class="h-auto w-5"/>
                                 <h3 class="text-lg text-gray-600 xl:flex">Fr</h3>
                             </div>
                             <div data-langues-listbox class="w-64 min-w-max origin-bottom bg-white shadow-lg py-3 absolute top-[calc(100%+10px)] right-0 invisible transition-all duration-300 translate-y-5 opacity-0">
@@ -129,7 +129,7 @@
                             role="button"
                             class="md:hidden border-2 border-purple-200 items-center rounded-full">
                             <img
-                                src="{{ asset('admins/images/johnkat.jfif') }}"
+                                src="{{ asset('images/profile.jpg') }}"
                                 width="100"
                                 class="w-10 h-10 rounded-full"
                                 alt="avatar">

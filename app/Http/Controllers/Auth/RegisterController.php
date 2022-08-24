@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Enums\UserRoleEnum;
 use App\Http\Controllers\Controller;
+use App\Models\Client;
+use App\Models\Commissioner;
 use App\Models\User;
 use App\Traits\RedirectRoute;
 use Illuminate\Database\Eloquent\Builder;

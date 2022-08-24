@@ -9,14 +9,14 @@
                 <div class="w-full py-4 shadow-lg bg-white   rounded-md flex flex-col gap-5">
                     <form action="{{ route('home.index') }}" class="w-full px-1 relative lg:w-full flex flex-col  z-50 ">
                         <div
-                            class="grid gap-y-4 relative items-center w-full  z-50">
+                            class="grid gap-y-4 relative items-center w-full  z-50" style="margin-top: -10px">
                             <div class="relative flex lg:col-span-1 col-span-2">
                                 <input
                                     type="text"
                                     name="location"
                                     id="location"
                                     class="w-full text-sm bg-white text-gray-500 shadow-sm shadow-purple-100 px-3 py-3 flex rounded-md border-2 border-gray-200 transition focus:border-purple-600"
-                                    placeholder="Likasi ....">
+                                    placeholder="Rechercher une maison par ville, Commune, Prix, Quartier">
                             </div>
                             <div
                                 class="absolute right-2 top-1/2 -translate-y-1/2">

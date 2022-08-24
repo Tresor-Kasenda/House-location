@@ -40,7 +40,7 @@
                     <div class="flex flex-col gap-10 w-full h-full min-h-screen py-4 lg:px-5 md:pr-5">
                         <div class="flex flex-col gap-6">
                             <div class="flex">
-                                <h2 class="text-xl font-semibold ">Vos reservation</h2>
+                                <h2 class="text-xl font-semibold ">Mes reservations</h2>
                             </div>
                             <div class="grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-2">
                                 @foreach($reservations as $reservation)
@@ -106,21 +106,4 @@
             </div>
         </div>
     </div>
-
-@endsection
-
-@section("scripts")
-    <script>
-        const editProfile = document.querySelector('#editProfile')
-        const closeProfile = document.querySelector('#closeProfile')
-        const editeUserProfile = document.querySelector('#editeUserProfile')
-        editProfile.addEventListener('click', (e) => {
-            e.preventDefault()
-            editeUserProfile.classList.remove('-translate-y-full')
-        })
-        closeProfile.addEventListener('click', (e) => {
-            e.preventDefault()
-            editeUserProfile.classList.add('-translate-y-full')
-        })
-    </script>
 @endsection

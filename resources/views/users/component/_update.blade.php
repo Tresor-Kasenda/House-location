@@ -1,8 +1,8 @@
 <div
     id="editeUserProfile"
-    class="fixed -translate-y-full flex items-center justify-center top-0 left-0 w-full h-full transition-all duration-500 z-[1006] ">
+    class="fixed -translate-y-full flex items-center justify-center top-0 left-0 w-full h-full transition-all duration-500 z-[1006]">
     <div class="bg-white px-8 py-10 rounded-md shadow-2xl w-11/12 sm:w-96">
-        <form action="{{ route('users.update.users', auth()->user()->id) }}" method="post" class="flex flex-col gap-6">
+        <form action="{{ route('users.update.users', auth()->user()->id) }}" method="post" class="flex flex-col gap-6" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="flex justify-between items-center">
@@ -19,6 +19,22 @@
             <div class="flex flex-col gap-4">
                 <div class="relative">
                     <input
+                        id="username"
+                        type="text"
+                        name="username"
+                        value="{{ old('username') ?? auth()->user()->name }}"
+                        class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
+                        placeholder="Saisir votre nom"
+                        required>
+                    <label
+                        for="username"
+                        class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
+                        Nom complet
+                    </label>
+                </div>
+
+                <div class="relative">
+                    <input
                         id="email"
                         type="text"
                         name="email"
@@ -32,19 +48,20 @@
                         Adresse mail
                     </label>
                 </div>
+
                 <div class="relative">
                     <input
-                        id="username"
-                        type="text"
-                        name="username"
-                        value="{{ old('username') ?? auth()->user()->name }}"
-                        class="relative peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
-                        placeholder="Saisir votre nom"
+                        id="images"
+                        type="file"
+                        name="images"
+                        value="{{ old('images') }}"
+                        class="relative text-sm  border  cursor-pointer focus:outline-none  peer transition-all focus:border-purple-600 border-[3px] border-gray-200 outline-none rounded-xl px-4 py-3 w-full text-sm text-gray-400 placeholder-transparent"
+                        placeholder="Select your images"
                         required>
                     <label
-                        for="username"
-                        class="absolute text-sm bg-white left-4 transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
-                        Nom complet
+                        for="images"
+                        class="absolute text-sm bg-white left-4 cursor-pointer transition-all text-gray-400 peer-placeholder-shown:text-sm peer-focus:text-sm -top-3 peer-placeholder-shown:top-3.5 peer-focus:text-purple-600 peer-focus:px-1 peer-focus:-top-3">
+                        Photo de Profiles
                     </label>
                 </div>
                 <div class="relative">

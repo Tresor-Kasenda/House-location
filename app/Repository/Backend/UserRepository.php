@@ -18,7 +18,7 @@ class UserRepository implements UserRepositoryInterface
     public function getContents(): Collection|array
     {
         return User::query()
-            ->where('role_id', '!=', UserRoleEnum::ADMINS_ROLE)
+            ->where('role_id', '=', UserRoleEnum::DEALER_ROLE)
             ->with(['commissioner', 'reservations'])
             ->get();
     }

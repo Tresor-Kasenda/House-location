@@ -1,7 +1,7 @@
 window._ = require('lodash');
 try {
     window.$ = window.jQuery = require('jquery');
-
+    window.toastr = require('toastr');
 } catch (e) {}
 
 window.axios = require('axios');
