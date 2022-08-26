@@ -72,12 +72,15 @@
                                                     <a href="{{ route('admins.slides.edit', $slide->id) }}" class="btn btn-dim btn-primary btn-sm ml-1">
                                                         <em class="icon ni ni-edit"></em>
                                                     </a>
-                                                    <form action="{{ route('admins.slides.destroy', $slide->id) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                    <a
+                                                        class="btn btn-dim btn-danger btn-sm"
+                                                        href="#"
+                                                        onclick="deleteConfirm('delete-slider-{{$slide->id}}')"
+                                                    ><em class="icon ni ni-trash"></em></a>
+
+                                                    <form action="{{ route('admins.slides.destroy', $slide->id) }}" method="POST" id="delete-slider-{{$slide->id}}">
                                                         @method('DELETE')
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                        <button type="submit" class="btn btn-dim btn-danger btn-sm">
-                                                            <em class="icon ni ni-trash"></em>
-                                                        </button>
                                                     </form>
                                                 </div>
                                             </span>

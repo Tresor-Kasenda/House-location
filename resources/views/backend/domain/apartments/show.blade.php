@@ -1,3 +1,4 @@
+@php use App\Enums\HouseEnum; @endphp
 @extends('backend.layout.backend')
 
 @section('title', "Administration des appartements")
@@ -45,25 +46,25 @@
                     </div>
                 </div>
             </div>
-            @if($room->status == false)
-                <div class="alert alert-danger alert-icon " role="alert">
-                    <em class="icon ni ni-alert-circle"></em>
-                    Cette appartement ne pas encore activé. Veillez l'activer pour qu'elle soie visible
-                </div>
-            @endif
+
             <div class="nk-block nk-block-lg">
                 <div class="nk-block">
-                    <div class="justify-content text-center p-2">
-                        <img
-                                src="{{ asset('storage/'.$room->images) }}"
-                                alt="{{ $room->commune }}"
-                                class="img-fluid img-thumbnail rounded-circle"
-                                height="15%"
-                                width="10%"
-                        >
-                    </div>
+                    @if($room->status == HouseEnum::INVALIDATED_HOUSE)
+                        <div class="alert alert-danger alert-icon mb-3" role="alert">
+                            <em class="icon ni ni-alert-circle"></em>
+                            Cette salle ne pas encore activé. Veillez l'activer pour qu'elle soie visible
+                        </div>
+                    @endif
                     <div class="card">
                         <div class="card-inner">
+                            <div class="text-center">
+                                <img
+                                    src="{{ asset('storage/'.$room->images) }}"
+                                    title="{{ $room->reference ?? "" }}"
+                                    style="object-fit: contain"
+                                    class="img-fluid user-avatar-xl mb-3 text-center border-danger"
+                                >
+                            </div>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="room-info">
                                     <div class="nk-block">
@@ -107,31 +108,37 @@
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Prix</span>
-                                                    <span class="profile-ud-value">{{ $room->prices ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->prices ?? "" }} $</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Nombre des pieces</span>
-                                                    <span class="profile-ud-value">{{ $room->detail->number_pieces ?? "" }}</span>
+                                                    <span class="profile-ud-label">Type </span>
+                                                    <span class="profile-ud-value font-bold">{{ strtoupper($room->type->name) ?? "" }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="profile-ud-item">
+                                                <div class="profile-ud wider">
+                                                    <span class="profile-ud-label">Nombre de Pieces</span>
+                                                    <span class="profile-ud-value">{{ $room->detail->number_pieces ?? "" }} pieces</span>
+                                                </div>
+                                            </div>
+                                            <div class="profile-ud-item">
+                                                <div class="profile-ud wider">
+                                                    <span class="profile-ud-label">Nombre de Chambre</span>
+                                                    <span class="profile-ud-value">{{ $room->detail->number_rooms ?? "" }} pieces</span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
                                                     <span class="profile-ud-label">Garantie</span>
-                                                    <span class="profile-ud-value">{{ $room->guarantees ?? "" }}</span>
+                                                    <span class="profile-ud-value">{{ $room->warranty_price ?? "" }} $ </span>
                                                 </div>
                                             </div>
                                             <div class="profile-ud-item">
                                                 <div class="profile-ud wider">
-                                                    <span class="profile-ud-label">Categories</span>
-                                                    @if($room->categories)
-                                                        @foreach($room->categories as $category)
-                                                            <span class="profile-ud-value badge badge-circle">
-                                                                {{ $category->name ?? "" }}
-                                                            </span>
-                                                        @endforeach
-                                                    @endif
+                                                    <span class="profile-ud-label">Electricite</span>
+                                                    <span class="profile-ud-value">{{ strtoupper($room->detail->toilet) ?? "" }} </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,6 +147,37 @@
                             </div>
                         </div>
                     </div>
+
+                    @if($room->image)
+                        <div id="carouselExFade" class="carousel slide carousel-fade mt-3" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img
+                                        src="{{ asset('storage/'. $room->images) }}"
+                                        class="d-block w-100"
+                                        alt="{{ $room->id }}">
+                                </div>
+                            </div>
+                            @foreach($room->image as $images)
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img
+                                            src="{{ asset('storage/'. $images->images) }}"
+                                            class="d-block w-100"
+                                            alt="{{ $images->id }}">
+                                    </div>
+                                </div>
+                            @endforeach
+                            <a class="carousel-control-prev" href="#carouselExFade" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExFade" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

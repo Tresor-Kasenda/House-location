@@ -28,6 +28,7 @@ use App\Http\Controllers\Frontend\HouseController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\Frontend\NewsLetterController;
 use App\Http\Controllers\Frontend\SearchLocationController;
+use App\Http\Controllers\UseCase\Auth\FacebookAuth\FacebookAuthController;
 use App\Http\Controllers\Users\CancellingBookingController;
 use App\Http\Controllers\Users\HomeUserController;
 use App\Http\Controllers\Users\InvoiceUserController;
@@ -98,6 +99,7 @@ Route::group([
     Route::delete('cancel/{key}', [CancellingBookingController::class, 'cancel'])->name('reservation.cancel');
 });
 
+
 Route::get('/', HomeController::class)->name('home.index');
 
 Route::resource('categories', CategoryController::class);
@@ -112,6 +114,14 @@ Route::post('news-letters', [NewsLetterController::class, 'index'])->name('newsl
 Route::controller(BookingController::class)->group(function () {
     Route::post('reservation', 'store')->name('reservation.store');
     Route::get('confirmation/{key}', 'show')->name('reservation.show');
+});
+
+Route::group([
+    'prefix' => 'auth',
+    'as' => 'auth.',
+], function (){
+    Route::get('facebook', [FacebookAuthController::class, 'redirectToFacebook'])->name('facebook.auth');
+    Route::get('callback/facebook', [FacebookAuthController::class, 'authToFacebook'])->name('facebook.callback');
 });
 
 Route::get('welcome/{locale}', function ($locale) {

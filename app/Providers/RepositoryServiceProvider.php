@@ -27,6 +27,8 @@ use App\Contracts\TransactionRepositoryInterface;
 use App\Contracts\TrashedRepositoryInterface;
 use App\Contracts\UpdateUserRepositoryInterface;
 use App\Contracts\UserRepositoryInterface;
+use App\Http\Controllers\UseCase\Auth\FacebookAuth\Interfaces\FacebookAuthRepositoryInterface;
+use App\Http\Controllers\UseCase\Auth\FacebookAuth\Repository\FacebookAuthRepository;
 use App\Repository\Backend\ActiveApartmentRepository;
 use App\Repository\Backend\ApartmentRepository;
 use App\Repository\Backend\BookingRepository;
@@ -78,6 +80,7 @@ class RepositoryServiceProvider extends ServiceProvider
         ClientRepositoryInterface::class => ClientRepository::class,
         InvoiceRepositoryInterface::class => InvoiceRepository::class,
         NotificationRepositoryInterface::class => NotificationRepository::class,
+        FacebookAuthRepositoryInterface::class => FacebookAuthRepository::class
     ];
 
     public function register()
