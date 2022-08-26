@@ -1,10 +1,9 @@
 import $ from 'jquery'
-import 'jquery-ui/ui/widgets/autocomplete';
 
 $('#location').on('keyup', function () {
     const search = $('#location').val();
     const render  = $('#resultRender');
-    if (search.length > 3) {
+    if (search.length > 2) {
         $.ajax({
             type: "GET",
             url: '/search',

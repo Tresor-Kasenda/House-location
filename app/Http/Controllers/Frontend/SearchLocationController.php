@@ -17,23 +17,26 @@ class SearchLocationController extends Controller
 
     public function searching(Request $request): JsonResponse
     {
+        if ($request->input('_search') == null) {
+            return response()->json([
+                'success' => false,
+                'empty' => view('frontend.components.null')->render(),
+            ]);
+        }
+
         $searches = $this->repository->search(request:  $request);
 
         if ($searches->isNotEmpty()) {
-            $result = view('frontend.components._render', [
-                'searches' => $searches,
-            ])->render();
-
             return response()->json([
                 'success' => true,
-                'search' => $result,
+                'search' => view('frontend.components._render', [
+                    'searches' => $searches,
+                ])->render(),
             ]);
         }
-        $empty = view('frontend.components._empty')->render();
-
         return response()->json([
             'success' => false,
-            'empty' => $empty,
+            'empty' => view('frontend.components._empty')->render(),
         ]);
     }
 }

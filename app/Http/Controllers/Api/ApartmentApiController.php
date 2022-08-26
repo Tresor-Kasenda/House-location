@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\HouseEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\HouseResource;
 use App\Models\House;
@@ -14,7 +15,9 @@ class ApartmentApiController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $outlets = House::all();
+        $outlets = House::query()
+            ->where('status', '=', HouseEnum::VALIDATED_HOUSE)
+            ->get();
 
         $geoJSOData = $outlets->map(fn ($outlet) => [
             'type' => 'Feature',

@@ -98,12 +98,15 @@
                                                     <a href="{{ route('admins.houses.edit', $room->id) }}" class="btn btn-dim btn-primary btn-sm">
                                                         <em class="icon ni ni-edit"></em>
                                                     </a>
-                                                    <form action="{{ route('admins.houses.destroy', $room->id) }}" method="POST" onsubmit="return confirm('Voulez vous supprimer');">
+                                                    <a
+                                                        class="btn btn-dim btn-danger btn-sm"
+                                                        href="#"
+                                                        onclick="deleteConfirm('delete-apartment-{{$room->id}}')"
+                                                    ><em class="icon ni ni-trash"></em></a>
+
+                                                    <form action="{{ route('admins.houses.destroy', $room->id) }}" method="POST" id="delete-apartment-{{$room->id}}">
                                                         @method('DELETE')
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                        <button type="submit" class="btn btn-dim btn-danger btn-sm">
-                                                            <em class="icon ni ni-trash"></em>
-                                                        </button>
                                                     </form>
                                                 </div>
                                             </span>

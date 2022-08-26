@@ -8,7 +8,15 @@
     <meta name="description" content="Une partie d'administration pour la gestion d'un {{ config('app.name') }}">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png') }}">
     <title>{{ config('app.name') }} | @yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('admins/css/dashlite.css') }}">
+    <link rel="stylesheet" href="{{ asset('admins/css/dashlite.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/backend.css') }}">
+    <script>
+        let mapCenter = [
+            {{ request('latitude', config('leaflet.map_center_latitude')) }},
+            {{ request('longitude', config('leaflet.map_center_longitude')) }}
+        ];
+        let zoomMaps = {{ config('leaflet.zoom_level') }}
+    </script>
     @yield('styles')
 </head>
 
@@ -29,6 +37,7 @@
     </div>
     <script src="{{ asset('admins/js/bundle.js') }}"></script>
     <script src="{{ asset('admins/js/scripts.js') }}"></script>
+    <script src="{{ asset('backend/backend.js') }}"></script>
     @yield('scripts')
     @flasher_render
 </body>
