@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Backend;
@@ -10,7 +11,9 @@ use Illuminate\Http\RedirectResponse;
 
 class BookingAdminController extends Controller
 {
-    public function __construct(public BookingRepositoryInterface $repository){}
+    public function __construct(public BookingRepositoryInterface $repository)
+    {
+    }
 
     public function index(): Renderable
     {

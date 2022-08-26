@@ -17,7 +17,7 @@ class Transaction extends Model
         'client_id',
         'reservation_id',
         'payment_date',
-        'code_transaction'
+        'code_transaction',
     ];
 
     public function client(): BelongsTo

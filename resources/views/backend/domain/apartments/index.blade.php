@@ -57,7 +57,7 @@
                                     <th class="nk-tb-col tb-col-md">
                                         <span class="sub-text">N° Telephone</span>
                                     </th>
-                                    <th class="nk-tb-col nk-tb-col-tools text-right">
+                                    <th class="nk-tb-col">
                                         <span class="sub-text">Actions</span>
                                     </th>
                                 </tr>

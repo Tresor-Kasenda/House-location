@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Requests;
@@ -15,10 +16,10 @@ class ContactRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "username" => ['required', 'string'],
-            "email" => ['required', 'email'],
-            "subject" => ['required', 'string'],
-            "message" => ['required', 'string', 'min:20']
+            'username' => ['required', 'string'],
+            'email' => ['required', 'email'],
+            'subject' => ['required', 'string'],
+            'message' => ['required', 'string', 'min:20'],
         ];
     }
 }

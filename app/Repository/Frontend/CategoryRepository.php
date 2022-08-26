@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository\Frontend;
@@ -7,10 +8,7 @@ use App\Contracts\CategoryHomeRepositoryInterface;
 use App\Enums\HouseEnum;
 use App\Models\Category;
 use App\Models\House;
-use App\Models\Type;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
 
 class CategoryRepository implements CategoryHomeRepositoryInterface
 {
@@ -18,7 +16,7 @@ class CategoryRepository implements CategoryHomeRepositoryInterface
     {
         $apartments = House::query()
             ->orderByDesc('created_at')
-            ->when('status', fn($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
+            ->when('status', fn ($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
             ->inRandomOrder();
 
         if ($request->input('category')) {
@@ -33,18 +31,19 @@ class CategoryRepository implements CategoryHomeRepositoryInterface
     public function show(string $key)
     {
         $house = House::query()
-            ->when('id', fn($builder) => $builder->where('id', $key))
-            ->when('status', fn($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
+            ->when('id', fn ($builder) => $builder->where('id', $key))
+            ->when('status', fn ($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
             ->withCount('reservations')
             ->first();
-        return $house->load(['categories','image', 'type', 'detail']);
+
+        return $house->load(['categories', 'image', 'type', 'detail']);
     }
 
     public function getHouseByDetails($house): Collection|array
     {
         return House::query()
-            ->when('status', fn($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
-            ->when('prices', fn($builder) => $builder->where('prices', $house->prices))
+            ->when('status', fn ($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE))
+            ->when('prices', fn ($builder) => $builder->where('prices', $house->prices))
             ->orWhere('commune', '=', $house->commune)
             ->get();
     }
@@ -54,7 +53,7 @@ class CategoryRepository implements CategoryHomeRepositoryInterface
         return Category::query()
             ->select([
                 'name',
-                'id'
+                'id',
             ])
             ->latest()
             ->get();

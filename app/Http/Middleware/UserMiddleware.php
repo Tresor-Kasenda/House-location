@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Middleware;
@@ -12,7 +13,7 @@ class UserMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if(!Auth::check()){
+        if (! Auth::check()) {
             return redirect()->route('login');
         }
 
@@ -24,7 +25,7 @@ class UserMiddleware
             return redirect()->route('commissioner.backend.index');
         }
 
-        if (Auth::user()->role_id == UserRoleEnum::ADMINS_ROLE){
+        if (Auth::user()->role_id == UserRoleEnum::ADMINS_ROLE) {
             return redirect()->route('admins.backend.index');
         }
     }

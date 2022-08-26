@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientRepository implements ClientRepositoryInterface
 {
-
     public function getReservationForClients(): Collection|array
     {
         return Client::query()
@@ -22,9 +21,9 @@ class ClientRepository implements ClientRepositoryInterface
                 'name',
                 'last_name',
                 'phones_number',
-                'email'
+                'email',
             ])
-            ->with(['reservation' => function($builder) {
+            ->with(['reservation' => function ($builder) {
                 $builder->where('status', ReservationEnum::CONFIRMED_RESERVATION);
             }, 'transaction'])
             ->get();
@@ -39,16 +38,16 @@ class ClientRepository implements ClientRepositoryInterface
                 'last_name',
                 'phones_number',
                 'email',
-                'address'
+                'address',
             ])
             ->where('id', '=', $key)
             ->firstOrFail();
 
         return $client->load([
             'reservation' => [
-                'house'
+                'house',
             ],
-            'transactions'
+            'transactions',
         ]);
     }
 }

@@ -28,7 +28,7 @@ class SlideRepository implements SlideRepositoryInterface
                 'id',
                 'title',
                 'images',
-                'description'
+                'description',
             ])
             ->orderByDesc('created_at')
             ->get();
@@ -41,7 +41,7 @@ class SlideRepository implements SlideRepositoryInterface
                 'id',
                 'title',
                 'images',
-                'description'
+                'description',
             ])
             ->where('id', '=', $key)
             ->firstOrFail();
@@ -53,9 +53,10 @@ class SlideRepository implements SlideRepositoryInterface
             ->create([
                 'images' => self::uploadFiles($request),
                 'title' => $request->input('title'),
-                'description' => $request->input('description')
+                'description' => $request->input('description'),
             ]);
-        $this->service->success("Un nouveau slide a ete ajouter avec success");
+        $this->service->success('Un nouveau slide a ete ajouter avec success');
+
         return $slide;
     }
 
@@ -69,9 +70,10 @@ class SlideRepository implements SlideRepositoryInterface
         $slide->update([
             'title' => $request->input('title'),
             'images' => self::uploadFiles($request),
-            'description' => $request->input('description')
+            'description' => $request->input('description'),
         ]);
-        $this->service->success("Un slide a ete modifier avec success", 'success');
+        $this->service->success('Un slide a ete modifier avec success', 'success');
+
         return $slide;
     }
 
@@ -79,7 +81,8 @@ class SlideRepository implements SlideRepositoryInterface
     {
         $slide = $this->show($key);
         $slide->delete();
-        $this->service->success("Un slide a ete supprimer avec success", 'success');
+        $this->service->success('Un slide a ete supprimer avec success', 'success');
+
         return $slide;
     }
 }

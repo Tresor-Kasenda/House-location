@@ -6,6 +6,10 @@ namespace App\Providers;
 
 use App\Contracts\ActiveApartmentRepositoryInterface;
 use App\Contracts\ApartmentCommissionerRepositoryInterface;
+use App\Contracts\ApartmentRepositoryInterface;
+use App\Contracts\BookingHouseRepositoryInterface;
+use App\Contracts\BookingRepositoryInterface;
+use App\Contracts\BookingUserRepositoryInterface;
 use App\Contracts\CancelBookingRepositoryInterface;
 use App\Contracts\CategoryHomeRepositoryInterface;
 use App\Contracts\CategoryRepositoryInterface;
@@ -16,9 +20,6 @@ use App\Contracts\ImageCommissionerRepositoryInterface;
 use App\Contracts\ImageRepositoryInterface;
 use App\Contracts\InvoiceRepositoryInterface;
 use App\Contracts\NewsLetterRepositoryInterface;
-use App\Contracts\BookingHouseRepositoryInterface;
-use App\Contracts\BookingRepositoryInterface;
-use App\Contracts\BookingUserRepositoryInterface;
 use App\Contracts\NotificationRepositoryInterface;
 use App\Contracts\SearchRepositoryInterface;
 use App\Contracts\SlideRepositoryInterface;
@@ -28,29 +29,28 @@ use App\Contracts\UpdateUserRepositoryInterface;
 use App\Contracts\UserRepositoryInterface;
 use App\Repository\Backend\ActiveApartmentRepository;
 use App\Repository\Backend\ApartmentRepository;
+use App\Repository\Backend\BookingRepository;
 use App\Repository\Backend\CategoryRepository;
 use App\Repository\Backend\ClientRepository;
 use App\Repository\Backend\ImageRepository;
-use App\Repository\Backend\BookingRepository;
 use App\Repository\Backend\NotificationRepository;
 use App\Repository\Backend\SlideRepository;
 use App\Repository\Backend\TransactionRepository;
 use App\Repository\Backend\TrashedRepository;
 use App\Repository\Backend\UserRepository;
-use App\Repository\Frontend\HomeFrontendRepository;
-use App\Repository\Frontend\NewsLetterRepository;
-use App\Repository\Frontend\SearchRepository;
 use App\Repository\Dealer\ApartmentCommissionerRepository;
 use App\Repository\Dealer\HomeCommissionerRepository;
 use App\Repository\Dealer\ImageCommissionerRepository;
+use App\Repository\Frontend\BookingRepository as Reservation;
+use App\Repository\Frontend\CategoryRepository as HomeCategory;
+use App\Repository\Frontend\HomeFrontendRepository;
+use App\Repository\Frontend\NewsLetterRepository;
+use App\Repository\Frontend\SearchRepository;
+use App\Repository\Users\BookingUserRepository;
 use App\Repository\Users\CancelBookingRepository;
 use App\Repository\Users\InvoiceRepository;
-use App\Repository\Users\BookingUserRepository;
 use App\Repository\Users\UsersProfileRepository;
 use Illuminate\Support\ServiceProvider;
-use App\Contracts\ApartmentRepositoryInterface;
-use App\Repository\Frontend\CategoryRepository as HomeCategory;
-use App\Repository\Frontend\BookingRepository as Reservation;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -77,10 +77,12 @@ class RepositoryServiceProvider extends ServiceProvider
         TransactionRepositoryInterface::class => TransactionRepository::class,
         ClientRepositoryInterface::class => ClientRepository::class,
         InvoiceRepositoryInterface::class => InvoiceRepository::class,
-        NotificationRepositoryInterface::class => NotificationRepository::class
+        NotificationRepositoryInterface::class => NotificationRepository::class,
     ];
 
-    public function register(){}
+    public function register()
+    {
+    }
 
     public function boot()
     {

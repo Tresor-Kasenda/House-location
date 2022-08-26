@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Models;
@@ -17,7 +18,7 @@ class Image extends Model
     protected $fillable = [
         'images',
         'user_id',
-        'house_id'
+        'house_id',
     ];
 
     public function houses(): BelongsTo
@@ -25,23 +26,8 @@ class Image extends Model
         return $this->belongsTo(House::class, 'house_id');
     }
 
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public static function getImagesHouse(): Collection
-    {
-        return DB::table('images')
-            ->select([
-                'images.id',
-                'images.house_id',
-                'images.images'
-            ])
-            ->leftJoin('houses', 'houses.id', '=', 'images.house_id')
-            ->where('images.user_id', '=', auth()->id())
-            ->orderBy('images.created_at', 'desc')
-            ->get();
     }
 }

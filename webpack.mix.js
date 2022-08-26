@@ -3,6 +3,7 @@ const tailwindcss = require('tailwindcss');
 require('laravel-mix-purgecss');
 
 mix.js('resources/js/app.js', 'public/js')
+    .js('resources/js/backend/backend.js', 'public/backend')
     .options({
         processCssUrls: false,
         postCss: [
@@ -15,6 +16,12 @@ mix.js('resources/js/app.js', 'public/js')
             },
         },
     })
+    .webpackConfig({
+        stats: {
+            children: true,
+        },
+    })
+    .postCss('resources/css/backend.css', 'public/backend')
     .postCss('resources/css/app.css', 'public/css', [
         require("tailwindcss"),
     ]).purgeCss();

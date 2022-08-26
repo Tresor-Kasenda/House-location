@@ -27,7 +27,7 @@ class ApartmentRequest extends FormRequest
             'email' => ['required', 'email', 'regex:/(.+)@(.+)\.(.+)/i', Rule::unique(House::class, 'email')],
             'phone_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10', Rule::unique(House::class, 'phone_number')],
             // deuxieme steppers
-            'prices' => ['required','numeric'],
+            'prices' => ['required', 'numeric'],
             'warranty_price' => ['required', 'numeric'],
             'number_rooms' => ['required', 'numeric'],
             'number_pieces' => ['required', 'numeric'],
@@ -40,7 +40,7 @@ class ApartmentRequest extends FormRequest
             'longitude' => ['nullable', 'required_with:latitude', 'max:15'],
             'electricity' => ['required', 'string'],
             'toilet' => ['required', 'string'],
-            'description' => ['required', 'string', 'min:30']
+            'description' => ['required', 'string', 'min:30'],
         ];
     }
 }

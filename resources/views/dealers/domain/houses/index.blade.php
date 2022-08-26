@@ -1,6 +1,8 @@
 @extends('dealers.layout.dealer')
 
-@section('title', "Creation des maison")
+@section('title')
+    Mais maisons
+@endsection
 
 @section('content')
     <div class="nk-content-inner">
@@ -8,7 +10,7 @@
             <div class="nk-block-head nk-block-head-sm">
                 <div class="nk-block-between">
                     <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Apartments</h3>
+                        <h3 class="nk-block-title page-title">Liste des Maisons</h3>
                     </div>
                     <div class="nk-block-head-content">
                         <div class="toggle-wrap nk-block-tools-toggle">
@@ -51,7 +53,7 @@
                                     <th class="nk-tb-col tb-col-md">
                                         <span class="sub-text">Commune</span>
                                     </th>
-                                    <th class="nk-tb-col nk-tb-col-tools text-right">
+                                    <th class="nk-tb-col">
                                         <span class="sub-text">Actions</span>
                                     </th>
                                 </tr>
@@ -69,7 +71,7 @@
                                             <span>{{ $room->reference ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $room->phoneNumber ?? "" }}</span>
+                                            <span>{{ $room->phone_number ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ $room->address ?? "" }}</span>
@@ -86,46 +88,27 @@
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ $room->commune ?? "" }}</span>
                                         </td>
-                                        <td class="nk-tb-col nk-tb-col-tools">
-                                            <ul class="nk-tb-actions gx-1">
-                                                <li>
-                                                    <div class="drodown">
-                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
-                                                           data-toggle="dropdown">
-                                                            <em class="icon ni ni-more-h"></em>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li>
-                                                                    <a href="{{ route('commissioner.houses.show', $room->id) }}">
-                                                                        <em class="icon ni ni-eye"></em>
-                                                                        <span>Voir</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="{{ route('commissioner.houses.edit', $room->id) }}">
-                                                                        <em class="icon ni ni-edit"></em>
-                                                                        <span>Editer</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <form action="{{ route('commissioner.houses.destroy', $room->di) }}"
-                                                                          method="POST"
-                                                                          onsubmit="return confirm('Voulez vous supprimer');">
-                                                                        @method('DELETE')
-                                                                        <input type="hidden" name="_token"
-                                                                               value="{{ csrf_token() }}">
-                                                                        <button type="submit" class="btn btn-dim">
-                                                                            <em class="icon ni ni-cross-sm"></em>
-                                                                            <span>Suspendre</span>
-                                                                        </button>
-                                                                    </form>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                        <td class="nk-tb-col">
+                                            <span class="tb-lead">
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{ route('commissioner.houses.show', $room->id) }}" class="btn btn-dim btn-primary btn-sm">
+                                                        <em class="icon ni ni-eye"></em>
+                                                    </a>
+                                                    <a href="{{ route('commissioner.houses.edit', $room->id) }}" class="btn btn-dim btn-primary btn-sm">
+                                                        <em class="icon ni ni-edit"></em>
+                                                    </a>
+                                                    <a
+                                                        class="btn btn-dim btn-danger btn-sm"
+                                                        href="#"
+                                                        onclick="deleteConfirm('delete-house-{{$room->id}}')"
+                                                    ><em class="icon ni ni-trash"></em></a>
+
+                                                    <form action="{{ route('commissioner.houses.destroy', $room->id) }}" method="POST" id="delete-house-{{$room->id}}">
+                                                        @method('DELETE')
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    </form>
+                                                </div>
+                                            </span>
                                         </td>
                                     </tr>
                                 @endforeach

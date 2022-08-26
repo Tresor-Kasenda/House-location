@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository\Dealer;
@@ -28,6 +29,7 @@ class ApartmentCommissionerRepository implements ApartmentCommissionerRepository
     public function show(string $key): Model
     {
         $house = $this->getHouse($key);
+
         return $house->load('categories', 'type');
     }
 

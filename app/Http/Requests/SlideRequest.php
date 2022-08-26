@@ -18,7 +18,7 @@ class SlideRequest extends FormRequest
         return [
             'title' => ['required', 'min:4', 'string'],
             'images' => ['required', 'image', 'mimes:jpeg,jpg,png', 'max:5000'],
-            'description' => ['nullable', 'string']
+            'description' => ['nullable', 'string'],
         ];
     }
 }

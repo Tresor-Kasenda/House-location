@@ -12,7 +12,7 @@ class CategoryForm extends Form
     {
         $this
             ->add('name', 'text', [
-                'label' => "Nom"
+                'label' => 'Nom',
             ]);
     }
 }

@@ -12,7 +12,9 @@ use Illuminate\Http\RedirectResponse;
 
 class BookingController extends Controller
 {
-    public function __construct(public BookingHouseRepositoryInterface $repository){}
+    public function __construct(public BookingHouseRepositoryInterface $repository)
+    {
+    }
 
     public function store(ReservationRequest $request): RedirectResponse
     {
@@ -23,7 +25,7 @@ class BookingController extends Controller
 
     public function show(string $key): Renderable
     {
-        $reservation  = $this->repository->getReservation(key: $key);
+        $reservation = $this->repository->getReservation(key: $key);
 
         return view('frontend.domain.reservations.confirmed', compact('reservation'));
     }

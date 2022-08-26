@@ -6,7 +6,6 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class ApartmentNotification extends Notification implements ShouldQueue
@@ -26,11 +25,11 @@ class ApartmentNotification extends Notification implements ShouldQueue
     public function toDatabase($notifiable): array
     {
         return [
-            'id'        => $this->apartment->id,
-            'commune'   => $this->apartment->commune,
-            'town'      => $this->apartment->town,
-            'user'      => $this->apartment->user->name,
-            'email'     => $this->apartment->user->email,
+            'id' => $this->apartment->id,
+            'commune' => $this->apartment->commune,
+            'town' => $this->apartment->town,
+            'user' => $this->apartment->user->name,
+            'email' => $this->apartment->user->email,
         ];
     }
 

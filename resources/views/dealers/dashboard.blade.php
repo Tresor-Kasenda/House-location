@@ -15,14 +15,23 @@
                 </div>
             </div>
             <div class="nk-block">
+                @php
+                    $houses = \App\Models\House::query()
+                        ->where('user_id', '=', auth()->id())
+                        ->count('id');
+                    $images = \App\Models\Image::query()
+                        ->with('houses')
+                        ->where('user_id', '=', auth()->id())
+                        ->count('id')
+                @endphp
                 <div class="row g-gs">
                     @include('dealers.components._statistic', [
                         'username' => "Apartments",
-                        'amount' => \App\Models\House::query()->where('user_id', auth()->id)->count()
+                        'amount' => $houses
                     ])
                     @include('dealers.components._statistic', [
                        'username' => "Images",
-                       'amount' => \App\Models\Image::query()->where('user_id', auth()->id)->count()
+                       'amount' => $images
                    ])
 
                     <div class="col-xxl-6">
@@ -37,11 +46,11 @@
 
                                     <div class="nk-ecwg8-ck">
                                         <canvas
-                                                class="ecommerce-line-chart-s4 chartjs-render-monitor"
-                                                id="salesStatistics"
-                                                width="798"
-                                                height="300"
-                                                style="display: block; width: 798px; height: 200px;"
+                                            class="ecommerce-line-chart-s4 chartjs-render-monitor"
+                                            id="salesStatistics"
+                                            width="798"
+                                            height="300"
+                                            style="display: block; width: 798px; height: 200px;"
                                         ></canvas>
                                     </div>
                                 </div>

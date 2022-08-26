@@ -17,8 +17,9 @@ class InactiveRepository
             ->where('id', '=', $request)
             ->firstOrFail();
         $reservation->update([
-            'status' => ReservationEnum::INVALIDATED_RESERVATION
+            'status' => ReservationEnum::INVALIDATED_RESERVATION,
         ]);
+
         return $reservation;
     }
 }

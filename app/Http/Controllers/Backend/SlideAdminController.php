@@ -20,7 +20,8 @@ class SlideAdminController extends Controller
     public function __construct(
         public FormBuilder $builder,
         public SlideRepositoryInterface $repository
-    ){}
+    ) {
+    }
 
     public function index(): Renderable
     {
@@ -33,7 +34,7 @@ class SlideAdminController extends Controller
     {
         $form = $this->builder->create(SlideForm::class, [
             'method' => 'POST',
-            'url' => route('admins.slides.store')
+            'url' => route('admins.slides.store'),
         ]);
 
         return view('backend.domain.slides.create', compact('form'));
@@ -53,7 +54,7 @@ class SlideAdminController extends Controller
         $form = $this->builder->create(SlideForm::class, [
             'method' => 'PUT',
             'url' => route('admins.slides.update', $slide->id),
-            'model' => $slide
+            'model' => $slide,
         ]);
 
         return view('backend.domain.slides.create', compact('form', 'slide'));
@@ -61,7 +62,7 @@ class SlideAdminController extends Controller
 
     public function update(SlideRequest $request, string $key): RedirectResponse
     {
-        $this->repository->updated(key: $key,request: $request);
+        $this->repository->updated(key: $key, request: $request);
 
         return redirect()->route('admins.slides.index');
     }

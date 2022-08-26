@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use App\Enums\UserRoleEnum;
 use App\Models\Role;
 use App\Models\User;
-use App\Enums\UserRoleEnum;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,23 +25,22 @@ class AddUserCommand extends Command
     {
         $this->comment('Add User Command Interactive Wizard');
 
-        process : {
+        process :
             $name = ucwords($this->anticipate('name', ['admin', 'Place manager']));
-            $email = strtolower($this->ask('email'));
-            $password = $this->secret('password');
-            $password_confirmation = $this->secret('confirm password');
+        $email = strtolower($this->ask('email'));
+        $password = $this->secret('password');
+        $password_confirmation = $this->secret('confirm password');
 
-            $validator = validator(
-                compact('name', 'email', 'password', 'password_confirmation'),
-                [
+        $validator = validator(
+            compact('name', 'email', 'password', 'password_confirmation'),
+            [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
             ]
-            );
-        }
+        );
 
-        if (!$validator->fails()) {
+        if (! $validator->fails()) {
             try {
                 $password = Hash::make($password);
                 $role = Role::query()
@@ -58,7 +58,7 @@ class AddUserCommand extends Command
                 dd($exception);
             }
         } else {
-            $this->error("some values are wrong !");
+            $this->error('some values are wrong !');
             $this->table(['Errors'], $validator->errors()->messages());
             goto process;
         }

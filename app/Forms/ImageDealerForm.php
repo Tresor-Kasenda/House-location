@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Forms;
@@ -12,17 +13,18 @@ class ImageDealerForm extends Form
     {
         $this
             ->add('images', 'file', [
-                'label' => "Photo"
+                'label' => 'Photo',
+                'multiple' => true,
             ])
-            ->add('house_id', 'choice', [
+            ->add('house', 'choice', [
                 'label' => 'Apartement',
                 'choices' => $this->getHouses(),
                 'multiple' => false,
-                'attr' => ['class' => 'form-select']
+                'attr' => ['class' => 'form-control'],
             ]);
     }
 
-    public function  getHouses(): array
+    public function getHouses(): array
     {
         return House::query()
             ->where('user_id', '=', auth()->id())

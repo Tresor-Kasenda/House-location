@@ -6,10 +6,8 @@ namespace Tests\Feature;
 
 use App\Enums\UserRoleEnum;
 use App\Models\Category;
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
@@ -20,7 +18,7 @@ class CategoryTest extends TestCase
     public function testGetCategories()
     {
         $user = User::factory()->create([
-            'role_id' => UserRoleEnum::ADMINS_ROLE
+            'role_id' => UserRoleEnum::ADMINS_ROLE,
         ]);
         $this->actingAs($user);
 
@@ -36,14 +34,14 @@ class CategoryTest extends TestCase
     public function testCreatedCategory()
     {
         $user = User::factory()->create([
-            'role_id' => UserRoleEnum::ADMINS_ROLE
+            'role_id' => UserRoleEnum::ADMINS_ROLE,
         ]);
         $this->actingAs($user);
 
         $categories = Category::factory(3)->create();
 
         $response = $this->post(route('admins.categories.store'), [
-            'name' => "Biscuit"
+            'name' => 'Biscuit',
         ]);
 
         $response->assertOk();

@@ -1,6 +1,8 @@
 @extends('backend.layout.backend')
 
-@section('title', "Administration des images")
+@section('title')
+    Images pour les apartements
+@endsection
 
 @section('content')
     <div class="nk-content-inner">

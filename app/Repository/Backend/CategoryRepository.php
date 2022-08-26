@@ -23,7 +23,7 @@ class CategoryRepository implements CategoryRepositoryInterface
         return Category::query()
             ->select([
                 'id',
-                'name'
+                'name',
             ])
             ->orderByDesc('created_at')
             ->get();
@@ -33,9 +33,10 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         $category = Category::query()
             ->create([
-                'name' => $attributes->name
+                'name' => $attributes->name,
             ]);
         $this->service->success('Category created with successfully');
+
         return $category;
     }
 
@@ -50,9 +51,10 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         $category = $this->getElementByKey($key);
         $category->update([
-            'name' => $attributes->name
+            'name' => $attributes->name,
         ]);
         $this->service->success('Category updated with successfully');
+
         return $category;
     }
 
@@ -61,6 +63,7 @@ class CategoryRepository implements CategoryRepositoryInterface
         $category = $this->getElementByKey($key);
         $category->delete();
         $this->service->success('Category updated with successfully');
+
         return $category;
     }
 }

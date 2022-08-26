@@ -15,12 +15,11 @@ class NoteCommissionnaire extends Model
 
     protected $fillable = [
         'commissioner_id',
-        'note'
+        'note',
     ];
+
     public function commissioner(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
-
-
 }

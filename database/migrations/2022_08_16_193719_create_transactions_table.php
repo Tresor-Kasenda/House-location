@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Models\Client;
-use App\Models\House;
 use App\Models\Reservation;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

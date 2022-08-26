@@ -23,7 +23,7 @@ return new class extends Migration
             $table->enum('toilet', [
                 ToiletEnum::INTERNE,
                 ToiletEnum::EXTERNE,
-                ToiletEnum::INTERNE_EXTERNE
+                ToiletEnum::INTERNE_EXTERNE,
             ])
                 ->default(ToiletEnum::INTERNE);
             $table->boolean('electricity')

@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use JetBrains\PhpStorm\ArrayShape;
 
 class ImageRequest extends FormRequest
 {
@@ -17,7 +17,8 @@ class ImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'images' => ['required', 'mimes:jpeg,jpg,png'],
+            'images' => ['required', 'array'],
+            'images.*' => ['mimes:jpeg,jpg,png'],
             'house' => ['required', Rule::exists('houses', 'id')],
         ];
     }

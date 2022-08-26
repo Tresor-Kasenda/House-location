@@ -15,12 +15,11 @@ class Slider extends Model
     protected $fillable = [
         'title',
         'images',
-        'description'
+        'description',
     ];
-
 
     public function images(): string
     {
-        return asset('storage/'. $this->images);
+        return asset('storage/'.$this->images);
     }
 }

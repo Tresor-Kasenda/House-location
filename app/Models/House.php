@@ -31,7 +31,7 @@ class House extends Model
         'status',
         'reference',
         'type_id',
-        'user_id'
+        'user_id',
     ];
 
     public function image(): HasMany
@@ -77,6 +77,7 @@ class House extends Model
         $link .= ' title="'.$title.'">';
         $link .= $this->address;
         $link .= '</a>';
+
         return $link;
     }
 
@@ -85,6 +86,7 @@ class House extends Model
         if ($this->address) {
             return $this->latitude.', '.$this->longitude;
         }
+
         return null;
     }
 
@@ -92,16 +94,17 @@ class House extends Model
     {
         $mapPopupContent = '';
         $mapPopupContent .= '<div class="my-2 font-weight-bold text-red-900">
-            <strong>' . 'Nom: ' . '</strong>
-            <br>' . $this->address . '</div>';
+            <strong>'.'Nom: '.'</strong>
+            <br>'.$this->address.'</div>';
         $mapPopupContent .= '<div class="my-2 font-weight-bold text-red-900">
-            <strong>' . 'Commune: ' . '</strong>
-            <br>' . $this->commune . '</div>';
+            <strong>'.'Commune: '.'</strong>
+            <br>'.$this->commune.'</div>';
         $mapPopupContent .= '<div class="my-2"><stroong>
-            <a href="' . route('categories.show', $this->key) . '" title="' . $this->key . '">
-                ' . 'Voir plus' . '
+            <a href="'.route('categories.show', $this->key).'" title="'.$this->key.'">
+                '.'Voir plus'.'
             </a>
         </stroong></div>';
+
         return $mapPopupContent;
     }
 

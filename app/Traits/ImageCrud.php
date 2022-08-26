@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Traits;
@@ -10,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 
 trait ImageCrud
 {
+    use ImageUploader;
+
     public function getContents(): Collection|array
     {
         return Image::query()
@@ -17,7 +20,7 @@ trait ImageCrud
                 'id',
                 'images',
                 'house_id',
-                'user_id'
+                'user_id',
             ])
             ->with('houses')
             ->orderByDesc('created_at')
@@ -33,14 +36,17 @@ trait ImageCrud
 
     public function created($attributes): Model|Builder
     {
-        $image = Image::query()
-            ->create([
-                'user_id' => auth()->id(),
-                'house_id' => $attributes->input('house'),
-                'images' => self::uploadFiles($attributes)
-            ]);
+        $image = new Image();
+        foreach ($attributes->file('images') as $images) {
+            $path = self::uploadMultiple($images);
+            $image->images = json_encode($path);
+        }
+        $image->house_id = $attributes->input('house');
+        $image->user_id = auth()->id();
+        $image->save();
 
-        $this->service->success("Images ajouter avec succes");
+        $this->service->success('Images ajouter avec succes');
+
         return $image;
     }
 
@@ -50,9 +56,10 @@ trait ImageCrud
         $this->removePathOfImages($image);
         $image->update([
             'images' => self::uploadFiles($attributes),
-            'house_id' => $attributes->input('house_id')
+            'house_id' => $attributes->input('house_id'),
         ]);
-        $this->service->success("Images modifier avec succes");
+        $this->service->success('Images modifier avec succes');
+
         return $image;
     }
 
@@ -61,7 +68,8 @@ trait ImageCrud
         $image = $this->show(key: $key);
         $this->removePathOfImages($image);
         $image->delete();
-        $this->service->success("images supprimer avec succes");
+        $this->service->success('images supprimer avec succes');
+
         return $image;
     }
 }

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Enums\ElectricityEnum;
-use App\Enums\ToiletEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,7 +19,7 @@ class Detail extends Model
         'number_pieces',
         'toilet',
         'electricity',
-        'description'
+        'description',
     ];
 
     public function house(): BelongsTo

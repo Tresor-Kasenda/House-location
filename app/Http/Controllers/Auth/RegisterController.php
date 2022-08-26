@@ -1,12 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
-use App\Enums\UserRoleEnum;
 use App\Http\Controllers\Controller;
-use App\Models\Client;
-use App\Models\Commissioner;
 use App\Models\User;
 use App\Traits\RedirectRoute;
 use Illuminate\Database\Eloquent\Builder;
@@ -42,7 +40,7 @@ class RegisterController extends Controller
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
-                'role_id' => $data['role']
+                'role_id' => $data['role'],
             ]);
     }
 }

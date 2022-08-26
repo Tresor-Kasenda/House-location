@@ -16,7 +16,7 @@ class HouseNote extends Model
     protected $fillable = [
         'house_id',
         'note',
-        'comment'
+        'comment',
     ];
 
     public function house(): BelongsTo

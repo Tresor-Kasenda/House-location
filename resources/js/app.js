@@ -4,10 +4,10 @@ import './bootstrap'
 import Turbolinks from 'turbolinks'
 Turbolinks.start()
 
-import './config/hamburger'
-import './components/search'
+import './frontend/config/hamburger'
+import './frontend/components/search'
 
-import {EditProfile, CloseProfile} from './config/userModal'
+import {EditProfile, CloseProfile} from './frontend/config/userModal'
 
 EditProfile(
     document.querySelector('#editProfile'),

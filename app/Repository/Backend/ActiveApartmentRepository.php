@@ -1,16 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository\Backend;
 
+use App\Contracts\ActiveApartmentRepositoryInterface;
+use App\Enums\HouseEnum;
 use App\Jobs\ActivateApartmentJob;
 use App\Models\House;
-use App\Enums\HouseEnum;
-use App\Notifications\ActivateApartmentNotification;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use App\Contracts\ActiveApartmentRepositoryInterface;
-use Illuminate\Support\Facades\Notification;
+use Illuminate\Database\Eloquent\Model;
 
 class ActiveApartmentRepository implements ActiveApartmentRepositoryInterface
 {
@@ -20,9 +19,10 @@ class ActiveApartmentRepository implements ActiveApartmentRepositoryInterface
             ->where('id', '=', $key)
             ->first();
         $room->update([
-            'status' => HouseEnum::VALIDATED_HOUSE
+            'status' => HouseEnum::VALIDATED_HOUSE,
         ]);
         dispatch(new ActivateApartmentJob($room))->delay(now()->addSecond(14));
+
         return $room;
     }
 
@@ -32,8 +32,9 @@ class ActiveApartmentRepository implements ActiveApartmentRepositoryInterface
             ->where('id', '=', $key)
             ->first();
         $room->update([
-            'status' => HouseEnum::PENDING_HOUSE
+            'status' => HouseEnum::PENDING_HOUSE,
         ]);
+
         return $room;
     }
 }

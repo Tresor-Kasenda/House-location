@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
@@ -15,11 +16,11 @@ class ApartmentApiController extends Controller
     {
         $outlets = House::all();
 
-        $geoJSOData = $outlets->map(fn($outlet) => [
-            'type'       => 'Feature',
+        $geoJSOData = $outlets->map(fn ($outlet) => [
+            'type' => 'Feature',
             'properties' => new HouseResource($outlet),
-            'geometry'   => [
-                'type'        => 'Point',
+            'geometry' => [
+                'type' => 'Point',
                 'coordinates' => [
                     $outlet->longitude,
                     $outlet->latitude,
@@ -28,7 +29,7 @@ class ApartmentApiController extends Controller
         ]);
 
         return response()->json([
-            'type'     => 'FeatureCollection',
+            'type' => 'FeatureCollection',
             'features' => $geoJSOData,
         ]);
     }

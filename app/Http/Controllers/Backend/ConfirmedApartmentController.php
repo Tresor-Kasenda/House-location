@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Backend;
@@ -9,7 +10,9 @@ use Illuminate\Http\RedirectResponse;
 
 class ConfirmedApartmentController extends Controller
 {
-    public function __construct(public ActiveApartmentRepositoryInterface $repository){}
+    public function __construct(public ActiveApartmentRepositoryInterface $repository)
+    {
+    }
 
     public function active(string $key): RedirectResponse
     {

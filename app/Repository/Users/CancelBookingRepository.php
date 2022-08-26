@@ -16,12 +16,13 @@ class CancelBookingRepository implements CancelBookingRepositoryInterface
         $reservation = Reservation::query()
             ->select([
                 'id',
-                'user_id'
+                'user_id',
             ])
             ->where('id', '=', $key)
             ->where('user_id', '=', auth()->id())
             ->firstOrFail();
         $reservation->delete();
+
         return $reservation;
     }
 }

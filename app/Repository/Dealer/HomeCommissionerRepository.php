@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository\Dealer;
@@ -16,21 +17,21 @@ class HomeCommissionerRepository implements HomeCommissionerRepositoryInterface
         $house = House::query()
             ->where('user_id', '=', auth()->id())
             ->first();
-        if ($house){
+        if ($house) {
             $items = Reservation::select([
-                    DB::raw("COUNT(*) as count"),
-                    DB::raw("DAYNAME(created_at) as day_name"),
-                    DB::raw("DAY(created_at) as day")
-                ])
+                DB::raw('COUNT(*) as count'),
+                DB::raw('DAYNAME(created_at) as day_name'),
+                DB::raw('DAY(created_at) as day'),
+            ])
                 ->where('created_at', '>', Carbon::today()->subDay(6))
                 ->where('house_id', '=', $house->id)
-                ->groupBy('day_name','day')
+                ->groupBy('day_name', 'day')
                 ->orderBy('day')
                 ->get();
 
             $data = [];
 
-            foreach($items as $row) {
+            foreach ($items as $row) {
                 $data['label'][] = $row->day_name;
                 $data['data'][] = (int) $row->count;
             }

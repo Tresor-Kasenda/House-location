@@ -1,6 +1,8 @@
 @extends('dealers.layout.dealer')
 
-@section('title', "Administration des images")
+@section('title')
+    Images pour les apartements
+@endsection
 
 @section('content')
     <div class="nk-content-inner">
@@ -39,6 +41,9 @@
                                     <th class="nk-tb-col tb-col-md">
                                         <span class="sub-text">Apartement</span>
                                     </th>
+                                    <th class="nk-tb-col tb-col-md">
+                                        <span class="sub-text">Utilisateurs</span>
+                                    </th>
                                     <th class="nk-tb-col nk-tb-col-tools text-right">
                                         <span class="sub-text">Actions</span>
                                     </th>
@@ -50,46 +55,33 @@
                                         <td class="nk-tb-col tb-col-sm">
                                                 <span class="tb-product text-center">
                                                     <img src="{{ asset('storage/'.$image->images) }}"
-                                                         alt="{{ $image->key }}" class="thumb">
+                                                         alt="{{ $image->id }}" class="thumb">
                                                 </span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $image->houses->email ?? "" }}</span>
+                                            <span>{{ $image->houses->reference ?? "" }}</span>
                                         </td>
-                                        <td class="nk-tb-col nk-tb-col-tools">
-                                            <ul class="nk-tb-actions gx-1">
-                                                <li>
-                                                    <div class="drodown">
-                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger"
-                                                           data-toggle="dropdown">
-                                                            <em class="icon ni ni-more-h"></em>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li>
-                                                                    <a href="{{ route('commissioner.imageHouses.edit', $image->key) }}">
-                                                                        <em class="icon ni ni-edit"></em>
-                                                                        <span>Editer</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <form action="{{ route('commissioner.imageHouses.destroy', $image->key) }}"
-                                                                          method="POST"
-                                                                          onsubmit="return confirm('Voulez vous supprimer');">
-                                                                        @method('DELETE')
-                                                                        <input type="hidden" name="_token"
-                                                                               value="{{ csrf_token() }}">
-                                                                        <button type="submit" class="btn btn-dim">
-                                                                            <em class="icon ni ni-cross-sm"></em>
-                                                                            <span>Supprimer</span>
-                                                                        </button>
-                                                                    </form>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                        <td class="nk-tb-col tb-col-md">
+                                            <span>{{ ucfirst($image->user->name) ?? "" }}</span>
+                                        </td>
+                                        <td class="nk-tb-col">
+                                            <span class="tb-lead">
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{ route('commissioner.imageHouses.edit', $image->id) }}" class="btn btn-dim btn-primary btn-sm">
+                                                        <em class="icon ni ni-edit"></em>
+                                                    </a>
+                                                    <a
+                                                        class="btn btn-dim btn-danger btn-sm"
+                                                        href="#"
+                                                        onclick="deleteConfirm('delete-images-{{$image->id}}')"
+                                                    ><em class="icon ni ni-trash"></em></a>
+
+                                                    <form action="{{ route('commissioner.imageHouses.destroy', $image->id) }}" method="POST" id="delete-images-{{$image->id}}">
+                                                        @method('DELETE')
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    </form>
+                                                </div>
+                                            </span>
                                         </td>
                                     </tr>
                                 @endforeach

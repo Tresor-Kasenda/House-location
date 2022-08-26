@@ -2477,10 +2477,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var turbolinks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! turbolinks */ "./node_modules/turbolinks/dist/turbolinks.js");
 /* harmony import */ var turbolinks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(turbolinks__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _config_hamburger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./config/hamburger */ "./resources/js/config/hamburger.js");
-/* harmony import */ var _config_hamburger__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_config_hamburger__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_search__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/search */ "./resources/js/components/search.js");
-/* harmony import */ var _config_userModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./config/userModal */ "./resources/js/config/userModal.js");
+/* harmony import */ var _frontend_config_hamburger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/config/hamburger */ "./resources/js/frontend/config/hamburger.js");
+/* harmony import */ var _frontend_config_hamburger__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_frontend_config_hamburger__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _frontend_components_search__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./frontend/components/search */ "./resources/js/frontend/components/search.js");
+/* harmony import */ var _frontend_config_userModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./frontend/config/userModal */ "./resources/js/frontend/config/userModal.js");
 
 
 
@@ -2488,8 +2488,8 @@ turbolinks__WEBPACK_IMPORTED_MODULE_2___default().start();
 
 
 
-(0,_config_userModal__WEBPACK_IMPORTED_MODULE_5__.EditProfile)(document.querySelector('#editProfile'), document.querySelector('#editeUserProfile'));
-(0,_config_userModal__WEBPACK_IMPORTED_MODULE_5__.CloseProfile)(document.querySelector('#closeProfile'), document.querySelector('#editeUserProfile'));
+(0,_frontend_config_userModal__WEBPACK_IMPORTED_MODULE_5__.EditProfile)(document.querySelector('#editProfile'), document.querySelector('#editeUserProfile'));
+(0,_frontend_config_userModal__WEBPACK_IMPORTED_MODULE_5__.CloseProfile)(document.querySelector('#closeProfile'), document.querySelector('#editeUserProfile'));
 
 /***/ }),
 
@@ -2530,10 +2530,10 @@ if (token) {
 
 /***/ }),
 
-/***/ "./resources/js/components/search.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/search.js ***!
-  \*******************************************/
+/***/ "./resources/js/frontend/components/search.js":
+/*!****************************************************!*\
+  !*** ./resources/js/frontend/components/search.js ***!
+  \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2571,10 +2571,10 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()('#location').on('keyup', function 
 
 /***/ }),
 
-/***/ "./resources/js/config/hamburger.js":
-/*!******************************************!*\
-  !*** ./resources/js/config/hamburger.js ***!
-  \******************************************/
+/***/ "./resources/js/frontend/config/hamburger.js":
+/*!***************************************************!*\
+  !*** ./resources/js/frontend/config/hamburger.js ***!
+  \***************************************************/
 /***/ (() => {
 
 var mobMenu = document.querySelector("[data-navigation]");
@@ -2738,10 +2738,10 @@ if (languesSwitcher) {
 
 /***/ }),
 
-/***/ "./resources/js/config/userModal.js":
-/*!******************************************!*\
-  !*** ./resources/js/config/userModal.js ***!
-  \******************************************/
+/***/ "./resources/js/frontend/config/userModal.js":
+/*!***************************************************!*\
+  !*** ./resources/js/frontend/config/userModal.js ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -35849,6 +35849,19 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
+/***/ "./resources/css/backend.css":
+/*!***********************************!*\
+  !*** ./resources/css/backend.css ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/css/app.css":
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
@@ -36698,7 +36711,8 @@ Copyright © 2018 Basecamp, LLC
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
-/******/ 			"css/app": 0
+/******/ 			"css/app": 0,
+/******/ 			"backend/backend": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -36748,8 +36762,9 @@ Copyright © 2018 Basecamp, LLC
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","backend/backend"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","backend/backend"], () => (__webpack_require__("./resources/css/backend.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","backend/backend"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -15,8 +15,7 @@ class HouseController extends Controller
 {
     public function __construct(
         protected readonly HomeRepositoryInterface $repository,
-    )
-    {
+    ) {
     }
 
     public function __invoke(): Renderable

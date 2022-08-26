@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Traits;
 
-use App\Jobs\ReservationJob;
 use App\Models\Detail;
 use App\Notifications\ApartmentNotification;
+use App\Services\ToastService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Notification;
@@ -15,22 +15,26 @@ trait ApartmentCrud
 {
     use ImageUploader;
 
+    public function __construct(protected ToastService $service)
+    {
+    }
+
     public function created($attributes): Builder|Model
     {
         $apartment = auth()->user()->house()->create([
             'prices' => $attributes->input('prices'),
-            'warranty_price'=> $attributes->input('warranty_price'),
-            'commune'=> $attributes->input('commune'),
+            'warranty_price' => $attributes->input('warranty_price'),
+            'commune' => $attributes->input('commune'),
             'town' => $attributes->input('town'),
-            'district'=> $attributes->input('district'),
-            'address'=> $attributes->input('address'),
-            'phone_number'=> $attributes->input('phone_number'),
-            'email'=> $attributes->input('email'),
-            'latitude'=> $attributes->input('latitude'),
-            'longitude'=> $attributes->input('longitude'),
-            'images'=> $this::uploadFiles($attributes),
+            'district' => $attributes->input('district'),
+            'address' => $attributes->input('address'),
+            'phone_number' => $attributes->input('phone_number'),
+            'email' => $attributes->input('email'),
+            'latitude' => $attributes->input('latitude'),
+            'longitude' => $attributes->input('longitude'),
+            'images' => $this::uploadFiles($attributes),
             'reference' => $this->generateRandomTransaction(8),
-            'type_id' => $attributes->input('type')
+            'type_id' => $attributes->input('type'),
         ]);
 
         $apartment->categories()->attach($attributes->input('categories'));
@@ -42,8 +46,9 @@ trait ApartmentCrud
         Notification::sendNow($user, new ApartmentNotification($apartment));
 
         $this->service->success(
-            messages: "Un nouveau appartement à été ajouter"
+            messages: 'Un nouveau appartement à été ajouter'
         );
+
         return $apartment;
     }
 
@@ -54,38 +59,39 @@ trait ApartmentCrud
         $house->categories()->detach($attributes->categories);
         $house->update([
             'prices' => $attributes->input('prices'),
-            'warranty_price'=> $attributes->input('warranty_price'),
-            'commune'=> $attributes->input('commune'),
+            'warranty_price' => $attributes->input('warranty_price'),
+            'commune' => $attributes->input('commune'),
             'town' => $attributes->input('town'),
-            'district'=> $attributes->input('district'),
-            'address'=> $attributes->input('address'),
-            'phone_number'=> $attributes->input('phone_number'),
-            'email'=> $attributes->input('email'),
-            'latitude'=> $attributes->input('latitude'),
-            'longitude'=> $attributes->input('longitude'),
-            'images'=> $this::uploadFiles($attributes),
-            'type_id' => $attributes->input('type')
+            'district' => $attributes->input('district'),
+            'address' => $attributes->input('address'),
+            'phone_number' => $attributes->input('phone_number'),
+            'email' => $attributes->input('email'),
+            'latitude' => $attributes->input('latitude'),
+            'longitude' => $attributes->input('longitude'),
+            'images' => $this::uploadFiles($attributes),
+            'type_id' => $attributes->input('type'),
         ]);
         $house->categories()->attach($attributes->categories);
 
         $this->updateDetails($attributes, $house);
 
         $this->service->success(
-            messages: "Un nouveau appartement à été modifier"
+            messages: 'Un nouveau appartement à été modifier'
         );
+
         return $house;
     }
 
     private function createDetails($apartment, $attributes): void
     {
-         Detail::query()
+        Detail::query()
             ->create([
                 'house_id' => $apartment->id,
                 'number_rooms' => $attributes->input('number_rooms'),
                 'number_pieces' => $attributes->input('number_pieces'),
                 'toilet' => $attributes->input('toilet'),
                 'electricity' => $attributes->input('electricity'),
-                'description' => $attributes->input('description')
+                'description' => $attributes->input('description'),
             ]);
     }
 
@@ -99,7 +105,7 @@ trait ApartmentCrud
             'number_pieces' => $attributes->input('number_pieces'),
             'toilet' => $attributes->input('toilet'),
             'electricity' => $attributes->input('electricity'),
-            'description' => $attributes->input('description')
+            'description' => $attributes->input('description'),
         ]);
     }
 }

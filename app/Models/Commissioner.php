@@ -19,7 +19,7 @@ class Commissioner extends Model
         'email',
         'address',
         'ville',
-        'images'
+        'images',
     ];
 
     public function user(): BelongsTo
@@ -31,5 +31,4 @@ class Commissioner extends Model
     {
         return  $this->hasMany(House::class);
     }
-
 }

@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Traits;
 
 trait RandomValues
 {
-    public function  generateRandomTransaction(int $values): string
+    public function generateRandomTransaction(int $values): string
     {
         $characters = '0123456789#ABCDEFGHILKMNOPQRSTUVWXYZ#abcdefghilkmnopqrstuvwxyz';
         $randomString = '';
@@ -13,8 +14,8 @@ trait RandomValues
             $index = rand(0, strlen($characters) - 1);
             $randomString .= $characters[$index];
         }
-        return strtoupper($randomString);
 
+        return strtoupper($randomString);
     }
 
     public function generateNumericValues(int $firstValue, int $secondValue): int

@@ -19,7 +19,7 @@ class BookingRepository implements BookingRepositoryInterface
                 'id',
                 'house_id',
                 'status',
-                'client_id'
+                'client_id',
             ])
             ->with(['house:id,reference,images', 'client:id,name,phones_number'])
             ->get();
@@ -28,6 +28,7 @@ class BookingRepository implements BookingRepositoryInterface
     public function show(string $key): Model|Builder|null
     {
         $user = $this->getReservation(key: $key);
+
         return $user->load(['house', 'client']);
     }
 
@@ -35,6 +36,7 @@ class BookingRepository implements BookingRepositoryInterface
     {
         $user = $this->getReservation(key: $key);
         $user->delete();
+
         return $user;
     }
 
@@ -46,7 +48,7 @@ class BookingRepository implements BookingRepositoryInterface
                 'house_id',
                 'status',
                 'messages',
-                'client_id'
+                'client_id',
             ])
             ->where('id', '=', $key)
             ->first();

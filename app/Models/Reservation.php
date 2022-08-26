@@ -16,7 +16,7 @@ class Reservation extends Model
     protected $fillable = [
         'house_id',
         'status',
-        'messages'
+        'messages',
     ];
 
     public function house(): BelongsTo
@@ -33,5 +33,4 @@ class Reservation extends Model
     {
         return $this->belongsTo(User::class);
     }
-
 }

@@ -19,7 +19,8 @@ class CategoryAdminController extends Controller
     public function __construct(
         public FormBuilder $builder,
         public CategoryRepositoryInterface $repository
-    ){}
+    ) {
+    }
 
     public function index(): Factory|View|Application
     {
@@ -32,7 +33,7 @@ class CategoryAdminController extends Controller
     {
         $form = $this->builder->create(CategoryForm::class, [
             'method' => 'POST',
-            'url' => route('admins.categories.store')
+            'url' => route('admins.categories.store'),
         ]);
 
         return view('backend.domain.category.create', compact('form'));
@@ -52,7 +53,7 @@ class CategoryAdminController extends Controller
         $form = $this->builder->create(CategoryForm::class, [
             'method' => 'PUT',
             'url' => route('admins.categories.update', $category->id),
-            'model' => $category
+            'model' => $category,
         ]);
 
         return view('backend.domain.category.create', compact('form', 'category'));

@@ -8,7 +8,6 @@ use App\Http\Requests\SlideRequest;
 
 interface SlideRepositoryInterface
 {
-
     public function getContents();
 
     public function show(string $key);

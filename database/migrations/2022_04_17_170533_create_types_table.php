@@ -23,7 +23,7 @@ return new class extends Migration
         foreach ($types as $type) {
             Type::query()
                 ->create([
-                    'name' => $type
+                    'name' => $type,
                 ]);
         }
     }

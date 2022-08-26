@@ -18,9 +18,10 @@ class ConfirmRepository
             ->where('id', '=', $request)
             ->firstOrFail();
         $reservation->update([
-            'status' => ReservationEnum::CONFIRMED_RESERVATION
+            'status' => ReservationEnum::CONFIRMED_RESERVATION,
         ]);
         dispatch(new ConfirmedReservationJob($reservation))->delay(now()->addSecond(15));
+
         return $reservation;
     }
 }

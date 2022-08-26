@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository\Frontend;
@@ -8,7 +9,6 @@ use App\Enums\HouseEnum;
 use App\Models\House;
 use App\Models\HouseNote;
 use App\Models\Slider;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -20,8 +20,7 @@ class HomeFrontendRepository implements HomeRepositoryInterface
         return House::query()
             ->orderByDesc('created_at')
             ->when('status',
-                fn($builder) =>
-                $builder->where('status', HouseEnum::VALIDATED_HOUSE)
+                fn ($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE)
             )
             ->with(['type', 'detail', 'categories'])
             ->inRandomOrder()
@@ -36,7 +35,7 @@ class HomeFrontendRepository implements HomeRepositoryInterface
                 'id',
                 'title',
                 'images',
-                'description'
+                'description',
             ])
             ->orderByDesc('created_at')
             ->get();
@@ -66,7 +65,7 @@ class HomeFrontendRepository implements HomeRepositoryInterface
             'detail',
             'categories',
             'type',
-            'notes'
+            'notes',
         ]);
     }
 }

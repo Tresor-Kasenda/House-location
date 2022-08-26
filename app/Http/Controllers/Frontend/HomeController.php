@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Frontend;
@@ -11,14 +12,15 @@ class HomeController extends Controller
 {
     public function __construct(
         public HomeRepositoryInterface $repository
-    ){}
+    ) {
+    }
 
     public function __invoke(): Renderable
     {
         return view('frontend.home', [
             'apartments' => $this->repository->getContent(),
-            'sliders'=> $this->repository->getSliders(),
-            'apartment_notes' => $this->repository->getHouseWithManyNotes()
+            'sliders' => $this->repository->getSliders(),
+            'apartment_notes' => $this->repository->getHouseWithManyNotes(),
         ]);
     }
 }

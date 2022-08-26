@@ -3,5 +3,5 @@
 return [
     'key' => [
         'length' => 20,
-    ]
+    ],
 ];

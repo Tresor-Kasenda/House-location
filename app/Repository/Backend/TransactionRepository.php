@@ -21,7 +21,7 @@ class TransactionRepository implements TransactionRepositoryInterface
                 'client_id',
                 'reservation_id',
                 'payment_date',
-                'code_transaction'
+                'code_transaction',
             ])
             ->with([
                 'client:id,name,phones_number',
@@ -35,13 +35,13 @@ class TransactionRepository implements TransactionRepositoryInterface
 
     public function showTransaction(int $key): Model|Builder
     {
-        $transaction =  Transaction::query()
+        $transaction = Transaction::query()
             ->select([
                 'id',
                 'client_id',
                 'reservation_id',
                 'payment_date',
-                'code_transaction'
+                'code_transaction',
             ])
             ->whereHas('reservation', function ($builder) {
                 $builder->where('status', ReservationEnum::CONFIRMED_RESERVATION);
@@ -53,8 +53,8 @@ class TransactionRepository implements TransactionRepositoryInterface
             'client:id,name,phones_number',
             'reservation:id,status,messages',
             'reservation:id,house_id' => [
-                'house:id,commune,town,prices'
-            ]
+                'house:id,commune,town,prices',
+            ],
         ]);
     }
 }

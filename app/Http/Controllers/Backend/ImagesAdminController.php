@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Backend;
@@ -16,7 +17,8 @@ final class ImagesAdminController extends Controller
     public function __construct(
         public ImageRepositoryInterface $repository,
         public FormBuilder $builder
-    ){}
+    ) {
+    }
 
     public function index(): Renderable
     {
@@ -29,7 +31,7 @@ final class ImagesAdminController extends Controller
     {
         $form = $this->builder->create(ImageForm::class, [
             'method' => 'POST',
-            'url' => route('admins.image.store')
+            'url' => route('admins.image.store'),
         ]);
 
         return view('backend.domain.images.create', compact('form'));
@@ -49,7 +51,7 @@ final class ImagesAdminController extends Controller
         $form = $this->builder->create(ImageForm::class, [
             'method' => 'PUT',
             'url' => route('admins.image.update', $image->id),
-            'model' => $image
+            'model' => $image,
         ]);
 
         return view('backend.domain.images.create', compact('form', 'image'));

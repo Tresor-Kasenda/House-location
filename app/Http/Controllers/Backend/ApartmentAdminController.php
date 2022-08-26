@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Backend;
@@ -19,7 +20,8 @@ class ApartmentAdminController extends Controller
     public function __construct(
         public FormBuilder $builder,
         public ApartmentRepositoryInterface $repository
-    ){}
+    ) {
+    }
 
     public function index(): Renderable
     {
@@ -38,8 +40,8 @@ class ApartmentAdminController extends Controller
     public function create(): Factory|View|Application
     {
         $form = $this->builder->create(ApartmentForm::class, [
-           'method' => 'POST',
-            'url' => route('admins.houses.store')
+            'method' => 'POST',
+            'url' => route('admins.houses.store'),
         ]);
 
         return view('backend.domain.apartments.create', compact('form'));
@@ -59,7 +61,7 @@ class ApartmentAdminController extends Controller
         $form = $this->builder->create(ApartmentForm::class, [
             'method' => 'PUT',
             'url' => route('admins.houses.update', $room->id),
-            'model' => $room
+            'model' => $room,
         ]);
 
         return view('backend.domain.apartments.create', compact('form', 'room'));
@@ -67,7 +69,7 @@ class ApartmentAdminController extends Controller
 
     public function update(ApartmentRequest $request, string $key): RedirectResponse
     {
-        $this->repository->updated(key: $key,attributes: $request);
+        $this->repository->updated(key: $key, attributes: $request);
 
         return redirect()->route('admins.houses.index');
     }

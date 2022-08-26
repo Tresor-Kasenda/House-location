@@ -18,7 +18,7 @@ class InvoiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['required', Rule::exists(Reservation::class, 'id')]
+            'id' => ['required', Rule::exists(Reservation::class, 'id')],
         ];
     }
 }

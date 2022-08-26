@@ -12,17 +12,17 @@ class SlideForm extends Form
     {
         $this
             ->add('title', 'text', [
-                'label' => "Titre"
+                'label' => 'Titre',
             ])
             ->add('images', 'file', [
-                'label' => "Images"
+                'label' => 'Images',
             ])
             ->add('description', 'textarea', [
                 'label' => 'Description',
                 'attr' => [
                     'class' => 'form-control form-control-sm',
-                    'rows' => 2
-                ]
+                    'rows' => 2,
+                ],
             ]);
     }
 }

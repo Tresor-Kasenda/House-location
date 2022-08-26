@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Dealer;
@@ -26,24 +27,17 @@ class ApartmentCommissionerController extends Controller
     {
         $houses = $this->repository->getContents();
 
-        return view('dealers.pages.houses.index', compact('houses'));
-    }
-
-    public function show(string $key): Factory|View|Application
-    {
-        $room = $this->repository->show(key: $key);
-
-        return view('dealers.pages.houses.show', compact('room'));
+        return view('dealers.domain.houses.index', compact('houses'));
     }
 
     public function create(): Factory|View|Application
     {
         $form = $this->builder->create(ApartmentForm::class, [
             'method' => 'POST',
-            'url' => route('commissioner.houses.store')
+            'url' => route('commissioner.houses.store'),
         ]);
 
-        return view('dealers.pages.houses.create', compact('form'));
+        return view('dealers.domain.houses.create', compact('form'));
     }
 
     public function store(ApartmentRequest $request): RedirectResponse
@@ -53,6 +47,13 @@ class ApartmentCommissionerController extends Controller
         return redirect()->route('commissioner.houses.index');
     }
 
+    public function show(string $key): Factory|View|Application
+    {
+        $room = $this->repository->show(key: $key);
+
+        return view('dealers.domain.houses.show', compact('room'));
+    }
+
     public function edit(string $key): Factory|View|Application
     {
         $room = $this->repository->show(key: $key);
@@ -60,15 +61,15 @@ class ApartmentCommissionerController extends Controller
         $form = $this->builder->create(ApartmentForm::class, [
             'method' => 'PUT',
             'url' => route('commissioner.houses.update', $room->id),
-            'model' => $room
+            'model' => $room,
         ]);
 
-        return view('dealers.pages.houses.create', compact('form', 'room'));
+        return view('dealers.domain.houses.create', compact('form', 'room'));
     }
 
     public function update(ApartmentRequest $request, string $key): RedirectResponse
     {
-        $this->repository->updated(key: $key,attributes: $request);
+        $this->repository->updated(key: $key, attributes: $request);
 
         return redirect()->route('commissioner.houses.index');
     }

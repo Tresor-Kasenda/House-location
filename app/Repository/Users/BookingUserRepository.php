@@ -22,7 +22,7 @@ class BookingUserRepository implements BookingUserRepositoryInterface
             ])
             ->with([
                 'house',
-                'transaction'
+                'transaction',
             ])
             ->where('user_id', '=', auth()->id())
             ->orderByDesc('created_at')

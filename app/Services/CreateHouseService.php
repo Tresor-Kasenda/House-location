@@ -7,5 +7,6 @@ namespace App\Services;
 class CreateHouseService
 {
     public function send(): void
-    {}
+    {
+    }
 }

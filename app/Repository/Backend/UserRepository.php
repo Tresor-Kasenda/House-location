@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository\Backend;
@@ -26,14 +27,18 @@ class UserRepository implements UserRepositoryInterface
     public function show(string $key): Model|Builder|null
     {
         $user = $this->getUser(key: $key);
+
         return $user->load(['commissioner']);
     }
 
     public function deleted(string $key): Model|Builder|null
     {
         $user = $this->getUser(key: $key);
-        if ($user->images) $this->removePathOfImages($user);
+        if ($user->images) {
+            $this->removePathOfImages($user);
+        }
         $user->delete();
+
         return $user;
     }
 

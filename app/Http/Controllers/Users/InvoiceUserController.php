@@ -16,6 +16,5 @@ class InvoiceUserController extends Controller
 
     public function __invoke(InvoiceRequest $invoiceRequest)
     {
-
     }
 }

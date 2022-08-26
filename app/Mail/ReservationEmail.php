@@ -13,7 +13,6 @@ class ReservationEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-
     public function __construct(public $reservation)
     {
     }
@@ -23,7 +22,7 @@ class ReservationEmail extends Mailable implements ShouldQueue
         return $this
             ->from('info@karibukwako.com')
             ->to($this->reservation->email)
-            ->subject("Reservation")
+            ->subject('Reservation')
             ->view('frontend.domain.email.reservation')
             ->with('reservation', $this->reservation);
     }

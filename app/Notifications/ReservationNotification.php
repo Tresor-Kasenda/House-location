@@ -37,7 +37,7 @@ class ReservationNotification extends Notification implements ShouldQueue
         return [
             'transaction_code' => $this->reservation->transaction_code,
             'address' => $this->reservation->address,
-            'price' => $this->reservation->house->price
+            'price' => $this->reservation->house->price,
         ];
     }
 }

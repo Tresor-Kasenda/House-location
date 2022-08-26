@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Traits;
@@ -18,5 +19,10 @@ trait ImageUploader
     {
         Storage::disk('public')
             ->delete($model->images);
+    }
+
+    public static function uploadMultiple($images)
+    {
+        return $images->store('/images/', ['disk' =>   'public']);
     }
 }

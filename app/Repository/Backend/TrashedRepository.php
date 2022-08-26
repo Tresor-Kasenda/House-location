@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository\Backend;
@@ -26,18 +27,20 @@ class TrashedRepository implements TrashedRepositoryInterface
             ->where('id', '=', $key)
             ->firstOrFail();
         $room->restore();
+
         return $room;
     }
 
     public function forceDelete(string $key): Model|Builder
     {
         $room = House::query()
-            ->where('key' , '=', $key)
+            ->where('key', '=', $key)
             ->withTrashed()
             ->first();
         $this->removePathOfImages($room);
         $room->forceDelete();
         $room->categories()->detach();
+
         return $room;
     }
 }

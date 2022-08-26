@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository\Users;
@@ -38,8 +39,9 @@ class UsersProfileRepository implements UpdateUserRepositoryInterface
             'email' => $request->input('email'),
             'name' => $request->input('username'),
             'images' => self::uploadFiles($request),
-            'password' => Hash::make($request->input('password'))
+            'password' => Hash::make($request->input('password')),
         ]);
+
         return back();
     }
 
@@ -49,7 +51,7 @@ class UsersProfileRepository implements UpdateUserRepositoryInterface
             ->create([
                 'user_id' => $user->id,
                 'name' => $request->input('username'),
-                'email' => $request->input('email')
+                'email' => $request->input('email'),
             ]);
     }
 
@@ -58,7 +60,7 @@ class UsersProfileRepository implements UpdateUserRepositoryInterface
         $client->update([
             'name' => $request->input('username'),
             'email' => $request->input('email'),
-            'images' => self::uploadFiles($request)
+            'images' => self::uploadFiles($request),
         ]);
     }
 }

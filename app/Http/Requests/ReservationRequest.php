@@ -21,8 +21,8 @@ class ReservationRequest extends FormRequest
             'apartment' => ['required', Rule::exists(House::class, 'key')],
             'username' => ['required', 'string', 'min:3'],
             'email' => ['nullable', 'email', 'regex:/(.+)@(.+)\.(.+)/i'],
-            'phone_number' => ['required', 'numeric', 'min:10','regex:/^([0-9\s\-\+\(\)]*)$/'],
-            'messages' => ['required', 'string', 'min:10']
+            'phone_number' => ['required', 'numeric', 'min:10', 'regex:/^([0-9\s\-\+\(\)]*)$/'],
+            'messages' => ['required', 'string', 'min:10'],
         ];
     }
 }

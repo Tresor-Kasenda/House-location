@@ -20,7 +20,7 @@ class Client extends Model
         'address',
         'email',
         'phones_number',
-        'user_id'
+        'user_id',
     ];
 
     public function reservation(): HasOne
