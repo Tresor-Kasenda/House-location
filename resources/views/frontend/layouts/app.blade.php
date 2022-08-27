@@ -5,45 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Karibu kwako - @yield('title')</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('app/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" data-turbolinks-track="true">
     <link rel="shortcut icon" href="{{ asset('app/images/logo.png')  }}">
+    <link rel="stylesheet" href="{{ asset('app/swipper.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
     @yield('styles')
-</head>
-<body class="text-gray-500  overflow-x-hidden w-full">
-    @include('frontend.partials.header')
-    <div>
-        @yield('content')
-    </div>
-    @include('frontend.partials.footer')
-    <script src="{{ asset('app/js/hamburger.js') }}"></script>
-    <script src="{{ asset('app/js/jquery.js') }}"></script>
-    @include('sweetalert::alert')
-    @yield("scripts")
     <script>
-        $('#flash-overlay-modal').modal();
-        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-        $(document).ready(function(){
-            $('#search').on('keyup', function () {
-                const search = $('#search').val();
-                const render  = $('#searchResult');
-                if(search !== null){
-                    $.ajax({
-                        type: "GET",
-                        url: '{{ route('search.house') }}',
-                        data: {_search : search},
-                        dataType: 'json',
-                        delay: 220,
-                        success: function (response) {
-                            if(response.search){
-                                render.html(response.search)
-                            }
-                            render.html(response.empty)
-                        }
-                    })
-                }
-            })
-        })
+        var siteUrl = "{{url('/')}}";
     </script>
+</head>
+<body class="text-gray-500 overflow-y-auto  overflow-hidden overflow-x-hidden w-full">
+@include('frontend.partials.header')
+@include('frontend.components._search')
+<div>
+    @yield('content')
+</div>
+
+@if(request()->getPathInfo() != '/localisation')
+    @include('frontend.partials.footer')
+@endif
+<script
+    src="{{ asset('js/app.js') }}"
+    data-turbolinks-track="true"
+    data-turbolinks-suppress-warning></script>
+
+<script src="{{ asset('app/swipper.js') }}"></script>
+<script src="{{ asset('app/swipper-config.js') }}"></script>
+
+@yield("scripts")
 </body>
 </html>
