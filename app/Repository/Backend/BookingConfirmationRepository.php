@@ -36,7 +36,6 @@ class BookingConfirmationRepository
                 'payment_date' => now(),
                 'code_transaction' => $this->generateRandomTransaction(10)
             ]);
-
         dispatch(new ConfirmedReservationJob($reservation))->delay(now()->addSecond(15));
 
         $this->service->success("La reservation $reservation->id, a ete confirmer");

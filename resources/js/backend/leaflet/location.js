@@ -4,6 +4,7 @@ export const Location = (element, view, zoom) => {
     if (element == null){
         return
     }
+
     let map = L.map(element).setView(view, zoom);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: ''

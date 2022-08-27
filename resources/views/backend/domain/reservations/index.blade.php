@@ -44,19 +44,19 @@
                                 </thead>
                                 <tbody>
                                 @foreach($reservations as $reservation)
-                                    @if($reservation->status == ReservationEnum::PENDING_RESERVATION)
-                                        <tr class="nk-tb-item text-center alert alert-danger">
-                                            <td class="nk-tb-col">
+                                    @if($reservation->status == ReservationEnum::CONFIRMED_RESERVATION)
+                                        <tr class="nk-tb-item text-center alert alert-primary">
+                                            <td class="nk-tb-col tb-col-md ">
                                             <span>
                                                 <img
                                                     src="{{ asset('storage/'.$reservation->house->images) }}"
                                                     class="img-fluid rounded"
-                                                    height="20%"
-                                                    width="20%"
+                                                    height="18%"
+                                                    width="18%"
                                                     alt="{{ $reservation->house_id }}">
                                             </span>
                                             </td>
-                                            <td class="nk-tb-col">
+                                            <td class="nk-tb-col tb-col-md">
                                                 <span>{{ $reservation->house->reference ?? "Pas de code maison" }}</span>
                                             </td>
                                             <td class="nk-tb-col tb-col-md">
@@ -99,18 +99,18 @@
                                             </td>
                                         </tr>
                                     @else
-                                        <tr class="nk-tb-item text-center alert alert-primary">
-                                            <td class="nk-tb-col">
+                                        <tr class="nk-tb-item text-center alert alert-danger">
+                                            <td class="nk-tb-col tb-col-md">
                                             <span>
                                                 <img
                                                     src="{{ asset('storage/'.$reservation->house->images) }}"
                                                     class="img-fluid rounded"
-                                                    height="20%"
-                                                    width="20%"
+                                                    height="18%"
+                                                    width="18%"
                                                     alt="{{ $reservation->house_id }}">
                                             </span>
                                             </td>
-                                            <td class="nk-tb-col">
+                                            <td class="nk-tb-col tb-col-md ">
                                                 <span>{{ $reservation->house->reference ?? "Pas de code maison" }}</span>
                                             </td>
                                             <td class="nk-tb-col tb-col-md">
@@ -143,7 +143,6 @@
                                                         href="#"
                                                         onclick="deleteConfirm('delete-reservation-{{$reservation->id}}')"
                                                     ><em class="icon ni ni-trash"></em></a>
-
                                                     <form action="{{ route('admins.reservations.destroy', $reservation->id) }}" method="POST" id="delete-reservation-{{$reservation->id}}">
                                                         @method('DELETE')
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -25,8 +25,6 @@ class ImageCommissionerRepository implements ImageCommissionerRepositoryInterfac
     {
         return Image::query()
             ->select([
-                'images',
-                'user_id',
                 'house_id',
                 'id'
             ])

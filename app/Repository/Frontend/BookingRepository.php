@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use LaravelIdea\Helper\App\Models\_IH_Client_QB;
 use LaravelIdea\Helper\App\Models\_IH_Reservation_QB;
-use function PHPUnit\Framework\at;
 
 class BookingRepository implements BookingHouseRepositoryInterface
 {

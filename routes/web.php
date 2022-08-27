@@ -59,6 +59,7 @@ Route::group([
 
     Route::get('transactions', [TransactionBackendController::class, 'index'])->name('transaction.index');
     Route::get('transaction/{key}', [TransactionBackendController::class, 'show'])->name('transaction.show');
+    Route::delete('transaction/{key}', [TransactionBackendController::class, 'destroy'])->name('transaction.destroy');
 
     Route::get('clients', [ClientBackendController::class, 'index'])->name('client.index');
     Route::get('client/{key}', [ClientBackendController::class, 'show'])->name('client.show');
