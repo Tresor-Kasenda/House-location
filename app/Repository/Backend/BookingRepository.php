@@ -22,6 +22,7 @@ class BookingRepository implements BookingRepositoryInterface
                 'client_id',
             ])
             ->with(['house:id,reference,images', 'client:id,name,phones_number'])
+            ->orderByDesc('created_at')
             ->get();
     }
 

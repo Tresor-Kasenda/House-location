@@ -95,7 +95,7 @@ Route::group([
 ], function () {
     Route::resource('users', HomeUserController::class);
     Route::put('updateUser/{key}/update', UpdateUserController::class)->name('update.users');
-    Route::get('invoice/{key}', InvoiceUserController::class)->name('invoice.download');
+    Route::get('downloadPDF/{key}', [InvoiceUserController::class, 'downloadInvoice'])->name('invoice.download');
     Route::delete('cancel/{key}', [CancellingBookingController::class, 'cancel'])->name('reservation.cancel');
 });
 

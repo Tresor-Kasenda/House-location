@@ -33,5 +33,6 @@
     <script src="{{ asset('app/swipper-config.js') }}"></script>
 
     @yield("scripts")
+    @include('sweetalert::alert')
 </body>
 </html>

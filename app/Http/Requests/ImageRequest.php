@@ -17,8 +17,7 @@ class ImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'images' => ['required', 'array'],
-            'images.*' => ['mimes:jpeg,jpg,png'],
+            'images' => ['required', 'mimes:jpeg,jpg,png'],
             'house' => ['required', Rule::exists('houses', 'id')],
         ];
     }

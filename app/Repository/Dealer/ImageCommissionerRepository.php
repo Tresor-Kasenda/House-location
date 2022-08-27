@@ -21,7 +21,7 @@ class ImageCommissionerRepository implements ImageCommissionerRepositoryInterfac
     {
     }
 
-    public function getContents(): Collection
+    public function getImages(): Collection
     {
         return Image::query()
             ->select([
@@ -30,6 +30,7 @@ class ImageCommissionerRepository implements ImageCommissionerRepositoryInterfac
                 'house_id',
                 'id'
             ])
+            ->where('user_id', '=', auth()->id())
             ->with([
                 'user',
                 'houses'
