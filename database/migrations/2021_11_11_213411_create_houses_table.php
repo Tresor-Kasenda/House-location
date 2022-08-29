@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('district');
             $table->string('address');
             $table->string('phone_number');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->decimal('latitude')->nullable();
             $table->decimal('longitude')->nullable();
             $table->string('images');
