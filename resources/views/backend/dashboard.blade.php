@@ -39,9 +39,7 @@
                             <div class="nk-ecwg nk-ecwg5">
                                 <div class="card-inner">
                                     <div class="card-title-group align-start pb-3 g-2">
-                                        <div class="card-title">
-                                            <h6 class="title">Reservation par Jours</h6>
-                                        </div>
+                                        <div class="card-title"></div>
                                     </div>
                                     <div class="nk-ecwg5-ck">
                                         <canvas
@@ -198,7 +196,7 @@
                 title: {
                     display: true,
                     position: "top",
-                    text: "Last Week Registered Users -  Day Wise Count",
+                    text: "",
                     fontSize: 18,
                     fontColor: "#111"
                 },

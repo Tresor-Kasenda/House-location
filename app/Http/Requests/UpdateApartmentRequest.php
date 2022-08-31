@@ -10,7 +10,7 @@ use App\Models\Type;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ApartmentRequest extends FormRequest
+class UpdateApartmentRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -26,6 +26,7 @@ class ApartmentRequest extends FormRequest
             'address' => ['required', 'string', 'regex:/(^[-0-9A-Za-z.,\/ ]+$)/'],
             'email' => ['required', 'email', 'regex:/(.+)@(.+)\.(.+)/i'],
             'phone_number' => ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10'],
+            // deuxieme steppers
             'prices' => ['required', 'numeric'],
             'warranty_price' => ['required', 'numeric'],
             'number_rooms' => ['required', 'numeric'],
@@ -34,6 +35,7 @@ class ApartmentRequest extends FormRequest
             'categories' => ['required'],
             'categories.*' => ['integer', Rule::exists(Category::class, 'id')],
             'type' => ['required', Rule::exists(Type::class, 'id')],
+            // troisieme steppers
             'latitude' => ['nullable', 'required_with:longitude', 'max:15'],
             'longitude' => ['nullable', 'required_with:latitude', 'max:15'],
             'electricity' => ['required', 'string'],
