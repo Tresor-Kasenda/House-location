@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class HomeApiController extends Controller
 {
     public function __construct(
-        public HomeRepositoryInterface $repository
+        public HomeRepositoryInterface $repository,
     ) {
     }
 
@@ -19,7 +19,12 @@ class HomeApiController extends Controller
         return json_encode([
             'apartments' => $this->repository->getContent(),
             'sliders' => $this->repository->getSliders(),
-            'apartment_notes' => $this->repository->getHouseWithManyNotes(),
         ]);
+    }
+
+    public function details_homes(){
+        return json_encode(
+            $apartment = $this->repository->showApartment('22')
+        );
     }
 }
