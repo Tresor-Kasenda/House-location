@@ -22,9 +22,14 @@ class HomeApiController extends Controller
         ]);
     }
 
-    public function details_homes(){
+    public function details_homes(Request $request){
         return json_encode(
-            $apartment = $this->repository->showApartment('22')
+            \App\Models\House::query()
+                ->where('id', '=', $request->id)
+                ->withCount(['reservations' => function($builder) {
+                    $builder->where('status', false);
+                }])
+                ->firstOrFail()
         );
     }
 }
