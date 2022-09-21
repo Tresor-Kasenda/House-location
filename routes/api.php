@@ -9,3 +9,4 @@ Route::get('apartment', [ApartmentApiController::class, 'index'])
 
 Route::get('homedata', [HomeApiController::class, 'home']);
 Route::post('detail', [HomeApiController::class, 'details_homes']);
+Route::post('reservation', [HomeApiController::class, 'reservation']);

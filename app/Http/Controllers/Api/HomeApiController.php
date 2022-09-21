@@ -44,51 +44,36 @@ class HomeApiController extends Controller
     }
 
     public function reservation(Request $request){
-        $house = $this->getHouse(attributes: $request);
-
-        $client = $this->storeClients($request);
-
-        $reservation = $this->createReservation($house, $request, $client);
-
-        BookingEvent::dispatch($reservation);
-
-        return json_encode($reservation);
-    }
-
-    private function getHouse($attributes): Model|Builder|null
-    {
-        return House::query()
+        $house = House::query()
             ->select([
                 'id',
                 'prices',
             ])
-            ->where('id', '=', $attributes->input('apartment'))
+            ->where('id', '=', $request->apartment)
             ->when('status',
                 fn ($builder) => $builder->where('status', HouseEnum::VALIDATED_HOUSE)
             )
             ->first();
-    }
 
-    private function storeClients($attributes): Model|Builder|Client|_IH_Client_QB
-    {
-        return Client::query()
+        $client = Client::query()
             ->create([
-                'name' => $attributes->input('username'),
-                'last_name' => $attributes->input('email'),
-                'phones_number' => $attributes->input('phone_number'),
-                'email' => $attributes->input('email'),
-            ]);
-    }
+                'name' => $request->username,
+                'last_name' => $request->email,
+                'phones_number' => $request->phone_number,
+                'email' => $request->email,
+            ]);;
 
-    private function createReservation($house, $attributes, $client): _IH_Reservation_QB|Reservation|Builder|Model
-    {
-        return Reservation::query()
+        $reservation = Reservation::query()
             ->create([
                 'house_id' => $house->id,
                 'user_id' => auth()->id() ?? null,
                 'status' => ReservationEnum::PENDING_RESERVATION,
-                'messages' => $attributes->input('messages'),
+                'messages' => $request->messages,
                 'client_id' => $client->id
             ]);
+
+        BookingEvent::dispatch($reservation);
+
+        return json_encode($reservation->house->reference);
     }
 }
