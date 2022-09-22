@@ -29,6 +29,7 @@ class HomeApiController extends Controller
         return json_encode([
             'apartments' => $this->repository->getContent(),
             'sliders' => $this->repository->getSliders(),
+            'all'=>$this->repository->getAll()
         ]);
     }
 
