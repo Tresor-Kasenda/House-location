@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class Image extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'images',
@@ -28,6 +28,6 @@ class Image extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 }

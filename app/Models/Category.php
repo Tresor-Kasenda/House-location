@@ -7,11 +7,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'name',
@@ -20,7 +19,6 @@ class Category extends Model
     public function houses(): BelongsToMany
     {
         return $this
-            ->belongsToMany(House::class, 'house_category')
-            ->withTimestamps();
+            ->belongsToMany(House::class, 'house_category');
     }
 }

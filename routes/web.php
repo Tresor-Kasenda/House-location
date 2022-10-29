@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Api\Upload\UploadFIleApiController;
 use App\Http\Controllers\Backend\ApartmentAdminController;
 use App\Http\Controllers\Backend\BookingAdminController;
 use App\Http\Controllers\Backend\CancelBookingController;
@@ -43,17 +44,15 @@ Route::group([
     'as' => 'admins.',
     'middleware' => ['admins', 'auth'],
 ], function () {
-    Route::resource('backend', HomeAdminController::class)->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
+    Route::resource('backend', HomeAdminController::class)
+        ->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
     Route::resource('houses', ApartmentAdminController::class);
     Route::resource('categories', CategoryAdminController::class);
-    Route::resource('users', UsersAdminController::class)->except(['create', 'store', 'update', 'edit']);
-    Route::resource('reservations', BookingAdminController::class)->except(['create', 'store', 'update', 'edit']);
+    Route::resource('users', UsersAdminController::class)
+        ->except(['create', 'store', 'update', 'edit']);
+    Route::resource('reservations', BookingAdminController::class)
+        ->except(['create', 'store', 'update', 'edit']);
     Route::resource('image', ImagesAdminController::class);
-    Route::resource('trashedApartments', TrashedAdminController::class)->except(['show', 'create', 'store', 'update', 'edit', 'destroy']);
-    Route::controller(TrashedAdminController::class)->group(function () {
-        Route::put('trashedApartments/{key}', 'restore')->name('trashed.restore');
-        Route::delete('trashedApartments/{key}', 'delete')->name('trashed.delete');
-    });
 
     Route::resource('slides', SlideAdminController::class);
 
@@ -72,12 +71,10 @@ Route::group([
     Route::put('activeReservation/{key}', [ConfirmBookingController::class, 'confirm'])->name('reservation.active');
     Route::put('cancelReservation/{key}', [CancelBookingController::class, 'inactive'])->name('reservation.inactive');
 
-    Route::controller(ConfirmedApartmentController::class)->group(function () {
-        Route::put('activeApartment/{key}', 'active')
-            ->name('apartment.active');
-        Route::put('invalidApartment/{key}', 'inactive')
-            ->name('apartment.inactive');
-    });
+    Route::post('active-room', ConfirmedApartmentController::class);
+
+    Route::post('upload-images', UploadFIleApiController::class);
+    Route::delete('remove-images', [UploadFIleApiController::class, 'destroy']);
 });
 
 Route::group([
@@ -120,7 +117,7 @@ Route::controller(BookingController::class)->group(function () {
 Route::group([
     'prefix' => 'auth',
     'as' => 'auth.',
-], function (){
+], function () {
     Route::get('facebook', [FacebookAuthController::class, 'redirectToFacebook'])->name('facebook.auth');
     Route::get('callback/facebook', [FacebookAuthController::class, 'authToFacebook'])->name('facebook.callback');
 });

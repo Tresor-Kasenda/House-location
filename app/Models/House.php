@@ -4,36 +4,45 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\Address;
+use App\Enums\HouseEnum;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
 class House extends Model
 {
-    use HasFactory, SoftDeletes, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     protected $fillable = [
         'prices',
         'warranty_price',
-        'commune',
-        'town',
-        'district',
         'address',
-        'phone_number',
-        'email',
         'latitude',
         'longitude',
-        'images',
         'status',
         'reference',
         'type_id',
         'user_id',
     ];
+
+    protected $casts = [
+        'address' => Address::class
+    ];
+
+    protected function data(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => json_decode($value, true),
+            set: fn ($value) => json_encode($value),
+        );
+    }
 
     public function image(): HasMany
     {
@@ -48,9 +57,7 @@ class House extends Model
     public function categories(): BelongsToMany
     {
         return $this
-            ->belongsToMany(Category::class, 'house_category')
-            ->select(['name'])
-            ->withTimestamps();
+            ->belongsToMany(Category::class, 'house_category');
     }
 
     public function user(): BelongsTo
@@ -74,8 +81,8 @@ class House extends Model
         $title = __('app.show_detail_title', [
             'name' => $this->key, 'type' => __('outlet.outlet'),
         ]);
-        $link = '<a href="'.route('categories.index', $this).'"';
-        $link .= ' title="'.$title.'">';
+        $link = '<a href="' . route('categories.index', $this) . '"';
+        $link .= ' title="' . $title . '">';
         $link .= $this->address;
         $link .= '</a>';
 
@@ -85,7 +92,7 @@ class House extends Model
     public function getCoordinateAttribute(): ?string
     {
         if ($this->address) {
-            return $this->latitude.', '.$this->longitude;
+            return $this->latitude . ', ' . $this->longitude;
         }
 
         return null;
@@ -95,14 +102,14 @@ class House extends Model
     {
         $mapPopupContent = '';
         $mapPopupContent .= '<div class="my-2 font-weight-bold text-red-900">
-            <strong>'.'Nom: '.'</strong>
-            <br>'.$this->address.'</div>';
+            <strong>' . 'Nom: ' . '</strong>
+            <br>' . $this->address . '</div>';
         $mapPopupContent .= '<div class="my-2 font-weight-bold text-red-900">
-            <strong>'.'Commune: '.'</strong>
-            <br>'.$this->commune.'</div>';
+            <strong>' . 'Commune: ' . '</strong>
+            <br>' . $this->commune . '</div>';
         $mapPopupContent .= '<div class="my-2"><stroong>
-            <a href="'.route('categories.show', $this->key).'" title="'.$this->key.'">
-                '.'Voir plus'.'
+            <a href="' . route('categories.show', $this->key) . '" title="' . $this->key . '">
+                ' . 'Voir plus' . '
             </a>
         </stroong></div>';
 

@@ -8,13 +8,13 @@ use App\Contracts\UpdateUserRepositoryInterface;
 use App\Enums\UserRoleEnum;
 use App\Models\Client;
 use App\Models\User;
-use App\Traits\ImageUploader;
+use App\Traits\HasUpload;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 
 class UsersProfileRepository implements UpdateUserRepositoryInterface
 {
-    use ImageUploader;
+    use HasUpload;
 
     public function updated(string $key, $request): RedirectResponse
     {
@@ -37,7 +37,7 @@ class UsersProfileRepository implements UpdateUserRepositoryInterface
         ]);
 
 
-        alert()->info('Information',"Votre compte vien d'etre modifier avec success");
+        alert()->info('Information', "Votre compte vien d'etre modifier avec success");
 
         return back();
     }

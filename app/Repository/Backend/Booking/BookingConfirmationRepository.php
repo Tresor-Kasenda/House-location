@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace App\Repository\Backend;
+namespace App\Repository\Backend\Booking;
 
 use App\Enums\ReservationEnum;
 use App\Events\ReservationEvent;
 use App\Models\Reservation;
 use App\Models\Transaction;
-use App\Services\ToastService;
-use App\Traits\RandomValues;
+use App\Services\FlashMessageService;
+use App\Traits\HasRandomValue;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class BookingConfirmationRepository
 {
-    use RandomValues;
+    use HasRandomValue;
 
-    public function __construct(protected ToastService $service)
+    public function __construct(protected FlashMessageService $service)
     {
     }
 
@@ -29,7 +29,7 @@ class BookingConfirmationRepository
         $reservation->update([
             'status' => ReservationEnum::CONFIRMED_RESERVATION,
         ]);
-        $transaction =Transaction::query()
+        $transaction = Transaction::query()
             ->create([
                 'client_id' => $reservation->client_id,
                 'reservation_id' => $reservation->id,

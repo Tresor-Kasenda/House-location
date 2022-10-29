@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Repository\Backend;
+namespace App\Repository\Backend\Booking;
 
 use App\Enums\ReservationEnum;
 use App\Models\Reservation;
@@ -37,7 +37,7 @@ class BookingChartRepository
         $resultats = $this->getReservations()
             ->where('status', '=', ReservationEnum::PENDING_RESERVATION)
             ->where('created_at', '>', Carbon::today()->subDay(6))
-            ->groupBy('day_name','day')
+            ->groupBy('day_name', 'day')
             ->orderBy('day')
             ->get();
         $data = [];
