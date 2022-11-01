@@ -45,4 +45,37 @@
 @section('styles')
     @parent
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <link
+        href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+        rel="stylesheet"
+    />
+
+@endsection
+
+@section('scripts')
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    <script>
+
+        FilePond.registerPlugin(
+            FilePondPluginImagePreview,
+            FilePondPluginImageResize
+        );
+
+        const inputElement = document.querySelector('input[name="image"]');
+        let _token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        const pond = FilePond.create(inputElement);
+
+        FilePond.setOptions({
+            server: {
+                process: "{{ route('commissioner.images.upload') }}",
+                revert: "{{ route('commissioner.images.delete') }}",
+                headers: {
+                    'X-CSRF-Token': _token
+                }
+            }
+        })
+    </script>
 @endsection

@@ -5,17 +5,15 @@ declare(strict_types=1);
 use App\Http\Controllers\Api\Upload\UploadFIleApiController;
 use App\Http\Controllers\Backend\ApartmentAdminController;
 use App\Http\Controllers\Backend\BookingAdminController;
-use App\Http\Controllers\Backend\CancelBookingController;
 use App\Http\Controllers\Backend\CategoryAdminController;
 use App\Http\Controllers\Backend\ClientBackendController;
-use App\Http\Controllers\Backend\ConfirmBookingController;
-use App\Http\Controllers\Backend\ConfirmedApartmentController;
+use App\Http\Controllers\Backend\StatusBookingController;
+use App\Http\Controllers\Backend\StatusApartmentController;
 use App\Http\Controllers\Backend\HomeAdminController;
 use App\Http\Controllers\Backend\ImagesAdminController;
 use App\Http\Controllers\Backend\NotificationAdminController;
 use App\Http\Controllers\Backend\SlideAdminController;
 use App\Http\Controllers\Backend\TransactionBackendController;
-use App\Http\Controllers\Backend\TrashedAdminController;
 use App\Http\Controllers\Backend\UsersAdminController;
 use App\Http\Controllers\Dealer\ApartmentCommissionerController;
 use App\Http\Controllers\Dealer\HomeCommissionerController;
@@ -36,6 +34,7 @@ use App\Http\Controllers\Users\InvoiceUserController;
 use App\Http\Controllers\Users\UpdateUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dealer\Upload\UploadDealerController as ImagesUpload;
 
 Auth::routes();
 
@@ -68,10 +67,9 @@ Route::group([
     Route::delete('notification/{key}', [NotificationAdminController::class, 'delete'])->name('notification.delete');
     Route::get('notification/markRead', [NotificationAdminController::class, 'markAllReads'])->name('notification.markReads');
 
-    Route::put('activeReservation/{key}', [ConfirmBookingController::class, 'confirm'])->name('reservation.active');
-    Route::put('cancelReservation/{key}', [CancelBookingController::class, 'inactive'])->name('reservation.inactive');
+    Route::put('activeReservation/{key}', [StatusBookingController::class, 'confirm'])->name('reservation.active');
 
-    Route::post('active-room', ConfirmedApartmentController::class);
+    Route::post('active-room', StatusApartmentController::class);
 
     Route::post('upload-images', UploadFIleApiController::class);
     Route::delete('remove-images', [UploadFIleApiController::class, 'destroy']);
@@ -85,6 +83,9 @@ Route::group([
     Route::resource('backend', HomeCommissionerController::class);
     Route::resource('houses', ApartmentCommissionerController::class);
     Route::resource('imageHouses', ImageCommissionerController::class);
+
+    Route::post('upload-images', ImagesUpload::class)->name('images.upload');
+    Route::delete('remove-images', [ImagesUpload::class, 'destroy'])->name('images.delete');
 });
 
 Route::group([

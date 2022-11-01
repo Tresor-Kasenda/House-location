@@ -96,7 +96,7 @@
                                         <div class="info">
                                             <div class="title">Maison/Apartemetns</div>
                                             <div class="count">
-                                                {{ \App\Models\House::query()->where('status', '=', \App\Enums\HouseEnum::VALIDATED_HOUSE)->count() }}
+                                                {{ \App\Models\House::query()->where('status', '=', \App\Enums\HouseEnum::ACTIVATE)->count() }}
                                             </div>
                                         </div>
                                         <em class="icon bg-pink-dim ni ni-building"></em>
@@ -172,6 +172,7 @@
     <script>
         $(function () {
             const cData = JSON.parse(`<?php echo json_encode($confirmedReservation); ?>`);
+            console.log(cData)
             const ctx = $("#statistics");
             const data = {
                 labels: cData.label,

@@ -35,23 +35,20 @@
                             <table class="datatable-init nowrap nk-tb-list nk-tb-ulist" data-auto-responsive="false">
                                 <thead>
                                 <tr class="nk-tb-item nk-tb-head">
-                                    <th class="nk-tb-col tb-col-mb">
-                                        <span class="sub-text">Photo</span>
-                                    </th>
-                                    <th class="nk-tb-col tb-col-mb">
-                                        <span class="sub-text">Reference</span>
-                                    </th>
                                     <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Telephone</span>
-                                    </th>
-                                    <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Addresse</span>
-                                    </th>
-                                    <th class="nk-tb-col tb-col-md">
-                                        <span class="sub-text">Status</span>
+                                        <span class="sub-text">Ville</span>
                                     </th>
                                     <th class="nk-tb-col tb-col-md">
                                         <span class="sub-text">Commune</span>
+                                    </th>
+                                    <th class="nk-tb-col tb-col-md">
+                                        <span class="sub-text">Quartier</span>
+                                    </th>
+                                    <th class="nk-tb-col tb-col-md">
+                                        <span class="sub-text">Garantie</span>
+                                    </th>
+                                    <th class="nk-tb-col tb-col-md">
+                                        <span class="sub-text">N° Telephone</span>
                                     </th>
                                     <th class="nk-tb-col">
                                         <span class="sub-text">Actions</span>
@@ -60,55 +57,36 @@
                                 </thead>
                                 <tbody>
                                 @foreach($houses as $room)
-                                    <tr class="nk-tb-item">
-                                        <td class="nk-tb-col tb-col-sm">
-                                            <span class="tb-product text-center">
-                                                <img src="{{ asset('storage/'.$room->images) }}"
-                                                     alt="{{ $room->username }}" class="thumb">
+                                    <tr class="nk-tb-item {{ $room->status === 0 ? 'alert alert-danger' : '' }}">
+                                        <td class="nk-tb-col tb-col-md">
+                                            <span>
+                                                {{ $room->address->town ?? "" }}
                                             </span>
                                         </td>
-                                        <td class="nk-tb-col tb-col-md font-weight-bold">
-                                            <span>{{ $room->reference ?? "" }}</span>
+                                        <td class="nk-tb-col tb-col-md">
+                                            <span>
+                                                {{ ucfirst($room->address->commune) ?? "" }}
+                                            </span>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            <span>
+                                                {{ ucfirst($room->address->district) ?? "" }}
+                                            </span>
+                                        </td>
+                                        <td class="nk-tb-col tb-col-md">
+                                            <span>$ {{ $room->warranty_price ?? "" }}</span>
                                         </td>
                                         <td class="nk-tb-col tb-col-md">
                                             <span>{{ $room->phone_number ?? "" }}</span>
                                         </td>
-                                        <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $room->address ?? "" }}</span>
-                                        </td>
-                                        <td class="nk-tb-col tb-col-md">
-                                            @if($room->status)
-                                                <span class="dot bg-success d-mb-none"></span>
-                                                <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">Confirmer</span>
-                                            @else
-                                                <span class="dot bg-warning d-mb-none"></span>
-                                                <span class="badge badge-sm badge-dot has-bg badge-warning d-none d-mb-inline-flex">En attente</span>
-                                            @endif
-                                        </td>
-                                        <td class="nk-tb-col tb-col-md">
-                                            <span>{{ $room->commune ?? "" }}</span>
-                                        </td>
                                         <td class="nk-tb-col">
-                                            <span class="tb-lead">
-                                                <div class="d-flex justify-content-center">
-                                                    <a href="{{ route('commissioner.houses.show', $room->id) }}" class="btn btn-dim btn-primary btn-sm">
-                                                        <em class="icon ni ni-eye"></em>
-                                                    </a>
-                                                    <a href="{{ route('commissioner.houses.edit', $room->id) }}" class="btn btn-dim btn-primary btn-sm">
-                                                        <em class="icon ni ni-edit"></em>
-                                                    </a>
-                                                    <a
-                                                        class="btn btn-dim btn-danger btn-sm"
-                                                        href="#"
-                                                        onclick="deleteConfirm('delete-house-{{$room->id}}')"
-                                                    ><em class="icon ni ni-trash"></em></a>
-
-                                                    <form action="{{ route('commissioner.houses.destroy', $room->id) }}" method="POST" id="delete-house-{{$room->id}}">
-                                                        @method('DELETE')
-                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    </form>
-                                                </div>
-                                            </span>
+                                            <div class="tb-lead justify-content-center">
+                                                <a href="{{ route('commissioner.houses.show', $room->id) }}"
+                                                   class="btn btn-outline-primary btn-sm" title="">
+                                                    <em class="icon ni ni-eye-alt-fill"></em>
+                                                    <span>Detail Maison</span>
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
