@@ -1,9 +1,1 @@
-<svg width="112" height="112" viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M56 112C86.9279 112 112 86.9279 112 56C112 25.0721 86.9279 0 56 0C25.0721 0 0 25.0721 0 56C0 86.9279 25.0721 112 56 112ZM35 49.1094C35 37.451 44.451 28 56.1094 28C67.7677 28 77.2188 37.451 77.2187 49.1094C77.2187 52.6409 76.2548 57.3013 74.2656 59.9375L56.1094 84L37.9531 59.9375C35.7631 57.0351 35 53.0082 35 49.1094ZM64.9927 49.1093C64.9927 44.204 61.0148 40.2261 56.1094 40.2261C51.204 40.2261 47.2261 44.204 47.2261 49.1094C47.2261 54.0148 51.204 57.9927 56.1094 57.9927C61.0148 57.9927 64.9927 54.0148 64.9927 49.1093Z" fill="url(#paint0_angular)"/>
-<defs>
-<radialGradient id="paint0_angular" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(56 66) rotate(90) scale(46)">
-<stop stop-color="#2ED8C3"/>
-<stop offset="1" stop-color="#873EE3"/>
-</radialGradient>
-</defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112" fill="none" viewBox="0 0 112 112"><path fill="url(#paint0_angular)" fill-rule="evenodd" d="M56 112C86.9279 112 112 86.9279 112 56C112 25.0721 86.9279 0 56 0C25.0721 0 0 25.0721 0 56C0 86.9279 25.0721 112 56 112ZM35 49.1094C35 37.451 44.451 28 56.1094 28C67.7677 28 77.2188 37.451 77.2187 49.1094C77.2187 52.6409 76.2548 57.3013 74.2656 59.9375L56.1094 84L37.9531 59.9375C35.7631 57.0351 35 53.0082 35 49.1094ZM64.9927 49.1093C64.9927 44.204 61.0148 40.2261 56.1094 40.2261C51.204 40.2261 47.2261 44.204 47.2261 49.1094C47.2261 54.0148 51.204 57.9927 56.1094 57.9927C61.0148 57.9927 64.9927 54.0148 64.9927 49.1093Z" clip-rule="evenodd"/><defs><radialGradient id="paint0_angular" cx="0" cy="0" r="1" gradientTransform="translate(56 66) rotate(90) scale(46)" gradientUnits="userSpaceOnUse"><stop stop-color="#2ED8C3"/><stop offset="1" stop-color="#873EE3"/></radialGradient></defs></svg>
